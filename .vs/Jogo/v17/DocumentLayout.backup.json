@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Lista2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Lista2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Src\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Src\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Lista2.h",
-              "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Lista2.h",
-              "RelativeDocumentMoniker": "Lista2.h",
-              "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Lista2.h",
-              "RelativeToolTip": "Lista2.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAuwAsAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-26T21:03:08.374Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Main.cpp",
-              "RelativeDocumentMoniker": "Main.cpp",
-              "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Main.cpp",
-              "RelativeToolTip": "Main.cpp",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACUAAAAnAAAAAAAAAA==",
+              "Title": "Main.cpp",
+              "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Src\\Main.cpp",
+              "RelativeDocumentMoniker": "Src\\Main.cpp",
+              "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Src\\Main.cpp",
+              "RelativeToolTip": "Src\\Main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-26T20:45:41.861Z",
+              "WhenOpened": "2024-11-26T21:15:34.684Z",
               "EditorCaption": ""
             }
           ]
