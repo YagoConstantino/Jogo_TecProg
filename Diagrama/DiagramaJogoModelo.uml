@@ -1020,8 +1020,8 @@
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[5]" type="UMLPackageView" guid="gEs9i5sYoEy3Je5m3LTBNgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">138</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">96</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">144</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">112</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">415</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">347</XPD:ATTR>
 <XPD:REF name="Model">SjWP+eoX50KbGSTDeWeQ4AAA</XPD:REF>
@@ -4838,15 +4838,15 @@
 <XPD:REF name="Associations[5]">VV8K+36nJU+ce7UZuaE2cAAA</XPD:REF>
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="CYotjH/UWEuLJaLf+KKcFwAA">
-<XPD:ATTR name="Name" type="string">pPrimeiro</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Head</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">Elemento&lt;TL&gt;*</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Elemento*</XPD:ATTR>
 <XPD:REF name="Owner">vpGcEQLzG0uIgkl9fakFmQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="y/Uf1DyBtUKeOYFo41A9KAAA">
-<XPD:ATTR name="Name" type="string">pUltimo</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Tail</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
-<XPD:ATTR name="TypeExpression" type="string">Elemento&lt;TL&gt;*</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Elemento*</XPD:ATTR>
 <XPD:REF name="Owner">vpGcEQLzG0uIgkl9fakFmQAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>

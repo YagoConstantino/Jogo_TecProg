@@ -38,7 +38,7 @@ int main()
         (*l2)[i]->getInfo()->imprime();
     }
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!",sf::Style::Fullscreen);
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 

@@ -20,10 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Elemento.h" />
+    <ClInclude Include="Ente.h" />
+    <ClInclude Include="Entidade.h" />
     <ClInclude Include="Lista2.h" />
     <ClInclude Include="ListaTemplate.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

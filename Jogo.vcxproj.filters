@@ -36,9 +36,18 @@
     <ClInclude Include="ListaTemplate.h">
       <Filter>Listas</Filter>
     </ClInclude>
+    <ClInclude Include="Ente.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="Entidade.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Ente.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
