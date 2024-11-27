@@ -17,7 +17,7 @@ namespace Entidades
 		
 
 	public:
-		Ente():id(_cont++),_pGraf(nullptr),_body(nullptr){}
+		Ente(GerenciadorGrafico* pgra = nullptr):id(_cont++),_pGraf(nullptr),_body(nullptr),_pGraf(pgra){}
 		~Ente() {};
 		virtual void executar() = 0;
 		void desenhar();
@@ -29,7 +29,7 @@ namespace Entidades
 		
 
 		//Optei por não fazer get pois todos os Entes terão acesso ao Gerenciador
-		void setGraf(GerenciadorGrafico* pgra) { if (pgra)_pGraf = pgra; }
+		//void setGraf(GerenciadorGrafico* pgra) { if (pgra)_pGraf = pgra; }
 
 		
 	};

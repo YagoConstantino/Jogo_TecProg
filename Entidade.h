@@ -8,10 +8,8 @@ namespace Entidades
 	class Entidade:public Entidades::Ente
 	{
 	protected:
-		int _x;
-		int _y;
+		
 		//sf vector?
-
 		sf::Vector2f Position;
 		sf::Vector2f Size;
 		

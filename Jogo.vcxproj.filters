@@ -48,10 +48,10 @@
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="Ente.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Entidades</Filter>
     </ClCompile>
     <ClCompile Include="Entidade.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Entidades</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
