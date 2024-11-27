@@ -4,6 +4,7 @@
 
 namespace Entidades
 {
+	class GerenciadorGrafico;
 	class Ente
 	{
 	protected:

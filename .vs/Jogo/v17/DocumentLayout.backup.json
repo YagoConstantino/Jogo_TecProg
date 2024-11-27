@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Entidade.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Entidade.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Entidade.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Entidade.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Ente.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Ente.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Ente.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Entidade.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Entidade.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -34,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Entidade.cpp",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Entidade.cpp",
               "RelativeDocumentMoniker": "Entidade.cpp",
@@ -46,18 +46,17 @@
               "RelativeToolTip": "Entidade.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-27T21:23:42.349Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-27T21:23:42.349Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Entidade.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Entidade.h",
               "RelativeDocumentMoniker": "Entidade.h",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Entidade.h",
               "RelativeToolTip": "Entidade.h",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABEAAABwAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABEAAABwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-27T20:50:30.653Z",
               "EditorCaption": ""
@@ -70,20 +69,20 @@
               "RelativeDocumentMoniker": "Ente.cpp",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.cpp",
               "RelativeToolTip": "Ente.cpp",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAwwA8AAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-27T21:01:03.505Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Ente.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.h",
               "RelativeDocumentMoniker": "Ente.h",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.h",
               "RelativeToolTip": "Ente.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAewAYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-27T20:18:10.196Z",
               "EditorCaption": ""
