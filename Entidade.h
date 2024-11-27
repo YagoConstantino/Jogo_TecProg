@@ -8,7 +8,7 @@ namespace Entidades
 	class Entidade:public Entidades::Ente
 	{
 	protected:
-		
+		sf::Sprite _body;
 		//sf vector?
 		sf::Vector2f Position;
 		sf::Vector2f Size;

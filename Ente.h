@@ -11,13 +11,13 @@ namespace Entidades
 		int id;
 		GerenciadorGrafico* _pGraf;
 		sf::Texture* _pTexture;
-		sf::Sprite* _body;
+		sf::Sprite _body;
 		//Criei um contador estatico para o ID
 		static int _cont;
 		
 
 	public:
-		Ente(GerenciadorGrafico* pgra = nullptr):id(_cont++),_pGraf(nullptr),_body(nullptr),_pGraf(pgra){}
+		Ente(GerenciadorGrafico* pgra = nullptr) :id(_cont++), _pGraf(nullptr), _body(), _pGraf(pgra){}
 		~Ente() {};
 		virtual void executar() = 0;
 		void desenhar();
