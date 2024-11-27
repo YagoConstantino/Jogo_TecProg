@@ -15,14 +15,14 @@ namespace Entidades
 		
 
 	public:
-		Entidade(float inicialX = 0, float inicialY = 0, float Heigth = 0, float Width = 0, Gerenciadores::Gerenciador_Grafico* pgra);
+		Entidade(float inicialX = 0, float inicialY = 0, float Heigth = 0, float Width = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
 		virtual ~Entidade() {};
 
 		float getX()const { return Position.x; }
-		void setX(int x) { Position.x = x; }
+		void setX(float x) { Position.x = x; }
 
 		float getY()const { return Position.y; }
-		void setY(int y) { Position.y = y; }
+		void setY(float y) { Position.y = y; }
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

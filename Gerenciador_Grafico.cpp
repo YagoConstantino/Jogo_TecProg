@@ -1,5 +1,5 @@
 #include "Gerenciador_Grafico.h"
-
+#include "Ente.h"
 /*
 	TO DO:
 	1. preciso do sprite de entes
@@ -71,7 +71,7 @@ Gerenciadores::Gerenciador_Grafico::Gerenciador_Grafico() : listaEntes(){
 */
 Gerenciadores::Gerenciador_Grafico::~Gerenciador_Grafico(){
 	if (!listaEntes.empty()) {
-		Ente* aux = nullptr;
+		Entidades::Ente* aux = nullptr;
 		
 		for (it = listaEntes.begin(); it != listaEntes.end(); it++) {
 			aux = (*it);
@@ -104,13 +104,13 @@ sf::RenderWindow* Gerenciadores::Gerenciador_Grafico::getWindow() const {
 	- Incluir na lista de Entes o ponteiro recebido para que possa afetar e ser desenhado na tela
 	junto com os restantes
 */
-void Gerenciadores::Gerenciador_Grafico::desenharEnte(Ente* pE) {
+void Gerenciadores::Gerenciador_Grafico::desenharEnte(Entidades::Ente* pE) {
 	if (pE == nullptr) {
 		std::cerr << "Ponteiro de entidade nulo. Impossivel desenhar." << std::endl;
 		return;
 	}
 	
-	listaEntes.push_front(pe);
+	listaEntes.push_front(pE);
 }
 
 /*
@@ -118,7 +118,7 @@ void Gerenciadores::Gerenciador_Grafico::desenharEnte(Ente* pE) {
 	- Remover da lista de entes o ponteiro recebido, para que nao seja renderizado e nem afetar a janela
 	- O ponteiro nao sera destruido 
 */
-void Gerenciadores::Gerenciador_Grafico::removerEnte(Ente* pE) {
+void Gerenciadores::Gerenciador_Grafico::removerEnte(Entidades::Ente* pE) {
 	if (pE == nullptr) {
 		std::cerr << "Ponteiro de entidade nulo. Impossivel remover." << std::endl;
 		return;

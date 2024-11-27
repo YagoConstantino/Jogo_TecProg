@@ -1,24 +1,5 @@
 ﻿  Ente.cpp
-C:\Users\yagoa\Desktop\Game\Jogo\Ente.cpp(11,9): error C2027: uso de tipo indefinido 'Entidades::GerenciadorGrafico'
-      C:\Users\yagoa\Desktop\Game\Jogo\Ente.h(7,8):
-      consulte a declaração de 'Entidades::GerenciadorGrafico'
-  
   Entidade.cpp
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(18,11): error C2548: 'Entidades::Entidade::Entidade': argumento padrão ausente para o parâmetro 5
-  (compilando o arquivo fonte 'Entidade.cpp')
-  
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(22,35): warning C4244: '=': conversão de 'int' para 'T', possível perda de dados
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(22,35): warning C4244:         with
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(22,35): warning C4244:         [
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(22,35): warning C4244:             T=float
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(22,35): warning C4244:         ]
-  (compilando o arquivo fonte 'Entidade.cpp')
-  
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(25,35): warning C4244: '=': conversão de 'int' para 'T', possível perda de dados
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(25,35): warning C4244:         with
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(25,35): warning C4244:         [
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(25,35): warning C4244:             T=float
-C:\Users\yagoa\Desktop\Game\Jogo\Entidade.h(25,35): warning C4244:         ]
-  (compilando o arquivo fonte 'Entidade.cpp')
-  
+  Gerenciador_Grafico.cpp
   Gerando Código...
+  Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe

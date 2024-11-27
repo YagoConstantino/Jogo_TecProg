@@ -3,14 +3,15 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <list>
+#include "Ente.h"
 
 namespace Gerenciadores{
 	class Gerenciador_Grafico {
 	private:
 		// Atributos
 		sf::RenderWindow* window;
-		std::list<Ente*> listaEntes;
-		std::list<Ente*>::iterator it;
+		std::list<Entidades::Ente*> listaEntes;
+		std::list<Entidades::Ente*>::iterator it;
 
 		// Metodos
 		void criarJanela();
@@ -23,7 +24,7 @@ namespace Gerenciadores{
 
 		// Metodos
 		sf::RenderWindow* getWindow() const;
-		void desenharEnte(Ente* pE);
-		void removerEnte(Ente* pE);
+		void desenharEnte(Entidades::Ente* pE);
+		void removerEnte(Entidades::Ente* pE);
 	};
 } 

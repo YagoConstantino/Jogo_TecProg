@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Gerenciador_Grafico.h"
 
+namespace Gerenciadores{ class Gerenciador_Grafico; }
 namespace Entidades
 {
-
+	
 	class Ente
 	{
 	protected:
@@ -34,5 +34,5 @@ namespace Entidades
 
 		
 	};
-	int Ente::_cont(1);
+	
 }
