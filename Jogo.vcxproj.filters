@@ -42,6 +42,9 @@
     <ClInclude Include="Entidade.h">
       <Filter>Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="Gerenciador_Grafico.h">
+      <Filter>Gerenciadores</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="Entidade.cpp">
       <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Grafico.cpp">
+      <Filter>Gerenciadores</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 
 namespace Entidades
 {
-	Ente::Ente(GerenciadorGrafico* pgra):id(_cont++), _pGraf(pgra), _pTexture(nullptr), _body() 
+	Ente::Ente(Gerenciadores::Gerenciador_Grafico* pgra):id(_cont++), _pGraf(pgra), _pTexture(nullptr), _body() 
 	{
 	}
 	void Entidades::Ente::desenhar()

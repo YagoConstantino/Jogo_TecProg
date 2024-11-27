@@ -1,16 +1,17 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Gerenciador_Grafico.h"
 
 namespace Entidades
 {
-	class GerenciadorGrafico;
+
 	class Ente
 	{
 	protected:
-
+		//Atributos 
 		int id;
-		GerenciadorGrafico* _pGraf;
+		Gerenciadores::Gerenciador_Grafico* _pGraf;
 		sf::Texture* _pTexture;
 		sf::Sprite _body;
 		
@@ -19,7 +20,7 @@ namespace Entidades
 		
 
 	public:
-		Ente(GerenciadorGrafico* pgra = nullptr);
+		Ente(Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
 		virtual  ~Ente() {};
 
 		virtual void executar() = 0;
@@ -30,9 +31,6 @@ namespace Entidades
 		void setTexture(sf::Texture* pText);
 		sf::Texture* getTexture()const { return _pTexture; }
 		
-
-		//Optei por não fazer get pois todos os Entes terão acesso ao Gerenciador
-		//void setGraf(GerenciadorGrafico* pgra) { if (pgra)_pGraf = pgra; }
 
 		
 	};
