@@ -8,15 +8,15 @@ namespace Entidades
 	class Entidade:public Entidades::Ente
 	{
 	protected:
-		sf::Sprite _body;
+
 		//sf vector?
 		sf::Vector2f Position;
 		sf::Vector2f Size;
 		
 
 	public:
-		Entidade(float inicialX = 0, float inicialY = 0,float Heigth,float Width);
-		~Entidade() {};
+		Entidade(float inicialX = 0, float inicialY = 0, float Heigth = 0, float Width = 0, GerenciadorGrafico* pgra);
+		virtual ~Entidade() {};
 
 		float getX()const { return Position.x; }
 		void setX(int x) { Position.x = x; }
