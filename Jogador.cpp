@@ -3,6 +3,12 @@
 Entidades::Jogador::Jogador(float inlX, float inY, float H, float W, Gerenciadores::Gerenciador_Grafico* pgra)
 	:Personagem(inlX,inY,H,W,pgra),_pontos(0),_speed(5)
 {
+	sf::Texture* textura = new sf::Texture();
+	if (!textura->loadFromFile("8-bits-characters-gaming-assets.jpg")) {
+		std::cout << "Falha ao carregar textura!" << std::endl;
+	}
+	setTexture(textura);
+
 	_body.setColor(sf::Color::Red);
 	//_pGraf->desenhar(this);
 }
@@ -53,6 +59,7 @@ void Entidades::Jogador::executar()
 		Position.y += _speed;
 
     _body.setPosition(Position);
+	_pGraf->desenhar(this);
 
 }
 

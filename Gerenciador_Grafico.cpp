@@ -19,6 +19,11 @@ void Gerenciadores::Gerenciador_Grafico::desenhar(Entidades::Ente* pE)
     }
 }
 
+void Gerenciadores::Gerenciador_Grafico::desenhar(sf::RectangleShape& shape)
+{
+    window->draw(shape);
+}
+
 void Gerenciadores::Gerenciador_Grafico::render()
 {
     window->clear();

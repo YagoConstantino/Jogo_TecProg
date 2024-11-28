@@ -60,63 +60,25 @@ int main()
     }
 
     return 0;*/
-
-    // Criar o gerenciador gráfico
-    Gerenciadores::Gerenciador_Grafico* gerenciador = new Gerenciadores::Gerenciador_Grafico();
-
-    // Criar o jogador
-    Entidades::Jogador* jogador = new Entidades::Jogador(100, 100, 50, 50, gerenciador);
-    sf::Texture* textura = new sf::Texture();
-   
-    float speed = 5.0f;
-
-    // Loop principal do jogo
-
-    sf::RenderWindow* window = gerenciador->getWindow();
+    Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
+    sf::RectangleShape testShape(sf::Vector2f(50.f, 50.f));
+    testShape.setFillColor(sf::Color::Blue);
+    testShape.setPosition(100.f, 100.f);
     sf::Event event;
-    sf::RectangleShape* shape = new sf::RectangleShape();
-    shape->setFillColor(sf::Color::Red);
-    shape->setPosition(sf::Vector2f(20.0, 20.0));
-    shape->setSize(sf::Vector2f(50.0, 50.0));
-    while (window->isOpen()) 
-    {
-        // Processar eventos
-        while (window->pollEvent(event)) {
+
+    Entidades::Jogador* jog = new Entidades::Jogador(100.0, 100, 100, 100, gg);
+
+    while (gg->getWindow()->isOpen()) {
+        while (gg->getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-                window->close();
+                gg->getWindow()->close();
             }
-            
-            if (shape->getPosition().y - speed > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
-            {
-                shape->move(0.0f, -speed); // Movendo para cima
-            }
-
-            if (shape->getPosition().x - speed > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) 
-            {
-                shape->move(-speed, 0.0f); // Movendo para a esquerda
-            }
-
-            if (shape->getPosition().y + shape->getSize().y + speed < window->getSize().y && sf::Keyboard::isKeyPressed(sf::Keyboard::S)) 
-            {
-                shape->move(0.0f, speed); // Movendo para baixo
-            }
-
-            if (shape->getPosition().x + shape->getSize().x + speed < window->getSize().x && sf::Keyboard::isKeyPressed(sf::Keyboard::D)) 
-            {
-                shape->move(speed, 0.0f); // Movendo para a direita
-            }
-
-
-
         }
-
-        
-
-        // Renderizar a cena
-        gerenciador->render();
-        jogador->executar();
-        gerenciador->desenhar(jogador); // Desenhar o jogador
-        gerenciador->getWindow()->draw(*shape);
-        gerenciador->display();
+       
+        gg->render();
+        jog->executar();
+        gg->desenhar(testShape); // Testa o desenho
+        gg->display();
     }
+
 }
