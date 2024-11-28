@@ -15,7 +15,7 @@ void Gerenciadores::Gerenciador_Grafico::desenhar(Entidades::Ente* pE)
 {
     if (pE)
     {
-        window->draw(*pE->getBody());
+        window->draw(pE->getBody());
     }
 }
 

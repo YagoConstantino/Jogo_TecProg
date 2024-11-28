@@ -3,23 +3,19 @@
 Entidades::Jogador::Jogador(float inlX, float inY, float H, float W, Gerenciadores::Gerenciador_Grafico* pgra)
 	:Personagem(inlX,inY,H,W,pgra),_pontos(0),_speed(5)
 {
-	_body->setColor(sf::Color::Red);
+	_body.setColor(sf::Color::Red);
 	//_pGraf->desenhar(this);
 }
 
 Entidades::Jogador::~Jogador()
 {
-    if (_body)
-    {
-        delete _body;
-    }
+  
     if (_pTexture)
     {
         delete _pTexture;
     }
 
 	_pGraf = nullptr;
-	_body = nullptr;
     _pTexture = nullptr;
 	Position.x = 0.0;
 	Position.y = 0.0;
@@ -31,7 +27,7 @@ void Entidades::Jogador::setPosition(float x, float y)
 {
 	Position.x = x;
 	Position.y = y;
-	_body->setPosition(Position);
+	_body.setPosition(Position);
 }
 
 sf::Vector2f Entidades::Jogador::getPosition() const
@@ -56,9 +52,8 @@ void Entidades::Jogador::executar()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + Size.y < _pGraf->getWindow()->getSize().y))
 		Position.y += _speed;
 
-    _body->setPosition(Position);
+    _body.setPosition(Position);
 
-	_pGraf->desenhar(this);
 }
 
 void Entidades::Jogador::salvar()

@@ -31,7 +31,7 @@ namespace Entidades
 		float getSizeHeight()const { return Size.y; }
 		void setSizeHeight(float y) { Size.y = y; }
 
-		sf::Sprite* getBody()const { return _body; }
+		sf::Sprite getBody()const { return _body; }
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

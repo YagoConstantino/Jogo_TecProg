@@ -85,23 +85,28 @@ int main()
             if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                 window->close();
             }
+            
+            if (shape->getPosition().y - speed > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
+            {
+                shape->move(0.0f, -speed); // Movendo para cima
+            }
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
+            if (shape->getPosition().x - speed > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) 
             {
-                shape->move(0.0f, -speed); // Mover para cima
+                shape->move(-speed, 0.0f); // Movendo para a esquerda
             }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) 
+
+            if (shape->getPosition().y + shape->getSize().y + speed < window->getSize().y && sf::Keyboard::isKeyPressed(sf::Keyboard::S)) 
             {
-                shape->move(-speed, 0.0f); // Mover para a esquerda
+                shape->move(0.0f, speed); // Movendo para baixo
             }
-            else  if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) 
+
+            if (shape->getPosition().x + shape->getSize().x + speed < window->getSize().x && sf::Keyboard::isKeyPressed(sf::Keyboard::D)) 
             {
-                shape->move(0.0f, speed); // Mover para baixo
+                shape->move(speed, 0.0f); // Movendo para a direita
             }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) 
-            {
-                shape->move(speed, 0.0f); // Mover para a direita
-            }
+
+
 
         }
 
@@ -109,6 +114,7 @@ int main()
 
         // Renderizar a cena
         gerenciador->render();
+        jogador->executar();
         gerenciador->desenhar(jogador); // Desenhar o jogador
         gerenciador->getWindow()->draw(*shape);
         gerenciador->display();
