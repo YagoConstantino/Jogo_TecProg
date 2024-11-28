@@ -11,7 +11,11 @@ namespace Entidades
 	public:
 		Jogador(float inlX = 0, float inY = 0,
 			float H = 0, float W = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
+		
 		~Jogador();
+
+		void setPosition(float x, float y);
+		sf::Vector2f getPosition()const;
 
 		void executar() ;
 		void salvar();

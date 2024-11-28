@@ -27,8 +27,20 @@ Entidades::Jogador::~Jogador()
 	Size.y = 0.0;
 }
 
+void Entidades::Jogador::setPosition(float x, float y)
+{
+	Position.x = x;
+	Position.y = y;
+	_body->setPosition(Position);
+}
+
+sf::Vector2f Entidades::Jogador::getPosition() const
+{
+	return Position;
+}
+
 void Entidades::Jogador::executar()
-{/*
+{
  //Esses testes de se a posicao mais o tamanho nao chegou na borda devem ser transferidos para o Gerenciador de Colisoes
  //Depois não sei se precisa desse Evento, não lembro como que o sfml captura o teclado, se usa o evento ou não
 	
@@ -46,7 +58,7 @@ void Entidades::Jogador::executar()
 
     _body->setPosition(Position);
 
-	//_pGraf->desenhar(this);*/
+	_pGraf->desenhar(this);
 }
 
 void Entidades::Jogador::salvar()

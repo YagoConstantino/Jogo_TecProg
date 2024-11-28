@@ -1,9 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Gerenciador_Grafico.h"
 
 
-namespace Gerenciadores{ class Gerenciador_Grafico; }
 namespace Entidades
 {
 	
@@ -31,6 +31,7 @@ namespace Entidades
 
 		void setTexture(sf::Texture* pText);
 		sf::Texture* getTexture()const { return _pTexture; }
+		sf::Sprite* getBody()const { return _body; }
 		
 	};
 	
