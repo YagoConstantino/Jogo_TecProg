@@ -13,8 +13,7 @@ namespace Entidades
 			float H = 0, float W = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
 		~Jogador();
 
-		
-		void executar(sf::Event* ev) ;
+		void executar() ;
 		void salvar();
 		void render() ;
 	};

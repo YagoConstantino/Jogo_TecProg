@@ -3,8 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <list>
-#include "Ente.h"
 
+namespace Entidades { class Ente; }
 namespace Gerenciadores{
 	class Gerenciador_Grafico {
 	private:

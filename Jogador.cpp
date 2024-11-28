@@ -3,9 +3,8 @@
 Entidades::Jogador::Jogador(float inlX, float inY, float H, float W, Gerenciadores::Gerenciador_Grafico* pgra)
 	:Personagem(inlX,inY,H,W,pgra),_pontos(0),_speed(5)
 {
-	_body = new sf::Sprite();
-	//_pGraf->desenhar(this);
 	_body->setColor(sf::Color::Red);
+	//_pGraf->desenhar(this);
 }
 
 Entidades::Jogador::~Jogador()
@@ -28,7 +27,7 @@ Entidades::Jogador::~Jogador()
 	Size.y = 0.0;
 }
 
-void Entidades::Jogador::executar(sf::Event* ev)
+void Entidades::Jogador::executar()
 {/*
  //Esses testes de se a posicao mais o tamanho nao chegou na borda devem ser transferidos para o Gerenciador de Colisoes
  //Depois não sei se precisa desse Evento, não lembro como que o sfml captura o teclado, se usa o evento ou não

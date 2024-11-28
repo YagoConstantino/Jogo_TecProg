@@ -19,11 +19,19 @@ namespace Entidades
 			float Heigth = 0, float Width = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
 		virtual ~Entidade() {};
 
-		float getX()const { return Position.x; }
-		void setX(float x) { Position.x = x; }
+		float getPositionX()const { return Position.x; }
+		void setPositionX(float x) { Position.x = x; }
 
-		float getY()const { return Position.y; }
-		void setY(float y) { Position.y = y; }
+		float getPositionY()const { return Position.y; }
+		void setPositionY(float y) { Position.y = y; }
+
+		float getSizeWIDTH()const { return Size.x; }
+		void setSizeWIDTH(float x) { Size.x = x; }
+
+		float getSizeHeight()const { return Size.y; }
+		void setSizeHeight(float y) { Size.y = y; }
+
+		sf::Sprite* getBody()const { return _body; }
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;
