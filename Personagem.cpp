@@ -1,7 +1,7 @@
 #include "Personagem.h"
 
-Entidades::Personagem::Personagem(float inicialX = 0, float inicialY = 0,
-	float Heigth = 0, float Width = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr)
+Entidades::Personagem::Personagem(float inicialX, float inicialY,
+	float Heigth, float Width, Gerenciadores::Gerenciador_Grafico* pgra )
 	:Entidade(inicialX,inicialY,Heigth,Width,pgra),_num_vidas(4)
 {
 }

@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+
 namespace Gerenciadores{ class Gerenciador_Grafico; }
 namespace Entidades
 {
@@ -30,8 +31,6 @@ namespace Entidades
 
 		void setTexture(sf::Texture* pText);
 		sf::Texture* getTexture()const { return _pTexture; }
-		
-
 		
 	};
 	

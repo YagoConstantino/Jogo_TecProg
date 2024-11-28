@@ -7,11 +7,13 @@ namespace Entidades
 	{
 	private:
 		int _pontos;
+		float _speed;
 	public:
 		Jogador(float inlX = 0, float inY = 0,
 			float H = 0, float W = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
 		~Jogador();
 
+		
 		void executar(sf::Event* ev) ;
 		void salvar();
 		void render() ;
