@@ -1082,7 +1082,7 @@
 <XPD:ATTR name="Text" type="string">Lista</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="KzPEqqPKt0iKhYvUK7dzQwAA">
-<XPD:ATTR name="Text" type="string">&lt;&lt;Encadeamento Simples&gt;&gt;</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">&lt;&lt;Encadeamento Duplamente&gt;&gt;</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="PropertyLabel" type="LabelView" guid="c9vclQ8rkEGNQ/tURRtuNgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -4811,7 +4811,7 @@
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[32]" type="UMLClass" guid="vpGcEQLzG0uIgkl9fakFmQAA">
 <XPD:ATTR name="Name" type="string">Lista</XPD:ATTR>
-<XPD:ATTR name="StereotypeName" type="string">Encadeamento Simples</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">Encadeamento Duplamente</XPD:ATTR>
 <XPD:REF name="Namespace">IoH8RzmxEE6xOc9zvj2jawAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">a2BCGcgB6Ui3WkRIbAX3OAAA</XPD:REF>

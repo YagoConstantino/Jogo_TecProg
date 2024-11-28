@@ -15,7 +15,8 @@ public:
     ~Lista()
     {
         Elemento<T>* atual = head;
-        while (atual) {
+        while (atual) 
+        {
             Elemento<T>* prox = atual->GetNext();
             delete atual;  // Libera a memória alocada
             atual = prox;

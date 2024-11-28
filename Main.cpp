@@ -2,6 +2,7 @@
 #include <iostream>
 #include "ListaTemplate.h"
 #include "Lista2.h"
+#include "Gerenciador_Grafico.h"
 using namespace std;
 class Pessoa
 {
@@ -15,6 +16,7 @@ public:
 
 int main()
 {
+    
     Pessoa* p1 = new Pessoa("Yago");
     Pessoa* p2 = new Pessoa("Joao");
     Pessoa* p3 = new Pessoa("Ana");

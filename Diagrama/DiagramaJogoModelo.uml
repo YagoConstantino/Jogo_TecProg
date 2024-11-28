@@ -1020,8 +1020,8 @@
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[5]" type="UMLPackageView" guid="gEs9i5sYoEy3Je5m3LTBNgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">144</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">112</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">140</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">116</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">415</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">347</XPD:ATTR>
 <XPD:REF name="Model">SjWP+eoX50KbGSTDeWeQ4AAA</XPD:REF>

@@ -11,10 +11,9 @@ private:
 public:
     Elemento() : pInfo(nullptr), next(nullptr), prev(nullptr) {}
 
-    ~Elemento() {
-        if (pInfo != nullptr) {
-            delete pInfo;  
-        }
+    ~Elemento() 
+    {
+        pInfo = nullptr;
     }
 
     
