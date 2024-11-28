@@ -23,14 +23,18 @@
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Gerenciador_Grafico.h" />
+    <ClInclude Include="Jogador.h" />
     <ClInclude Include="Lista2.h" />
     <ClInclude Include="ListaTemplate.h" />
+    <ClInclude Include="Personagem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Gerenciador_Grafico.cpp" />
+    <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Personagem.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
