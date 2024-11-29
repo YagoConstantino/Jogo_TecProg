@@ -78,7 +78,7 @@ int main()
             }
             gg->render();
             jog->executar();
-            gg->desenhar(testShape); // Testa o desenho
+            //gg->desenhar(testShape); // Testa o desenho
             gg->display();
         }
        
