@@ -45,6 +45,12 @@
     <ClInclude Include="Gerenciador_Grafico.h">
       <Filter>Gerenciadores</Filter>
     </ClInclude>
+    <ClInclude Include="Personagem.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="Jogador.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -58,6 +64,12 @@
     </ClCompile>
     <ClCompile Include="Gerenciador_Grafico.cpp">
       <Filter>Gerenciadores</Filter>
+    </ClCompile>
+    <ClCompile Include="Personagem.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogador.cpp">
+      <Filter>Entidades</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

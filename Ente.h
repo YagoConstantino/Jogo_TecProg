@@ -1,8 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Gerenciador_Grafico.h"
 
-namespace Gerenciadores{ class Gerenciador_Grafico; }
+
 namespace Entidades
 {
 	
@@ -13,7 +14,7 @@ namespace Entidades
 		int id;
 		Gerenciadores::Gerenciador_Grafico* _pGraf;
 		sf::Texture* _pTexture;
-		sf::Sprite* _body;
+		sf::Sprite _body;
 		
 		//Criei um contador estatico para o ID
 		static int _cont;
@@ -30,8 +31,7 @@ namespace Entidades
 
 		void setTexture(sf::Texture* pText);
 		sf::Texture* getTexture()const { return _pTexture; }
-		
-
+		sf::Sprite getBody()const { return _body; }
 		
 	};
 	

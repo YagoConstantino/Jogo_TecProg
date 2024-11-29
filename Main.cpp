@@ -3,6 +3,7 @@
 #include "ListaTemplate.h"
 #include "Lista2.h"
 #include "Gerenciador_Grafico.h"
+#include "Jogador.h"
 using namespace std;
 class Pessoa
 {
@@ -16,7 +17,7 @@ public:
 
 int main()
 {
-    
+    /*
     Pessoa* p1 = new Pessoa("Yago");
     Pessoa* p2 = new Pessoa("Joao");
     Pessoa* p3 = new Pessoa("Ana");
@@ -59,4 +60,29 @@ int main()
     }
 
     return 0;
+    */
+    Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
+    sf::RectangleShape testShape(sf::Vector2f(50.f, 50.f));
+    testShape.setFillColor(sf::Color::Blue);
+    testShape.setPosition(100.f, 100.f);
+    sf::Event event;
+
+    Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg);
+
+    while (gg->getWindow()->isOpen()) {
+        while (gg->getWindow()->pollEvent(event)) {
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+                gg->getWindow()->close();
+            
+
+            }
+            gg->render();
+            jog->executar();
+            //gg->desenhar(testShape); // Testa o desenho
+            gg->display();
+        }
+       
+       
+    }
+
 }
