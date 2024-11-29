@@ -4,6 +4,7 @@
 #include "Lista2.h"
 #include "Gerenciador_Grafico.h"
 #include "Jogador.h"
+#include "Projetil.h"
 using namespace std;
 class Pessoa
 {
@@ -68,6 +69,7 @@ int main()
     sf::Event event;
 
     Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg);
+    Entidades::Projetil pro(1, 1.5f, gg);
 
     while (gg->getWindow()->isOpen()) {
         while (gg->getWindow()->pollEvent(event)) {
@@ -78,10 +80,11 @@ int main()
             }
             gg->render();
             jog->executar();
-            //gg->desenhar(testShape); // Testa o desenho
+            pro.executar();
             gg->display();
         }
-       
+
+        
        
     }
 

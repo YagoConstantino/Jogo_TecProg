@@ -51,6 +51,9 @@
     <ClInclude Include="Jogador.h">
       <Filter>Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="Projetil.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -69,6 +72,9 @@
       <Filter>Entidades</Filter>
     </ClCompile>
     <ClCompile Include="Jogador.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Projetil.cpp">
       <Filter>Entidades</Filter>
     </ClCompile>
   </ItemGroup>
