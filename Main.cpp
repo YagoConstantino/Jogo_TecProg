@@ -66,19 +66,22 @@ int main()
     testShape.setPosition(100.f, 100.f);
     sf::Event event;
 
-    Entidades::Jogador* jog = new Entidades::Jogador(100.0, 100, 100, 100, gg);
+    Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg);
 
     while (gg->getWindow()->isOpen()) {
         while (gg->getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                 gg->getWindow()->close();
+            
+
             }
+            gg->render();
+            jog->executar();
+            gg->desenhar(testShape); // Testa o desenho
+            gg->display();
         }
        
-        gg->render();
-        jog->executar();
-        gg->desenhar(testShape); // Testa o desenho
-        gg->display();
+       
     }
 
 }

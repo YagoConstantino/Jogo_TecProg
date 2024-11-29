@@ -11,12 +11,11 @@ namespace Entidades
 
 		
 		sf::Vector2f Position;
-		sf::Vector2f Size;
+		//sf::Vector2f Size;
 		
 
 	public:
-		Entidade(float inicialX = 0, float inicialY = 0, 
-			float Heigth = 0, float Width = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
+		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
 		virtual ~Entidade() {};
 
 		float getPositionX()const { return Position.x; }
@@ -25,11 +24,13 @@ namespace Entidades
 		float getPositionY()const { return Position.y; }
 		void setPositionY(float y) { Position.y = y; }
 
+		/*
 		float getSizeWIDTH()const { return Size.x; }
 		void setSizeWIDTH(float x) { Size.x = x; }
 
 		float getSizeHeight()const { return Size.y; }
 		void setSizeHeight(float y) { Size.y = y; }
+		*/
 
 		sf::Sprite getBody()const { return _body; }
 
