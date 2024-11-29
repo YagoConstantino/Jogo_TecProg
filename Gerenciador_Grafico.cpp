@@ -3,8 +3,8 @@
 
 Gerenciadores::Gerenciador_Grafico::Gerenciador_Grafico() 
 {
-    window = new sf::RenderWindow(sf::VideoMode(1200, 800), "Jogo");
-    view = sf::View(sf::FloatRect(0, 0, 1200, 800));
+    window = new sf::RenderWindow(sf::VideoMode(900, 600), "Jogo");
+    view = sf::View(sf::FloatRect(0, 0, 900, 600));
 }
 
 Gerenciadores::Gerenciador_Grafico::~Gerenciador_Grafico() {}

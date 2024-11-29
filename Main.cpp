@@ -59,7 +59,8 @@ int main()
         window.display();
     }
 
-    return 0;*/
+    return 0;
+    */
     Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
     sf::RectangleShape testShape(sf::Vector2f(50.f, 50.f));
     testShape.setFillColor(sf::Color::Blue);
