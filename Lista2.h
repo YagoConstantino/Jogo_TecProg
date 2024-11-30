@@ -29,24 +29,22 @@ public:
 
 	~ListaElementar()
 	{
-		Elemento* atual = head;
-		while (atual) {
-			Elemento* prox = atual->GetNext();
-			delete atual;  // Libera a memória alocada
-			atual = prox;
-		}
-		head = tail = nullptr;
+		limpar();
 	}
 
 	void insert_front(T* pTipo);
 	void insert_back(T* pTipo);
 	void remove_front();
 	void remove_back();
+	void remove_ID(int id);
+
+	void limpar();
 
 	Elemento* getHead() const { return head; }
 	Elemento* getTail() const { return tail; }
 	void setHead(Elemento* elem) { if (elem) head = elem; }
 	void setTail(Elemento* elem) { if (elem) tail = elem; }
+
 
 	Elemento* operator[](int i)
 	{
@@ -162,5 +160,54 @@ void ListaElementar<T>::remove_back()
 		}
 		delete aux;
 	}
+}
+
+template<typename T>
+void ListaElementar<T>::remove_ID(int id)
+{
+	Elemento* aux = head;
+
+	// Procurar o elemento com o ID
+	while (aux != nullptr && aux->getInfo()->getID() != id) {
+		aux = aux->GetNext();
+	}
+
+	if (aux == nullptr) {
+		std::cout << "Não é possível remover, ID inválido" << std::endl;
+		return;
+	}
+
+	if (aux == head && aux == tail) {
+		head = nullptr;
+		tail = nullptr;
+	}
+
+	else if (aux == head) {
+		head = aux->GetNext();
+		head->setPrev(nullptr);
+	}
+
+	else if (aux == tail) {
+		tail = aux->GetPrev();
+		tail->setNext(nullptr);
+	}
+	else {
+		aux->GetPrev()->setNext(aux->GetNext());
+		aux->GetNext()->setPrev(aux->GetPrev());
+	}
+
+	delete aux;
+}
+
+template<typename T>
+inline void ListaElementar<T>::limpar()
+{
+	Elemento* atual = head;
+	while (atual) {
+		Elemento* prox = atual->GetNext();
+		delete atual;  // Libera a memória alocada
+		atual = prox;
+	}
+	head = tail = nullptr;
 }
 
