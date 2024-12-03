@@ -19,7 +19,7 @@ public:
 
 int main()
 {
-    /*
+    
     Pessoa* p1 = new Pessoa("Yago");
     Pessoa* p2 = new Pessoa("Joao");
     Pessoa* p3 = new Pessoa("Ana");
@@ -33,7 +33,7 @@ int main()
         (*l1)[i]->getInfo()->imprime();
     }
 
-    ListaElementar<Pessoa>* l2 = new ListaElementar<Pessoa>();
+    Listas::ListaElementar<Pessoa>* l2 = new Listas::ListaElementar<Pessoa>();
     l2->insert_back(p1);
     l2->insert_back(p2);
     l2->insert_back(p3);
@@ -43,7 +43,7 @@ int main()
         (*l2)[i]->getInfo()->imprime();
     }
 
-    */
+    
     Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
     sf::RectangleShape testShape(sf::Vector2f(50.f, 50.f));
     testShape.setFillColor(sf::Color::Blue);
