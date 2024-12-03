@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\ListaEntidades.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:ListaEntidades.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\ListaEntidades.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:ListaEntidades.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Lista2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Lista2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -17,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Ente.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\ListaEntidades.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:ListaEntidades.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\ListaEntidades.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:ListaEntidades.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Jogador.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -46,7 +46,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Ente.cpp",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.cpp",
               "RelativeDocumentMoniker": "Ente.cpp",
@@ -58,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Ente.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Ente.h",
               "RelativeDocumentMoniker": "Ente.h",
@@ -70,7 +70,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "ListaEntidades.cpp",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\ListaEntidades.cpp",
               "RelativeDocumentMoniker": "ListaEntidades.cpp",
@@ -78,19 +78,21 @@
               "RelativeToolTip": "ListaEntidades.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-03T12:04:09.212Z"
+              "WhenOpened": "2024-12-03T12:04:09.212Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "ListaEntidades.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\ListaEntidades.h",
               "RelativeDocumentMoniker": "ListaEntidades.h",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\ListaEntidades.h",
               "RelativeToolTip": "ListaEntidades.h",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAuwA4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-02T22:56:33.183Z"
+              "WhenOpened": "2024-12-02T22:56:33.183Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -100,7 +102,7 @@
               "RelativeDocumentMoniker": "Main.cpp",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Main.cpp",
               "RelativeToolTip": "Main.cpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-03T11:52:36.173Z",
               "EditorCaption": ""
@@ -131,7 +133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Lista2.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Lista2.h",
               "RelativeDocumentMoniker": "Lista2.h",

@@ -1,5 +1,5 @@
 # Ignore arquivos e pastas do Visual Studio
-.vs/
+.vs/*
 *.vcxproj.user
 *.vcxproj.filters
 *.suo

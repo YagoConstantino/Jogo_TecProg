@@ -45,38 +45,33 @@ int main()
 
     
     Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
-    sf::RectangleShape testShape(sf::Vector2f(50.f, 50.f));
-    testShape.setFillColor(sf::Color::Blue);
-    testShape.setPosition(100.f, 100.f);
     sf::Event event;
     Listas::ListaEntidades Lista;
    
 
     Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg,"Player");
-    Entidades::Jogador* jog2 = new Entidades::Jogador(10.f, 10.f, gg, "Player2");
     Entidades::Projetil pro(1, 1.5f, gg);
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(jog2));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
     
     Lista.percorrer();
 
-    while (gg->getWindow()->isOpen()) {
-        while (gg->getWindow()->pollEvent(event)) {
-            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+    while (gg->getWindow()->isOpen()) 
+    {
+        while (gg->getWindow()->pollEvent(event)) 
+        {
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+            {
                 gg->getWindow()->close();
-            
-
             }
             gg->render();
-            jog->executar();
-            pro.executar();
+            Lista.executar();
             gg->display();
+            
         }
-
-        
        
+  
     }
 
 }
