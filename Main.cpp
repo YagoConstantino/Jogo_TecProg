@@ -6,6 +6,9 @@
 #include "Jogador.h"
 #include "Projetil.h"
 #include "ListaEntidades.h"
+#include "Plataforma.h"
+
+
 using namespace std;
 class Pessoa
 {
@@ -47,13 +50,21 @@ int main()
     Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
     sf::Event event;
     Listas::ListaEntidades Lista;
-   
-
+    
     Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg,"Player");
     Entidades::Projetil pro(1, 1.5f, gg);
 
+    
+    Entidades::Plataforma plat(5, 600, gg, 10);
+    Entidades::Plataforma plat2(500, 600, gg, 10);
+    Entidades::Plataforma plat3(995, 600, gg, 10);
+   // plat.setPositionX(plat.getPositionX() - (plat.getBody().getGlobalBounds().width) / 2);
+
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat2));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
     
     Lista.percorrer();
 
@@ -70,8 +81,6 @@ int main()
             gg->display();
             
         }
-       
-  
     }
 
 }

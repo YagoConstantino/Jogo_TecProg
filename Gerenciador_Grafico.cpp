@@ -3,13 +3,11 @@
 
 Gerenciadores::Gerenciador_Grafico::Gerenciador_Grafico() 
 {
-    window = new sf::RenderWindow(sf::VideoMode(900, 600), "Jogo");
+    window = new sf::RenderWindow(sf::VideoMode(900, 600), "Jogo",sf::Style::Fullscreen);
     view = sf::View(sf::FloatRect(0, 0, 900, 600));
 }
 
 Gerenciadores::Gerenciador_Grafico::~Gerenciador_Grafico() {}
-
-
 
 void Gerenciadores::Gerenciador_Grafico::desenhar(Entidades::Ente* pE)
 {

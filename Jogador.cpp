@@ -1,11 +1,12 @@
 #include "Jogador.h"
 
-Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, const char* name)
+Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
 	:Personagem(inlX, inY, pgra), _pontos(0), _speed(5), nome(name)
 {
 	sf::Texture* textura = new sf::Texture();
 	
-	if (!textura->loadFromFile("assets/Player1.png")) {
+	if (!textura->loadFromFile("assets/Player1.png")) 
+	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
 
@@ -32,6 +33,16 @@ Entidades::Jogador::~Jogador()
 	//Size.y = 0.0;
 }
 
+void Entidades::Jogador::setNome(std::string& name)
+{
+	nome = name;
+}
+
+std::string& Entidades::Jogador::getNome()
+{
+	return nome;
+}
+
 void Entidades::Jogador::setPosition(float x, float y)
 {
 	Position.x = x;
@@ -42,6 +53,16 @@ void Entidades::Jogador::setPosition(float x, float y)
 sf::Vector2f Entidades::Jogador::getPosition() const
 {
 	return Position;
+}
+
+void Entidades::Jogador::operator++()
+{
+	_num_vidas++;
+}
+
+void Entidades::Jogador::operator--()
+{
+	_num_vidas--;
 }
 
 void Entidades::Jogador::executar()

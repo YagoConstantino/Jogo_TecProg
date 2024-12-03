@@ -57,6 +57,12 @@
     <ClInclude Include="ListaEntidades.h">
       <Filter>Listas</Filter>
     </ClInclude>
+    <ClInclude Include="Obstaculo.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="Plataforma.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -80,8 +86,14 @@
     <ClCompile Include="Projetil.cpp">
       <Filter>Entidades</Filter>
     </ClCompile>
+    <ClCompile Include="Obstaculo.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Plataforma.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
     <ClCompile Include="ListaEntidades.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Listas</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

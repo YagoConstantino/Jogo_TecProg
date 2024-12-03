@@ -1,5 +1,6 @@
 #pragma once
 #include "Personagem.h"
+#include <iostream>
 #include<SFML/Graphics.hpp>
 namespace Entidades
 {
@@ -8,14 +9,21 @@ namespace Entidades
 	private:
 		int _pontos;
 		float _speed; // Sera que pode ser um sf::vector2f ?
-		const char* nome;
+		std::string nome;
 	public:
-		Jogador(float inlX = 0, float inY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,const char* name = "");
+		Jogador(float inlX = 0, float inY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,std::string name = "");
+	
 		
 		~Jogador();
 
+		void setNome(std::string& name);
+		std::string& getNome();
+
 		void setPosition(float x, float y);
 		sf::Vector2f getPosition()const;
+
+		void operator++();
+		void operator--();
 
 		void executar() ;
 		void salvar();

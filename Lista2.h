@@ -42,8 +42,8 @@ namespace Listas {
         Elemento* getTail() const { return tail; }
         void setHead(Elemento* elem) { head = elem; }
         void setTail(Elemento* elem) { tail = elem; }
-        void operator--() { if (size > 0) size--; }
 
+        void operator--() { if (size > 0) size--; }
         Elemento* operator[](int i);
 
     private:
@@ -138,9 +138,11 @@ namespace Listas {
     }
 
     template<typename T>
-    void ListaElementar<T>::limpar() {
+    void ListaElementar<T>::limpar() 
+    {
         Elemento* atual = head;
-        while (atual) {
+        while (atual) 
+        {
             Elemento* prox = atual->GetNext();
             delete atual;
             atual = prox;
@@ -151,6 +153,7 @@ namespace Listas {
 
     template<typename T>
     typename ListaElementar<T>::Elemento* ListaElementar<T>::operator[](int i) {
+        
         if (i < 0 || i >= size) {
             std::cerr << "Índice fora dos limites!" << std::endl;
             return nullptr;
