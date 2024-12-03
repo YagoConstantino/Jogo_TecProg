@@ -7,11 +7,11 @@ Listas::ListaEntidades::~ListaEntidades() {
 }
 
 void Listas::ListaEntidades::insert_front(Entidades::Entidade* enti) {
-    List.insert_front(&enti); // Passa o ponteiro diretamente
+    List.insert_front(enti); // Passa o ponteiro diretamente
 }
 
 void Listas::ListaEntidades::insert_back(Entidades::Entidade* enti) {
-    List.insert_back(&enti); // Passa o ponteiro diretamente
+    List.insert_back(enti); // Passa o ponteiro diretamente
 }
 
 void Listas::ListaEntidades::remove_front() {
@@ -23,10 +23,10 @@ void Listas::ListaEntidades::remove_back() {
 }
 
 void Listas::ListaEntidades::remove_ID(int id) {
-   Listas::ListaElementar<Entidades::Entidade*>::Elemento* aux = List.getHead();
+   Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
 
     // Procurar o elemento com o ID
-    while (aux != nullptr && aux->getInfo() != nullptr && (*aux->getInfo())->getId() != id) {
+    while (aux != nullptr && aux->getInfo() != nullptr && (aux->getInfo())->getId() != id) {
         aux = aux->GetNext();
     }
 
@@ -65,20 +65,20 @@ void Listas::ListaEntidades::limpar() {
 }
 
 void Listas::ListaEntidades::percorrer() {
-    Listas::ListaElementar<Entidades::Entidade*>::Elemento* aux = List.getHead();
+    Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
     while (aux != nullptr) {
-        Entidades::Entidade* ente = *aux->getInfo(); // Obter o ponteiro para Entidade
+        Entidades::Entidade* ente = aux->getInfo(); // Obter o ponteiro para Entidade
         if (ente != nullptr) {
-            printf("ID da Entidade: %d\n", ente->getId());
+            std::cout << "ID da Entidade: " << ente->getId() << '\n';
         }
         aux = aux->GetNext();
     }
 }
 
 void Listas::ListaEntidades::executar() {
-    Listas::ListaElementar<Entidades::Entidade*>::Elemento* aux = List.getHead();
+    Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
     while (aux != nullptr) {
-        Entidades::Entidade* ente = *aux->getInfo(); // Obter o ponteiro para Entidade
+        Entidades::Entidade* ente = aux->getInfo(); // Obter o ponteiro para Entidade
         if (ente != nullptr) {
             ente->executar(); // Executa a ação da entidade
         }

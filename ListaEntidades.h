@@ -7,7 +7,7 @@ namespace Listas
 	class ListaEntidades
 	{
 	private:
-		Listas::ListaElementar<Entidades::Entidade*> List;
+		Listas::ListaElementar<Entidades::Entidade> List;
 
 	public:
 		ListaEntidades();
