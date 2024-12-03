@@ -25,16 +25,20 @@
     <ClInclude Include="Gerenciador_Grafico.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="Lista2.h" />
+    <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="ListaTemplate.h" />
     <ClInclude Include="Personagem.h" />
+    <ClInclude Include="Projetil.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Gerenciador_Grafico.cpp" />
     <ClCompile Include="Jogador.cpp" />
+    <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Personagem.cpp" />
+    <ClCompile Include="Projetil.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

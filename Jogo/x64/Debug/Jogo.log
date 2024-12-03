@@ -1,2 +1,10 @@
-﻿  Main.cpp
+﻿  Ente.cpp
+  Entidade.cpp
+  Gerenciador_Grafico.cpp
+  Jogador.cpp
+  ListaEntidades.cpp
+  Main.cpp
+  Personagem.cpp
+  Projetil.cpp
+  Gerando Código...
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe

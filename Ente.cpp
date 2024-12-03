@@ -3,6 +3,7 @@
 namespace Entidades
 {
 	int Ente::_cont(1);
+
 	Ente::Ente(Gerenciadores::Gerenciador_Grafico* pgra):id(_cont++), _pGraf(pgra), _pTexture(nullptr), _body() 
 	{
 	}

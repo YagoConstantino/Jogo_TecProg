@@ -4,6 +4,8 @@
 #include "Lista2.h"
 #include "Gerenciador_Grafico.h"
 #include "Jogador.h"
+#include "Projetil.h"
+#include "ListaEntidades.h"
 using namespace std;
 class Pessoa
 {
@@ -41,33 +43,24 @@ int main()
         (*l2)[i]->getInfo()->imprime();
     }
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!",sf::Style::Fullscreen);
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-
-    return 0;
     */
     Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
     sf::RectangleShape testShape(sf::Vector2f(50.f, 50.f));
     testShape.setFillColor(sf::Color::Blue);
     testShape.setPosition(100.f, 100.f);
     sf::Event event;
+    Listas::ListaEntidades Lista;
+   
 
-    Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg);
+    Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg,"Player");
+    Entidades::Jogador* jog2 = new Entidades::Jogador(10.f, 10.f, gg, "Player2");
+    Entidades::Projetil pro(1, 1.5f, gg);
+
+    Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(jog2));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
+    
+    Lista.percorrer();
 
     while (gg->getWindow()->isOpen()) {
         while (gg->getWindow()->pollEvent(event)) {
@@ -78,10 +71,11 @@ int main()
             }
             gg->render();
             jog->executar();
-            //gg->desenhar(testShape); // Testa o desenho
+            pro.executar();
             gg->display();
         }
-       
+
+        
        
     }
 
