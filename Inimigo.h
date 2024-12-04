@@ -22,6 +22,7 @@ namespace Entidades
 		//Entidades::Jogador* getJogador()const;
 
 		double getDistancia();
+
 		virtual void executar() = 0;
 		virtual void salvar() = 0;
 		virtual void render() = 0;

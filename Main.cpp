@@ -59,7 +59,7 @@ int main()
     Entidades::Plataforma plat2(5+plat.getBody().getGlobalBounds().width, 680, gg, 10);
     Entidades::Plataforma plat3(plat2.getPositionX()+plat.getBody().getGlobalBounds().width, 680, gg, 10);
     Entidades::Plataforma plat4(plat3.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg, 10);
-   // plat.setPositionX(plat.getPositionX() - (plat.getBody().getGlobalBounds().width) / 2);
+  
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
