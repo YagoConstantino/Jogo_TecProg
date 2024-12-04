@@ -7,8 +7,7 @@
 #include "Obstaculo.h"
 #include "Projetil.h"
 #include "Jogador.h"
-
-class Inimigo;
+#include "Inimigo.h"
 
 namespace Gerenciadores {
 	class Gerenciador_Colisoes {
@@ -19,12 +18,12 @@ namespace Gerenciadores {
 		Entidades::Jogador* _jogador2;
 
 		// Listas
-		std::vector<Inimigo*> _listaInimigos;
+		std::vector<Entidades::Inimigo*> _listaInimigos;
 		std::list<Entidades::Obstaculo*> _listaObstaculos;
 		std::set<Entidades::Projetil*> _listaProjetil;
 	
 		// Iteradores
-		std::vector<Inimigo*>::iterator itInimigo;
+		std::vector<Entidades::Inimigo*>::iterator itInimigo;
 		std::list<Entidades::Obstaculo*>::iterator itObstaculo;
 		std::set<Entidades::Projetil*>::iterator itProjetil;
 
@@ -38,7 +37,7 @@ namespace Gerenciadores {
 		void setJogador1(Entidades::Jogador* pJogador);
 		void setJogador2(Entidades::Jogador* pJogador);
 
-		void incluirInimigo(Inimigo* pInimigo);
+		void incluirInimigo(Entidades::Inimigo* pInimigo);
 		void incluirObstaculo(Entidades::Obstaculo* pObstaculo);
 		void incluirProjetil(Entidades::Projetil* pProjetil);
 

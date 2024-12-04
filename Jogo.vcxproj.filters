@@ -69,6 +69,9 @@
     <ClInclude Include="Inimigo.h">
       <Filter>Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="Obst_Dificil.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -107,5 +110,13 @@
     <ClCompile Include="Inimigo.cpp">
       <Filter>Entidades</Filter>
     </ClCompile>
+    <ClCompile Include="Obst_Dificil.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\PlataformaEspinho.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
 </Project>

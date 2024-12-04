@@ -8,6 +8,7 @@
 #include "ListaEntidades.h"
 #include "Plataforma.h"
 #include "Gerenciador_Colisoes.h"
+#include "Obst_Dificil.h"
 
 
 using namespace std;
