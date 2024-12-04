@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Projetil.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Projetil.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Gerenciador_colisoes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Gerenciador_colisoes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Gerenciador_Colisoes.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Gerenciador_Colisoes.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Personagem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Lista2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Lista2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -18,11 +34,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Projetil.cpp",
+              "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Projetil.cpp",
+              "RelativeDocumentMoniker": "Projetil.cpp",
+              "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Projetil.cpp",
+              "RelativeToolTip": "Projetil.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-04T15:28:49.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Gerenciador_colisoes.cpp",
+              "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Gerenciador_colisoes.cpp",
+              "RelativeDocumentMoniker": "Gerenciador_colisoes.cpp",
+              "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Gerenciador_colisoes.cpp",
+              "RelativeToolTip": "Gerenciador_colisoes.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-04T15:14:53.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Gerenciador_Colisoes.h",
+              "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Gerenciador_Colisoes.h",
+              "RelativeDocumentMoniker": "Gerenciador_Colisoes.h",
+              "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Gerenciador_Colisoes.h",
+              "RelativeToolTip": "Gerenciador_Colisoes.h",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAABEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-04T15:13:26.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Personagem.h",
+              "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.h",
+              "RelativeDocumentMoniker": "Personagem.h",
+              "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.h",
+              "RelativeToolTip": "Personagem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-04T15:13:20.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Jogador.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Jogador.h",
               "RelativeDocumentMoniker": "Jogador.h",
@@ -34,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Lista2.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Lista2.h",
               "RelativeDocumentMoniker": "Lista2.h",

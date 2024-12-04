@@ -7,7 +7,7 @@ Entidades::Plataforma::Plataforma(float inicialX, float inicialY, Gerenciadores:
 
 	if (!textura->loadFromFile("assets/TerrenoComFundo.png")) {
 		std::cout << "Falha ao carregar textura!" << std::endl;
-	}\
+	}
 
 	setTexture(textura);
 	_body.setScale(1.3f,0.5f);
