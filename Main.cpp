@@ -22,7 +22,6 @@ public:
 
 int main()
 {
-    
     Pessoa* p1 = new Pessoa("Yago");
     Pessoa* p2 = new Pessoa("Joao");
     Pessoa* p3 = new Pessoa("Ana");
@@ -55,9 +54,9 @@ int main()
     Entidades::Projetil pro(1, 1.5f, gg);
 
     
-    Entidades::Plataforma plat(5, 600, gg, 10);
-    Entidades::Plataforma plat2(500, 600, gg, 10);
-    Entidades::Plataforma plat3(995, 600, gg, 10);
+    Entidades::Plataforma plat(5, 680, gg, 10);
+    Entidades::Plataforma plat2(500, 680, gg, 10);
+    Entidades::Plataforma plat3(995, 680, gg, 10);
    // plat.setPositionX(plat.getPositionX() - (plat.getBody().getGlobalBounds().width) / 2);
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
