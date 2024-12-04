@@ -25,8 +25,8 @@ void Entidades::Plataforma::executar()
 
 void Entidades::Plataforma::obstacular(Entidades::Jogador* pJog)
 {
-	float novaPosicao = pJog->getPositionX();
-	pJog->setPositionX(novaPosicao-10);
+	/*float novaPosicao = pJog->getPositionX();
+	pJog->setPositionX(novaPosicao-10);*/
 	executar();
 }
 

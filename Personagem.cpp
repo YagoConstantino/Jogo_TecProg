@@ -14,7 +14,7 @@ bool Entidades::Personagem::getOnGround() const
 	return onGround;
 }
 
-void Entidades::Personagem::setBool(bool ong)
+void Entidades::Personagem::setGround(bool ong)
 {
 	onGround = ong;
 }

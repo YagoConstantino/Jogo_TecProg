@@ -14,7 +14,7 @@ namespace Entidades
 		virtual ~Personagem();
 
 		bool getOnGround()const;
-		void setBool(bool ong);
+		void setGround(bool ong);
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

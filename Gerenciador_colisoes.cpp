@@ -1,6 +1,9 @@
 #include "Gerenciador_Colisoes.h"
 
-Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(float gravidade = 10.f) : _listaInimigos(), _listaObstaculos(), _listaProjetil(), _gravidade(gravidade){
+
+Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(float gravidade = 10.f) 
+	: _listaInimigos(), _listaObstaculos(), _listaProjetil(), _gravidade(gravidade)
+{
 	_jogador1 = nullptr;
 	_jogador2 = nullptr;
 	
@@ -10,7 +13,8 @@ Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(float gravidade = 10.f
 }
 
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
-	// Apaga Inimigos
+	// Apaga Inimigos 
+	//Isso não deve ser responsabilidade do gerenciador de colisoes, ele ta em uma fase que tem a lista de entidades que desaloca
 	if (!_listaInimigos.empty()) {
 		for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); itInimigo++) {
 			if (*itInimigo != nullptr) {
@@ -21,6 +25,7 @@ Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 	}
 
 	// Apaga Obstaculos
+	//Idem
 	if (!_listaObstaculos.empty()) {
 		for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); itObstaculo++) {
 			if (*itObstaculo != nullptr) {
@@ -31,6 +36,7 @@ Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 	}
 
 	// Apaga Projetils
+	//Idem
 	if (!_listaProjetil.empty()) {
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (*itProjetil != nullptr) {
@@ -44,8 +50,11 @@ Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 	_listaProjetil.clear();
 }
 
-void Gerenciadores::Gerenciador_Colisoes::setJogador1(Entidades::Jogador* pJogador) {
-	if (pJogador == nullptr) {
+
+void Gerenciadores::Gerenciador_Colisoes::setJogador1(Entidades::Jogador* pJogador) 
+{
+	if (pJogador == nullptr) 
+	{
 		std::cerr << "Ponteiro de jogador invalido. Impossivel incluir em G.Colisoes.\n";
 		return;
 	}
@@ -95,10 +104,12 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 		for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); itObstaculo++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itObstaculo), static_cast<Entidades::Entidade*>(_jogador1))) {
 				(*itObstaculo)->obstacular(_jogador1);
+				_jogador1->setGround(true);
 			}
 
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itObstaculo), static_cast<Entidades::Entidade*>(_jogador2))) {
 				(*itObstaculo)->obstacular(_jogador2);
+				_jogador2->setGround(true);
 			}
 		}
 	}
@@ -107,6 +118,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 		for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); itObstaculo++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itObstaculo), static_cast<Entidades::Entidade*>(_jogador1))) {
 				(*itObstaculo)->obstacular(_jogador1);
+				_jogador1->setGround(true);
 			}
 		}
 	}
@@ -192,12 +204,27 @@ const bool Gerenciadores::Gerenciador_Colisoes::verificarColisao(Entidades::Enti
 
 void Gerenciadores::Gerenciador_Colisoes::aplicarGravidade() {
 	// Caso 1: os dois jogadores foram criados
-	if (_jogador1 != nullptr && _jogador2 != nullptr) {
-		_jogador1->sofrerGravidade(_gravidade);
-		_jogador2->sofrerGravidade(_gravidade);
+	if (_jogador1 != nullptr && _jogador2 != nullptr) 
+	{
+		if (!_jogador1->getOnGround())
+		{
+			_jogador1->sofrerGravidade(_gravidade);
+		}
+		
+		if (!_jogador2->getOnGround())
+		{
+			_jogador2->sofrerGravidade(_gravidade);
+		}
+
+		
 	}
 	// Caso 2: apenas um jogador foi criado
-	else if (_jogador1 != nullptr) {
-		_jogador1->sofrerGravidade(_gravidade);
+	else if (_jogador1 != nullptr) 
+	{
+
+		if (!_jogador1->getOnGround())
+		{
+			_jogador1->sofrerGravidade(_gravidade);
+		}
 	}
 }

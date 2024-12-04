@@ -77,13 +77,16 @@ void Entidades::Jogador::executar()
 		Position.x += _speed.x;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed.y))
+	{
 		Position.y -= _speed.y;
+		this->setGround(false);
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (Position.x >= _speed.x))
 		Position.x -= _speed.x;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))
-		Position.y += _speed.y;
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))
+		//Position.y += _speed.y;
 
     _body.setPosition(Position);
 	_pGraf->desenhar(this);
