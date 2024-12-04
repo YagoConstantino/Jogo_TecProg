@@ -1,2 +1,12 @@
-﻿  Main.cpp
+﻿  Gerenciador_colisoes.cpp
+  Inimigo.cpp
+  Jogador.cpp
+  ListaEntidades.cpp
+  Main.cpp
+  Obstaculo.cpp
+  Personagem.cpp
+  Plataforma.cpp
+  Projetil.cpp
+  Gerando Código...
+  LINK : C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe não encontrado ou não compilado pelo o último link incremental; executando link completo
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe
