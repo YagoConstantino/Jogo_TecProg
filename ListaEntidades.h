@@ -20,6 +20,8 @@ namespace Listas
 		void remove_ID(int id);
 		void limpar();
 
+		bool empty();
+
 		void percorrer();
 		void executar();
 

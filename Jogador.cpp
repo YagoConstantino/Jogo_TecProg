@@ -91,6 +91,11 @@ void Entidades::Jogador::executar()
     _body.setPosition(Position);
 	_pGraf->desenhar(this);
 
+	if (_num_vidas <= 0)
+	{
+		setVivo(false);
+	}
+
 }
 
 void Entidades::Jogador::sofrerGravidade(float gravidade) {

@@ -55,8 +55,9 @@ int main()
 
     
     Entidades::Plataforma plat(5, 680, gg, 10);
-    Entidades::Plataforma plat2(500, 680, gg, 10);
-    Entidades::Plataforma plat3(995, 680, gg, 10);
+    Entidades::Plataforma plat2(400, 680, gg, 10);
+    Entidades::Plataforma plat3(850, 680, gg, 10);
+    Entidades::Plataforma plat4(1250, 680, gg, 10);
    // plat.setPositionX(plat.getPositionX() - (plat.getBody().getGlobalBounds().width) / 2);
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
@@ -64,6 +65,7 @@ int main()
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat2));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat4));
     
     Lista.percorrer();
 

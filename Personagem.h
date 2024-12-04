@@ -8,6 +8,7 @@ namespace Entidades
 	protected:
 		int _num_vidas;
 		bool onGround;
+		bool vivo;
 
 	public:
 		Personagem(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
@@ -15,6 +16,11 @@ namespace Entidades
 
 		bool getOnGround()const;
 		void setGround(bool ong);
+
+		bool getVivo()const;
+		void setVivo(bool ong);
+
+		int getVidas()const;
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

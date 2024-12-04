@@ -64,6 +64,11 @@ void Listas::ListaEntidades::limpar() {
     List.limpar();
 }
 
+bool Listas::ListaEntidades::empty()
+{
+    return List.getSize();
+}
+
 void Listas::ListaEntidades::percorrer() {
     Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
     while (aux != nullptr) {

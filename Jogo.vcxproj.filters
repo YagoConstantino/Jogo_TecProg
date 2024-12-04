@@ -66,6 +66,9 @@
     <ClInclude Include="Gerenciador_Colisoes.h">
       <Filter>Gerenciadores</Filter>
     </ClInclude>
+    <ClInclude Include="Inimigo.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Gerenciador_colisoes.cpp">
       <Filter>Gerenciadores</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo.cpp">
+      <Filter>Entidades</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
