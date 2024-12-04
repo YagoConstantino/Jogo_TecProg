@@ -7,6 +7,7 @@ namespace Entidades
 	class Jogador :public Entidades::Personagem
 	{
 	private:
+		int tempoPulo;
 		int _pontos;
 		sf::Vector2f _speed; // Sera que pode ser um sf::vector2f ?
 		std::string nome;
@@ -26,6 +27,8 @@ namespace Entidades
 		void operator--();
 
 		void sofrerGravidade(float gravidade);
+
+		void pular();
 
 		void executar();
 		void salvar();

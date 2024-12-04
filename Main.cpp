@@ -7,6 +7,7 @@
 #include "Projetil.h"
 #include "ListaEntidades.h"
 #include "Plataforma.h"
+#include "Gerenciador_Colisoes.h"
 
 
 using namespace std;
@@ -55,9 +56,9 @@ int main()
 
     
     Entidades::Plataforma plat(5, 680, gg, 10);
-    Entidades::Plataforma plat2(400, 680, gg, 10);
-    Entidades::Plataforma plat3(850, 680, gg, 10);
-    Entidades::Plataforma plat4(1250, 680, gg, 10);
+    Entidades::Plataforma plat2(5+plat.getBody().getGlobalBounds().width, 680, gg, 10);
+    Entidades::Plataforma plat3(plat2.getPositionX()+plat.getBody().getGlobalBounds().width, 680, gg, 10);
+    Entidades::Plataforma plat4(plat3.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg, 10);
    // plat.setPositionX(plat.getPositionX() - (plat.getBody().getGlobalBounds().width) / 2);
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
@@ -66,8 +67,14 @@ int main()
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat2));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat4));
-    
     Lista.percorrer();
+
+    Gerenciadores::Gerenciador_Colisoes* gc = new Gerenciadores::Gerenciador_Colisoes(0.5f);
+    gc->incluirObstaculo(&plat);
+    gc->incluirObstaculo(&plat2);
+    gc->incluirObstaculo(&plat3);
+    gc->incluirObstaculo(&plat4);
+    gc->setJogador1(jog);
 
     while (gg->getWindow()->isOpen()) 
     {
@@ -77,11 +84,12 @@ int main()
             {
                 gg->getWindow()->close();
             }
-            gg->render();
-            Lista.executar();
-            gg->display();
             
         }
+        gg->render();
+        Lista.executar();
+        gc->executar();
+        gg->display();
     }
 
 }

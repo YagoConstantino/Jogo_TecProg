@@ -211,3 +211,10 @@ void Gerenciadores::Gerenciador_Colisoes::aplicarGravidade()
 		}
 	}
 }
+
+void Gerenciadores::Gerenciador_Colisoes::executar()
+{
+	aplicarGravidade();
+	tratarColisoesJogsObstacs();
+	tratarColisoesJogsProjeteis();
+}

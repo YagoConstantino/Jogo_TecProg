@@ -49,5 +49,7 @@ namespace Gerenciadores {
 		const bool verificarColisao(Entidades::Entidade* pEnt1, Entidades::Entidade* pEnt2) const;
 
 		void aplicarGravidade();
+
+		void executar();
 	};
 }

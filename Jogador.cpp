@@ -1,10 +1,10 @@
 #include "Jogador.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra), _pontos(0), nome(name)
+	:Personagem(inlX, inY, pgra), _pontos(0), nome(name), tempoPulo(200)
 {
-	_speed.x = 5;
-	_speed.y = 5;
+	_speed.x = 0.5f;
+	_speed.y = 0.5f;
 
 	sf::Texture* textura = new sf::Texture();
 	
@@ -78,8 +78,11 @@ void Entidades::Jogador::executar()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed.y))
 	{
-		Position.y -= _speed.y;
-		this->setGround(false);
+		if (tempoPulo >= 200)
+		{
+			pular();
+			tempoPulo = 0;
+		}
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (Position.x >= _speed.x))
@@ -96,13 +99,24 @@ void Entidades::Jogador::executar()
 		setVivo(false);
 	}
 
+	if (onGround)
+	{
+		tempoPulo++;
+	}
+
 }
 
 void Entidades::Jogador::sofrerGravidade(float gravidade) {
 	if (Position.y + _body.getGlobalBounds().height + gravidade <= _pGraf->getWindow()->getSize().y) {
-		Position.y -= gravidade;
+		Position.y += gravidade;
 	}
 	_body.setPosition(Position);
+}
+
+void Entidades::Jogador::pular()
+{
+	Position.y -= _speed.y * 300;
+	this->setGround(false);
 }
 
 void Entidades::Jogador::salvar()
