@@ -1,2 +1,27 @@
-﻿  Main.cpp
-  Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe
+﻿  Gerenciador_colisoes.cpp
+  Jogador.cpp
+C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_colisoes.cpp(3,77): error C2572: 'Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes': redefinição do argumento padrão: parâmetro 1
+      C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_Colisoes.h(34,3):
+      consulte a declaração de 'Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes'
+  
+C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_colisoes.cpp(17,5): warning C4150: exclusão de ponteiro para tipo incompleto 'Inimigo'; nenhum destruidor chamado
+      C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_Colisoes.h(11,7):
+      consulte a declaração de 'Inimigo'
+  
+C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_colisoes.cpp(119,25): error C2440: 'static_cast': não é possível converter de 'Inimigo *' para 'Entidades::Entidade *'
+      C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_colisoes.cpp(119,25):
+      Tipos apontados não são relacionados; conversão requer reinterpret_cast, conversão C-style ou conversão function-style entre parênteses
+  
+C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_colisoes.cpp(127,25): error C2440: 'static_cast': não é possível converter de 'Inimigo *' para 'Entidades::Entidade *'
+      C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_colisoes.cpp(127,25):
+      Tipos apontados não são relacionados; conversão requer reinterpret_cast, conversão C-style ou conversão function-style entre parênteses
+  
+C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_colisoes.cpp(139,25): error C2440: 'static_cast': não é possível converter de 'Inimigo *' para 'Entidades::Entidade *'
+      C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\Gerenciador_colisoes.cpp(139,25):
+      Tipos apontados não são relacionados; conversão requer reinterpret_cast, conversão C-style ou conversão function-style entre parênteses
+  
+  Main.cpp
+  Obstaculo.cpp
+  Plataforma.cpp
+  Projetil.cpp
+  Gerando Código...

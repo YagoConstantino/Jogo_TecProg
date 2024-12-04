@@ -63,6 +63,9 @@
     <ClInclude Include="Plataforma.h">
       <Filter>Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="Gerenciador_Colisoes.h">
+      <Filter>Gerenciadores</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -94,6 +97,9 @@
     </ClCompile>
     <ClCompile Include="ListaEntidades.cpp">
       <Filter>Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_colisoes.cpp">
+      <Filter>Gerenciadores</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

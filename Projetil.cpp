@@ -28,8 +28,6 @@ Entidades::Projetil::~Projetil() {
 	{
 		delete _pTexture;
 	}
-
-	_pGraf = nullptr;
 	_pTexture = nullptr;
 }
 

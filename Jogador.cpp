@@ -1,8 +1,11 @@
 #include "Jogador.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra), _pontos(0), _speed(5), nome(name)
+	:Personagem(inlX, inY, pgra), _pontos(0), nome(name)
 {
+	_speed.x = 5;
+	_speed.y = 5;
+
 	sf::Texture* textura = new sf::Texture();
 	
 	if (!textura->loadFromFile("assets/Player1.png")) 
@@ -71,20 +74,27 @@ void Entidades::Jogador::executar()
  //Depois não sei se precisa desse Evento, não lembro como que o sfml captura o teclado, se usa o evento ou não
 	
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Position.x + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().x)
-		Position.x += _speed;
+		Position.x += _speed.x;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed))
-		Position.y -= _speed;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed.y))
+		Position.y -= _speed.y;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (Position.x >= _speed))
-		Position.x -= _speed;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (Position.x >= _speed.x))
+		Position.x -= _speed.x;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))
-		Position.y += _speed;
+		Position.y += _speed.y;
 
     _body.setPosition(Position);
 	_pGraf->desenhar(this);
 
+}
+
+void Entidades::Jogador::sofrerGravidade(float gravidade) {
+	if (Position.y + _body.getGlobalBounds().height + gravidade <= _pGraf->getWindow()->getSize().y) {
+		Position.y -= gravidade;
+	}
+	_body.setPosition(Position);
 }
 
 void Entidades::Jogador::salvar()
