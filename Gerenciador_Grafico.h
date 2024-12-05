@@ -22,5 +22,9 @@ namespace Gerenciadores{
 		void render();
 		void display();
 		sf::RenderWindow* getWindow();
+		bool getOpen()const;
+		void closeWindow();
+		
+
 	};
 } 

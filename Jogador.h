@@ -9,7 +9,7 @@ namespace Entidades
 	private:
 		int tempoPulo;
 		int _pontos;
-		sf::Vector2f _speed; // Sera que pode ser um sf::vector2f ?
+		//sf::Vector2f _speed; // Sera que pode ser um sf::vector2f ?
 		std::string nome;
 	public:
 		Jogador(float inlX = 0, float inY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,std::string name = "");
@@ -26,9 +26,7 @@ namespace Entidades
 		void operator++();
 		void operator--();
 
-		void sofrerGravidade(float gravidade);
-
-		void pular();
+		
 
 		void executar();
 		void salvar();

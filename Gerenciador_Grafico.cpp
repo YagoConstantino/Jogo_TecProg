@@ -7,7 +7,10 @@ Gerenciadores::Gerenciador_Grafico::Gerenciador_Grafico()
     view = sf::View(sf::FloatRect(0, 0, 900, 600));
 }
 
-Gerenciadores::Gerenciador_Grafico::~Gerenciador_Grafico() {}
+Gerenciadores::Gerenciador_Grafico::~Gerenciador_Grafico() 
+{
+    delete(window);
+}
 
 void Gerenciadores::Gerenciador_Grafico::desenhar(Entidades::Ente* pE)
 {
@@ -35,4 +38,14 @@ void Gerenciadores::Gerenciador_Grafico::display()
 sf::RenderWindow* Gerenciadores::Gerenciador_Grafico::getWindow() 
 {
     return window;
+}
+
+bool Gerenciadores::Gerenciador_Grafico::getOpen() const
+{
+    return window->isOpen();
+}
+
+void Gerenciadores::Gerenciador_Grafico::closeWindow()
+{
+    window->close();
 }

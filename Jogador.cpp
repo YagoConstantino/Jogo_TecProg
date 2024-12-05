@@ -1,10 +1,11 @@
 #include "Jogador.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra), _pontos(0), nome(name), tempoPulo(200)
+	:Personagem(inlX, inY, pgra,4), _pontos(0), nome(name), tempoPulo(200)
 {
-	_speed.x = 0.5f;
-	_speed.y = 0.5f;
+	//migrei speed para Personagem 
+	//_speed.x = 0.5f;
+	//_speed.y = 0.5f;
 
 	sf::Texture* textura = new sf::Texture();
 	
@@ -99,25 +100,13 @@ void Entidades::Jogador::executar()
 		setVivo(false);
 	}
 
-	if (onGround)
+	if (_onGround)
 	{
 		tempoPulo++;
 	}
 
 }
 
-void Entidades::Jogador::sofrerGravidade(float gravidade) {
-	if (Position.y + _body.getGlobalBounds().height + gravidade <= _pGraf->getWindow()->getSize().y) {
-		Position.y += gravidade;
-	}
-	_body.setPosition(Position);
-}
-
-void Entidades::Jogador::pular()
-{
-	Position.y -= _speed.y * 300;
-	this->setGround(false);
-}
 
 void Entidades::Jogador::salvar()
 {

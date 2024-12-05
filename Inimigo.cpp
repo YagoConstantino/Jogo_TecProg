@@ -1,7 +1,7 @@
 #include "Inimigo.h"
 
 Entidades::Inimigo::Inimigo(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog)
-	:Entidade(inicialX,inicialY,pgra),_pJog(pJog),atacar(false)
+	:Personagem(inicialX,inicialY,pgra),_pJog(pJog),atacar(false)
 {
 	_nivel_maldade = 0;
 }
@@ -31,5 +31,6 @@ void Entidades::Inimigo::setJogador(Entidades::Jogador* pJog)
 
 double Entidades::Inimigo::getDistancia()
 {
-	return sqrt(pow(getPositionX() + _pJog->getPositionX(), 2) + pow(getPositionY() + _pJog->getPositionY(), 2));
+	//Pitagoras para calcular a distancia 
+	return sqrt(pow(getPositionX() - _pJog->getPositionX(), 2) + pow(getPositionY() - _pJog->getPositionY(), 2));
 }

@@ -5,7 +5,7 @@
 #include <math.h>
 namespace Entidades
 {
-	class Inimigo :public Entidades::Entidade
+	class Inimigo :public Entidades::Personagem
 	{
 	protected:
 		bool atacar;
@@ -13,7 +13,7 @@ namespace Entidades
 		Entidades::Jogador* _pJog;
 	public:
 		Inimigo(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador*pJog=nullptr);
-		~Inimigo();
+		virtual ~Inimigo();
 
 		void setMaldade(int mal);
 		int getMaldade()const;

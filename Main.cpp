@@ -76,17 +76,18 @@ int main()
     gc->incluirObstaculo(&plat4);
     gc->setJogador1(jog);
 
-    while (gg->getWindow()->isOpen()) 
+    while (gg->getOpen() )
     {
         while (gg->getWindow()->pollEvent(event)) 
         {
             if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
             {
-                gg->getWindow()->close();
+                gg->closeWindow();
             }
             
         }
         gg->render();
+
         Lista.executar();
         gc->executar();
         gg->display();
