@@ -84,7 +84,8 @@ void Listas::ListaEntidades::executar() {
     Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
     while (aux != nullptr) {
         Entidades::Entidade* ente = aux->getInfo(); // Obter o ponteiro para Entidade
-        if (ente != nullptr) {
+        if (ente != nullptr) 
+        {
             ente->executar(); // Executa a ação da entidade
         }
         aux = aux->GetNext();

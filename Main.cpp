@@ -8,6 +8,7 @@
 #include "ListaEntidades.h"
 #include "Plataforma.h"
 #include "Gerenciador_Colisoes.h"
+#include "Obst_Dificil.h"
 
 
 using namespace std;
@@ -57,23 +58,26 @@ int main()
     
     Entidades::Plataforma plat(5, 680, gg, 10);
     Entidades::Plataforma plat2(5+plat.getBody().getGlobalBounds().width, 680, gg, 10);
-    Entidades::Plataforma plat3(plat2.getPositionX()+plat.getBody().getGlobalBounds().width, 680, gg, 10);
-    Entidades::Plataforma plat4(plat3.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg, 10);
-  
+    //Entidades::Plataforma plat3(plat2.getPositionX()+plat.getBody().getGlobalBounds().width, 680, gg, 10);
+    //Entidades::Plataforma plat4(plat3.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg, 10);
+    Entidades::Obst_Dificil obs(1,plat2.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg);
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat2));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat4));
+    //Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
+    //Lista.insert_back(static_cast<Entidades::Entidade*>(&plat4));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&obs));
     Lista.percorrer();
 
     Gerenciadores::Gerenciador_Colisoes* gc = new Gerenciadores::Gerenciador_Colisoes(0.5f);
+    //Poderiamos converter explicitamente para obstaculo
     gc->incluirObstaculo(&plat);
     gc->incluirObstaculo(&plat2);
-    gc->incluirObstaculo(&plat3);
-    gc->incluirObstaculo(&plat4);
+    //gc->incluirObstaculo(&plat3);
+    //gc->incluirObstaculo(&plat4);
+    gc->incluirObstaculo(&obs);
     gc->setJogador1(jog);
 
     while (gg->getOpen() )
@@ -87,10 +91,12 @@ int main()
             
         }
         gg->render();
-
         Lista.executar();
         gc->executar();
         gg->display();
+
+        cout << jog->getVidas();
+        
     }
 
 }

@@ -25,9 +25,9 @@ namespace Entidades
 		int getVidas()const;
 		void setVidas(int vid);
 
-		virtual void sofrerGravidade(float gravidade);
+		void sofrerGravidade(float gravidade);
 
-		virtual void pular();
+		void pular();
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

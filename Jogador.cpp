@@ -69,6 +69,13 @@ void Entidades::Jogador::operator--()
 	_num_vidas--;
 }
 
+void Entidades::Jogador::knockBack()
+{
+	setPosition(getPositionX() - 200, getPositionY());
+	//pular();
+	
+}
+
 void Entidades::Jogador::executar()
 {
  //Esses testes de se a posicao mais o tamanho nao chegou na borda devem ser transferidos para o Gerenciador de Colisoes

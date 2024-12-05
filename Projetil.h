@@ -14,6 +14,8 @@ namespace Entidades {
 		Projetil(int dano = 1, float speed = 1.f, Gerenciadores::Gerenciador_Grafico* pGraf = nullptr);
 		~Projetil();
 
+		const int getDano() const;
+
 		void executar();
 		void render();
 		void salvar();

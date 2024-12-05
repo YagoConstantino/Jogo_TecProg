@@ -49,6 +49,10 @@ void Entidades::Projetil::executar() {
 	}
 }
 
+const int Entidades::Projetil::getDano() const {
+	return _dano;
+}
+
 void Entidades::Projetil::salvar()
 {
 }

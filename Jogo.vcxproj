@@ -30,6 +30,7 @@
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="ListaTemplate.h" />
     <ClInclude Include="Obstaculo.h" />
+    <ClInclude Include="Obst_Dificil.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Plataforma.h" />
     <ClInclude Include="Projetil.h" />
@@ -44,6 +45,7 @@
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
+    <ClCompile Include="Obst_Dificil.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="Projetil.cpp" />

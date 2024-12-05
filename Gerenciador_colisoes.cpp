@@ -40,7 +40,7 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador2(Entidades::Jogador* pJogad
 	_jogador2 = pJogador;
 }
 
-void Gerenciadores::Gerenciador_Colisoes::incluirInimigo(Inimigo* pInimigo) {
+void Gerenciadores::Gerenciador_Colisoes::incluirInimigo(Entidades::Inimigo* pInimigo) {
 	if (pInimigo == nullptr) {
 		std::cerr << "Ponteiro de inimigo invalido. Impossivel incluir em G.Colisoes.\n" << std::endl;
 		return;
@@ -98,7 +98,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 	}
 }
 
-void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs() {/*
+void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs() {
 	// Caso 1: os dois jogadores foram criados
 	if (_jogador1 != nullptr && _jogador2 != nullptr) {
 		for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); itInimigo++) 
@@ -107,6 +107,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs() {/*
 			{
 				// Jogador para de mover
 				// Jogador toma dano, se preciso
+				(*itInimigo)->danificar(_jogador1);
 				
 				// Inimigo para de mover
 				// Inimigo toma dano, se preciso
@@ -116,7 +117,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs() {/*
 			{
 				// Jogador para de mover
 				// Jogador toma dano, se preciso
-				
+				(*itInimigo)->danificar(_jogador2);
+
 				// Inimigo para de mover
 				// Inimigo toma dano, se preciso
 			}
@@ -128,13 +130,14 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs() {/*
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itInimigo), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador para de mover
 				// Jogador toma dano, se preciso
+				(*itInimigo)->danificar(_jogador1);
 
 				// Inimigo para de mover
 				// Inimigo toma dano, se preciso
 			}
 		}
 	}
-*/
+
 }
 
 void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis() 
@@ -144,15 +147,16 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador toma dano
-				_jogador1->operator--();
-				_jogador2->operator--();
+				for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador1->operator--();
 				// Projetil desaparece
 				(*itProjetil)->~Projetil();
 			}
 
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador2))) {
 				// Jogador toma dano
-				_jogador1->operator--();
+				for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador2->operator--();
 				// Projetil desaparece
 				(*itProjetil)->~Projetil();
 			}
@@ -165,7 +169,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador toma dano
-				_jogador1->operator--();
+				for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador1->operator--();
 				// Projetil desaparece
 				(*itProjetil)->~Projetil();
 			}
@@ -217,4 +222,5 @@ void Gerenciadores::Gerenciador_Colisoes::executar()
 	aplicarGravidade();
 	tratarColisoesJogsObstacs();
 	tratarColisoesJogsProjeteis();
+	tratarColisoesJogsInimgs();
 }

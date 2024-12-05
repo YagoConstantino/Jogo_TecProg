@@ -45,7 +45,8 @@ void Entidades::Personagem::setVidas(int vid)
 
 void Entidades::Personagem::sofrerGravidade(float gravidade)
 {
-	if (Position.y + _body.getGlobalBounds().height + gravidade <= _pGraf->getWindow()->getSize().y) {
+	if (Position.y + _body.getGlobalBounds().height + gravidade <= _pGraf->getWindow()->getSize().y) 
+	{
 		Position.y += gravidade;
 	}
 	_body.setPosition(Position);

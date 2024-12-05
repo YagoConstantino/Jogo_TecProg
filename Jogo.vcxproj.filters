@@ -69,6 +69,9 @@
     <ClInclude Include="Inimigo.h">
       <Filter>Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="Obst_Dificil.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -105,6 +108,9 @@
       <Filter>Gerenciadores</Filter>
     </ClCompile>
     <ClCompile Include="Inimigo.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Obst_Dificil.cpp">
       <Filter>Entidades</Filter>
     </ClCompile>
   </ItemGroup>

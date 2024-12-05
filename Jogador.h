@@ -26,7 +26,7 @@ namespace Entidades
 		void operator++();
 		void operator--();
 
-		
+		void knockBack();
 
 		void executar();
 		void salvar();
