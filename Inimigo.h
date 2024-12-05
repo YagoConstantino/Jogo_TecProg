@@ -12,7 +12,7 @@ namespace Entidades
 		int _nivel_maldade;
 		Entidades::Jogador* _pJog;
 	public:
-		Inimigo(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador*pJog=nullptr);
+		Inimigo(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador*pJog=nullptr,int vidas = 1);
 		virtual ~Inimigo();
 
 		void setMaldade(int mal);

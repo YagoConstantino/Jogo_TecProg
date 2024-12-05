@@ -1,7 +1,7 @@
 #include "Inimigo.h"
 
-Entidades::Inimigo::Inimigo(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog)
-	:Personagem(inicialX,inicialY,pgra),_pJog(pJog),atacar(false)
+Entidades::Inimigo::Inimigo(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog,int vidas)
+	:Personagem(inicialX,inicialY,pgra,vidas),_pJog(pJog),atacar(false)
 {
 	_nivel_maldade = 0;
 }

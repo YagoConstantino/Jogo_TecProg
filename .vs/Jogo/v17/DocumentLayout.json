@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Jogador.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Jogador.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Jogador.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Jogador.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Personagem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Personagem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Inimigo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Inimigo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Inimigo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Inimigo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Inimigo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Inimigo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Jogador.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Jogador.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Personagem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Personagem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Jogador.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|solutionrelative:Jogador.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39D3370E-FBC1-4C31-AB79-FC3D65881DE2}|Jogo.vcxproj|C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Entidade.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
@@ -54,8 +54,7 @@
               "RelativeToolTip": "Entidade.h",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-05T11:47:13.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-05T11:47:13.79Z"
             },
             {
               "$type": "Document",
@@ -67,12 +66,11 @@
               "RelativeToolTip": "Ente.h",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-05T11:47:09.652Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-05T11:47:09.652Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Personagem.cpp",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.cpp",
               "RelativeDocumentMoniker": "Personagem.cpp",
@@ -91,14 +89,14 @@
               "RelativeDocumentMoniker": "Personagem.h",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Personagem.h",
               "RelativeToolTip": "Personagem.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-05T10:18:38.844Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Jogador.cpp",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Jogador.cpp",
               "RelativeDocumentMoniker": "Jogador.cpp",
@@ -111,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Jogador.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Jogador.h",
               "RelativeDocumentMoniker": "Jogador.h",
@@ -124,26 +122,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Inimigo.cpp",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Inimigo.cpp",
               "RelativeDocumentMoniker": "Inimigo.cpp",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Inimigo.cpp",
               "RelativeToolTip": "Inimigo.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-04T22:49:52.84Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Inimigo.h",
               "DocumentMoniker": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Inimigo.h",
               "RelativeDocumentMoniker": "Inimigo.h",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Inimigo.h",
               "RelativeToolTip": "Inimigo.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAACSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-04T22:49:31.732Z",
               "EditorCaption": ""
