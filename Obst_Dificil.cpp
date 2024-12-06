@@ -1,7 +1,7 @@
 #include "Obst_Dificil.h"
 
 Entidades::Obst_Dificil::Obst_Dificil(int dano, float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra)
-	: Obstaculo(inicialX,inicialY,pgra), _dano(dano), _segundos(0.f)
+	: Obstaculo(inicialX,inicialY,pgra), _dano(dano)
 {
 	// Gerenciador grafico
 	_pGraf = pgra;
@@ -43,16 +43,16 @@ void Entidades::Obst_Dificil::executar()
 
 	// Tempo
 	if (!_danoso){
-		_segundos += clock.getElapsedTime().asSeconds();
+		_segundos += _clock.getElapsedTime().asSeconds();
 
 		if (_segundos > 5.f) {
 			_danoso = true;
 			_segundos = 0.f;
-			clock.restart();
+			_clock.restart();
 		}
 	}
 	else {
-		clock.restart();
+		_clock.restart();
 	}
 	
 }

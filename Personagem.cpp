@@ -70,6 +70,10 @@ void Entidades::Personagem::sofrerGravidade(float gravidade)
 
 void Entidades::Personagem::pular()
 {
-	_speed.y = -15.f;
-	setGround(false);
+	if (_onGround)
+	{
+		_speed.y = -15.f;
+		setGround(false);
+	}
+	
 }

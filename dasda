@@ -1,0 +1,57 @@
+[33ma41bb35[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mObstaculo-dificil[m[33m, [m[1;31morigin/Obstaculo-dificil[m[33m)[m Versao mais recente funcionando bem,problema ao pular obstaculo
+[33m58d6d8d[m Remover arquivos grandes e atualizar .gitignore
+[33m723180c[m Att mudança para vetor sf::vector2f na movimentacao
+[33m03b3fd2[m Vi o obstaculo dificil e esta funcionando
+[33m44de1c5[m[33m ([m[1;31morigin/Yago[m[33m, [m[1;32mYago[m[33m)[m Merge de Yago com master
+[33m65e601f[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m Migrando algumas funções para Personagem e mudança em Inimigo
+[33m907906d[m Criado obstaculo dificil e outras mudanças
+[33mcf2c9fc[m Merge com Gerenciador de Colisoes
+[33m8f15473[m[33m ([m[1;32mInimigo[m[33m)[m Merge com Gerenciador de Colisoes
+[33m444698a[m[33m ([m[1;31morigin/Gerenciado_Colisoes[m[33m)[m Mudanças no vscode
+[33mf85c9bc[m Funcionando o Gerenciador de Colisoes
+[33ma8748d7[m V3
+[33mf65f750[m Algumas Mudanças em personagem
+[33ma7be484[m Commit
+[33ma4885bc[m[33m ([m[1;31morigin/Obstaculo[m[33m)[m Atributo onGround booleano em Personagem
+[33meb79d54[m Criado o G.Colisoes e alterações diversas
+[33m6252040[m Plataforma V1
+[33ma1d0bed[m Implementacao de plataforma provisiorio
+[33m70c6efd[m Remove arquivos .vs do controle de versão
+[33mfcca7df[m Merge branch 'master' of https://github.com/GabFMM/Jogo_TecProg
+[33me560e18[m Master deu merge com projetil
+[33maccd411[m commit pre merge
+[33m518cd47[m[33m ([m[1;31morigin/projetil[m[33m)[m Lista Entidade Completa
+[33m4fb1ae2[m xxx
+[33mf6b0155[m mudança no atributo de listaEntidades
+[33m5bcfd76[m testei as listas e tao funcionando pode ser problema na lista Entidade ou na construtora de Ente
+[33mfc5d3ec[m Lista Entidades com problema
+[33m7e1cd7e[m Limpar da lista
+[33mf692094[m Merge pull request #5 from GabFMM/Personagem
+[33m4e88e91[m adicionar projetil
+[33m79637d6[m[33m ([m[1;31morigin/Personagem[m[33m)[m V6 att
+[33m410cae4[m Commit Personagem V6
+[33md5c5a6c[m Mudança nos contrutores
+[33mfd062d9[m Gerenciador Grafico com sucesso, bug na textura do jogador e no tamanho
+[33mfc024f9[m Att V5
+[33m2c407f2[m Versao de personagem com o gerenciador grafico mudado V4
+[33m5141a0d[m Salvando
+[33m8e24471[m V2 att
+[33m5ce953c[m Personagem V2
+[33maa791c8[m Criação da classe Personagem V1
+[33m7a81376[m att
+[33m2dd150c[m Ajuste no ponteiro _body
+[33m51d7fbf[m Solucao de alguns problemas
+[33mcade9df[m Merge Manual com Gerenciador grafico
+[33med72bfe[m Salvando
+[33m4b96968[m Yago
+[33m7bca1d8[m Yago
+[33m5866f10[m Entidade
+[33ma96c8a5[m Merge com Entidade
+[33mf75c83e[m[33m ([m[1;31morigin/Entidade[m[33m)[m Entidade V4
+[33md35a0f8[m Entidades V3
+[33m83a64db[m V2
+[33ma04d80b[m Ente e Entidades Prototipos
+[33m1d258c8[m Mudança nas propriedades do vs Studio
+[33m7020210[m Organização de pastas dentro do Vs studio
+[33mb94d431[m[33m ([m[1;31morigin/Pastas[m[33m)[m Pastas
+[33m567ee53[m Yago

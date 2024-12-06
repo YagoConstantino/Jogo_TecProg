@@ -11,7 +11,9 @@ namespace Entidades
 
 		sf::Vector2f Position;
 		//sf::Vector2f Size;
-		
+		sf::Clock _clock;
+		float _segundos;
+
 	public:
 		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
 		virtual ~Entidade() {};
@@ -21,6 +23,8 @@ namespace Entidades
 
 		float getPositionY()const { return Position.y; }
 		void setPositionY(float y) { Position.y = y; }
+
+		void restartClock();
 
 		/*
 		float getSizeWIDTH()const { return Size.x; }
