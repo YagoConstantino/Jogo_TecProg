@@ -8,8 +8,7 @@ namespace Entidades {
 	class Obst_Dificil : public Obstaculo {
 	private:
 		// Tempo
-		sf::Clock clock;
-		float _segundos;
+		
 
 		// Dano
 		int _dano;

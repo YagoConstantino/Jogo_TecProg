@@ -85,10 +85,12 @@ void Entidades::Jogador::mover()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed.y))
 	{
-		if (tempoPulo >= 200)
+		tempoPulo += _clock.getElapsedTime().asMilliseconds();
+		if (tempoPulo >= 20)
 		{
 			pular();
 			tempoPulo = 0;
+			
 		}
 	}
 
@@ -113,7 +115,7 @@ void Entidades::Jogador::executar()
 
 	if (_onGround)
 	{
-		tempoPulo++;
+		restartClock();
 	}
 
 	_body.setPosition(Position);
