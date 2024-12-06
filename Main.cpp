@@ -36,27 +36,21 @@ int main()
     Entidades::Plataforma plat(5, 680, gg, 10);
     Entidades::Plataforma plat2(5+plat.getBody().getGlobalBounds().width, 680, gg, 10);
     
-<<<<<<< HEAD
-    //Entidades::Plataforma plat4(plat3.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg, 10);
-    Entidades::Obst_Dificil obs(1,plat2.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg);
-    Entidades::Plataforma plat3(obs.getPositionX() + obs.getBody().getGlobalBounds().width, 680, gg, 10);
-=======
+
     
     Entidades::Obst_Dificil obs(1,plat2.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg);
     Entidades::Plataforma plat3(obs.getPositionX() + obs.getBody().getGlobalBounds().width, 680, gg, 10);
     Entidades::Plataforma plat4(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 380, gg, 10);
->>>>>>> nova-branch
+
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat2));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
-<<<<<<< HEAD
-    //Lista.insert_back(static_cast<Entidades::Entidade*>(&plat4));
-=======
+
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat4));
->>>>>>> nova-branch
+
     Lista.insert_back(static_cast<Entidades::Entidade*>(&obs));
     Lista.percorrer();
 
@@ -65,11 +59,8 @@ int main()
     gc->incluirObstaculo(&plat);
     gc->incluirObstaculo(&plat2);
     gc->incluirObstaculo(&plat3);
-<<<<<<< HEAD
-    //gc->incluirObstaculo(&plat4);
-=======
+
     gc->incluirObstaculo(&plat4);
->>>>>>> nova-branch
     gc->incluirObstaculo(&obs);
     gc->setJogador1(jog);
 

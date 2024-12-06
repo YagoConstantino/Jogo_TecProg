@@ -31,7 +31,7 @@ namespace Gerenciadores {
 		float _gravidade;
 
 	public:
-		Gerenciador_Colisoes(float gravidade = 2.5f);
+		Gerenciador_Colisoes(float gravidade = 0.5f);
 		~Gerenciador_Colisoes();
 
 		void setJogador1(Entidades::Jogador* pJogador);
