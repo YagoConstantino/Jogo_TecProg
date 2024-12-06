@@ -16,6 +16,7 @@ namespace Entidades
 		sf::Texture* _pTexture;
 		sf::Sprite _body;
 		
+		
 		//Criei um contador estatico para o ID
 		static int _cont;
 		

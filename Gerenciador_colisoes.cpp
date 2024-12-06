@@ -76,12 +76,23 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 			{
 				(*itObstaculo)->obstacular(_jogador1);
 				_jogador1->setGround(true);
+				_jogador1->setSpeed(_jogador1->getSpeedX(), 0);
+
+				//Recolocando o jogador acima do obstaculo, se nao mesmo corrigindo speed ele entra no obstaculo
+				//+1 para que ele entre em contatto com o obstaculo, se nao ele fica 1 pixel acima e nao da dano nos espinhos
+				float topoDoObstaculo = (*itObstaculo)->getPositionY() - _jogador1->getBody().getGlobalBounds().height;
+				_jogador1->setPosition(_jogador1->getPosition().x, topoDoObstaculo + 1);
 			}
 
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itObstaculo), static_cast<Entidades::Entidade*>(_jogador2))) 
 			{
 				(*itObstaculo)->obstacular(_jogador2);
 				_jogador2->setGround(true);
+				_jogador2->setSpeed(_jogador2->getSpeedX(), 0);
+
+				//Idem
+				float topoDoObstaculo = (*itObstaculo)->getPositionY() - _jogador2->getBody().getGlobalBounds().height;
+				_jogador2->setPosition(_jogador1->getPosition().x, topoDoObstaculo + 1);
 			}
 		}
 	}
@@ -93,6 +104,11 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 			{
 				(*itObstaculo)->obstacular(_jogador1);
 				_jogador1->setGround(true);
+				_jogador1->setSpeed(_jogador1->getSpeedX(), 0);
+
+				//Idem
+				float topoDoObstaculo = (*itObstaculo)->getPositionY() - _jogador1->getBody().getGlobalBounds().height;
+				_jogador1->setPosition(_jogador1->getPosition().x, topoDoObstaculo+1);
 			}
 		}
 	}

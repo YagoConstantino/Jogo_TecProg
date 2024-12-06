@@ -8,6 +8,7 @@ namespace Entidades
 	class Inimigo :public Entidades::Personagem
 	{
 	protected:
+
 		bool atacar;
 		int _nivel_maldade;
 		Entidades::Jogador* _pJog;

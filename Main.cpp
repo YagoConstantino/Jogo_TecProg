@@ -24,30 +24,7 @@ public:
 
 int main()
 {
-    Pessoa* p1 = new Pessoa("Yago");
-    Pessoa* p2 = new Pessoa("Joao");
-    Pessoa* p3 = new Pessoa("Ana");
-    Lista<Pessoa>* l1 = new Lista<Pessoa>();
-    l1->insert_back(p1);
-    l1->insert_back(p2);
-    l1->insert_back(p3);
-    int i = 0;
-    for (i = 0; i < 3; i++)
-    {
-        (*l1)[i]->getInfo()->imprime();
-    }
-
-    Listas::ListaElementar<Pessoa>* l2 = new Listas::ListaElementar<Pessoa>();
-    l2->insert_back(p1);
-    l2->insert_back(p2);
-    l2->insert_back(p3);
-
-    for (i = 0; i < 3; i++)
-    {
-        (*l2)[i]->getInfo()->imprime();
-    }
-
-    
+   
     Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
     sf::Event event;
     Listas::ListaEntidades Lista;
@@ -90,6 +67,7 @@ int main()
             }
             
         }
+
         gg->render();
         Lista.executar();
         gc->executar();

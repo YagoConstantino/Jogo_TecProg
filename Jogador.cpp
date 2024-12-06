@@ -1,11 +1,9 @@
 #include "Jogador.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra,4), _pontos(0), nome(name), tempoPulo(200)
+	:Personagem(inlX, inY, pgra,4), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.5f)
 {
-	//migrei speed para Personagem 
-	//_speed.x = 0.5f;
-	//_speed.y = 0.5f;
+	
 
 	sf::Texture* textura = new sf::Texture();
 	
@@ -72,17 +70,18 @@ void Entidades::Jogador::operator--()
 void Entidades::Jogador::knockBack()
 {
 	setPosition(getPositionX() - 200, getPositionY());
-	//pular();
+	pular();
 	
 }
 
-void Entidades::Jogador::executar()
+void Entidades::Jogador::mover()
 {
- //Esses testes de se a posicao mais o tamanho nao chegou na borda devem ser transferidos para o Gerenciador de Colisoes
+	//Esses testes de se a posicao mais o tamanho nao chegou na borda devem ser transferidos para o Gerenciador de Colisoes
  //Depois não sei se precisa desse Evento, não lembro como que o sfml captura o teclado, se usa o evento ou não
-	
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Position.x + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().x)
-		Position.x += _speed.x;
+
+	_speed.x = 0;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Position.x + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().x)
+		_speed.x += _velocidade;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed.y))
 	{
@@ -94,15 +93,20 @@ void Entidades::Jogador::executar()
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (Position.x >= _speed.x))
-		Position.x -= _speed.x;
+		_speed.x -= _velocidade;
 
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))
 		//Position.y += _speed.y;
 
-    _body.setPosition(Position);
-	_pGraf->desenhar(this);
+	Position += _speed;
 
-	if (_num_vidas <= 0)
+
+}
+
+void Entidades::Jogador::executar()
+{
+	mover();
+ 	if (_num_vidas <= 0)
 	{
 		setVivo(false);
 	}
@@ -111,6 +115,9 @@ void Entidades::Jogador::executar()
 	{
 		tempoPulo++;
 	}
+
+	_body.setPosition(Position);
+	_pGraf->desenhar(this);
 
 }
 

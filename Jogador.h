@@ -11,6 +11,7 @@ namespace Entidades
 		int _pontos;
 		//sf::Vector2f _speed; // Sera que pode ser um sf::vector2f ?
 		std::string nome;
+		float _velocidade;
 	public:
 		Jogador(float inlX = 0, float inY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,std::string name = "");
 	
@@ -27,6 +28,7 @@ namespace Entidades
 		void operator--();
 
 		void knockBack();
+		void mover();
 
 		void executar();
 		void salvar();

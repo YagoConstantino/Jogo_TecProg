@@ -20,10 +20,14 @@ namespace Entidades
 		void setGround(bool ong);
 
 		bool getVivo()const;
-		void setVivo(bool ong);
+		void setVivo(bool vivo);
 
 		int getVidas()const;
 		void setVidas(int vid);
+
+		void setSpeed(float x, float y);
+		float getSpeedX()const;
+		float getSpeedY()const;
 
 		void sofrerGravidade(float gravidade);
 
