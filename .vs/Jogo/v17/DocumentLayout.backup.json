@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "Obst_Dificil.cpp",
               "ToolTip": "C:\\Users\\yagoa\\Desktop\\Game\\Jogo\\Obst_Dificil.cpp",
               "RelativeToolTip": "Obst_Dificil.cpp",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAAEUAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-06T12:21:28.44Z",
               "EditorCaption": ""
@@ -67,8 +67,7 @@
               "RelativeToolTip": "Gerenciador_colisoes.cpp",
               "ViewState": "AgIAAD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-06T12:21:15.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T12:21:15.557Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "Jogador.cpp",
               "ViewState": "AgIAADkAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-06T12:20:17.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T12:20:17.152Z"
             },
             {
               "$type": "Document",
@@ -93,8 +91,7 @@
               "RelativeToolTip": "Personagem.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-06T12:20:15.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T12:20:15.872Z"
             },
             {
               "$type": "Document",
@@ -106,8 +103,7 @@
               "RelativeToolTip": "Personagem.h",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T12:19:36.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T12:19:36.789Z"
             },
             {
               "$type": "Document",
@@ -119,8 +115,7 @@
               "RelativeToolTip": "Jogador.h",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T12:19:26.591Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T12:19:26.591Z"
             },
             {
               "$type": "Document",
@@ -132,8 +127,7 @@
               "RelativeToolTip": "Gerenciador_Colisoes.h",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T12:15:06.798Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T12:15:06.798Z"
             },
             {
               "$type": "Document",
