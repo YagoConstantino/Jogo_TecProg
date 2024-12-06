@@ -13,7 +13,7 @@ Entidades::Obst_Dificil::Obst_Dificil(int dano, float inicialX, float inicialY, 
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
 	setTexture(textura);
-	_body.setScale(4.f, 4.f);
+	_body.setScale(1.f, 1.f);
 
 	// Posicao
 	setPositionX(inicialX);
