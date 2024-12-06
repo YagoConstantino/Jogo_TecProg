@@ -59,6 +59,19 @@ float Entidades::Personagem::getSpeedY() const
 	return _speed.y;
 }
 
+void Entidades::Personagem::operator++()
+{
+	_num_vidas++;
+}
+
+void Entidades::Personagem::operator--()
+{
+	if (_num_vidas > 0)
+	{
+		_num_vidas--;
+	}
+}
+
 void Entidades::Personagem::sofrerGravidade(float gravidade)
 {
 	if (Position.y + _body.getGlobalBounds().height + gravidade <= _pGraf->getWindow()->getSize().y) 

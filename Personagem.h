@@ -29,6 +29,9 @@ namespace Entidades
 		float getSpeedX()const;
 		float getSpeedY()const;
 
+		void operator++();
+		void operator--();
+
 		void sofrerGravidade(float gravidade);
 
 		void pular();

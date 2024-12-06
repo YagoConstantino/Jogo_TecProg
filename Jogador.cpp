@@ -57,15 +57,6 @@ sf::Vector2f Entidades::Jogador::getPosition() const
 	return Position;
 }
 
-void Entidades::Jogador::operator++()
-{
-	_num_vidas++;
-}
-
-void Entidades::Jogador::operator--()
-{
-	_num_vidas--;
-}
 
 void Entidades::Jogador::knockBack()
 {
