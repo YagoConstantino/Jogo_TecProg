@@ -74,11 +74,19 @@ void Entidades::Personagem::operator--()
 
 void Entidades::Personagem::sofrerGravidade(float gravidade)
 {
-	if (Position.y + _body.getGlobalBounds().height + gravidade <= _pGraf->getWindow()->getSize().y) 
+	const float maxGravidade = 1.f; // Limite de velocidade da gravidade
+	if (!_onGround) 
 	{
 		_speed.y += gravidade;
+		if (_speed.y > maxGravidade) 
+		{
+			_speed.y = maxGravidade; // Limitar a velocidade máxima da gravidade
+		}
 	}
-	_body.setPosition(Position);
+	else {
+		_speed.y = 0; // Zera a velocidade quando está no chão
+	}
+	
 }
 
 void Entidades::Personagem::pular()

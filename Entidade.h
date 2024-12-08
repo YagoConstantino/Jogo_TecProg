@@ -24,6 +24,8 @@ namespace Entidades
 		float getPositionY()const { return Position.y; }
 		void setPositionY(float y) { Position.y = y; }
 
+		sf::Vector2f getPosition()const;
+
 		void restartClock();
 
 		/*

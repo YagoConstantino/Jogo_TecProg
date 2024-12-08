@@ -52,16 +52,18 @@ void Entidades::Jogador::setPosition(float x, float y)
 	_body.setPosition(Position);
 }
 
-sf::Vector2f Entidades::Jogador::getPosition() const
-{
-	return Position;
-}
 
 
-void Entidades::Jogador::knockBack()
+void Entidades::Jogador::knockBack(Entidades::Entidade* ent)
 {
-	setPosition(getPositionX() - 200, getPositionY());
-	pular();
+	if (this->getPosition().x < ent->getPosition().x) 
+	{
+		this->setSpeed(-5.0f, this->getSpeedY());  // Empurrar para a esquerda
+	}
+	else 
+	{
+		this->setSpeed(5.0f, this->getSpeedY());   // Empurrar para a direita
+	}
 	
 }
 
@@ -76,6 +78,7 @@ void Entidades::Jogador::mover()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed.y))
 	{
+		
 		tempoPulo += _clock.getElapsedTime().asMilliseconds();
 		if (tempoPulo >= 20)
 		{
@@ -88,8 +91,8 @@ void Entidades::Jogador::mover()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (Position.x >= _speed.x))
 		_speed.x -= _velocidade;
 
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))
-		//Position.y += _speed.y;
+	// (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))
+		//_speed.y = +_velocidade;
 
 	Position += _speed;
 

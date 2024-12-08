@@ -1,9 +1,8 @@
 #include "Inimigo.h"
 
 Entidades::Inimigo::Inimigo(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog,int vidas)
-	:Personagem(inicialX,inicialY,pgra,vidas),_pJog(pJog),atacar(false)
+	:Personagem(inicialX,inicialY,pgra,vidas),_pJog(pJog),atacar(false),_nivel_maldade(0)
 {
-	_nivel_maldade = 0;
 }
 
 Entidades::Inimigo::~Inimigo()
@@ -27,10 +26,20 @@ void Entidades::Inimigo::setJogador(Entidades::Jogador* pJog)
 	{
 		_pJog = pJog;
 	}
+	else
+	{
+		std::cerr << "Erro: Jogador inválido ao setar no inimigo!" << std::endl;
+	}
 }
 
 double Entidades::Inimigo::getDistancia()
 {
+	
+	if (!_pJog)
+	{
+		std::cerr << "Erro: Ponteiro para jogador é nulo. Distância não pode ser calculada!" << std::endl;
+		return -1.0;
+	}
 	//Pitagoras para calcular a distancia 
 	return sqrt(pow(getPositionX() - _pJog->getPositionX(), 2) + pow(getPositionY() - _pJog->getPositionY(), 2));
 }

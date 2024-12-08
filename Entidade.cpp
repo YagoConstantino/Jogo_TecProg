@@ -8,6 +8,10 @@ namespace Entidades
 		_body.setPosition(Position);
 		//_body.setScale(Size);
 	}
+	sf::Vector2f Entidade::getPosition() const
+	{
+			return Position;
+	}
 	void Entidade::restartClock()
 	{
 		_clock.restart();

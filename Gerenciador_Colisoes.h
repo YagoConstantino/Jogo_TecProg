@@ -41,6 +41,7 @@ namespace Gerenciadores {
 		void incluirObstaculo(Entidades::Obstaculo* pObstaculo);
 		void incluirProjetil(Entidades::Projetil* pProjetil);
 
+		sf::Vector2f calculaColisao(Entidades::Entidade* ent1, Entidades::Entidade* ent2);
 		void tratarColisoesJogsObstacs();
 		void tratarColisoesJogsInimgs();
 		void tratarColisoesJogsProjeteis();

@@ -67,48 +67,114 @@ void Gerenciadores::Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil* p
 	_listaProjetil.insert(pProjetil);
 }
 
+sf::Vector2f Gerenciadores::Gerenciador_Colisoes::calculaColisao(Entidades::Entidade* ent1, Entidades::Entidade* ent2) 
+	{
+	
+	sf::Vector2f pos1 = ent1->getPosition();
+	sf::Vector2f pos2 = ent2->getPosition();
+
+	sf::FloatRect bounds1 = ent1->getBody().getGlobalBounds();
+	sf::FloatRect bounds2 = ent2->getBody().getGlobalBounds();
+
+	sf::Vector2f tam1(bounds1.width, bounds1.height);
+	sf::Vector2f tam2(bounds2.width, bounds2.height);
+
+	sf::Vector2f distanciaEntreCentros(
+		fabs((pos1.x + tam1.x / 2.0f) - (pos2.x + tam2.x / 2.0f)),
+		fabs((pos1.y + tam1.y / 2.0f) - (pos2.y + tam2.y / 2.0f))
+	);
+
+	sf::Vector2f somaMetades(
+		tam1.x / 2.0f + tam2.x / 2.0f,
+		tam1.y / 2.0f + tam2.y / 2.0f
+	);
+
+	return sf::Vector2f(distanciaEntreCentros.x - somaMetades.x, distanciaEntreCentros.y - somaMetades.y);
+}
+
+
 void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
-	// Caso 1: os dois jogadores foram criados
-	if (_jogador1 != nullptr && _jogador2 != nullptr) {
-		for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); itObstaculo++) 
-		{
-			if (verificarColisao(static_cast<Entidades::Entidade*>(*itObstaculo), static_cast<Entidades::Entidade*>(_jogador1))) 
+	// Verifica colisão de jogadores com obstáculos
+	for (auto& obstaculo : _listaObstaculos) {
+		if (_jogador1 != nullptr) {
+			// Calcula a colisão entre jogador1 e obstáculo
+			sf::Vector2f ds = calculaColisao(_jogador1, obstaculo);
+			if (ds.x < 0.0f && ds.y < 0.0f) 
 			{
-				(*itObstaculo)->obstacular(_jogador1);
-				_jogador1->setGround(true);
-				_jogador1->setSpeed(_jogador1->getSpeedX(), 0);
+				obstaculo->obstacular(_jogador1);
+				if (fabs(ds.x) < fabs(ds.y)) {
+					// Colisão lateral
+					if (_jogador1->getPosition().x < obstaculo->getPosition().x) 
+					{
+						// Colisão pela esquerda
+						_jogador1->setPosition(obstaculo->getPosition().x - _jogador1->getBody().getGlobalBounds().width, _jogador1->getPosition().y);
 
-				//Recolocando o jogador acima do obstaculo, se nao mesmo corrigindo speed ele entra no obstaculo
-				//+1 para que ele entre em contatto com o obstaculo, se nao ele fica 1 pixel acima e nao da dano nos espinhos
-				float topoDoObstaculo = (*itObstaculo)->getPositionY() - _jogador1->getBody().getGlobalBounds().height;
-				_jogador1->setPosition(_jogador1->getPosition().x, topoDoObstaculo + 1);
-			}
-
-			if (verificarColisao(static_cast<Entidades::Entidade*>(*itObstaculo), static_cast<Entidades::Entidade*>(_jogador2))) 
-			{
-				(*itObstaculo)->obstacular(_jogador2);
-				_jogador2->setGround(true);
-				_jogador2->setSpeed(_jogador2->getSpeedX(), 0);
-
-				//Idem
-				float topoDoObstaculo = (*itObstaculo)->getPositionY() - _jogador2->getBody().getGlobalBounds().height;
-				_jogador2->setPosition(_jogador1->getPosition().x, topoDoObstaculo + 1);
+					}
+					else 
+					{
+						// Colisão pela direita
+						_jogador1->setPosition(obstaculo->getPosition().x + obstaculo->getBody().getGlobalBounds().width, _jogador1->getPosition().y);
+					}
+					_jogador1->setSpeed(0, _jogador1->getSpeedY());
+				}
+				else 
+				{
+					// Colisão vertical
+					if (_jogador1->getPosition().y < obstaculo->getPosition().y) 
+					{
+						// Colisão por cima
+						_jogador1->setGround(true);
+						_jogador1->setSpeed(_jogador1->getSpeedX(), 0);
+						_jogador1->setPosition(_jogador1->getPosition().x, obstaculo->getPosition().y - _jogador1->getBody().getGlobalBounds().height);
+					}
+					else 
+					{
+						// Colisão por baixo
+						_jogador1->setSpeed(_jogador1->getSpeedX(), 0);
+						_jogador1->setPosition(_jogador1->getPosition().x, obstaculo->getPosition().y + obstaculo->getBody().getGlobalBounds().height);
+					}
+				}
 			}
 		}
-	}
-	// Caso 2: apenas um jogador foi criado
-	else if (_jogador1 != nullptr) {
-		for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); itObstaculo++) 
-		{
-			if (verificarColisao(static_cast<Entidades::Entidade*>(*itObstaculo), static_cast<Entidades::Entidade*>(_jogador1))) 
-			{
-				(*itObstaculo)->obstacular(_jogador1);
-				_jogador1->setGround(true);
-				_jogador1->setSpeed(_jogador1->getSpeedX(), 0);
 
-				//Idem
-				float topoDoObstaculo = (*itObstaculo)->getPositionY() - _jogador1->getBody().getGlobalBounds().height;
-				_jogador1->setPosition(_jogador1->getPosition().x, topoDoObstaculo+1);
+		if (_jogador2 != nullptr) {
+			// Calcula a colisão entre jogador2 e obstáculo
+			sf::Vector2f ds = calculaColisao(_jogador2, obstaculo);
+			if (ds.x < 0.0f && ds.y < 0.0f) 
+			{
+				obstaculo->obstacular(_jogador2);
+				if (fabs(ds.x) < fabs(ds.y)) 
+				{
+					// Colisão lateral
+					if (_jogador2->getPosition().x < obstaculo->getPosition().x) 
+					{
+						// Colisão pela esquerda
+						_jogador2->setPosition(obstaculo->getPosition().x - _jogador2->getBody().getGlobalBounds().width, _jogador2->getPosition().y);
+					}
+					else 
+					{
+						// Colisão pela direita
+						_jogador2->setPosition(obstaculo->getPosition().x + obstaculo->getBody().getGlobalBounds().width, _jogador2->getPosition().y);
+					}
+					_jogador2->setSpeed(0, _jogador2->getSpeedY());
+				}
+				else 
+				{
+					// Colisão vertical
+					if (_jogador2->getPosition().y < obstaculo->getPosition().y) 
+					{
+						// Colisão por cima
+						_jogador2->setGround(true);
+						_jogador2->setSpeed(_jogador2->getSpeedX(), 0);
+						_jogador2->setPosition(_jogador2->getPosition().x, obstaculo->getPosition().y - _jogador2->getBody().getGlobalBounds().height);
+					}
+					else 
+					{
+						// Colisão por baixo
+						_jogador2->setSpeed(_jogador2->getSpeedX(), 0);
+						_jogador2->setPosition(_jogador2->getPosition().x, obstaculo->getPosition().y + obstaculo->getBody().getGlobalBounds().height);
+					}
+				}
 			}
 		}
 	}

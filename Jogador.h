@@ -9,7 +9,7 @@ namespace Entidades
 	private:
 		int tempoPulo;
 		int _pontos;
-		//sf::Vector2f _speed; // Sera que pode ser um sf::vector2f ?
+		
 		std::string nome;
 		float _velocidade;
 	public:
@@ -22,10 +22,10 @@ namespace Entidades
 		std::string& getNome();
 
 		void setPosition(float x, float y);
-		sf::Vector2f getPosition()const;
+		
 
 
-		void knockBack();
+		void knockBack(Entidades::Entidade* ent);
 		void mover();
 
 		void executar();
