@@ -40,7 +40,8 @@ int main()
     
     Entidades::Obst_Dificil obs(1,plat2.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg);
     Entidades::Plataforma plat3(obs.getPositionX() + obs.getBody().getGlobalBounds().width, 680, gg, 10);
-    Entidades::Plataforma plat4(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 380, gg, 10);
+    Entidades::Plataforma plat4(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 580, gg, 10);
+    Entidades::Plataforma plat5(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 280, gg, 10);
 
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
@@ -50,6 +51,7 @@ int main()
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat4));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat5));
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(&obs));
     Lista.percorrer();
@@ -61,6 +63,7 @@ int main()
     gc->incluirObstaculo(&plat3);
 
     gc->incluirObstaculo(&plat4);
+    gc->incluirObstaculo(&plat5);
     gc->incluirObstaculo(&obs);
     gc->setJogador1(jog);
 

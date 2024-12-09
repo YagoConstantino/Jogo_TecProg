@@ -56,14 +56,7 @@ void Entidades::Jogador::setPosition(float x, float y)
 
 void Entidades::Jogador::knockBack(Entidades::Entidade* ent)
 {
-	if (this->getPosition().x < ent->getPosition().x) 
-	{
-		this->setSpeed(-5.0f, this->getSpeedY());  // Empurrar para a esquerda
-	}
-	else 
-	{
-		this->setSpeed(5.0f, this->getSpeedY());   // Empurrar para a direita
-	}
+	setPositionX(getPositionX() - 20);
 	
 }
 
