@@ -54,10 +54,9 @@ void Entidades::Jogador::setPosition(float x, float y)
 
 
 
-void Entidades::Jogador::knockBack(Entidades::Entidade* ent)
+void Entidades::Jogador::knockBack()
 {
 	setPositionX(getPositionX() - 20);
-	
 }
 
 void Entidades::Jogador::mover()
@@ -73,7 +72,7 @@ void Entidades::Jogador::mover()
 	{
 		
 		tempoPulo += _clock.getElapsedTime().asMilliseconds();
-		if (tempoPulo >= 20)
+		if (tempoPulo >= 50)
 		{
 			pular();
 			tempoPulo = 0;
@@ -88,7 +87,6 @@ void Entidades::Jogador::mover()
 		//_speed.y = +_velocidade;
 
 	Position += _speed;
-
 
 }
 

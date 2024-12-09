@@ -74,7 +74,7 @@ void Entidades::Personagem::operator--()
 
 void Entidades::Personagem::sofrerGravidade(float gravidade)
 {
-	const float maxGravidade = 1.f; // Limite de velocidade da gravidade
+	const float maxGravidade = 0.5f; // Limite de velocidade da gravidade
 	if (!_onGround) 
 	{
 		_speed.y += gravidade;

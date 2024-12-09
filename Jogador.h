@@ -25,7 +25,7 @@ namespace Entidades
 		
 
 
-		void knockBack(Entidades::Entidade* ent);
+		void knockBack();
 		void mover();
 
 		void executar();

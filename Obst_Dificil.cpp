@@ -45,7 +45,7 @@ void Entidades::Obst_Dificil::executar()
 	if (!_danoso){
 		_segundos += _clock.getElapsedTime().asSeconds();
 
-		if (_segundos > 5.f) {
+		if (_segundos > 12.f) {
 			_danoso = true;
 			_segundos = 0.f;
 			_clock.restart();
@@ -67,7 +67,6 @@ void Entidades::Obst_Dificil::obstacular(Entidades::Jogador* pJog)
 	if (_danoso) {
 		for (int i = 0; i < _dano; i++) {
 			pJog->operator--();
-			pJog->knockBack(this);
 		
 		}
 		_danoso = false;

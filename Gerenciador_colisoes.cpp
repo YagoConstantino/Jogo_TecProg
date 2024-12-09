@@ -103,6 +103,10 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 			sf::Vector2f ds = calculaColisao(_jogador1, obstaculo);
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
+				if (verificarColisao(_jogador1, obstaculo))
+				{
+					obstaculo->obstacular(_jogador1);
+				}
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
 					// Colisão predominante na direção horizontal
@@ -142,9 +146,14 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 		// Tratamento para o jogador 2 (similar ao jogador 1)
 		if (_jogador2 != nullptr)
 		{
+			if (verificarColisao(_jogador2, obstaculo))
+			{
+				obstaculo->obstacular(_jogador2);
+			}
 			sf::Vector2f ds = calculaColisao(_jogador2, obstaculo);
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
+
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
 					// Colisão predominante na direção horizontal
@@ -169,7 +178,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 						colidiuComChao2 = true;
 						_jogador2->setGround(true); // Marca que o jogador está no chão
 						_jogador2->setSpeed(_jogador2->getSpeedX(), 0); // Zera a velocidade vertical do jogador
-						_jogador2->setPosition(_jogador2->getPosition().x, obstaculo->getPosition().y - _jogador2->getBody().getGlobalBounds().height);
+						_jogador2->setPosition(_jogador2->getPosition().x, obstaculo->getPosition().y - _jogador2->getBody().getGlobalBounds().height-1);
 					}
 					else
 					{
