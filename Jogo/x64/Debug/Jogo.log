@@ -1,14 +1,2 @@
-﻿  Entidade.cpp
-  Gerenciador_colisoes.cpp
-  Inimigo.cpp
-  InimigoFacil.cpp
-  Jogador.cpp
-  ListaEntidades.cpp
-  Main.cpp
-  Obst_Dificil.cpp
-  Obstaculo.cpp
-  Personagem.cpp
-  Plataforma.cpp
-  Projetil.cpp
-  Gerando Código...
+﻿  Main.cpp
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe
