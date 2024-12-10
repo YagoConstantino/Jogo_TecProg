@@ -4,7 +4,8 @@
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
 	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.2f)
 {
-	
+	_mover = true;
+
 	sf::Texture* textura = new sf::Texture();
 	
 	if (!textura->loadFromFile("assets/Player1.png")) 
@@ -43,6 +44,10 @@ void Entidades::Jogador::setNome(std::string& name)
 std::string Entidades::Jogador::getNome()const
 {
 	return nome;
+}
+
+void Entidades::Jogador::setMover(const bool mover) {
+	_mover = mover;
 }
 
 void Entidades::Jogador::knockBack(Entidades::Entidade* ente)
@@ -95,7 +100,8 @@ void Entidades::Jogador::mover()
 
 void Entidades::Jogador::executar()
 {
-	mover();
+	if(_mover)
+		mover();
 
 	if(_speed.x>0.3f)
 

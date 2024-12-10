@@ -75,6 +75,9 @@
     <ClInclude Include="InimigoFacil.h">
       <Filter>Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="Obst_Medio.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -119,5 +122,13 @@
     <ClCompile Include="InimigoFacil.cpp">
       <Filter>Entidades</Filter>
     </ClCompile>
+    <ClCompile Include="Obst_Medio.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\BarreiraEletrica.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
 </Project>

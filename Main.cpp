@@ -9,6 +9,7 @@
 #include "Plataforma.h"
 #include "Gerenciador_Colisoes.h"
 #include "Obst_Dificil.h"
+#include "Obst_Medio.h"
 #include "InimigoFacil.h"
 
 
@@ -37,9 +38,10 @@ int main()
     Entidades::Plataforma plat(5, 680, gg, 10);
     Entidades::Plataforma plat2(5+plat.getBody().getGlobalBounds().width, 680, gg, 10);
     Entidades::Plataforma plat4(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 480, gg, 10);
-    Entidades::Plataforma plat5(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 280, gg, 10);
+    Entidades::Plataforma plat5(plat.getPositionX() + plat.getBody().getGlobalBounds().width * 1.2f, 280, gg, 10);
     
     Entidades::Obst_Dificil obs(1,plat2.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg);
+    Entidades::Obst_Medio obsMe(plat.getPositionX() + plat.getBody().getGlobalBounds().width * 1.4f, 400, gg);
     Entidades::Plataforma plat3(obs.getPositionX() + obs.getBody().getGlobalBounds().width, 680, gg, 10);
    
     Entidades::InimigoFacil inimigo (500, 630, gg, jog,5);
@@ -55,10 +57,11 @@ int main()
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat5));
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(&obs));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&obsMe));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&inimigo));
     Lista.percorrer();
 
-    Gerenciadores::Gerenciador_Colisoes* gc = new Gerenciadores::Gerenciador_Colisoes(0.5f);
+    Gerenciadores::Gerenciador_Colisoes* gc = new Gerenciadores::Gerenciador_Colisoes(0.005f);
     //Poderiamos converter explicitamente para obstaculo
     gc->incluirObstaculo(&plat);
     gc->incluirObstaculo(&plat2);
@@ -67,6 +70,7 @@ int main()
     gc->incluirObstaculo(&plat4);
     gc->incluirObstaculo(&plat5);
     gc->incluirObstaculo(&obs);
+    gc->incluirObstaculo(&obsMe);
     gc->setJogador1(jog);
     gc->incluirInimigo(&inimigo);
     cout << jog->getNome() << endl;

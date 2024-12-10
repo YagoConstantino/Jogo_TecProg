@@ -52,7 +52,7 @@ void Entidades::Personagem::pular()
 {
 	if (_onGround)
 	{
-		_speed.y = -18.f;
+		_speed.y = -1.65f;
 		setGround(false);
 	}
 	

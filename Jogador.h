@@ -7,6 +7,8 @@ namespace Entidades
 	class Jogador :public Entidades::Personagem
 	{
 	private:
+		bool _mover;
+
 		int tempoPulo;
 		int _pontos;
 		
@@ -21,6 +23,8 @@ namespace Entidades
 		void setNome(std::string& name);
 		std::string getNome()const;
 		
+		void setMover(const bool mover);
+
 		void knockBack(Entidades::Entidade* ente);
 		void mover();
 
