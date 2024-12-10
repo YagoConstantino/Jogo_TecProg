@@ -1,10 +1,10 @@
 #include "Jogador.h"
+#include "stdlib.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.5f)
+	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.2f)
 {
 	
-
 	sf::Texture* textura = new sf::Texture();
 	
 	if (!textura->loadFromFile("assets/Player1.png")) 
@@ -45,13 +45,21 @@ std::string Entidades::Jogador::getNome()const
 	return nome;
 }
 
-
-
-
-
-void Entidades::Jogador::knockBack()
+void Entidades::Jogador::knockBack(Entidades::Entidade* ente)
 {
-	setPositionX(getPositionX() - 20);
+	if (getPositionX() > ente->getPositionX()) 
+	// se a posicao for maior que a do obstaculo, ele empurra para tras
+	{
+		_speed.x += 100;
+	}
+	// se não empurra pra frente 
+	else
+	{
+		_speed.x -= 100;
+	}
+
+	Position += _speed;
+	_body.setPosition(Position);
 }
 
 void Entidades::Jogador::mover()
@@ -67,7 +75,7 @@ void Entidades::Jogador::mover()
 	{
 		
 		tempoPulo += _clock.getElapsedTime().asMilliseconds();
-		if (tempoPulo >= 50)
+		if (tempoPulo >= 80)
 		{
 			pular();
 			tempoPulo = 0;
@@ -88,6 +96,10 @@ void Entidades::Jogador::mover()
 void Entidades::Jogador::executar()
 {
 	mover();
+
+	if(_speed.x>0.3f)
+
+
  	if (_num_vidas <= 0)
 	{
 		setVivo(false);

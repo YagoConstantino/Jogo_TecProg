@@ -21,7 +21,7 @@ namespace Entidades
 		void setNome(std::string& name);
 		std::string getNome()const;
 		
-		void knockBack();
+		void knockBack(Entidades::Entidade* ente);
 		void mover();
 
 		void executar();

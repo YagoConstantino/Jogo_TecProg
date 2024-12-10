@@ -8,9 +8,10 @@ namespace Entidades
 	class Entidade:public Entidades::Ente
 	{
 	protected:
-
+		bool _onGround;
+		int _Tipo;
 		sf::Vector2f Position;
-		//sf::Vector2f Size;
+		sf::Vector2f _speed;
 		sf::Clock _clock;
 		float _segundos;
 
@@ -24,21 +25,22 @@ namespace Entidades
 		float getPositionY()const { return Position.y; }
 		void setPositionY(float y) { Position.y = y; }
 
+		bool getOnGround()const;
+		void setGround(bool ong);
 
 		void setPosition(float x, float y);
 		sf::Vector2f getPosition()const;
 
+		void setSpeed(float x, float y);
+		float getSpeedX()const;
+		float getSpeedY()const;
+
 		void restartClock();
 
-		/*
-		float getSizeWIDTH()const { return Size.x; }
-		void setSizeWIDTH(float x) { Size.x = x; }
+		void sofrerGravidade(float gravidade);
 
-		float getSizeHeight()const { return Size.y; }
-		void setSizeHeight(float y) { Size.y = y; }
-		*/
-
-		// Ja tem no Ente sf::Sprite getBody()const { return _body; }
+		void setTipo(int tip);
+		int getTipo()const;
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

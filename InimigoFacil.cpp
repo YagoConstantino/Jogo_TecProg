@@ -51,4 +51,5 @@ void Entidades::InimigoFacil::render()
 
 void Entidades::InimigoFacil::danificar(Entidades::Jogador* pJog)
 {
+	pJog->operator--();
 }

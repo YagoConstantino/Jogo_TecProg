@@ -6,7 +6,7 @@ Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(float gravidade)
 {
 	_jogador1 = nullptr;
 	_jogador2 = nullptr;
-	
+
 	_listaInimigos.clear();
 	_listaObstaculos.clear();
 	_listaProjetil.clear();
@@ -107,6 +107,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 				{
 					obstaculo->obstacular(_jogador1);
 				}
+
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
 					// Colisão predominante na direção horizontal
@@ -293,29 +294,29 @@ const bool Gerenciadores::Gerenciador_Colisoes::verificarColisao(Entidades::Enti
 
 void Gerenciadores::Gerenciador_Colisoes::aplicarGravidade() 
 {
-	// Caso 1: os dois jogadores foram criados
-	if (_jogador1 != nullptr && _jogador2 != nullptr) 
+	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); ++itInimigo)
 	{
-		if (!_jogador1->getOnGround())
+		if (*itInimigo)
 		{
-			_jogador1->sofrerGravidade(_gravidade);
+			(*itInimigo)->sofrerGravidade(_gravidade);
 		}
-		
-		if (!_jogador2->getOnGround())
-		{
-			_jogador2->sofrerGravidade(_gravidade);
-		}
-
-		
 	}
-	// Caso 2: apenas um jogador foi criado
-	else if (_jogador1 != nullptr) 
+	for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo)
 	{
-
-		if (!_jogador1->getOnGround())
+		if (*itObstaculo)
 		{
-			_jogador1->sofrerGravidade(_gravidade);
+			(*itObstaculo)->sofrerGravidade(_gravidade);
 		}
+	}
+
+	if (_jogador1 != nullptr)
+	{
+		_jogador1->sofrerGravidade(_gravidade);
+	}
+
+	if (_jogador2 != nullptr)
+	{
+		_jogador2->sofrerGravidade(_gravidade);
 	}
 }
 

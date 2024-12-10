@@ -13,7 +13,7 @@ Entidades::Obst_Dificil::Obst_Dificil(int dano, float inicialX, float inicialY, 
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
 	setTexture(textura);
-	_body.setScale(1.f, 1.f);
+	_body.setScale(0.8f, 1.5f);
 
 	// Posicao
 	setPositionX(inicialX);
@@ -45,7 +45,7 @@ void Entidades::Obst_Dificil::executar()
 	if (!_danoso){
 		_segundos += _clock.getElapsedTime().asSeconds();
 
-		if (_segundos > 12.f) {
+		if (_segundos > 15.f) {
 			_danoso = true;
 			_segundos = 0.f;
 			_clock.restart();
@@ -59,16 +59,19 @@ void Entidades::Obst_Dificil::executar()
 
 void Entidades::Obst_Dificil::obstacular(Entidades::Jogador* pJog) 
 {
-	if (pJog == nullptr) {
+	if (pJog == nullptr) 
+	{
 		std::cerr << "Erro ao acessar ponteiro jogador.\n";
 		return;
 	}
 
-	if (_danoso) {
-		for (int i = 0; i < _dano; i++) {
+	if (_danoso) 
+	{
+		for (int i = 0; i < _dano; i++) 
+		{
 			pJog->operator--();
-		
 		}
+		pJog->knockBack(this);
 		_danoso = false;
 	}
 }

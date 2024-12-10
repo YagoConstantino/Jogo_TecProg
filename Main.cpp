@@ -36,14 +36,14 @@ int main()
     
     Entidades::Plataforma plat(5, 680, gg, 10);
     Entidades::Plataforma plat2(5+plat.getBody().getGlobalBounds().width, 680, gg, 10);
-    
-
-    
-    Entidades::Obst_Dificil obs(1,plat2.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg);
-    Entidades::Plataforma plat3(obs.getPositionX() + obs.getBody().getGlobalBounds().width, 680, gg, 10);
     Entidades::Plataforma plat4(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 480, gg, 10);
     Entidades::Plataforma plat5(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 280, gg, 10);
 
+
+    
+    Entidades::Obst_Dificil obs(1,plat2.getPositionX() + plat.getBody().getGlobalBounds().width, 679, gg);
+    Entidades::Plataforma plat3(obs.getPositionX() + obs.getBody().getGlobalBounds().width, 680, gg, 10);
+   
     Entidades::InimigoFacil inimigo (500, 630, gg, jog,5);
 
 
@@ -85,11 +85,12 @@ int main()
         }
 
         gg->render();
-        Lista.executar();
         gc->executar();
+        Lista.executar();
+        
         gg->display();
 
-        //cout << jog->getVidas();
+        cout << jog->getVidas();
         
     }
 
