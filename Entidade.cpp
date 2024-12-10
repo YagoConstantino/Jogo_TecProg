@@ -8,6 +8,12 @@ namespace Entidades
 		_body.setPosition(Position);
 		//_body.setScale(Size);
 	}
+	void Entidade::setPosition(float x, float y)
+	{
+		Position.x = x;
+		Position.y = y;
+		_body.setPosition(Position);
+	}
 	sf::Vector2f Entidade::getPosition() const
 	{
 			return Position;

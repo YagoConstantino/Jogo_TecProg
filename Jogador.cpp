@@ -1,7 +1,7 @@
 #include "Jogador.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra,4), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.5f)
+	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.5f)
 {
 	
 
@@ -40,17 +40,12 @@ void Entidades::Jogador::setNome(std::string& name)
 	nome = name;
 }
 
-std::string& Entidades::Jogador::getNome()
+std::string Entidades::Jogador::getNome()const
 {
 	return nome;
 }
 
-void Entidades::Jogador::setPosition(float x, float y)
-{
-	Position.x = x;
-	Position.y = y;
-	_body.setPosition(Position);
-}
+
 
 
 

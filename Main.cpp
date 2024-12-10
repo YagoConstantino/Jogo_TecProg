@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "ListaTemplate.h"
-#include "Lista2.h"
+#include "Lista.h"
 #include "Gerenciador_Grafico.h"
 #include "Jogador.h"
 #include "Projetil.h"
@@ -9,6 +9,7 @@
 #include "Plataforma.h"
 #include "Gerenciador_Colisoes.h"
 #include "Obst_Dificil.h"
+#include "InimigoFacil.h"
 
 
 using namespace std;
@@ -43,6 +44,8 @@ int main()
     Entidades::Plataforma plat4(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 480, gg, 10);
     Entidades::Plataforma plat5(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 280, gg, 10);
 
+    Entidades::InimigoFacil inimigo (500, 630, gg, jog,5);
+
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
@@ -54,6 +57,7 @@ int main()
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat5));
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(&obs));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(&inimigo));
     Lista.percorrer();
 
     Gerenciadores::Gerenciador_Colisoes* gc = new Gerenciadores::Gerenciador_Colisoes(0.5f);
@@ -66,6 +70,8 @@ int main()
     gc->incluirObstaculo(&plat5);
     gc->incluirObstaculo(&obs);
     gc->setJogador1(jog);
+    gc->incluirInimigo(&inimigo);
+    cout << jog->getNome() << endl;
 
     while (gg->getOpen() )
     {
@@ -83,7 +89,7 @@ int main()
         gc->executar();
         gg->display();
 
-        cout << jog->getVidas();
+        //cout << jog->getVidas();
         
     }
 

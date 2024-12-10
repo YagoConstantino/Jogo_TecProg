@@ -13,7 +13,8 @@ namespace Entidades
 		int _nivel_maldade;
 		Entidades::Jogador* _pJog;
 	public:
-		Inimigo(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador*pJog=nullptr,int vidas = 1);
+		Inimigo(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
+			Entidades::Jogador*pJog=nullptr,int vidas = 1);
 		virtual ~Inimigo();
 
 		void setMaldade(int mal);
@@ -22,7 +23,7 @@ namespace Entidades
 		void setJogador(Entidades::Jogador* pJog);
 		//Entidades::Jogador* getJogador()const;
 
-		double getDistancia();
+		double getDistanciaJogador();
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

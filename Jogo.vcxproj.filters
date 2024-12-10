@@ -30,7 +30,7 @@
     <ClInclude Include="Elemento.h">
       <Filter>Listas</Filter>
     </ClInclude>
-    <ClInclude Include="Lista2.h">
+    <ClInclude Include="Lista.h">
       <Filter>Listas</Filter>
     </ClInclude>
     <ClInclude Include="ListaTemplate.h">
@@ -72,6 +72,9 @@
     <ClInclude Include="Obst_Dificil.h">
       <Filter>Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="InimigoFacil.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -111,6 +114,9 @@
       <Filter>Entidades</Filter>
     </ClCompile>
     <ClCompile Include="Obst_Dificil.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="InimigoFacil.cpp">
       <Filter>Entidades</Filter>
     </ClCompile>
   </ItemGroup>

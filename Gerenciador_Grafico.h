@@ -21,7 +21,7 @@ namespace Gerenciadores{
 		void desenhar(sf::RectangleShape& shape);
 		void render();
 		void display();
-		sf::RenderWindow* getWindow();
+		sf::RenderWindow* getWindow()const;
 		bool getOpen()const;
 		void closeWindow();
 		

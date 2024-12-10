@@ -13,18 +13,14 @@ namespace Entidades
 		std::string nome;
 		float _velocidade;
 	public:
-		Jogador(float inlX = 0, float inY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,std::string name = "");
-	
+		Jogador(float inlX = 0, float inY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
+			std::string name = "");
 		
 		~Jogador();
 
 		void setNome(std::string& name);
-		std::string& getNome();
-
-		void setPosition(float x, float y);
+		std::string getNome()const;
 		
-
-
 		void knockBack();
 		void mover();
 

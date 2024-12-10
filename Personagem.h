@@ -12,7 +12,8 @@ namespace Entidades
 		sf::Vector2f _speed;
 
 	public:
-		Personagem(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr, int vidas=1 );
+		Personagem(float inicialX = 0, float inicialY = 0, 
+			Gerenciadores::Gerenciador_Grafico* pgra = nullptr, int vidas = 10 );
 		
 		virtual ~Personagem();
 

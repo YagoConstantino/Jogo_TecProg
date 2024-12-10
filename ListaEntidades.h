@@ -1,5 +1,5 @@
 #pragma once
-#include "Lista2.h"
+#include "Lista.h"
 #include "Entidade.h"
 
 namespace Listas

@@ -24,6 +24,8 @@ namespace Entidades
 		float getPositionY()const { return Position.y; }
 		void setPositionY(float y) { Position.y = y; }
 
+
+		void setPosition(float x, float y);
 		sf::Vector2f getPosition()const;
 
 		void restartClock();
@@ -36,7 +38,7 @@ namespace Entidades
 		void setSizeHeight(float y) { Size.y = y; }
 		*/
 
-		sf::Sprite getBody()const { return _body; }
+		// Ja tem no Ente sf::Sprite getBody()const { return _body; }
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

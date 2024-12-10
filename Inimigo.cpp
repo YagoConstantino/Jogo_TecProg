@@ -32,7 +32,7 @@ void Entidades::Inimigo::setJogador(Entidades::Jogador* pJog)
 	}
 }
 
-double Entidades::Inimigo::getDistancia()
+double Entidades::Inimigo::getDistanciaJogador()
 {
 	
 	if (!_pJog)
@@ -43,3 +43,4 @@ double Entidades::Inimigo::getDistancia()
 	//Pitagoras para calcular a distancia 
 	return sqrt(pow(getPositionX() - _pJog->getPositionX(), 2) + pow(getPositionY() - _pJog->getPositionY(), 2));
 }
+

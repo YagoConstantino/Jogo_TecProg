@@ -36,7 +36,7 @@ void Gerenciadores::Gerenciador_Grafico::display()
     window->display();
 }
 
-sf::RenderWindow* Gerenciadores::Gerenciador_Grafico::getWindow() 
+sf::RenderWindow* Gerenciadores::Gerenciador_Grafico::getWindow() const
 {
     return window;
 }
