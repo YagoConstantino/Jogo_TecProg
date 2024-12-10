@@ -45,7 +45,7 @@ namespace Entidades
 	void Entidade::sofrerGravidade(float gravidade)
 	{
 		const float maxGravidade = 0.15f; // Limite de velocidade da gravidade
-		if (!_onGround && _Tipo == 1 )
+		if (!_onGround)
 		{
 			_speed.y += gravidade;
 			if (_speed.y > maxGravidade)
@@ -55,6 +55,10 @@ namespace Entidades
 		}
 		else {
 			_speed.y = 0; // Zera a velocidade quando está no chão
+		}
+		if (getTipo() == 2)
+		{
+			_speed.y -= gravidade;
 		}
 	}
 	void Entidade::setTipo(int tip)
