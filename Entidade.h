@@ -14,6 +14,7 @@ namespace Entidades
 		sf::Vector2f _speed;
 		sf::Clock _clock;
 		float _segundos;
+		bool _vivo;
 
 	public:
 		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
@@ -41,6 +42,9 @@ namespace Entidades
 
 		void setTipo(int tip);
 		int getTipo()const;
+
+		bool getVivo()const;
+		void setVivo(bool vivo);
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;

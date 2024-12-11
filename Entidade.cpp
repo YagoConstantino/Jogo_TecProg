@@ -3,7 +3,8 @@
 namespace Entidades
 {
 	Entidades::Entidade::Entidade(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra):
-		Ente(pgra), Position(inicialX, inicialY),_clock(),_segundos(0.0f),_speed(0,0),_Tipo(0),_onGround()
+		Ente(pgra), Position(inicialX, inicialY),_clock(),_segundos(0.0f),
+		_speed(0,0),_Tipo(0),_onGround(),_vivo(true)
 	{
 		_body.setPosition(Position);
 	}
@@ -68,6 +69,14 @@ namespace Entidades
 	int Entidade::getTipo() const
 	{
 		return _Tipo;
+	}
+	bool Entidade::getVivo() const
+	{
+		return _vivo;
+	}
+	void Entidade::setVivo(bool vivo)
+	{
+		_vivo = vivo;
 	}
 }
 

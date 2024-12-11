@@ -1,7 +1,7 @@
 #include "Personagem.h"
 
 Entidades::Personagem::Personagem(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, int vidas)
-	:Entidade(inicialX, inicialY, pgra), _num_vidas(vidas),  _vivo(true)
+	:Entidade(inicialX, inicialY, pgra), _num_vidas(vidas)
 {
 	setTipo(1);
 }
@@ -12,16 +12,6 @@ Entidades::Personagem::~Personagem()
 {
 }
 
-
-bool Entidades::Personagem::getVivo() const
-{
-	return _vivo;
-}
-
-void Entidades::Personagem::setVivo(bool vivo)
-{
-	_vivo = vivo;
-}
 
 int Entidades::Personagem::getVidas() const
 {
@@ -41,7 +31,7 @@ void Entidades::Personagem::operator++()
 
 void Entidades::Personagem::operator--()
 {
-	if (_num_vidas > 0)
+	if (_num_vidas >= 0)
 	{
 		_num_vidas--;
 	}

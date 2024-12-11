@@ -26,44 +26,44 @@ int main()
     Entidades::Projetil pro(1, 1.5f, gg);
 
     
-    Entidades::Plataforma plat(5, 680, gg, 10);
-    Entidades::Plataforma plat2(5+plat.getBody().getGlobalBounds().width, 680, gg, 10);
-    Entidades::Plataforma plat4(plat.getPositionX() + plat.getBody().getGlobalBounds().width, 480, gg, 10);
-    Entidades::Plataforma plat5(plat.getPositionX() + plat.getBody().getGlobalBounds().width * 1.2f, 280, gg, 10);
+    Entidades::Plataforma *plat = new Entidades::Plataforma (5, 680, gg, 10);
+    Entidades::Plataforma *plat2 = new Entidades::Plataforma(5+plat->getBody().getGlobalBounds().width, 680, gg, 10);
+    Entidades::Plataforma *plat4 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width, 480, gg, 10);
+    Entidades::Plataforma *plat5 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.2f, 280, gg, 10);
     
-    Entidades::Obst_Dificil obs(1,plat2.getPositionX() + plat.getBody().getGlobalBounds().width, 680, gg);
-    Entidades::Obst_Medio obsMe(plat.getPositionX() + plat.getBody().getGlobalBounds().width * 1.4f, 400, gg);
+    Entidades::Obst_Dificil obs(1,plat2->getPositionX() + plat->getBody().getGlobalBounds().width, 680, gg);
+    Entidades::Obst_Medio obsMe(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.4f, 400, gg);
     Entidades::Plataforma plat3(obs.getPositionX() + obs.getBody().getGlobalBounds().width, 680, gg, 10);
    
-    Entidades::InimigoFacil inimigo (500, 630, gg, jog,5);
+    Entidades::InimigoFacil *inimigo = new Entidades::InimigoFacil (500, 630, gg, jog,5);
 
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat2));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(plat));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(plat2));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
 
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat4));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat5));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(plat4));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(plat5));
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(&obs));
     Lista.insert_back(static_cast<Entidades::Entidade*>(&obsMe));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&inimigo));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(inimigo));
     Lista.percorrer();
 
     Gerenciadores::Gerenciador_Colisoes* gc = new Gerenciadores::Gerenciador_Colisoes(0.005f);
     //Poderiamos converter explicitamente para obstaculo
-    gc->incluirObstaculo(&plat);
-    gc->incluirObstaculo(&plat2);
+    gc->incluirObstaculo(plat);
+    gc->incluirObstaculo(plat2);
     gc->incluirObstaculo(&plat3);
 
-    gc->incluirObstaculo(&plat4);
-    gc->incluirObstaculo(&plat5);
+    gc->incluirObstaculo(plat4);
+    gc->incluirObstaculo(plat5);
     gc->incluirObstaculo(&obs);
     gc->incluirObstaculo(&obsMe);
     gc->setJogador1(jog);
-    gc->incluirInimigo(&inimigo);
+    gc->incluirInimigo(inimigo);
     cout << jog->getNome() << endl;
 
     while (gg->getOpen() )
@@ -80,6 +80,7 @@ int main()
         gg->render();
         gc->executar();
         Lista.executar();
+        
         
         gg->display();
 

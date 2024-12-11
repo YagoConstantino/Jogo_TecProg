@@ -1,8 +1,9 @@
 #include "ListaEntidades.h"
-
+#include "Personagem.h"
 Listas::ListaEntidades::ListaEntidades() : List() {}
 
-Listas::ListaEntidades::~ListaEntidades() {
+Listas::ListaEntidades::~ListaEntidades() 
+{
     limpar();
 }
 
@@ -22,7 +23,8 @@ void Listas::ListaEntidades::remove_back() {
     List.remove_back();
 }
 
-void Listas::ListaEntidades::remove_ID(int id) {
+void Listas::ListaEntidades::remove_ID(int id) 
+{
    Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
 
     // Procurar o elemento com o ID
@@ -51,18 +53,21 @@ void Listas::ListaEntidades::remove_ID(int id) {
             List.getTail()->setNext(nullptr);
         }
     }
-    else {
+    else 
+    {
         aux->GetPrev()->setNext(aux->GetNext());
         aux->GetNext()->setPrev(aux->GetPrev());
     }
-
-    delete aux;
+    Entidades::Entidade* perso = aux->getInfo();
+    delete perso;
     --List; // Decrementa o tamanho da lista
 }
 
-void Listas::ListaEntidades::limpar() {
+void Listas::ListaEntidades::limpar() 
+{
     List.limpar();
 }
+
 
 bool Listas::ListaEntidades::empty()
 {
@@ -71,20 +76,24 @@ bool Listas::ListaEntidades::empty()
 
 void Listas::ListaEntidades::percorrer() {
     Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
-    while (aux != nullptr) {
+    while (aux != nullptr) 
+    {
         Entidades::Entidade* ente = aux->getInfo(); // Obter o ponteiro para Entidade
-        if (ente != nullptr) {
+        if (ente != nullptr) 
+        {
             std::cout << "ID da Entidade: " << ente->getId() << '\n';
         }
         aux = aux->GetNext();
     }
 }
 
-void Listas::ListaEntidades::executar() {
+void Listas::ListaEntidades::executar() 
+{
     Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
-    while (aux != nullptr) {
+    while (aux != nullptr) 
+    {
         Entidades::Entidade* ente = aux->getInfo(); // Obter o ponteiro para Entidade
-        if (ente != nullptr) 
+        if (ente != nullptr && ente->getVivo()) 
         {
             ente->executar(); // Executa a ação da entidade
         }

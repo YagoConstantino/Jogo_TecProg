@@ -99,7 +99,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo)
 	{
 		// Tratamento para o jogador 1
-		if (_jogador1 != nullptr) {
+		if (_jogador1 != nullptr&&_jogador1->getVivo()) {
 			sf::Vector2f ds = calculaColisao(_jogador1, (*itObstaculo));
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
@@ -145,7 +145,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 		}
 
 		// Tratamento para o jogador 2 (similar ao jogador 1)
-		if (_jogador2 != nullptr)
+		if (_jogador2 != nullptr&&_jogador2->getVivo())
 		{
 			if (verificarColisao(_jogador2, (*itObstaculo)))
 			{
@@ -195,6 +195,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	// Caso nenhum dos jogadores tenha colidido com o chão, marca que não estão no chão
 	if (!colidiuComChao1 && _jogador1 != nullptr) _jogador1->setGround(false);
 	if (!colidiuComChao2 && _jogador2 != nullptr) _jogador2->setGround(false);
+	
 }
 
 
@@ -206,7 +207,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 	
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); itInimigo++)
 	{
-		if (*itInimigo != nullptr)
+		if (*itInimigo != nullptr&&(*itInimigo)->getVivo())
 		{
 
 			//Para cada Inimigo vamos percorrer os Obstaculos, testar e tratar colisões

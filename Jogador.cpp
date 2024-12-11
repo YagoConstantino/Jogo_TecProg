@@ -4,7 +4,7 @@
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
 	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.2f),_mover(true)
 {
-	
+	setTipo(3);
 
 	sf::Texture* textura = new sf::Texture();
 	
@@ -109,8 +109,10 @@ void Entidades::Jogador::executar()
 	if(_mover)
 		mover();
 
-	if(_speed.x>0.3f)
-
+	if (_speed.x > 0.3f)
+	{
+		setSpeed(0.3f, getSpeedY());
+	}
 
  	if (_num_vidas <= 0)
 	{

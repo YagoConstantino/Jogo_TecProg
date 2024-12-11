@@ -7,17 +7,12 @@ namespace Entidades
 	{
 	protected:
 		int _num_vidas;
-		
-		bool _vivo;
-		
 	public:
 		Personagem(float inicialX = 0, float inicialY = 0, 
 			Gerenciadores::Gerenciador_Grafico* pgra = nullptr, int vidas = 10 );
 		
 		virtual ~Personagem();
 
-		bool getVivo()const;
-		void setVivo(bool vivo);
 
 		int getVidas()const;
 		void setVidas(int vid);
