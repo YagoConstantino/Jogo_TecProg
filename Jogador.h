@@ -7,7 +7,14 @@ namespace Entidades
 	class Jogador :public Entidades::Personagem
 	{
 	private:
-		bool _mover;
+		// Estado de paralisia
+		sf::Sprite telaParalisada; // pode criar uma classe figura para o sprite e a textura
+		sf::Texture* texturaTela;
+		sf::Clock _clockParalisia; // clock diferente do clock pulo
+		float _duracaoParalisia;
+		float _tempoParalisado;
+		bool _paralisado;
+		//
 
 		int tempoPulo;
 		int _pontos;
@@ -23,7 +30,7 @@ namespace Entidades
 		void setNome(std::string& name);
 		std::string getNome()const;
 		
-		void setMover(const bool mover);
+		void setParalisado(const bool para, float duracao);
 		
 		void AumentarPontos(int i);
 		int getPontos()const;

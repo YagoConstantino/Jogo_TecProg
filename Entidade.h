@@ -20,11 +20,11 @@ namespace Entidades
 		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
 		virtual ~Entidade() {};
 
-		float getPositionX()const { return Position.x; }
-		void setPositionX(float x) { Position.x = x; }
+		float getPositionX()const;
+		void setPositionX(float x);
 
-		float getPositionY()const { return Position.y; }
-		void setPositionY(float y) { Position.y = y; }
+		float getPositionY()const;
+		void setPositionY(float y);
 
 		bool getOnGround()const;
 		void setGround(bool ong);

@@ -8,6 +8,22 @@ namespace Entidades
 	{
 		_body.setPosition(Position);
 	}
+	float Entidade::getPositionX() const
+	{
+		return Position.x;
+	}
+	void Entidade::setPositionX(float x)
+	{
+		Position.x = x;
+	}
+	float Entidade::getPositionY() const
+	{
+		return Position.y;
+	}
+	void Entidade::setPositionY(float y)
+	{
+		Position.y = y;
+	}
 	bool Entidade::getOnGround() const
 	{
 		return _onGround;
