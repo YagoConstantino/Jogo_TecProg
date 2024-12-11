@@ -24,6 +24,9 @@ namespace Entidades
 		std::string getNome()const;
 		
 		void setMover(const bool mover);
+		
+		void AumentarPontos(int i);
+		int getPontos()const;
 
 		void knockBack(Entidades::Entidade* ente);
 		void mover();

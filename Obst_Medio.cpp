@@ -1,11 +1,14 @@
 #include "Obst_Medio.h"
 
-Entidades::Obst_Medio::Obst_Medio(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra) {
+Entidades::Obst_Medio::Obst_Medio(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra) 
+	:Obstaculo(inicialX,inicialY,pgra)
+{
 	// Jogador
 	_pJog = nullptr;
 
 	// Gerenciador grafico
-	_pGraf = pgra;
+	//_pGraf = pgra; não precisa fazer isso aqui,é inicializado lá no Ente, basta chamar a construtura de Obstaculo
+	// que a cadeia de construtoras garante a inicialização
 
 	// Imagem do obstaculo
 	sf::Texture* textura = new sf::Texture();

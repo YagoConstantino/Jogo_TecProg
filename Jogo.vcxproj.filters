@@ -25,6 +25,12 @@
     <Filter Include="Fases">
       <UniqueIdentifier>{3bc94c43-da81-45ac-8d63-68b3f27fbe74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entidades\Personagens">
+      <UniqueIdentifier>{b25dc131-6526-4265-b2f7-b315966b5835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entidades\Obstaculos">
+      <UniqueIdentifier>{44354068-16b4-442b-abed-19e775f25b20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Elemento.h">
@@ -36,20 +42,8 @@
     <ClInclude Include="ListaTemplate.h">
       <Filter>Listas</Filter>
     </ClInclude>
-    <ClInclude Include="Ente.h">
-      <Filter>Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Entidade.h">
-      <Filter>Entidades</Filter>
-    </ClInclude>
     <ClInclude Include="Gerenciador_Grafico.h">
       <Filter>Gerenciadores</Filter>
-    </ClInclude>
-    <ClInclude Include="Personagem.h">
-      <Filter>Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Jogador.h">
-      <Filter>Entidades</Filter>
     </ClInclude>
     <ClInclude Include="Projetil.h">
       <Filter>Entidades</Filter>
@@ -57,54 +51,48 @@
     <ClInclude Include="ListaEntidades.h">
       <Filter>Listas</Filter>
     </ClInclude>
-    <ClInclude Include="Obstaculo.h">
-      <Filter>Entidades</Filter>
-    </ClInclude>
-    <ClInclude Include="Plataforma.h">
-      <Filter>Entidades</Filter>
-    </ClInclude>
     <ClInclude Include="Gerenciador_Colisoes.h">
       <Filter>Gerenciadores</Filter>
     </ClInclude>
-    <ClInclude Include="Inimigo.h">
-      <Filter>Entidades</Filter>
+    <ClInclude Include="Ente.h">
+      <Filter>Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="Obst_Dificil.h">
-      <Filter>Entidades</Filter>
+    <ClInclude Include="Entidade.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo.h">
+      <Filter>Entidades\Personagens</Filter>
     </ClInclude>
     <ClInclude Include="InimigoFacil.h">
-      <Filter>Entidades</Filter>
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Jogador.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Obst_Dificil.h">
+      <Filter>Entidades\Obstaculos</Filter>
     </ClInclude>
     <ClInclude Include="Obst_Medio.h">
-      <Filter>Entidades</Filter>
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstaculo.h">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Plataforma.h">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Personagem.h">
+      <Filter>Entidades\Personagens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Ente.cpp">
-      <Filter>Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Entidade.cpp">
-      <Filter>Entidades</Filter>
-    </ClCompile>
     <ClCompile Include="Gerenciador_Grafico.cpp">
       <Filter>Gerenciadores</Filter>
     </ClCompile>
-    <ClCompile Include="Personagem.cpp">
-      <Filter>Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Jogador.cpp">
-      <Filter>Entidades</Filter>
-    </ClCompile>
     <ClCompile Include="Projetil.cpp">
-      <Filter>Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Obstaculo.cpp">
-      <Filter>Entidades</Filter>
-    </ClCompile>
-    <ClCompile Include="Plataforma.cpp">
       <Filter>Entidades</Filter>
     </ClCompile>
     <ClCompile Include="ListaEntidades.cpp">
@@ -113,17 +101,35 @@
     <ClCompile Include="Gerenciador_colisoes.cpp">
       <Filter>Gerenciadores</Filter>
     </ClCompile>
-    <ClCompile Include="Inimigo.cpp">
-      <Filter>Entidades</Filter>
+    <ClCompile Include="Ente.cpp">
+      <Filter>Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="Obst_Dificil.cpp">
-      <Filter>Entidades</Filter>
+    <ClCompile Include="Entidade.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo.cpp">
+      <Filter>Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="InimigoFacil.cpp">
-      <Filter>Entidades</Filter>
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogador.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Obst_Dificil.cpp">
+      <Filter>Entidades\Obstaculos</Filter>
     </ClCompile>
     <ClCompile Include="Obst_Medio.cpp">
-      <Filter>Entidades</Filter>
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstaculo.cpp">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Plataforma.cpp">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Personagem.cpp">
+      <Filter>Entidades\Personagens</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

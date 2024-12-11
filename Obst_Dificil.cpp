@@ -4,7 +4,7 @@ Entidades::Obst_Dificil::Obst_Dificil(int dano, float inicialX, float inicialY, 
 	: Obstaculo(inicialX,inicialY,pgra), _dano(dano)
 {
 	// Gerenciador grafico
-	_pGraf = pgra;
+	//_pGraf = pgra;
 
 	// Imagem
 	sf::Texture* textura = new sf::Texture();

@@ -2,9 +2,9 @@
 #include "stdlib.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.2f)
+	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.2f),_mover(true)
 {
-	_mover = true;
+	
 
 	sf::Texture* textura = new sf::Texture();
 	
@@ -16,8 +16,7 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 	setTexture(textura);
 	_body.setScale(0.1f, 0.1f);
 
-	//_body.setColor(sf::Color::Red);
-	//_pGraf->desenhar(this);
+	
 }
 
 Entidades::Jogador::~Jogador()
@@ -32,8 +31,7 @@ Entidades::Jogador::~Jogador()
     _pTexture = nullptr;
 	Position.x = 0.0;
 	Position.y = 0.0;
-	//Size.x = 0.0;
-	//Size.y = 0.0;
+	
 }
 
 void Entidades::Jogador::setNome(std::string& name)
@@ -48,6 +46,16 @@ std::string Entidades::Jogador::getNome()const
 
 void Entidades::Jogador::setMover(const bool mover) {
 	_mover = mover;
+}
+
+void Entidades::Jogador::AumentarPontos(int i)
+{
+	_pontos += i;
+}
+
+int Entidades::Jogador::getPontos() const
+{
+	return _pontos;
 }
 
 void Entidades::Jogador::knockBack(Entidades::Entidade* ente)
@@ -69,9 +77,7 @@ void Entidades::Jogador::knockBack(Entidades::Entidade* ente)
 
 void Entidades::Jogador::mover()
 {
-	//Esses testes de se a posicao mais o tamanho nao chegou na borda devem ser transferidos para o Gerenciador de Colisoes
- //Depois não sei se precisa desse Evento, não lembro como que o sfml captura o teclado, se usa o evento ou não
-
+	
 	_speed.x = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Position.x + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().x)
 		_speed.x += _velocidade;
