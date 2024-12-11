@@ -27,7 +27,8 @@ Entidades::Obst_Medio::Obst_Medio(float inicialX, float inicialY, Gerenciadores:
 	// Imagem da tela paralisada
 	textura2 = new sf::Texture();
 
-	if (!textura2->loadFromFile("assets/TelaParalisada.png")) {
+	if (!textura2->loadFromFile("assets/TelaParalisada.png")) 
+	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
 
@@ -64,7 +65,8 @@ Entidades::Obst_Medio::~Obst_Medio() {
 	_pJog = nullptr;
 }
 
-void Entidades::Obst_Medio::executar() {
+void Entidades::Obst_Medio::executar() 
+{
 	desenhar();
 
 	// tempo

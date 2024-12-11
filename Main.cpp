@@ -14,15 +14,6 @@
 
 
 using namespace std;
-class Pessoa
-{
-private:
-    string nome;
-public:
-    Pessoa(const string& name = " ") :nome(name) {};
-    ~Pessoa() {};
-    void imprime()const{ cout << "Nome :" << nome << endl; }
-};
 
 int main()
 {

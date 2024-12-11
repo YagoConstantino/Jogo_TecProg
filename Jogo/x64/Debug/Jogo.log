@@ -1,11 +1,5 @@
-﻿  Gerenciador_colisoes.cpp
-  Inimigo.cpp
-  InimigoFacil.cpp
-  Jogador.cpp
+﻿  InimigoMedio.cpp
   Main.cpp
-  Obst_Dificil.cpp
   Obst_Medio.cpp
-  Obstaculo.cpp
-  Plataforma.cpp
   Gerando Código...
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe
