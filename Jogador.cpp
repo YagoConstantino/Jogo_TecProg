@@ -2,7 +2,7 @@
 #include "stdlib.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.2f),_mover(true)
+	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.2f), _paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f)
 {
 	
 
@@ -16,7 +16,22 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 	setTexture(textura);
 	_body.setScale(0.1f, 0.1f);
 
-	
+	// tela de paralisia
+	texturaTela = new sf::Texture();
+
+	if (!texturaTela->loadFromFile("assets/TelaParalisada.png")) {
+		std::cout << "Falha ao carregar textura!" << std::endl;
+	}
+
+	telaParalisada.setTexture(*texturaTela);
+	telaParalisada.setScale
+	(
+		5.0f,
+		3.5f
+	);
+
+	// Posicao
+	telaParalisada.setPosition(0.f, 0.f);
 }
 
 Entidades::Jogador::~Jogador()
@@ -26,9 +41,14 @@ Entidades::Jogador::~Jogador()
     {
         delete _pTexture;
     }
+	if (texturaTela)
+	{
+		delete texturaTela;
+	}
 
 	_pGraf = nullptr;
     _pTexture = nullptr;
+	texturaTela = nullptr;
 	Position.x = 0.0;
 	Position.y = 0.0;
 	
@@ -44,8 +64,9 @@ std::string Entidades::Jogador::getNome()const
 	return nome;
 }
 
-void Entidades::Jogador::setMover(const bool mover) {
-	_mover = mover;
+void Entidades::Jogador::setParalisado(const bool para, float duracao) {
+	_paralisado = para;
+	_duracaoParalisia = duracao;
 }
 
 void Entidades::Jogador::AumentarPontos(int i)
@@ -106,8 +127,21 @@ void Entidades::Jogador::mover()
 
 void Entidades::Jogador::executar()
 {
-	if(_mover)
+	if (!_paralisado) {
 		mover();
+		_clockParalisia.restart();
+	}
+	else {
+		_tempoParalisado += _clockParalisia.getElapsedTime().asSeconds();
+
+		if (_tempoParalisado > _duracaoParalisia) {
+			_tempoParalisado = 0.f;
+			_paralisado = false;
+			_clockParalisia.restart();
+		}
+
+		_pGraf->getWindow()->draw(telaParalisada);
+	}
 
 	if(_speed.x>0.3f)
 
