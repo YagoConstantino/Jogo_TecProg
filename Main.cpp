@@ -31,9 +31,9 @@ int main()
     Entidades::Plataforma *plat4 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width, 480, gg, 10);
     Entidades::Plataforma *plat5 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.2f, 280, gg, 10);
     
-    Entidades::Obst_Dificil obs(1,plat2->getPositionX() + plat->getBody().getGlobalBounds().width, 680, gg);
-    Entidades::Obst_Medio obsMe(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.4f, 400, gg);
-    Entidades::Plataforma plat3(obs.getPositionX() + obs.getBody().getGlobalBounds().width, 680, gg, 10);
+    Entidades::Obst_Dificil *obs = new Entidades::Obst_Dificil(1,plat2->getPositionX() + plat->getBody().getGlobalBounds().width, 680, gg);
+    Entidades::Obst_Medio *obsMe = new Entidades::Obst_Medio(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.4f, 400, gg);
+    Entidades::Plataforma *plat3 = new Entidades::Plataforma(obs->getPositionX() + obs->getBody().getGlobalBounds().width, 680, gg, 10);
    
     Entidades::InimigoFacil *inimigo = new Entidades::InimigoFacil (500, 630, gg, jog,5);
 
@@ -42,13 +42,13 @@ int main()
     Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
     Lista.insert_back(static_cast<Entidades::Entidade*>(plat));
     Lista.insert_back(static_cast<Entidades::Entidade*>(plat2));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&plat3));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(plat3));
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(plat4));
     Lista.insert_back(static_cast<Entidades::Entidade*>(plat5));
 
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&obs));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&obsMe));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(obs));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(obsMe));
     Lista.insert_back(static_cast<Entidades::Entidade*>(inimigo));
     Lista.percorrer();
 
@@ -56,12 +56,12 @@ int main()
     //Poderiamos converter explicitamente para obstaculo
     gc->incluirObstaculo(plat);
     gc->incluirObstaculo(plat2);
-    gc->incluirObstaculo(&plat3);
+    gc->incluirObstaculo(plat3);
 
     gc->incluirObstaculo(plat4);
     gc->incluirObstaculo(plat5);
-    gc->incluirObstaculo(&obs);
-    gc->incluirObstaculo(&obsMe);
+    gc->incluirObstaculo(obs);
+    gc->incluirObstaculo(obsMe);
     gc->setJogador1(jog);
     gc->incluirInimigo(inimigo);
     cout << jog->getNome() << endl;

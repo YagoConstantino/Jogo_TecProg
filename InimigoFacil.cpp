@@ -2,7 +2,7 @@
 
 Entidades::InimigoFacil::InimigoFacil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog, int vidas)
-	:Inimigo(inicialX,inicialY,pgra,pJog,vidas),posInicialX(inicialX),posInicialY(inicialY)
+	:Inimigo(inicialX,inicialY,pgra,pJog,vidas)
 {
 	setMaldade(1);
 	_speed.x = 0.03f;
@@ -23,10 +23,7 @@ Entidades::InimigoFacil::~InimigoFacil()
 	_pJog = nullptr;
 }
 
-double Entidades::InimigoFacil::getDistanciaoInicio()
-{
-	return sqrt(pow(getPositionX()-posInicialX,2)+pow(getPositionY()-posInicialY,2));
-}
+
 
 void Entidades::InimigoFacil::executar()
 {

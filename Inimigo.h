@@ -12,6 +12,9 @@ namespace Entidades
 		bool atacar;
 		int _nivel_maldade;
 		Entidades::Jogador* _pJog;
+
+		float posInicialX;
+		float posInicialY;
 	public:
 		Inimigo(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
 			Entidades::Jogador*pJog=nullptr,int vidas = 1);
@@ -24,6 +27,7 @@ namespace Entidades
 		//Entidades::Jogador* getJogador()const;
 
 		double getDistanciaJogador();
+		double getDistanciaoInicio();
 
 		virtual void executar() = 0;
 		virtual void salvar() = 0;
