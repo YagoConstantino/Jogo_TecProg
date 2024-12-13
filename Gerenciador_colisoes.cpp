@@ -103,10 +103,9 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 			sf::Vector2f ds = calculaColisao(_jogador1, (*itObstaculo));
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
-				if (verificarColisao(_jogador1, (*itObstaculo)))
-				{
-					(*itObstaculo)->obstacular(_jogador1);
-				}
+				
+				(*itObstaculo)->obstacular(_jogador1);
+				
 
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
@@ -147,10 +146,9 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 		// Tratamento para o jogador 2 (similar ao jogador 1)
 		if (_jogador2 != nullptr&&_jogador2->getVivo())
 		{
-			if (verificarColisao(_jogador2, (*itObstaculo)))
-			{
-				(*itObstaculo)->obstacular(_jogador2);
-			}
+			
+			(*itObstaculo)->obstacular(_jogador2);
+			
 			sf::Vector2f ds = calculaColisao(_jogador2, (*itObstaculo));
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
@@ -197,6 +195,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	if (!colidiuComChao2 && _jogador2 != nullptr) _jogador2->setGround(false);
 	
 }
+
 
 
 

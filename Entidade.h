@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <ostream>
 #include "Ente.h"
 
 namespace Entidades
@@ -15,6 +16,7 @@ namespace Entidades
 		sf::Clock _clock;
 		float _segundos;
 		bool _vivo;
+		//ostream buffer;
 
 	public:
 		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
@@ -47,8 +49,8 @@ namespace Entidades
 		void setVivo(bool vivo);
 
 		virtual void executar() = 0;
-		virtual void salvar() = 0;
-		virtual void render() = 0;
+		
+		//void SalvarDataBuffer();
 		
 	};
 }

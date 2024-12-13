@@ -13,8 +13,8 @@ namespace Entidades
 		~InimigoMedio();
 
 		void executar();
-		void salvar();
-		void render();
+		//void SalvarDataBuffer();
+		void mover();
 		void danificar(Entidades::Jogador* pJog);
 	};
 }

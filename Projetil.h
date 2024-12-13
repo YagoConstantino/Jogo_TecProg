@@ -17,7 +17,7 @@ namespace Entidades {
 		const int getDano() const;
 
 		void executar();
-		void render();
+		
 		void salvar();
 	};
 }

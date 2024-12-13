@@ -30,8 +30,8 @@ namespace Entidades
 		double getDistanciaoInicio();
 
 		virtual void executar() = 0;
-		virtual void salvar() = 0;
-		virtual void render() = 0;
+		//void SalvarDataBuffer();
+		virtual void mover() = 0;
 		virtual void danificar(Entidades::Jogador* pJog) = 0;
 	};
 }

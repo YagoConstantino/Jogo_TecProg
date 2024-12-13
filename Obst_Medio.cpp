@@ -50,10 +50,5 @@ void Entidades::Obst_Medio::obstacular(Entidades::Jogador* pJog) {
 	pJog->setParalisado(true, _duracaoParalisia);
 }
 
-void Entidades::Obst_Medio::salvar() {
 
-}
 
-void Entidades::Obst_Medio::render() {
-
-}

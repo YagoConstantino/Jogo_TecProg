@@ -23,7 +23,7 @@ int main()
     Listas::ListaEntidades Lista;
     
     Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg,"Player");
-    Entidades::Projetil pro(1, 1.5f, gg);
+    Entidades::Projetil *pro = new Entidades::Projetil(1, 1.5f, gg);
 
     
     Entidades::Plataforma *plat = new Entidades::Plataforma (5, 680, gg, 10);
@@ -39,7 +39,7 @@ int main()
 
 
     Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(&pro));
+    Lista.insert_back(static_cast<Entidades::Entidade*>(pro));
     Lista.insert_back(static_cast<Entidades::Entidade*>(plat));
     Lista.insert_back(static_cast<Entidades::Entidade*>(plat2));
     Lista.insert_back(static_cast<Entidades::Entidade*>(plat3));

@@ -16,7 +16,7 @@ namespace Entidades
 		bool _paralisado;
 		//
 
-		int tempoPulo;
+		float tempoPulo;
 		int _pontos;
 		
 		std::string nome;
@@ -32,15 +32,15 @@ namespace Entidades
 		
 		void setParalisado(const bool para, float duracao);
 		
-		void AumentarPontos(int i);
+		void AumentarPontos(int pont);
 		int getPontos()const;
 
 		void knockBack(Entidades::Entidade* ente);
-		void mover();
+		void mover();	
 
 		void executar();
-		void salvar();
-		void render();
+		//void SalvarDataBuffer();
+		
 	};
 
 }

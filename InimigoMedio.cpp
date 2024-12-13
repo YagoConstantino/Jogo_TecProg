@@ -27,11 +27,7 @@ void Entidades::InimigoMedio::executar()
 {
 }
 
-void Entidades::InimigoMedio::salvar()
-{
-}
-
-void Entidades::InimigoMedio::render()
+void Entidades::InimigoMedio::mover()
 {
 }
 

@@ -57,6 +57,3 @@ void Entidades::Projetil::salvar()
 {
 }
 
-void Entidades::Projetil::render()
-{
-}

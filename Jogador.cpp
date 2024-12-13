@@ -2,7 +2,7 @@
 #include "stdlib.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200),_velocidade(0.2f), _paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f)
+	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200.f),_velocidade(0.2f), _paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f)
 {
 	setTipo(3);
 
@@ -64,14 +64,15 @@ std::string Entidades::Jogador::getNome()const
 	return nome;
 }
 
-void Entidades::Jogador::setParalisado(const bool para, float duracao) {
+void Entidades::Jogador::setParalisado(const bool para, float duracao) 
+{
 	_paralisado = para;
 	_duracaoParalisia = duracao;
 }
 
-void Entidades::Jogador::AumentarPontos(int i)
+void Entidades::Jogador::AumentarPontos(int pont)
 {
-	_pontos += i;
+	_pontos += pont;
 }
 
 int Entidades::Jogador::getPontos() const
@@ -107,10 +108,10 @@ void Entidades::Jogador::mover()
 	{
 		
 		tempoPulo += _clock.getElapsedTime().asMilliseconds();
-		if (tempoPulo >= 80)
+		if (tempoPulo >= 80.f)
 		{
 			pular();
-			tempoPulo = 0;
+			tempoPulo = 0.f;
 			
 		}
 	}
@@ -161,13 +162,4 @@ void Entidades::Jogador::executar()
 	_body.setPosition(Position);
 	_pGraf->desenhar(this);
 
-}
-
-
-void Entidades::Jogador::salvar()
-{
-}
-
-void Entidades::Jogador::render()
-{
 }

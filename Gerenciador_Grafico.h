@@ -18,7 +18,7 @@ namespace Gerenciadores{
 		~Gerenciador_Grafico();
 
 		void desenhar(Entidades::Ente* pE);
-		void desenhar(sf::RectangleShape& shape);
+		//void desenhar(sf::RectangleShape& shape);
 		void render();
 		void display();
 		sf::RenderWindow* getWindow()const;

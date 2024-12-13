@@ -27,23 +27,21 @@ Entidades::InimigoFacil::~InimigoFacil()
 
 void Entidades::InimigoFacil::executar()
 {
-	//Fazer ele andar em 50 pixeis para direita e 50 pixeis para esquerda OK
+	mover();
+	
+}
+
+void Entidades::InimigoFacil::mover()
+{
+	//Fazer ele andar em 150 pixeis para direita e 50 pixeis para esquerda OK
 	//Caso ele encoste no jogador da dano * nivelmaldade nele
 	Position += _speed;
 	desenhar();
-	if (getDistanciaoInicio() >= 100)
+	if (getDistanciaoInicio() >= 150)
 	{
 		_speed.x *= -1;
 	}
 	_body.setPosition(Position);
-}
-
-void Entidades::InimigoFacil::salvar()
-{
-}
-
-void Entidades::InimigoFacil::render()
-{
 }
 
 void Entidades::InimigoFacil::danificar(Entidades::Jogador* pJog)
