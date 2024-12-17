@@ -1,4 +1,17 @@
 ﻿  Gerenciador_colisoes.cpp
+  Inimigo.cpp
+  InimigoDificil.cpp
+  InimigoFacil.cpp
+  InimigoMedio.cpp
+  Jogador.cpp
+  ListaEntidades.cpp
+  Main.cpp
+  Obst_Dificil.cpp
+  Obst_Medio.cpp
+  Obstaculo.cpp
+  Personagem.cpp
+  Plataforma.cpp
   Projetil.cpp
   Gerando Código...
+  LINK : C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\x64\Debug\Jogo.exe não encontrado ou não compilado pelo o último link incremental; executando link completo
   Jogo.vcxproj -> C:\Users\gabri\OneDrive\Documentos\Tudo\Back end\Jogo_TecProg\x64\Debug\Jogo.exe
