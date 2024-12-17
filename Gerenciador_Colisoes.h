@@ -43,8 +43,10 @@ namespace Gerenciadores {
 
 		sf::Vector2f calculaColisao(Entidades::Entidade* ent1, Entidades::Entidade* ent2);
 		void tratarColisoesJogsObstacs();
+		void tratarColisoesProjObstacs();
 		void tratarColisoesJogsInimgs();
 		void tratarColisoesJogsProjeteis();
+		
 
 		const bool verificarColisao(Entidades::Entidade* pEnt1, Entidades::Entidade* pEnt2) const;
 

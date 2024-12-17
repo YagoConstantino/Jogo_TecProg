@@ -45,9 +45,6 @@
     <ClInclude Include="Gerenciador_Grafico.h">
       <Filter>Gerenciadores</Filter>
     </ClInclude>
-    <ClInclude Include="Projetil.h">
-      <Filter>Entidades</Filter>
-    </ClInclude>
     <ClInclude Include="ListaEntidades.h">
       <Filter>Listas</Filter>
     </ClInclude>
@@ -63,16 +60,16 @@
     <ClInclude Include="Inimigo.h">
       <Filter>Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="InimigoFacil.h">
+    <ClInclude Include="Cavaleiro.h">
       <Filter>Entidades\Personagens</Filter>
     </ClInclude>
     <ClInclude Include="Jogador.h">
       <Filter>Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="Obst_Dificil.h">
+    <ClInclude Include="Espinho.h">
       <Filter>Entidades\Obstaculos</Filter>
     </ClInclude>
-    <ClInclude Include="Obst_Medio.h">
+    <ClInclude Include="BarraMagica.h">
       <Filter>Entidades\Obstaculos</Filter>
     </ClInclude>
     <ClInclude Include="Obstaculo.h">
@@ -84,8 +81,17 @@
     <ClInclude Include="Personagem.h">
       <Filter>Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="InimigoMedio.h">
+    <ClInclude Include="Bruxa.h">
       <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Mago.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Projetil.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="Fase.h">
+      <Filter>Fases</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -94,9 +100,6 @@
     </ClCompile>
     <ClCompile Include="Gerenciador_Grafico.cpp">
       <Filter>Gerenciadores</Filter>
-    </ClCompile>
-    <ClCompile Include="Projetil.cpp">
-      <Filter>Entidades</Filter>
     </ClCompile>
     <ClCompile Include="ListaEntidades.cpp">
       <Filter>Listas</Filter>
@@ -113,16 +116,16 @@
     <ClCompile Include="Inimigo.cpp">
       <Filter>Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="InimigoFacil.cpp">
+    <ClCompile Include="Cavaleiro.cpp">
       <Filter>Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="Jogador.cpp">
       <Filter>Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="Obst_Dificil.cpp">
+    <ClCompile Include="Espinho.cpp">
       <Filter>Entidades\Obstaculos</Filter>
     </ClCompile>
-    <ClCompile Include="Obst_Medio.cpp">
+    <ClCompile Include="BarraMagica.cpp">
       <Filter>Entidades\Obstaculos</Filter>
     </ClCompile>
     <ClCompile Include="Obstaculo.cpp">
@@ -134,8 +137,14 @@
     <ClCompile Include="Personagem.cpp">
       <Filter>Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="InimigoMedio.cpp">
+    <ClCompile Include="Bruxa.cpp">
       <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Mago.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Projetil.cpp">
+      <Filter>Entidades</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

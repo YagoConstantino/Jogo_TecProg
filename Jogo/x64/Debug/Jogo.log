@@ -1,2 +1,19 @@
-﻿  Main.cpp
+﻿  BarraMagica.cpp
+  Bruxa.cpp
+  Cavaleiro.cpp
+  Ente.cpp
+  Entidade.cpp
+  Espinho.cpp
+  Gerenciador_Grafico.cpp
+  Gerenciador_colisoes.cpp
+  Inimigo.cpp
+  Jogador.cpp
+  ListaEntidades.cpp
+  Mago.cpp
+  Main.cpp
+  Obstaculo.cpp
+  Personagem.cpp
+  Plataforma.cpp
+  Projetil.cpp
+  Gerando Código...
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe

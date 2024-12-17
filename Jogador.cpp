@@ -101,6 +101,7 @@ void Entidades::Jogador::mover()
 {
 	
 	_speed.x = 0;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Position.x + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().x)
 		_speed.x += _velocidade;
 

@@ -16,7 +16,6 @@ Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes()
 {
 	_jogador1 = nullptr;
 	_jogador2 = nullptr;
-	
 }
 
 
@@ -31,7 +30,8 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador1(Entidades::Jogador* pJogad
 	_jogador1 = pJogador;
 }
 
-void Gerenciadores::Gerenciador_Colisoes::setJogador2(Entidades::Jogador* pJogador) {
+void Gerenciadores::Gerenciador_Colisoes::setJogador2(Entidades::Jogador* pJogador) 
+{
 	if (pJogador == nullptr) {
 		std::cerr << "Ponteiro de jogador invalido. Impossivel incluir em G.Colisoes.\n";
 		return;
@@ -40,7 +40,8 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador2(Entidades::Jogador* pJogad
 	_jogador2 = pJogador;
 }
 
-void Gerenciadores::Gerenciador_Colisoes::incluirInimigo(Entidades::Inimigo* pInimigo) {
+void Gerenciadores::Gerenciador_Colisoes::incluirInimigo(Entidades::Inimigo* pInimigo) 
+{
 	if (pInimigo == nullptr) {
 		std::cerr << "Ponteiro de inimigo invalido. Impossivel incluir em G.Colisoes.\n" << std::endl;
 		return;
@@ -58,7 +59,8 @@ void Gerenciadores::Gerenciador_Colisoes::incluirObstaculo(Entidades::Obstaculo*
 	_listaObstaculos.push_back(pObstaculo);
 }
 
-void Gerenciadores::Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil* pProjetil) {
+void Gerenciadores::Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil* pProjetil) 
+{
 	if (pProjetil == nullptr) {
 		std::cerr << "Ponteiro de projetil invalido. Impossivel incluir em G.Colisoes.\n" << std::endl;
 		return;
@@ -206,7 +208,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 	
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); itInimigo++)
 	{
-		if (*itInimigo != nullptr&&(*itInimigo)->getVivo())
+		if (*itInimigo != nullptr && (*itInimigo)->getVivo())
 		{
 
 			//Para cada Inimigo vamos percorrer os Obstaculos, testar e tratar colisões
@@ -285,32 +287,74 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 				// Jogador toma dano
 				for (int i = 0; i < (*itProjetil)->getDano(); i++)
 					_jogador1->operator--();
-				// Projetil desaparece
-				(*itProjetil)->~Projetil();
-			}
 
+				// Verifica por onde colidiu
+				if (_jogador1->getPositionX() - (*itProjetil)->getPositionX() > 0.f) {
+					// Empurra o jogador para a direita
+					_jogador1->setPositionX(_jogador1->getPositionX() + 100.f);
+				}
+				else {
+					// Empurra o jogador para a esquerda
+					_jogador1->setPositionX(_jogador1->getPositionX() - 100.f);
+				}
+
+				// Projetil desaparece
+				(*itProjetil)->setLancar(false);
+			}
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador2))) {
 				// Jogador toma dano
 				for (int i = 0; i < (*itProjetil)->getDano(); i++)
 					_jogador2->operator--();
-				// Projetil desaparece
-				(*itProjetil)->~Projetil();
-			}
 
+				// Verifica por onde colidiu
+				if (_jogador2->getPositionX() - (*itProjetil)->getPositionX() > 0.f) {
+					// Empurra o jogador para a direita
+					_jogador2->setPositionX(_jogador2->getPositionX() + 100.f);
+				}
+				else {
+					// Empurra o jogador para a esquerda
+					_jogador2->setPositionX(_jogador2->getPositionX() - 100.f);
+				}
+
+				// Projetil desaparece
+				(*itProjetil)->setLancar(false);
+			}
 		}
 	}
 	// Caso 2: apenas um jogador foi criado
-	else if (_jogador1 != nullptr) 
+	else if (_jogador1 != nullptr)
 	{
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador toma dano
 				for (int i = 0; i < (*itProjetil)->getDano(); i++)
 					_jogador1->operator--();
+
 				// Projetil desaparece
-				(*itProjetil)->~Projetil();
+				(*itProjetil)->setLancar(false);
+				(*itProjetil)->setPosition(0.f, 0.f);
 			}
 		}
+	}
+
+}
+
+
+
+void Gerenciadores::Gerenciador_Colisoes::tratarColisoesProjObstacs() {
+	// Para cada projetil
+	for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
+		// Se existir
+		if ((*itProjetil) != nullptr)
+			// Para cada obstaculo
+			for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo) {
+				// Se colidiram
+				if (verificarColisao(*itProjetil, *itObstaculo)) {
+					// Projetil desaparece
+					(*itProjetil)->setLancar(false);
+					(*itProjetil)->setPosition(0.f, 0.f);
+				}
+			}
 	}
 }
 
@@ -359,4 +403,5 @@ void Gerenciadores::Gerenciador_Colisoes::executar()
 	tratarColisoesJogsObstacs();
 	tratarColisoesJogsProjeteis();
 	tratarColisoesJogsInimgs();
+	//tratarColisoesProjObstacs();
 }
