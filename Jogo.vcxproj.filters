@@ -45,9 +45,6 @@
     <ClInclude Include="Gerenciador_Grafico.h">
       <Filter>Gerenciadores</Filter>
     </ClInclude>
-    <ClInclude Include="Projetil.h">
-      <Filter>Entidades</Filter>
-    </ClInclude>
     <ClInclude Include="ListaEntidades.h">
       <Filter>Listas</Filter>
     </ClInclude>
@@ -87,6 +84,12 @@
     <ClInclude Include="InimigoMedio.h">
       <Filter>Entidades\Personagens</Filter>
     </ClInclude>
+    <ClInclude Include="InimigoDificil.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Projetil.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -94,9 +97,6 @@
     </ClCompile>
     <ClCompile Include="Gerenciador_Grafico.cpp">
       <Filter>Gerenciadores</Filter>
-    </ClCompile>
-    <ClCompile Include="Projetil.cpp">
-      <Filter>Entidades</Filter>
     </ClCompile>
     <ClCompile Include="ListaEntidades.cpp">
       <Filter>Listas</Filter>
@@ -136,6 +136,12 @@
     </ClCompile>
     <ClCompile Include="InimigoMedio.cpp">
       <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="InimigoDificil.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Projetil.cpp">
+      <Filter>Entidades</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
