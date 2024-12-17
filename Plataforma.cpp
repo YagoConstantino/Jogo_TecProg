@@ -30,10 +30,4 @@ void Entidades::Plataforma::obstacular(Entidades::Jogador* pJog)
 	executar();
 }
 
-void Entidades::Plataforma::salvar()
-{
-}
 
-void Entidades::Plataforma::render()
-{
-}

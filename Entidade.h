@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <ostream>
 #include "Ente.h"
 
 namespace Entidades
@@ -14,16 +15,18 @@ namespace Entidades
 		sf::Vector2f _speed;
 		sf::Clock _clock;
 		float _segundos;
+		bool _vivo;
+		//ostream buffer;
 
 	public:
 		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
 		virtual ~Entidade() {};
 
-		float getPositionX()const { return Position.x; }
-		void setPositionX(float x) { Position.x = x; }
+		float getPositionX()const;
+		void setPositionX(float x);
 
-		float getPositionY()const { return Position.y; }
-		void setPositionY(float y) { Position.y = y; }
+		float getPositionY()const;
+		void setPositionY(float y);
 
 		bool getOnGround()const;
 		void setGround(bool ong);
@@ -42,9 +45,12 @@ namespace Entidades
 		void setTipo(int tip);
 		int getTipo()const;
 
+		bool getVivo()const;
+		void setVivo(bool vivo);
+
 		virtual void executar() = 0;
-		virtual void salvar() = 0;
-		virtual void render() = 0;
+		
+		//void SalvarDataBuffer();
 		
 	};
 }

@@ -25,7 +25,9 @@
     <ClInclude Include="Gerenciador_Colisoes.h" />
     <ClInclude Include="Gerenciador_Grafico.h" />
     <ClInclude Include="Inimigo.h" />
+    <ClInclude Include="InimigoDificil.h" />
     <ClInclude Include="InimigoFacil.h" />
+    <ClInclude Include="InimigoMedio.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
@@ -43,7 +45,9 @@
     <ClCompile Include="Gerenciador_colisoes.cpp" />
     <ClCompile Include="Gerenciador_Grafico.cpp" />
     <ClCompile Include="Inimigo.cpp" />
+    <ClCompile Include="InimigoDificil.cpp" />
     <ClCompile Include="InimigoFacil.cpp" />
+    <ClCompile Include="InimigoMedio.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -53,9 +57,6 @@
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="Projetil.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\BarreiraEletrica.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

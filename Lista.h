@@ -15,7 +15,14 @@ namespace Listas {
 
         public:
             Elemento() : pInfo(nullptr), next(nullptr), prev(nullptr) {}
-            ~Elemento() { pInfo = nullptr; }
+            ~Elemento() 
+            {
+                if (pInfo) 
+                {
+                    delete pInfo;  
+                    pInfo = nullptr;
+                }
+            }
 
             Elemento* GetNext() const { return next; }
             Elemento* GetPrev() const { return prev; }
@@ -165,7 +172,7 @@ namespace Listas {
         while (cont < i) {
             aux = aux->GetNext();
             cont++;
-        }
+        } 
 
         return aux;
     }

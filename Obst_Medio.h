@@ -8,12 +8,7 @@ namespace Entidades {
 	class Obst_Medio : public Obstaculo
 	{
 	private:
-		sf::Sprite telaParalisada;
-		sf::Texture* textura2;
-
-		//não acho que precise de ponteiro jogador, olhe o ObstaculoDificil, ele receber ponteiro para o jogador
-		// lá no gerenciador de colisões
-		Entidades::Jogador* _pJog;
+		float _duracaoParalisia;
 
 	public:
 		Obst_Medio(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
@@ -21,8 +16,7 @@ namespace Entidades {
 
 		void executar();
 		void obstacular(Entidades::Jogador* pJog);
-
-		void salvar();
-		void render();
+		//void SalvarDataBuffer();
+		
 	};
 }

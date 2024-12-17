@@ -14,7 +14,7 @@ namespace Entidades
 
 		void executar();
 		void obstacular(Entidades::Jogador* pJog);
-		void salvar();
-		void render();
+		//void SalvarDataBuffer();
+		
 	};
 }

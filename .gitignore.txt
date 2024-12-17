@@ -1,6 +1,6 @@
 # Ignore arquivos e pastas do Visual Studio
 .vs/
-*.ipch
+*.ipch	
 *.vcxproj.user
 *.vcxproj.filters
 *.suo

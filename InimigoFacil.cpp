@@ -2,7 +2,7 @@
 
 Entidades::InimigoFacil::InimigoFacil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog, int vidas)
-	:Inimigo(inicialX,inicialY,pgra,pJog,vidas),posInicialX(inicialX),posInicialY(inicialY)
+	:Inimigo(inicialX,inicialY,pgra,pJog,vidas)
 {
 	setMaldade(1);
 	_speed.x = 0.03f;
@@ -23,30 +23,25 @@ Entidades::InimigoFacil::~InimigoFacil()
 	_pJog = nullptr;
 }
 
-double Entidades::InimigoFacil::getDistanciaoInicio()
-{
-	return sqrt(pow(getPositionX()-posInicialX,2)+pow(getPositionY()-posInicialY,2));
-}
+
 
 void Entidades::InimigoFacil::executar()
 {
-	//Fazer ele andar em 50 pixeis para direita e 50 pixeis para esquerda OK
+	mover();
+	
+}
+
+void Entidades::InimigoFacil::mover()
+{
+	//Fazer ele andar em 150 pixeis para direita e 50 pixeis para esquerda OK
 	//Caso ele encoste no jogador da dano * nivelmaldade nele
 	Position += _speed;
 	desenhar();
-	if (getDistanciaoInicio() >= 100)
+	if (getDistanciaoInicio() >= 150)
 	{
 		_speed.x *= -1;
 	}
 	_body.setPosition(Position);
-}
-
-void Entidades::InimigoFacil::salvar()
-{
-}
-
-void Entidades::InimigoFacil::render()
-{
 }
 
 void Entidades::InimigoFacil::danificar(Entidades::Jogador* pJog)

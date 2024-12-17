@@ -76,12 +76,4 @@ void Entidades::Obst_Dificil::obstacular(Entidades::Jogador* pJog)
 	}
 }
 
-void Entidades::Obst_Dificil::salvar() 
-{
 
-}
-
-void Entidades::Obst_Dificil::render() 
-{
-
-}

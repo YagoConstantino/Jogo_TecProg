@@ -7,17 +7,12 @@ namespace Entidades
 	{
 	protected:
 		int _num_vidas;
-		
-		bool _vivo;
-		
 	public:
 		Personagem(float inicialX = 0, float inicialY = 0, 
 			Gerenciadores::Gerenciador_Grafico* pgra = nullptr, int vidas = 10 );
 		
 		virtual ~Personagem();
 
-		bool getVivo()const;
-		void setVivo(bool vivo);
 
 		int getVidas()const;
 		void setVidas(int vid);
@@ -28,7 +23,8 @@ namespace Entidades
 		void pular();
 
 		virtual void executar() = 0;
-		virtual void salvar() = 0;
-		virtual void render() = 0;
+		
+		virtual void mover() = 0;
+		//void SalvarDataBuffer();		
 	};
 }

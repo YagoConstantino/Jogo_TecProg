@@ -16,7 +16,6 @@ Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes()
 {
 	_jogador1 = nullptr;
 	_jogador2 = nullptr;
-	
 }
 
 
@@ -99,14 +98,13 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo)
 	{
 		// Tratamento para o jogador 1
-		if (_jogador1 != nullptr) {
+		if (_jogador1 != nullptr&&_jogador1->getVivo()) {
 			sf::Vector2f ds = calculaColisao(_jogador1, (*itObstaculo));
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
-				if (verificarColisao(_jogador1, (*itObstaculo)))
-				{
-					(*itObstaculo)->obstacular(_jogador1);
-				}
+				
+				(*itObstaculo)->obstacular(_jogador1);
+				
 
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
@@ -145,12 +143,11 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 		}
 
 		// Tratamento para o jogador 2 (similar ao jogador 1)
-		if (_jogador2 != nullptr)
+		if (_jogador2 != nullptr&&_jogador2->getVivo())
 		{
-			if (verificarColisao(_jogador2, (*itObstaculo)))
-			{
-				(*itObstaculo)->obstacular(_jogador2);
-			}
+			
+			(*itObstaculo)->obstacular(_jogador2);
+			
 			sf::Vector2f ds = calculaColisao(_jogador2, (*itObstaculo));
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
@@ -195,7 +192,9 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	// Caso nenhum dos jogadores tenha colidido com o chão, marca que não estão no chão
 	if (!colidiuComChao1 && _jogador1 != nullptr) _jogador1->setGround(false);
 	if (!colidiuComChao2 && _jogador2 != nullptr) _jogador2->setGround(false);
+	
 }
+
 
 
 
@@ -206,7 +205,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 	
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); itInimigo++)
 	{
-		if (*itInimigo != nullptr)
+		if (*itInimigo != nullptr && (*itInimigo)->getVivo())
 		{
 
 			//Para cada Inimigo vamos percorrer os Obstaculos, testar e tratar colisões
@@ -285,32 +284,71 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 				// Jogador toma dano
 				for (int i = 0; i < (*itProjetil)->getDano(); i++)
 					_jogador1->operator--();
-				// Projetil desaparece
-				(*itProjetil)->~Projetil();
-			}
 
+				// Verifica por onde colidiu
+				if (_jogador1->getPositionX() - (*itProjetil)->getPositionX() > 0.f) {
+					// Empurra o jogador para a direita
+					_jogador1->setPositionX(_jogador1->getPositionX() + 100.f);
+				}
+				else {
+					// Empurra o jogador para a esquerda
+					_jogador1->setPositionX(_jogador1->getPositionX() - 100.f);
+				}
+
+				// Projetil desaparece
+				(*itProjetil)->setLancar(false);
+			}
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador2))) {
 				// Jogador toma dano
 				for (int i = 0; i < (*itProjetil)->getDano(); i++)
 					_jogador2->operator--();
-				// Projetil desaparece
-				(*itProjetil)->~Projetil();
-			}
 
+				// Verifica por onde colidiu
+				if (_jogador2->getPositionX() - (*itProjetil)->getPositionX() > 0.f) {
+					// Empurra o jogador para a direita
+					_jogador2->setPositionX(_jogador2->getPositionX() + 100.f);
+				}
+				else {
+					// Empurra o jogador para a esquerda
+					_jogador2->setPositionX(_jogador2->getPositionX() - 100.f);
+				}
+
+				// Projetil desaparece
+				(*itProjetil)->setLancar(false);
+			}
 		}
 	}
 	// Caso 2: apenas um jogador foi criado
-	else if (_jogador1 != nullptr) 
+	else if (_jogador1 != nullptr)
 	{
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador toma dano
 				for (int i = 0; i < (*itProjetil)->getDano(); i++)
 					_jogador1->operator--();
+
 				// Projetil desaparece
-				(*itProjetil)->~Projetil();
+				(*itProjetil)->setLancar(false);
+				(*itProjetil)->setPosition(0.f, 0.f);
 			}
 		}
+	}
+}
+
+void Gerenciadores::Gerenciador_Colisoes::tratarColisoesProjObstacs() {
+	// Para cada projetil
+	for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
+		// Se existir
+		if ((*itProjetil) != nullptr)
+			// Para cada obstaculo
+			for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo) {
+				// Se colidiram
+				if (verificarColisao(*itProjetil, *itObstaculo)) {
+					// Projetil desaparece
+					(*itProjetil)->setLancar(false);
+					(*itProjetil)->setPosition(0.f, 0.f);
+				}
+			}
 	}
 }
 
@@ -359,4 +397,5 @@ void Gerenciadores::Gerenciador_Colisoes::executar()
 	tratarColisoesJogsObstacs();
 	tratarColisoesJogsProjeteis();
 	tratarColisoesJogsInimgs();
+	//tratarColisoesProjObstacs();
 }
