@@ -8,10 +8,12 @@ namespace Entidades
 	{
 		_body.setPosition(Position);
 	}
+
 	float Entidade::getPositionX() const
 	{
 		return Position.x;
 	}
+
 	void Entidade::setPositionX(float x)
 	{
 		Position.x = x;
@@ -20,37 +22,45 @@ namespace Entidades
 	{
 		return Position.y;
 	}
+
 	void Entidade::setPositionY(float y)
 	{
 		Position.y = y;
 	}
+
 	bool Entidade::getOnGround() const
 	{
 		return _onGround;
 	}
+
 	void Entidade::setGround(bool ong)
 	{
 		_onGround = ong;
 	}
+
 	void Entidade::setPosition(float x, float y)
 	{
 		Position.x = x;
 		Position.y = y;
 		_body.setPosition(Position);
 	}
+
 	sf::Vector2f Entidade::getPosition() const
 	{
 			return Position;
 	}
+
 	void Entidade::setSpeed(float x, float y)
 	{
 		_speed.x = x;
 		_speed.y = y;
 	}
+
 	float Entidade::getSpeedX() const
 	{
 		return _speed.x;
 	}
+
 	float Entidade::getSpeedY() const
 	{
 		return _speed.y;
@@ -59,6 +69,7 @@ namespace Entidades
 	{
 		_clock.restart();
 	}
+
 	void Entidade::sofrerGravidade(float gravidade)
 	{
 		const float maxGravidade = 0.15f; // Limite de velocidade da gravidade
@@ -78,18 +89,22 @@ namespace Entidades
 			_speed.y -= gravidade;
 		}
 	}
+
 	void Entidade::setTipo(int tip)
 	{
 		_Tipo = tip;
 	}
+
 	int Entidade::getTipo() const
 	{
 		return _Tipo;
 	}
+
 	bool Entidade::getVivo() const
 	{
 		return _vivo;
 	}
+
 	void Entidade::setVivo(bool vivo)
 	{
 		_vivo = vivo;

@@ -84,7 +84,7 @@ int main()
         
         gg->display();
 
-        cout << jog->getVidas();
+        //cout << jog->getVidas();
         
     }
 
