@@ -24,10 +24,16 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 	}
 
 	telaParalisada.setTexture(*texturaTela);
+
+	// tamanho da tela paralisada
+	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+	float escalaX = (float)tamJanela.x / telaParalisada.getGlobalBounds().width;
+	float escalaY = (float)tamJanela.y / telaParalisada.getGlobalBounds().height;
+
 	telaParalisada.setScale
 	(
-		5.0f,
-		3.5f
+		escalaX,
+		escalaY
 	);
 
 	// Posicao
@@ -82,15 +88,18 @@ int Entidades::Jogador::getPontos() const
 
 void Entidades::Jogador::knockBack(Entidades::Entidade* ente)
 {
-	if (getPositionX() > ente->getPositionX()) 
+	float posicaoCentroJog = getPositionX() + (getBody().getGlobalBounds().width / 2.f);
+	float posicaoCentroEnte = ente->getPositionX() + (ente->getBody().getGlobalBounds().width / 2.f);
+
+	if (posicaoCentroJog - posicaoCentroEnte < 0.f)
 	// se a posicao for maior que a do obstaculo, ele empurra para tras
 	{
-		_speed.x += 100;
+		_speed.x -= 100;
 	}
 	// se não empurra pra frente 
 	else
 	{
-		_speed.x -= 100;
+		_speed.x += 100;
 	}
 
 	Position += _speed;
@@ -102,10 +111,10 @@ void Entidades::Jogador::mover()
 	
 	_speed.x = 0;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Position.x + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().x)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		_speed.x += _velocidade;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed.y))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		
 		tempoPulo += _clock.getElapsedTime().asMilliseconds();
@@ -117,7 +126,7 @@ void Entidades::Jogador::mover()
 		}
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (Position.x >= _speed.x))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		_speed.x -= _velocidade;
 
 	// (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))

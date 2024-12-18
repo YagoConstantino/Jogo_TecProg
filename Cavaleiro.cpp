@@ -23,6 +23,8 @@ Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::G
 
 	setTexture(textura);
 	_body.setScale(0.1f, 0.1f);
+
+	_clock.restart();
 }
 
 Entidades::Cavaleiro::~Cavaleiro()
@@ -34,11 +36,16 @@ Entidades::Cavaleiro::~Cavaleiro()
 
 void Entidades::Cavaleiro::executar()
 {
+	// controla a frequencia para bater no jogador
+	_segundos += _clock.restart().asSeconds();
+
 	mover();
 	if (_num_vidas <= 0)
 	{
 		setVivo(false);
 	}
+
+	desenhar();
 	
 }
 
@@ -47,7 +54,7 @@ void Entidades::Cavaleiro::mover()
 	//Fazer ele andar em 150 pixeis para direita e 50 pixeis para esquerda OK
 	//Caso ele encoste no jogador da dano * nivelmaldade nele
 	Position += _speed;
-	desenhar();
+
 	if (getDistanciaoInicio() >= 150)
 	{
 		_speed.x *= -1;
@@ -57,6 +64,10 @@ void Entidades::Cavaleiro::mover()
 
 void Entidades::Cavaleiro::danificar(Entidades::Jogador* pJog)
 {
-	pJog->operator--();
-	pJog->knockBack(this);
+	if (_segundos > 0.75f) {
+		_segundos = 0.f;
+
+		pJog->operator--();
+		pJog->knockBack(this);
+	}
 }

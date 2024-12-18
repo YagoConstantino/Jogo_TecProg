@@ -46,7 +46,7 @@ namespace Gerenciadores {
 		void tratarColisoesProjObstacs();
 		void tratarColisoesJogsInimgs();
 		void tratarColisoesJogsProjeteis();
-		
+		void tratarColisoesTela();		
 
 		const bool verificarColisao(Entidades::Entidade* pEnt1, Entidades::Entidade* pEnt2) const;
 

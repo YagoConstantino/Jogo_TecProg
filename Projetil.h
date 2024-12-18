@@ -31,8 +31,5 @@ namespace Entidades {
 		void resetar();
 
 		void inverteLado();
-
-		void render();
-		void salvar();
 	};
 }
