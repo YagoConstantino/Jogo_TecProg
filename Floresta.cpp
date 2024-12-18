@@ -3,8 +3,7 @@
 Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog)
     :Fase(pgra,jog)
 {
-    criarInimigos();
-    criarObstaculos();
+    
     _Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
     _GC->setJogador1(jog);
 }
@@ -33,6 +32,8 @@ void Fases::Floresta::criaBruxas()
 
 void Fases::Floresta::executar()
 {
+    criarInimigos();
+    criarObstaculos();
 
 
     sf::Event event;

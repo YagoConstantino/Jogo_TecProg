@@ -96,6 +96,9 @@
     <ClInclude Include="Floresta.h">
       <Filter>Fases</Filter>
     </ClInclude>
+    <ClInclude Include="Jogo.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -154,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="Floresta.cpp">
       <Filter>Fases</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogo.cpp">
+      <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

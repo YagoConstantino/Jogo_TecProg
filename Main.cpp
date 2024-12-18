@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <stdlib.h>
-#include <time.h>
+#include <ctime>
 #include "ListaTemplate.h"
 #include "Lista.h"
 #include "Gerenciador_Grafico.h"
@@ -21,15 +21,16 @@ using namespace std;
 
 int main()
 {
-    srand(time(NULL));
+    srand(static_cast<unsigned>(time(nullptr)));
+
     Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
     Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg, "Player");
-    sf::Event event;
+    /*sf::Event event;
     Listas::ListaEntidades Lista;
     
     
-    Entidades::Plataforma *plat = new Entidades::Plataforma (5, 680, gg, 10);
-    Entidades::Plataforma *plat2 = new Entidades::Plataforma(5+plat->getBody().getGlobalBounds().width, 680, gg, 10);
+    Entidades::Plataforma *plat = new Entidades::Plataforma (5, 710, gg, 10);
+    Entidades::Plataforma *plat2 = new Entidades::Plataforma(120, 330, gg, 10);
     Entidades::Plataforma *plat4 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width, 480, gg, 10);
     Entidades::Plataforma *plat5 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.2f, 280, gg, 10);
     
@@ -93,10 +94,12 @@ int main()
         gg->display();
 
         //cout << jog->getVidas();
+        cout << plat->getBody().getGlobalBounds().width;
         
         
-    }
-   /* Fases::Floresta* flore = new Fases::Floresta(gg, jog);
-    flore->executar();*/
+    }*/
+    Fases::Floresta* flore = new Fases::Floresta(gg, jog);
+    flore->executar();
 
+    return 0;
 }

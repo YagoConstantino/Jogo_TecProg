@@ -5687,7 +5687,7 @@
 							"tail": {
 								"$ref": "kvs6oq6ro0epESl22ysdwAAA"
 							},
-							"points": "1597:2648;1597:2451;1463:2451",
+							"points": "1597:2584;1597:2451;1463:2451",
 							"showProperty": false,
 							"nameLabel": {
 								"$ref": "MSb/GVaJQUOgk3EtQRmQ4wAA"
@@ -5817,7 +5817,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 4592,
-									"top": 3556,
+									"top": 3492,
 									"width": 10,
 									"height": 10
 								},
@@ -5842,7 +5842,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 1501,
-											"top": 2653,
+											"top": 2589,
 											"width": 178.98583984375,
 											"height": 13,
 											"text": "«Fase 1»"
@@ -5858,7 +5858,7 @@
 											"font": "Arial;13;1",
 											"parentStyle": true,
 											"left": 1501,
-											"top": 2668,
+											"top": 2604,
 											"width": 178.98583984375,
 											"height": 13,
 											"text": "Fase Primeira"
@@ -5875,7 +5875,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 2352,
-											"top": 3576,
+											"top": 3448,
 											"width": 135.87158203125,
 											"height": 13,
 											"text": "(from Design Model)"
@@ -5892,7 +5892,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 2352,
-											"top": 3576,
+											"top": 3448,
 											"height": 13
 										}
 									],
@@ -5901,7 +5901,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 1496,
-									"top": 2648,
+									"top": 2584,
 									"width": 188.98583984375,
 									"height": 38,
 									"stereotypeLabel": {
@@ -5941,7 +5941,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 1501,
-											"top": 2691,
+											"top": 2627,
 											"width": 178.98583984375,
 											"height": 13,
 											"text": "+...",
@@ -5961,7 +5961,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 1501,
-											"top": 2706,
+											"top": 2642,
 											"width": 178.98583984375,
 											"height": 13,
 											"text": "+maxInimMedios: const int",
@@ -5973,7 +5973,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 1496,
-									"top": 2686,
+									"top": 2622,
 									"width": 188.98583984375,
 									"height": 38
 								},
@@ -6001,7 +6001,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 1501,
-											"top": 2729,
+											"top": 2665,
 											"width": 178.98583984375,
 											"height": 13,
 											"text": "+criarInimMedios()",
@@ -6021,7 +6021,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 1501,
-											"top": 2744,
+											"top": 2680,
 											"width": 178.98583984375,
 											"height": 13,
 											"text": "+criarObstMedios()",
@@ -6041,7 +6041,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 1501,
-											"top": 2759,
+											"top": 2695,
 											"width": 178.98583984375,
 											"height": 13,
 											"text": "+...()",
@@ -6053,7 +6053,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 1496,
-									"top": 2724,
+									"top": 2660,
 									"width": 188.98583984375,
 									"height": 53
 								},
@@ -6072,7 +6072,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 4592,
-									"top": 3556,
+									"top": 3492,
 									"width": 10,
 									"height": 10
 								}
@@ -6082,7 +6082,7 @@
 							"font": "Arial;13;0",
 							"parentStyle": false,
 							"left": 1496,
-							"top": 2648,
+							"top": 2584,
 							"width": 187.98583984375,
 							"height": 143,
 							"showProperty": false,
@@ -14454,7 +14454,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1593,
-									"top": 2866,
+									"top": 2834,
 									"height": 11,
 									"alpha": 1,
 									"distance": 30,
@@ -14474,7 +14474,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1580,
-									"top": 2858,
+									"top": 2826,
 									"height": 11,
 									"alpha": 1,
 									"distance": 15,
@@ -14494,7 +14494,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1555,
-									"top": 2858,
+									"top": 2826,
 									"height": 11,
 									"alpha": -1,
 									"distance": 15,
@@ -14533,7 +14533,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1568,
-									"top": 2816,
+									"top": 2752,
 									"height": 11,
 									"alpha": 0,
 									"distance": 30,
@@ -14572,7 +14572,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 1564,
-									"top": 2797,
+									"top": 2733,
 									"width": 8.34228515625,
 									"height": 13,
 									"alpha": 0,
@@ -14613,7 +14613,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1568,
-									"top": 2826,
+									"top": 2762,
 									"height": 11,
 									"alpha": 0,
 									"distance": 40,
@@ -14668,7 +14668,7 @@
 							"tail": {
 								"$ref": "kvs6oq6ro0epESl22ysdwAAA"
 							},
-							"points": "1568:2791;1568:2920",
+							"points": "1568:2727;1568:2920",
 							"showVisibility": true,
 							"showProperty": false,
 							"nameLabel": {
@@ -20095,7 +20095,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1714,
-									"top": 2731,
+									"top": 2650,
 									"height": 11,
 									"alpha": 0,
 									"distance": 30
@@ -20133,7 +20133,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 1705,
-									"top": 2730,
+									"top": 2649,
 									"width": 8.34228515625,
 									"height": 13,
 									"alpha": 0,
@@ -20175,7 +20175,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1724,
-									"top": 2731,
+									"top": 2650,
 									"height": 11,
 									"alpha": 0,
 									"distance": 40
@@ -20249,7 +20249,7 @@
 							"tail": {
 								"$ref": "S2jXUU8m+kWBPPOZn3PT2gAA"
 							},
-							"points": "3570:3422;3570:3512;1776:3512;1776:2736;1684:2736",
+							"points": "3570:3422;3570:3512;1776:3512;1776:2655;1684:2655",
 							"showVisibility": true,
 							"showProperty": false,
 							"nameLabel": {
@@ -20567,12 +20567,12 @@
 							"_parent": {
 								"$ref": "O5eFn4h62kaG+YUl4qXABgAA"
 							},
-							"font": "Arial;30;0",
+							"font": "Arial;45;0",
 							"parentStyle": false,
-							"left": 4096,
-							"top": 1984,
-							"width": 528,
-							"height": 56,
+							"left": 4448,
+							"top": 2112,
+							"width": 768,
+							"height": 108,
 							"text": "Yago Augusto Constantino Ribeiro\n\n\n"
 						},
 						{
@@ -20581,12 +20581,12 @@
 							"_parent": {
 								"$ref": "O5eFn4h62kaG+YUl4qXABgAA"
 							},
-							"font": "Arial;30;0",
+							"font": "Arial;45;0",
 							"parentStyle": false,
-							"left": 4096,
-							"top": 2144,
-							"width": 472,
-							"height": 104,
+							"left": 4440,
+							"top": 2400,
+							"width": 856,
+							"height": 148,
 							"text": "Trabalho de Técnicas de Programação \nTurma S73"
 						},
 						{
@@ -20595,12 +20595,12 @@
 							"_parent": {
 								"$ref": "O5eFn4h62kaG+YUl4qXABgAA"
 							},
-							"font": "Arial;30;0",
+							"font": "Arial;45;0",
 							"parentStyle": false,
-							"left": 4096,
-							"top": 2064,
-							"width": 464,
-							"height": 42,
+							"left": 4448,
+							"top": 2256,
+							"width": 576,
+							"height": 102,
 							"text": "Gabriel Felipe Machado"
 						},
 						{
@@ -20609,12 +20609,12 @@
 							"_parent": {
 								"$ref": "O5eFn4h62kaG+YUl4qXABgAA"
 							},
-							"font": "Arial;30;0",
+							"font": "Arial;45;0",
 							"parentStyle": false,
-							"left": 4096,
-							"top": 2272,
-							"width": 132,
-							"height": 42,
+							"left": 4448,
+							"top": 2568,
+							"width": 147.63671875,
+							"height": 57,
 							"text": "2024.2"
 						}
 					]

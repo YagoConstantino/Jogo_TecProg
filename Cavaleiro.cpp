@@ -8,7 +8,6 @@ Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::G
 	setMaldade(1);
 	_speed.x = 0.03f;
 
-	
 
 	if (rand() % 2)
 	{
