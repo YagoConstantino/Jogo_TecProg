@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include "ListaTemplate.h"
 #include "Lista.h"
 #include "Gerenciador_Grafico.h"
@@ -12,19 +14,19 @@
 #include "BarraMagica.h"
 #include "Cavaleiro.h"
 #include "Mago.h"
+#include "Floresta.h"
 
 
 using namespace std;
 
 int main()
 {
-   
+    srand(time(NULL));
     Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
+    Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg, "Player");
     sf::Event event;
     Listas::ListaEntidades Lista;
     
-    Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg,"Player");
-
     
     Entidades::Plataforma *plat = new Entidades::Plataforma (5, 680, gg, 10);
     Entidades::Plataforma *plat2 = new Entidades::Plataforma(5+plat->getBody().getGlobalBounds().width, 680, gg, 10);
@@ -92,6 +94,9 @@ int main()
 
         //cout << jog->getVidas();
         
+        
     }
+   /* Fases::Floresta* flore = new Fases::Floresta(gg, jog);
+    flore->executar();*/
 
 }

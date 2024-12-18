@@ -23,6 +23,7 @@
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Fase.h" />
+    <ClInclude Include="Floresta.h" />
     <ClInclude Include="Gerenciador_Colisoes.h" />
     <ClInclude Include="Gerenciador_Grafico.h" />
     <ClInclude Include="Inimigo.h" />
@@ -43,6 +44,8 @@
   <ItemGroup>
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
+    <ClCompile Include="Fase.cpp" />
+    <ClCompile Include="Floresta.cpp" />
     <ClCompile Include="Gerenciador_colisoes.cpp" />
     <ClCompile Include="Gerenciador_Grafico.cpp" />
     <ClCompile Include="Inimigo.cpp" />

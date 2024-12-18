@@ -39,7 +39,13 @@ void Entidades::Mago::setProjetil(Entidades::Projetil* pProj) {
 	_projetil = pProj;
 }
 
-void Entidades::Mago::executar() {
+void Entidades::Mago::executar() 
+{
+	if (_num_vidas <= 0)
+	{
+		setVivo(false);
+	}
+
 	float dt = deltaTime.restart().asSeconds();
 
 	_segundos += dt;

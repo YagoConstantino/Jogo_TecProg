@@ -1,19 +1,22 @@
-﻿  BarraMagica.cpp
-  Bruxa.cpp
-  Cavaleiro.cpp
-  Ente.cpp
-  Entidade.cpp
-  Espinho.cpp
-  Gerenciador_Grafico.cpp
-  Gerenciador_colisoes.cpp
-  Inimigo.cpp
-  Jogador.cpp
-  ListaEntidades.cpp
-  Mago.cpp
+﻿  Fase.cpp
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(48,53): warning C4244: '=': conversão de 'T' para 'float', possível perda de dados
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(48,53): warning C4244:         with
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(48,53): warning C4244:         [
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(48,53): warning C4244:             T=unsigned int
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(48,53): warning C4244:         ]
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(51,57): warning C4244: '=': conversão de 'T' para 'float', possível perda de dados
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(51,57): warning C4244:         with
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(51,57): warning C4244:         [
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(51,57): warning C4244:             T=unsigned int
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(51,57): warning C4244:         ]
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(54,58): warning C4244: '=': conversão de 'T' para 'float', possível perda de dados
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(54,58): warning C4244:         with
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(54,58): warning C4244:         [
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(54,58): warning C4244:             T=unsigned int
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(54,58): warning C4244:         ]
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(63,15): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
+C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(67,6): warning C4101: 'i': variável local não referenciada
   Main.cpp
-  Obstaculo.cpp
-  Personagem.cpp
-  Plataforma.cpp
-  Projetil.cpp
+C:\Users\yagoa\Desktop\Game\Jogo\Main.cpp(24,15): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
   Gerando Código...
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe

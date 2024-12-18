@@ -1,11 +1,19 @@
 #include "Cavaleiro.h"
-
+#include <stdlib.h>
+#include <time.h>
 Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog, int vidas)
 	:Inimigo(inicialX,inicialY,pgra,pJog,vidas)
 {
 	setMaldade(1);
 	_speed.x = 0.03f;
+
+	
+
+	if (rand() % 2)
+	{
+		_speed.x *= -1;
+	}
 
 	sf::Texture* textura = new sf::Texture();
 
@@ -28,6 +36,10 @@ Entidades::Cavaleiro::~Cavaleiro()
 void Entidades::Cavaleiro::executar()
 {
 	mover();
+	if (_num_vidas <= 0)
+	{
+		setVivo(false);
+	}
 	
 }
 

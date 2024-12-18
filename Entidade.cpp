@@ -81,9 +81,11 @@ namespace Entidades
 				_speed.y = maxGravidade; // Limitar a velocidade máxima da gravidade
 			}
 		}
-		else {
+		else 
+		{
 			_speed.y = 0; // Zera a velocidade quando está no chão
 		}
+
 		if (getTipo() == 2) // Caso seja um Obstaculo é empurrado com a mesma força para a outra direção mantendo estatico
 		{
 			_speed.y -= gravidade;

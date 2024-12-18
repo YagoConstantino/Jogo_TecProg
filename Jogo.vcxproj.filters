@@ -93,6 +93,9 @@
     <ClInclude Include="Fase.h">
       <Filter>Fases</Filter>
     </ClInclude>
+    <ClInclude Include="Floresta.h">
+      <Filter>Fases</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -145,6 +148,12 @@
     </ClCompile>
     <ClCompile Include="Projetil.cpp">
       <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase.cpp">
+      <Filter>Fases</Filter>
+    </ClCompile>
+    <ClCompile Include="Floresta.cpp">
+      <Filter>Fases</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
