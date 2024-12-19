@@ -15,6 +15,7 @@
 #include "Cavaleiro.h"
 #include "Mago.h"
 #include "Floresta.h"
+#include "Jogo.h"
 
 
 using namespace std;
@@ -23,9 +24,9 @@ int main()
 {
     srand(static_cast<unsigned>(time(nullptr)));
 
-    Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
+    /* Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
     Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg, "Player");
-    /*sf::Event event;
+    sf::Event event;
     Listas::ListaEntidades Lista;
     
     
@@ -98,8 +99,8 @@ int main()
         
         
     }*/
-    Fases::Floresta* flore = new Fases::Floresta(gg, jog);
-    flore->executar();
+    Jogo* principal = new Jogo("Player");
+    principal->executar();
 
     return 0;
 }

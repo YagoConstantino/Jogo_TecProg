@@ -4,7 +4,7 @@ namespace Entidades
 {
 	Entidades::Entidade::Entidade(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra):
 		Ente(pgra), Position(inicialX, inicialY),_clock(),_segundos(0.0f),
-		_speed(0,0),_Tipo(0),_onGround(),_vivo(true)
+		_speed(0,0),_Tipo(0),_onGround(false),_vivo(true)
 	{
 		_body.setPosition(Position);
 	}
@@ -68,6 +68,23 @@ namespace Entidades
 	void Entidade::restartClock()
 	{
 		_clock.restart();
+	}
+
+	void Entidade::knockBack(Entidades::Entidade* ente)
+	{
+		if (getPositionX() > ente->getPositionX())
+			// se a posicao for maior que a do obstaculo, ele empurra para tras
+		{
+			_speed.x += 100;
+		}
+		// se não empurra pra frente 
+		else
+		{
+			_speed.x -= 100;
+		}
+
+		Position += _speed;
+		_body.setPosition(Position);
 	}
 
 	void Entidade::sofrerGravidade(float gravidade)

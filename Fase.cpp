@@ -4,6 +4,15 @@
 #include <vector>
 #include <utility>
 
+/*Implementar posteriormente:
+Posso fazer um vector de pair<pair<float,float>,bool>(Esses vectores para plataforma e cavaleiro ficariam no .h)
+uso o pair de float para as coordenadas e o booleano para saber
+se a plataforma ja foi gerada, dai posso randomizar melhor os obstaculos dificeis e medios, além de ter mais de 5
+opções de plataformas, ou seja gero umas 10 posições, algumas plataformas podem se sobrepor a outras, portanto antes de 
+gerar elas verifico se outra plataforma muito proxima ja foi gerada, o mesmo pode ser feito para inimigos,posso gerar 
+todas as plataformas e depois verifico quais foram geradas e posso colocara inimigos em todas elas ao inves de me 
+limitar ao chão, pois é até o momento a unica parte que certamente vai ser gerada
+*/
 
 Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra,Entidades::Jogador* j)
 	:_GG(pgra),_jog(j),maxCavaleiros(7),maxPlataformas(8)
@@ -36,8 +45,8 @@ void Fases::Fase::criarCavaleiros()
 {
 	//Possibilidade de aleatorizar o y entre 700 e 150 rand()%(700-150)+150
 
-	int n = rand()% maxCavaleiros; // Quantidade varia de 3 a 7
-    if (n < 3) n = 3;
+	int n = (rand()% 5)+3; // Quantidade varia de 3 a 7
+    
 
 	float x = 150.f;           //Posicao inicial
     float anteriorX = x;
@@ -66,20 +75,20 @@ void Fases::Fase::criarCavaleiros()
 
 void Fases::Fase::criarPlataformas()
 {
-	int n =  rand() % maxPlataformas;        // Quantidade de plataformas: entre 3 e 8
-    if (n < 4) n = 4;
+	int n =  (rand() % 5) +4;        // Quantidade de plataformas: entre 3 e 8
+   
 	int i;
 	
 	std::vector<std::pair<float, float>> posicoes = 
 	{
-		{0, 710.f},										// Plataforma 1
-		{468, 710.f},									// Plataforma 2
-		{936, 710.f},									// Plataforma 3
-		{0, 530.f},										// Plataforma 4
-		{_GG->getWindow()->getSize().x - 468, 530.f},	// Plataforma 5
-		{450, 360.f},									// Plataforma 6
-		{0, 200.f},										// Plataforma 7
-		{_GG->getWindow()->getSize().x - 468, 200.f}    // Plataforma 8
+		{0.f, 710.f},										// Plataforma 1
+		{468.f, 710.f},										// Plataforma 2 
+		{936.f, 710.f},										// Plataforma 3
+		{0.f, 530.f},										// Plataforma 4
+		{_GG->getWindow()->getSize().x - 468, 530.f},		// Plataforma 5
+		{450.f, 360.f},										// Plataforma 6
+		{0.f, 200.f},										// Plataforma 7
+		{_GG->getWindow()->getSize().x - 468, 200.f}		// Plataforma 8
 	};
 
 	for (i = 0; i < n; i++)

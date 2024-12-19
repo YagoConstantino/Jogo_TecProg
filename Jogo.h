@@ -14,5 +14,7 @@ public:
 	Jogo(std::string nome = "");
 	~Jogo();
 	void executar();
+	void JogarFloresta();
+	void mostrarRanking();
 	void Menu();
 };

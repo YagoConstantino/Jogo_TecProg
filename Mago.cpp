@@ -4,7 +4,10 @@
 // direcao = -1 é esquerda, direcao = 1 é direita
 // _clock e _segundos controlam a frequencia de bater do boss
 
-Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog, int vidas) : Inimigo(inicialX, inicialY, pgra, pJog, vidas), _vidasPerdidas(0), _projetil(nullptr), _direcao(0), _segundosIntervaloPro(0.f) {
+Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog, int vidas) 
+	: Inimigo(inicialX, inicialY, pgra, pJog, vidas), 
+	_vidasPerdidas(0), _projetil(nullptr), _direcao(0), _segundosIntervaloPro(0.f) 
+{
 
 	setMaldade(1);
 	_speed.x = 0.06f;

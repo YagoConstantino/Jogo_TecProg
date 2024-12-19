@@ -80,22 +80,7 @@ int Entidades::Jogador::getPontos() const
 	return _pontos;
 }
 
-void Entidades::Jogador::knockBack(Entidades::Entidade* ente)
-{
-	if (getPositionX() > ente->getPositionX()) 
-	// se a posicao for maior que a do obstaculo, ele empurra para tras
-	{
-		_speed.x += 100;
-	}
-	// se não empurra pra frente 
-	else
-	{
-		_speed.x -= 100;
-	}
 
-	Position += _speed;
-	_body.setPosition(Position);
-}
 
 void Entidades::Jogador::mover()
 {

@@ -39,6 +39,7 @@ namespace Entidades
 		float getSpeedY()const;
 
 		void restartClock();
+		void knockBack(Entidades::Entidade* ente);
 
 		void sofrerGravidade(float gravidade);
 

@@ -35,7 +35,6 @@ namespace Entidades
 		void AumentarPontos(int pont);
 		int getPontos()const;
 
-		void knockBack(Entidades::Entidade* ente);
 		void mover();	
 
 		void executar();

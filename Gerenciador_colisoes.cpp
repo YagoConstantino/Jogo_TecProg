@@ -179,7 +179,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 						colidiuComChao2 = true;
 						_jogador2->setGround(true); // Marca que o jogador está no chão
 						_jogador2->setSpeed(_jogador2->getSpeedX(), 0); // Zera a velocidade vertical do jogador
-						_jogador2->setPosition(_jogador2->getPosition().x, (*itObstaculo)->getPosition().y - _jogador2->getBody().getGlobalBounds().height-1);
+						_jogador2->setPosition(_jogador2->getPosition().x, (*itObstaculo)->getPosition().y - _jogador2->getBody().getGlobalBounds().height);
 					}
 					else
 					{
@@ -204,13 +204,14 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 
 void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs() 
 {
-	bool colidiuComChao1 = false;
-	
+		
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); itInimigo++)
 	{
+		
 		if (*itInimigo != nullptr && (*itInimigo)->getVivo())
 		{
-
+			bool colidiuComChao1 = false;
+			
 			//Para cada Inimigo vamos percorrer os Obstaculos, testar e tratar colisões
 			for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo)
 			{
@@ -242,7 +243,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 							colidiuComChao1 = true;
 							(*itInimigo)->setGround(true); // Marca que o Inimigo está no chão
 							(*itInimigo)->setSpeed((*itInimigo)->getSpeedX(), 0); // Zera a velocidade vertical do Inimigo
-							(*itInimigo)->setPosition((*itInimigo)->getPosition().x, (*itObstaculo)->getPosition().y - (*itInimigo)->getBody().getGlobalBounds().height - 1);
+							(*itInimigo)->setPosition((*itInimigo)->getPosition().x, (*itObstaculo)->getPosition().y - (*itInimigo)->getBody().getGlobalBounds().height );
 						}
 						else
 						{
@@ -250,7 +251,11 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 							(*itInimigo)->setSpeed((*itInimigo)->getSpeedX(), 0); // Zera a velocidade vertical para impedir que o Inimigo continue subindo
 							(*itInimigo)->setPosition((*itInimigo)->getPosition().x, (*itObstaculo)->getPosition().y + (*itObstaculo)->getBody().getGlobalBounds().height);
 						}
-						if (!colidiuComChao1 && (*itInimigo) != nullptr) (*itInimigo)->setGround(false);
+
+						if (!colidiuComChao1)
+						{
+							(*itInimigo)->setGround(false);
+						}
 					}
 				}
 				if (_jogador1 != nullptr)
