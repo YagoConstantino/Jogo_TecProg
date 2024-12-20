@@ -6,7 +6,7 @@
 #include "Projetil.h"
 
 namespace Entidades {
-	class InimigoDificil : public Entidades::Inimigo {
+	class Mago : public Entidades::Inimigo {
 	private:
 		// Delta tempo
 		sf::Clock deltaTime;
@@ -23,9 +23,9 @@ namespace Entidades {
 
 
 	public:
-		InimigoDificil(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
+		Mago(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
 			Entidades::Jogador* pJog = nullptr, int vidas = 10);
-		~InimigoDificil();
+		~Mago();
 
 		void setProjetil(Entidades::Projetil* pProj);
 
@@ -37,7 +37,7 @@ namespace Entidades {
 		void atirar();
 		void bater();
 
-		void salvar();
-		void render();
+		//void SalvarDataBuffer();
+		
 	};
 }

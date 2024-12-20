@@ -1,6 +1,6 @@
-#include "Obst_Medio.h"
+#include "BarraMagica.h"
 
-Entidades::Obst_Medio::Obst_Medio(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra) 
+Entidades::BarraMagica::BarraMagica(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra)
 	:Obstaculo(inicialX,inicialY,pgra), _duracaoParalisia(8000.f)
 {
 
@@ -26,7 +26,7 @@ Entidades::Obst_Medio::Obst_Medio(float inicialX, float inicialY, Gerenciadores:
 	_danoso = true;
 }
 
-Entidades::Obst_Medio::~Obst_Medio() {
+Entidades::BarraMagica::~BarraMagica() {
 	_pGraf = nullptr;
 	_danoso = false;
 
@@ -37,11 +37,11 @@ Entidades::Obst_Medio::~Obst_Medio() {
 	_pTexture = nullptr;
 }
 
-void Entidades::Obst_Medio::executar() {
+void Entidades::BarraMagica::executar() {
 	desenhar();
 }
 
-void Entidades::Obst_Medio::obstacular(Entidades::Jogador* pJog) {
+void Entidades::BarraMagica::obstacular(Entidades::Jogador* pJog) {
 	if (pJog == nullptr) {
 		std::cerr << "Erro ao acessar ponteiro jogador.\n";
 		return;

@@ -10,7 +10,7 @@ Entidades::Plataforma::Plataforma(float inicialX, float inicialY, Gerenciadores:
 	}
 
 	setTexture(textura);
-	_body.setScale(1.3f,0.5f);
+	_body.setScale(1.3f,0.3f);
 	desenhar();
 }
 

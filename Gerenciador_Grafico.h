@@ -11,15 +11,20 @@ namespace Gerenciadores{
 		// Atributos
 		sf::RenderWindow* window;
 		sf::View view;
-		
+
+		//Implementando Singleton
+		static Gerenciador_Grafico* instancia;
+		Gerenciador_Grafico();
 
 	public:
-		Gerenciador_Grafico();
+		
+		static Gerenciador_Grafico* getInstancia();
 		~Gerenciador_Grafico();
 
 		void desenhar(Entidades::Ente* pE);
+		void desenhar(sf::Text* texto);
 		//void desenhar(sf::RectangleShape& shape);
-		void render();
+		void clear();
 		void display();
 		sf::RenderWindow* getWindow()const;
 		bool getOpen()const;

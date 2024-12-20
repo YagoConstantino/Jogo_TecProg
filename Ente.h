@@ -23,12 +23,13 @@ namespace Entidades
 
 	public:
 		Ente(Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
-		virtual  ~Ente() {};
+		virtual  ~Ente() { };
 
 		virtual void executar() = 0;
 		void desenhar();
 
 		int getId()const { return id; }
+		Gerenciadores::Gerenciador_Grafico* getGrafico() { return _pGraf; }
 
 		void setTexture(sf::Texture* pText);
 		sf::Texture* getTexture()const { return _pTexture; }

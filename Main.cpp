@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <stdlib.h>
+#include <ctime>
 #include "ListaTemplate.h"
 #include "Lista.h"
 #include "Gerenciador_Grafico.h"
@@ -8,90 +10,60 @@
 #include "ListaEntidades.h"
 #include "Plataforma.h"
 #include "Gerenciador_Colisoes.h"
-#include "Obst_Dificil.h"
-#include "Obst_Medio.h"
-#include "InimigoFacil.h"
-#include "InimigoDificil.h"
+#include "Espinho.h"
+#include "BarraMagica.h"
+#include "Cavaleiro.h"
+#include "Mago.h"
+#include "Floresta.h"
+#include "Jogo.h"
 
 
 using namespace std;
 
+class Pessoa {
+private:
+    std::string nome;
+    int idade;
+
+public:
+    Pessoa(const string& nome, int idade) : nome(nome), idade(idade) {}
+
+    ~Pessoa(){}
+
+   
+    string getNome() const { return nome; }
+    int getIdade() const { return idade; }
+
+    
+    void imprimir() const 
+    {
+        cout << "Nome: " << nome << ", Idade: " << idade << endl;
+    }
+};
+
 int main()
 {
-   
-    Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
-    sf::Event event;
-    Listas::ListaEntidades Lista;
-    
-    Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg,"Player");
+   /* Listas::ListaElementar<Pessoa> lista;
 
-    
-    Entidades::Plataforma *plat = new Entidades::Plataforma (5, 680, gg, 10);
-    Entidades::Plataforma *plat2 = new Entidades::Plataforma(5+plat->getBody().getGlobalBounds().width, 680, gg, 10);
-    Entidades::Plataforma *plat4 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width, 480, gg, 10);
-    Entidades::Plataforma *plat5 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.2f, 280, gg, 10);
-    
-    Entidades::Obst_Dificil *obs = new Entidades::Obst_Dificil(1,plat2->getPositionX() + plat->getBody().getGlobalBounds().width, 680, gg);
-    Entidades::Obst_Medio *obsMe = new Entidades::Obst_Medio(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.4f, 400, gg);
-    Entidades::Plataforma *plat3 = new Entidades::Plataforma(obs->getPositionX() + obs->getBody().getGlobalBounds().width, 680, gg, 10);
-   
-    Entidades::InimigoFacil *inimigo = new Entidades::InimigoFacil (500, 630, gg, jog,5);
-    Entidades::InimigoDificil *boss = new Entidades::InimigoDificil (plat3->getPositionX() + plat3->getBody().getGlobalBounds().width / 2.f, 630, gg, jog, 10);
+    // Criando objetos Pessoa e adicionando à lista
+    lista.insert_back(new Pessoa("Alice", 25));
+    lista.insert_back(new Pessoa("Bruno", 30));
+    lista.insert_back(new Pessoa("Carla", 20));
 
-    Entidades::Projetil* pro = new Entidades::Projetil(-50.f, -50.f, gg);
-    boss->setProjetil(pro);
-
-    Lista.insert_back(static_cast<Entidades::Entidade*>(jog));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(plat));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(plat2));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(plat3));
-
-    Lista.insert_back(static_cast<Entidades::Entidade*>(plat4));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(plat5));
-
-    Lista.insert_back(static_cast<Entidades::Entidade*>(obs));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(obsMe));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(inimigo));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(boss));
-    Lista.insert_back(static_cast<Entidades::Entidade*>(pro));
-    Lista.percorrer();
-
-    Gerenciadores::Gerenciador_Colisoes* gc = new Gerenciadores::Gerenciador_Colisoes(0.005f);
-    //Poderiamos converter explicitamente para obstaculo
-    gc->incluirObstaculo(plat);
-    gc->incluirObstaculo(plat2);
-    gc->incluirObstaculo(plat3);
-
-    gc->incluirObstaculo(plat4);
-    gc->incluirObstaculo(plat5);
-    gc->incluirObstaculo(obs);
-    gc->incluirObstaculo(obsMe);
-    gc->setJogador1(jog);
-    gc->incluirInimigo(inimigo);
-    gc->incluirInimigo(boss);
-    gc->incluirProjetil(pro);
-
-    cout << jog->getNome() << endl;
-
-    while (gg->getOpen() )
-    {
-        while (gg->getWindow()->pollEvent(event)) 
-        {
-            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
-            {
-                gg->closeWindow();
-            }
-            
-        }
-
-        gg->render();
-        gc->executar();
-        Lista.executar();
-        
-        gg->display();
-
-        cout << jog->getVidas();
-        
+    // Usando o iterador para percorrer a lista
+    Listas::ListaElementar<Pessoa>::Iterator* it = lista.getIterator();
+    while (it->hasPNext()) {
+        Pessoa* pessoa = it->Atual();
+        pessoa->imprimir();
     }
 
+    delete it; // Libera o iterador
+
+    return 0;*/
+    srand(static_cast<unsigned>(time(nullptr)));
+
+    Jogo* principal = new Jogo("Player");
+    principal->executar();
+
+    return 0;
 }

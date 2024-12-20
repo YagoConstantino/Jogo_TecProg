@@ -6,7 +6,7 @@ namespace Listas {
     template <typename T>
     class ListaElementar {
     public:
-        // Classe Elemento
+      /////////////////////////////////////////// Classe Elemento////////////////////////////////////////////////////
         class Elemento {
         private:
             T* pInfo;
@@ -31,9 +31,33 @@ namespace Listas {
             void setNext(Elemento* pNext) { next = pNext; }
             void setPrev(Elemento* pPrev) { prev = pPrev; }
             void setInfo(T* pInf) { pInfo = pInf; }
+            
+        };
+        /////////////////////////////////////////////Classe Iterator//////////////////////////////////////////////
+        class Iterator 
+        {
+        private:
+            Elemento* current;
+
+        public:
+            Iterator(Elemento* start) : current(start) {}
+
+            bool hasPNext() const { return current != nullptr; }
+            T* Atual() 
+            {
+                if (!current) 
+                {
+                    std::cerr << "Fim da lista atingido!" << std::endl;
+                    return nullptr;
+                }
+
+                T* info = current->getInfo();
+                current = current->GetNext();
+                return info;
+            }
         };
 
-        // ListaElementar
+        ////////////////////////////////////////////ListaElementar/////////////////////////////////////////////////////
         ListaElementar() : head(nullptr), tail(nullptr), size(0) {}
 
         ~ListaElementar() { limpar(); }
@@ -53,6 +77,9 @@ namespace Listas {
         void operator--() { if (size > 0) size--; }
         Elemento* operator[](int i);
 
+        //Retorna um iterador no começo da lista
+        Iterator* getIterator()const { return new Iterator(head); }
+
     private:
         Elemento* head;
         Elemento* tail;
@@ -70,10 +97,12 @@ namespace Listas {
         Elemento* novoElem = new Elemento();
         novoElem->setInfo(pTipo);
 
-        if (!head) {
+        if (!head) 
+        {
             head = tail = novoElem;
         }
-        else {
+        else 
+        {
             novoElem->setNext(head);
             head->setPrev(novoElem);
             head = novoElem;

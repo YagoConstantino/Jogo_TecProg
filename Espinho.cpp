@@ -1,6 +1,6 @@
-#include "Obst_Dificil.h"
+#include "Espinho.h"
 
-Entidades::Obst_Dificil::Obst_Dificil(int dano, float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra)
+Entidades::Espinho::Espinho(int dano, float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra)
 	: Obstaculo(inicialX,inicialY,pgra), _dano(dano)
 {
 	// Gerenciador grafico
@@ -24,7 +24,7 @@ Entidades::Obst_Dificil::Obst_Dificil(int dano, float inicialX, float inicialY, 
 	setDanoso(true);
 }
 
-Entidades::Obst_Dificil::~Obst_Dificil() 
+Entidades::Espinho::~Espinho()
 {
 	_pGraf = nullptr;
 	_dano = 0;
@@ -37,7 +37,7 @@ Entidades::Obst_Dificil::~Obst_Dificil()
 	_pTexture = nullptr;
 }
 
-void Entidades::Obst_Dificil::executar() 
+void Entidades::Espinho::executar()
 {
 	desenhar();
 
@@ -57,7 +57,7 @@ void Entidades::Obst_Dificil::executar()
 	
 }
 
-void Entidades::Obst_Dificil::obstacular(Entidades::Jogador* pJog) 
+void Entidades::Espinho::obstacular(Entidades::Jogador* pJog)
 {
 	if (pJog == nullptr) 
 	{

@@ -1,10 +1,13 @@
-#include "InimigoDificil.h"
+#include "Mago.h"
 
 // IMPORTANTE
 // direcao = -1 é esquerda, direcao = 1 é direita
 // _clock e _segundos controlam a frequencia de bater do boss
 
-Entidades::InimigoDificil::InimigoDificil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog, int vidas) : Inimigo(inicialX, inicialY, pgra, pJog, vidas), _vidasPerdidas(0), _projetil(nullptr), _direcao(0), _segundosIntervaloPro(0.f) {
+Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog, int vidas) 
+	: Inimigo(inicialX, inicialY, pgra, pJog, vidas), 
+	_vidasPerdidas(0), _projetil(nullptr), _direcao(0), _segundosIntervaloPro(0.f) 
+{
 
 	setMaldade(1);
 	_speed.x = 0.06f;
@@ -23,14 +26,14 @@ Entidades::InimigoDificil::InimigoDificil(float inicialX, float inicialY, Gerenc
 	deltaTime.restart();
 }
 
-Entidades::InimigoDificil::~InimigoDificil() {
+Entidades::Mago::~Mago() {
 	_projetil = nullptr;
 
 	_vidasPerdidas = 0;
 	_direcao = 0;
 }
 
-void Entidades::InimigoDificil::setProjetil(Entidades::Projetil* pProj) {
+void Entidades::Mago::setProjetil(Entidades::Projetil* pProj) {
 	if (pProj == nullptr) {
 		std::cerr << "Ponteiro de projetil invalido. Impossivel vincular com boss.\n";
 		return;
@@ -39,7 +42,13 @@ void Entidades::InimigoDificil::setProjetil(Entidades::Projetil* pProj) {
 	_projetil = pProj;
 }
 
-void Entidades::InimigoDificil::executar() {
+void Entidades::Mago::executar() 
+{
+	if (_num_vidas <= 0)
+	{
+		setVivo(false);
+	}
+
 	float dt = deltaTime.restart().asSeconds();
 
 	_segundos += dt;
@@ -52,14 +61,14 @@ void Entidades::InimigoDificil::executar() {
 	danificar(_pJog);
 }
 
-void Entidades::InimigoDificil::verificarVida() {
+void Entidades::Mago::verificarVida() {
 	if (_vidasPerdidas > _num_vidas / 2) {
 		_speed.x = 0.09f;
 		setMaldade(2);
 	}
 }
 
-void Entidades::InimigoDificil::mover() {
+void Entidades::Mago::mover() {
 	// Define a direcao do inimigo
 	if (_pJog->getPositionX() - getPositionX() < 0.f) 
 		_direcao = -1; // para a esquerda
@@ -73,7 +82,7 @@ void Entidades::InimigoDificil::mover() {
 	_body.setPosition(Position);
 }
 
-void Entidades::InimigoDificil::danificar(Entidades::Jogador* pJog) {
+void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
 	// Fora de alcance
 	if (getDistanciaJogador() > 500.f) return;
 	
@@ -90,7 +99,7 @@ void Entidades::InimigoDificil::danificar(Entidades::Jogador* pJog) {
 	}
 }
 
-void Entidades::InimigoDificil::atirar() {
+void Entidades::Mago::atirar() {
 	// Cria o projetil
 	if (!_projetil->getLancar() && _segundosIntervaloPro > 3.f) {
 		// Zera o cronometro
@@ -107,7 +116,7 @@ void Entidades::InimigoDificil::atirar() {
 	}
 }
 
-void Entidades::InimigoDificil::bater() {
+void Entidades::Mago::bater() {
 	if (_segundos > 0.5f) {
 		_segundos = 0;
 
@@ -118,10 +127,3 @@ void Entidades::InimigoDificil::bater() {
 	}
 }
 
-void Entidades::InimigoDificil::salvar() {
-
-}
-
-void Entidades::InimigoDificil::render() {
-
-}

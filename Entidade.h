@@ -6,7 +6,7 @@
 
 namespace Entidades
 {
-	class Entidade:public Entidades::Ente
+	class Entidade :public Entidades::Ente
 	{
 	protected:
 		bool _onGround;
@@ -19,8 +19,8 @@ namespace Entidades
 		//ostream buffer;
 
 	public:
-		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra=nullptr);
-		virtual ~Entidade() {};
+		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
+		virtual ~Entidade() { if (_pTexture) delete _pTexture; };
 
 		float getPositionX()const;
 		void setPositionX(float x);
@@ -39,6 +39,7 @@ namespace Entidades
 		float getSpeedY()const;
 
 		void restartClock();
+		void knockBack(Entidades::Entidade* ente);
 
 		void sofrerGravidade(float gravidade);
 
@@ -49,8 +50,9 @@ namespace Entidades
 		void setVivo(bool vivo);
 
 		virtual void executar() = 0;
-		
+
 		//void SalvarDataBuffer();
-		
+
+
 	};
 }

@@ -5,13 +5,13 @@
 #include "Obstaculo.h"
 
 namespace Entidades {
-	class Obst_Dificil : public Obstaculo {
+	class Espinho : public Obstaculo {
 	private:
 		int _dano;
 
 	public:
-		Obst_Dificil(int dano = 1, float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico * pgra = nullptr);
-		~Obst_Dificil();
+		Espinho(int dano = 1, float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico * pgra = nullptr);
+		~Espinho();
 
 		void executar();
 		void obstacular(Entidades::Jogador* pJog);

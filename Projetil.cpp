@@ -42,7 +42,7 @@ void Entidades::Projetil::executar() {
 }
 
 void Entidades::Projetil::mover() {
-	if (estaDentroDaJanela() && !tempoDeVooExcedido()) {
+	if (!tempoDeVooExcedido()) {
 		Position.x += getSpeedX();
 		_body.setPosition(Position);
 	}
@@ -54,7 +54,9 @@ void Entidades::Projetil::mover() {
 const bool Entidades::Projetil::estaDentroDaJanela() const {
 	return 
 		Position.x + getSpeedX() > 0.f &&
-		Position.x + getSpeedX() < _pGraf->getWindow()->getSize().x;
+		Position.x + getSpeedX() + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().x &&
+		Position.y + getSpeedY() > 0.f &&
+		Position.y + getSpeedY() + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().y;
 }
 
 const bool Entidades::Projetil::tempoDeVooExcedido() const {
@@ -100,12 +102,4 @@ void Entidades::Projetil::setLancar(const bool lancar) {
 
 const bool Entidades::Projetil::getLancar() const {
 	return _lancar;
-}
-
-void Entidades::Projetil::salvar()
-{
-}
-
-void Entidades::Projetil::render()
-{
 }

@@ -5,14 +5,14 @@
 #include "Obstaculo.h"
 
 namespace Entidades {
-	class Obst_Medio : public Obstaculo
+	class BarraMagica : public Obstaculo
 	{
 	private:
 		float _duracaoParalisia;
 
 	public:
-		Obst_Medio(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
-		~Obst_Medio();
+		BarraMagica(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
+		~BarraMagica();
 
 		void executar();
 		void obstacular(Entidades::Jogador* pJog);

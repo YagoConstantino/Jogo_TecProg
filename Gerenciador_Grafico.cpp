@@ -1,6 +1,9 @@
 #include "Gerenciador_Grafico.h"
 #include "Ente.h"
 
+//Inicio o atributo statico como nullptr
+Gerenciadores::Gerenciador_Grafico* Gerenciadores::Gerenciador_Grafico::instancia = nullptr;
+
 Gerenciadores::Gerenciador_Grafico::Gerenciador_Grafico() 
 {
     window = new sf::RenderWindow(sf::VideoMode(900, 600), "Jogo",sf::Style::Fullscreen);
@@ -8,7 +11,16 @@ Gerenciadores::Gerenciador_Grafico::Gerenciador_Grafico()
     
 }
 
-Gerenciadores::Gerenciador_Grafico::~Gerenciador_Grafico() 
+//Metodo do Singleton, se ja existir um gerenciador statico ele retorna o mesmo para manter 1, se nao ele instancia um novo
+Gerenciadores::Gerenciador_Grafico* Gerenciadores::Gerenciador_Grafico::getInstancia() 
+{
+    if (instancia == nullptr) {
+        instancia = new Gerenciador_Grafico();
+    }
+    return instancia;
+}
+
+Gerenciadores::Gerenciador_Grafico::~Gerenciador_Grafico()
 {
     delete(window);
 }
@@ -21,12 +33,17 @@ void Gerenciadores::Gerenciador_Grafico::desenhar(Entidades::Ente* pE)
     }
 }
 
+void Gerenciadores::Gerenciador_Grafico::desenhar(sf::Text* texto)
+{
+    window->draw(*texto);
+}
+
 /*void Gerenciadores::Gerenciador_Grafico::desenhar(sf::RectangleShape& shape)
 {
     window->draw(shape);
 }*/
 
-void Gerenciadores::Gerenciador_Grafico::render()
+void Gerenciadores::Gerenciador_Grafico::clear()
 {
     window->clear();
 }
