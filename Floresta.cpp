@@ -5,7 +5,7 @@
 
 
 Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog)
-    :Fase(pgra,jog),maxBruxas(3),maxBarraMagicas(3)
+    :Fase(pgra,jog),maxBruxas(5),maxBarraMagicas(4)
 {
     
     _Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
@@ -29,14 +29,15 @@ Fases::Floresta::~Floresta()
 void Fases::Floresta::criaBarrasMagicas()
 {
     // Determinar o número de barras mágicas a serem criadas: entre 1 e 3
-    int n = rand() % 3 + 1;
+    int n = rand() % 4 + 1;
 
     // Posições centrais das plataformas 2, 4 e 6 (caso a plataforma 6 exista)
     std::vector<std::pair<float, float>> posBarras =
     {
-        {468+234 , 630.f}, // Meio da plataforma 2
-        {234,450.f},  // Meio da plataforma 4
-        {_GG->getWindow()->getSize().x - 200, 630.f} // Meio da plataforma 3 
+        {468+234 , 630.f},                               // Meio da plataforma 2
+        {234,450.f},                                    // Meio da plataforma 4
+        {_GG->getWindow()->getSize().x - 200, 630.f},  // Meio da plataforma 3 
+        {936.f, 630.f}
     };
 
     
@@ -57,14 +58,17 @@ void Fases::Floresta::criaBarrasMagicas()
 
 void Fases::Floresta::criaBruxas()
 {
-    int n = rand() % 3 + 1;
+    int n = rand() % 5 + 1;
     int i;
     
     std::vector<std::pair<float, float>> posicaoBruxa =
     {
         {_GG->getWindow()->getSize().x -200, 430.f},
         {_GG->getWindow()->getSize().x - 200, 700.f},
-        {450.f,400.f}
+        {450.f,400.f},
+        {0.f, 700.f},									
+        {468.f, 700.f},
+
     };
 
     for (i = 0; i < n; i++)
@@ -96,7 +100,7 @@ void Fases::Floresta::executar()
 
         }
 
-        _GG->render();
+        _GG->clear();
         _GC->executar();
        _Lista->executar();
 
