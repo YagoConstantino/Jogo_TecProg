@@ -89,14 +89,15 @@ void Listas::ListaEntidades::percorrer() {
 
 void Listas::ListaEntidades::executar() 
 {
-    Listas::ListaElementar<Entidades::Entidade>::Elemento* aux = List.getHead();
-    while (aux != nullptr) 
+    Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
+    while (it->hasPNext()) 
     {
-        Entidades::Entidade* ente = aux->getInfo(); // Obter o ponteiro para Entidade
+        Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
         if (ente != nullptr && ente->getVivo()) 
         {
             ente->executar(); // Executa a ação da entidade
         }
-        aux = aux->GetNext();
+        
     }
+    delete it;
 }

@@ -41,16 +41,20 @@ Jogo::~Jogo()
 
 void Jogo::executar()
 {
-	while (_GerenciadorGráfico->getOpen()) {
+	while (_GerenciadorGráfico->getOpen()) 
+	{
 		sf::Event event;
-		while (_GerenciadorGráfico->getWindow()->pollEvent(event)) {
+		while (_GerenciadorGráfico->getWindow()->pollEvent(event)) 
+		{
 			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				_GerenciadorGráfico->closeWindow();
+				
 		}
 
 		_GerenciadorGráfico->clear();
 
-		switch (stateNum) {
+		switch (stateNum) 
+		{
 			// Cria menu principal
 		case 10:
 			criaMenu();
@@ -85,18 +89,21 @@ void Jogo::criaMenu() {
 		_menu = new Menu(_GerenciadorGráfico);
 
 		// Destroi o estado anterior
-		if (_florest != nullptr) {
+		if (_florest != nullptr) 
+		{
 			delete _florest;
 			_florest = nullptr;
 		}
 	}
 }
 
-void Jogo::JogarMenu() {
+void Jogo::JogarMenu() 
+{
 	_menu->executar();
 }
 
-void Jogo::criaFloresta() {
+void Jogo::criaFloresta() 
+{
 	if (_florest == nullptr) {
 		_florest = new Fases::Floresta(_GerenciadorGráfico, _jogador1);
 

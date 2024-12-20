@@ -23,7 +23,6 @@ public:
 
 	void executar();
 
-
 	void JogarFloresta();
 	void JogarMenu();
 

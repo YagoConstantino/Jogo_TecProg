@@ -8,7 +8,8 @@
 #include "Ente.h"
 #include "Gerenciador_Grafico.h"
 
-class Menu : public Entidades::Ente {
+class Menu : public Entidades::Ente 
+{
 private:
 	// State Num
 	int stateNum;

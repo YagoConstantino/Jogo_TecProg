@@ -35,7 +35,7 @@ Menu::~Menu()
 
 void Menu::carregarFonte()
 {
-	if (!_fonte.loadFromFile("assets/fontes/VCRosdNEUE.ttf")) {
+	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
 		std::cerr << "Erro ao  incluir fonte.\n";
 		return;
 	}
