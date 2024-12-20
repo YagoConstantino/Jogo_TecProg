@@ -7,8 +7,8 @@ namespace Fases
 	class Floresta :public Fase
 	{
 	private:
-		const int maxBruxas = 4;
-		const int maxBarraMagicas = 2;
+		const int maxBruxas;
+		const int maxBarraMagicas;
 	public:
 		Floresta(Gerenciadores::Gerenciador_Grafico* pgra = nullptr, Entidades::Jogador* jog = nullptr);
 		~Floresta();

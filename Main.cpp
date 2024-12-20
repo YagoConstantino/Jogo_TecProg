@@ -15,6 +15,7 @@
 #include "Cavaleiro.h"
 #include "Mago.h"
 #include "Floresta.h"
+#include "Jogo.h"
 
 
 using namespace std;
@@ -23,21 +24,21 @@ int main()
 {
     srand(static_cast<unsigned>(time(nullptr)));
 
-    Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
+    /* Gerenciadores::Gerenciador_Grafico* gg = new Gerenciadores::Gerenciador_Grafico();
     Entidades::Jogador* jog = new Entidades::Jogador(10.f, 10.f, gg, "Player");
-    /*sf::Event event;
+    sf::Event event;
     Listas::ListaEntidades Lista;
-    
-    
+
+
     Entidades::Plataforma *plat = new Entidades::Plataforma (5, 710, gg, 10);
     Entidades::Plataforma *plat2 = new Entidades::Plataforma(120, 330, gg, 10);
     Entidades::Plataforma *plat4 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width, 480, gg, 10);
     Entidades::Plataforma *plat5 = new Entidades::Plataforma(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.2f, 280, gg, 10);
-    
+
     Entidades::Espinho *obs = new Entidades::Espinho(1,plat2->getPositionX() + plat->getBody().getGlobalBounds().width, 680, gg);
     Entidades::BarraMagica*obsMe = new Entidades::BarraMagica(plat->getPositionX() + plat->getBody().getGlobalBounds().width * 1.4f, 400, gg);
     Entidades::Plataforma *plat3 = new Entidades::Plataforma(obs->getPositionX() + obs->getBody().getGlobalBounds().width, 680, gg, 10);
-   
+
     Entidades::Cavaleiro* inimigo = new Entidades::Cavaleiro(500, 630, gg, jog,5);
     Entidades::Mago *boss = new Entidades::Mago (plat3->getPositionX() + plat3->getBody().getGlobalBounds().width / 2.f, 630, gg, jog, 10);
 
@@ -78,28 +79,28 @@ int main()
 
     while (gg->getOpen() )
     {
-        while (gg->getWindow()->pollEvent(event)) 
+        while (gg->getWindow()->pollEvent(event))
         {
-            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {
                 gg->closeWindow();
             }
-            
+
         }
 
         gg->render();
         gc->executar();
         Lista.executar();
-        
+
         gg->display();
 
         //cout << jog->getVidas();
         cout << plat->getBody().getGlobalBounds().width;
-        
-        
+
+
     }*/
-    Fases::Floresta* flore = new Fases::Floresta(gg, jog);
-    flore->executar();
+    Jogo* principal = new Jogo("Player");
+    principal->executar();
 
     return 0;
 }

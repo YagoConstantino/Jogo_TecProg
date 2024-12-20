@@ -2,13 +2,13 @@
 #include "stdlib.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200.f),_velocidade(0.2f), _paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f)
+	:Personagem(inlX, inY, pgra, 10), _pontos(0), nome(name), tempoPulo(200.f), _velocidade(0.2f), _paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f)
 {
 	setTipo(3);
 
 	sf::Texture* textura = new sf::Texture();
-	
-	if (!textura->loadFromFile("assets/Player1.png")) 
+
+	if (!textura->loadFromFile("assets/Player1.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
@@ -42,22 +42,22 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 
 Entidades::Jogador::~Jogador()
 {
-  
-    if (_pTexture)
-    {
-        delete _pTexture;
-    }
+
+	if (_pTexture)
+	{
+		delete _pTexture;
+	}
 	if (texturaTela)
 	{
 		delete texturaTela;
 	}
 
 	_pGraf = nullptr;
-    _pTexture = nullptr;
+	_pTexture = nullptr;
 	texturaTela = nullptr;
 	Position.x = 0.0;
 	Position.y = 0.0;
-	
+
 }
 
 void Entidades::Jogador::setNome(std::string& name)
@@ -70,7 +70,7 @@ std::string Entidades::Jogador::getNome()const
 	return nome;
 }
 
-void Entidades::Jogador::setParalisado(const bool para, float duracao) 
+void Entidades::Jogador::setParalisado(const bool para, float duracao)
 {
 	_paralisado = para;
 	_duracaoParalisia = duracao;
@@ -86,29 +86,11 @@ int Entidades::Jogador::getPontos() const
 	return _pontos;
 }
 
-void Entidades::Jogador::knockBack(Entidades::Entidade* ente)
-{
-	float posicaoCentroJog = getPositionX() + (getBody().getGlobalBounds().width / 2.f);
-	float posicaoCentroEnte = ente->getPositionX() + (ente->getBody().getGlobalBounds().width / 2.f);
 
-	if (posicaoCentroJog - posicaoCentroEnte < 0.f)
-	// se a posicao for maior que a do obstaculo, ele empurra para tras
-	{
-		_speed.x -= 100;
-	}
-	// se não empurra pra frente 
-	else
-	{
-		_speed.x += 100;
-	}
-
-	Position += _speed;
-	_body.setPosition(Position);
-}
 
 void Entidades::Jogador::mover()
 {
-	
+
 	_speed.x = 0;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -116,13 +98,13 @@ void Entidades::Jogador::mover()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		
+
 		tempoPulo += _clock.getElapsedTime().asMilliseconds();
 		if (tempoPulo >= 80.f)
 		{
 			pular();
 			tempoPulo = 0.f;
-			
+
 		}
 	}
 
@@ -159,7 +141,7 @@ void Entidades::Jogador::executar()
 		setSpeed(0.3f, getSpeedY());
 	}
 
- 	if (_num_vidas <= 0)
+	if (_num_vidas <= 0)
 	{
 		setVivo(false);
 	}

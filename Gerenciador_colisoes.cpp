@@ -1,7 +1,7 @@
 #include "Gerenciador_Colisoes.h"
 #include "Inimigo.h"
 
-Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(float gravidade) 
+Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(float gravidade)
 	: _listaInimigos(), _listaObstaculos(), _listaProjetil(), _gravidade(gravidade)
 {
 	_jogador1 = nullptr;
@@ -12,16 +12,16 @@ Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(float gravidade)
 	_listaProjetil.clear();
 }
 
-Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() 
+Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes()
 {
 	_jogador1 = nullptr;
 	_jogador2 = nullptr;
 }
 
 
-void Gerenciadores::Gerenciador_Colisoes::setJogador1(Entidades::Jogador* pJogador) 
+void Gerenciadores::Gerenciador_Colisoes::setJogador1(Entidades::Jogador* pJogador)
 {
-	if (pJogador == nullptr) 
+	if (pJogador == nullptr)
 	{
 		std::cerr << "Ponteiro de jogador invalido. Impossivel incluir em G.Colisoes.\n";
 		return;
@@ -30,7 +30,7 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador1(Entidades::Jogador* pJogad
 	_jogador1 = pJogador;
 }
 
-void Gerenciadores::Gerenciador_Colisoes::setJogador2(Entidades::Jogador* pJogador) 
+void Gerenciadores::Gerenciador_Colisoes::setJogador2(Entidades::Jogador* pJogador)
 {
 	if (pJogador == nullptr) {
 		std::cerr << "Ponteiro de jogador invalido. Impossivel incluir em G.Colisoes.\n";
@@ -40,7 +40,7 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador2(Entidades::Jogador* pJogad
 	_jogador2 = pJogador;
 }
 
-void Gerenciadores::Gerenciador_Colisoes::incluirInimigo(Entidades::Inimigo* pInimigo) 
+void Gerenciadores::Gerenciador_Colisoes::incluirInimigo(Entidades::Inimigo* pInimigo)
 {
 	if (pInimigo == nullptr) {
 		std::cerr << "Ponteiro de inimigo invalido. Impossivel incluir em G.Colisoes.\n" << std::endl;
@@ -59,7 +59,7 @@ void Gerenciadores::Gerenciador_Colisoes::incluirObstaculo(Entidades::Obstaculo*
 	_listaObstaculos.push_back(pObstaculo);
 }
 
-void Gerenciadores::Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil* pProjetil) 
+void Gerenciadores::Gerenciador_Colisoes::incluirProjetil(Entidades::Projetil* pProjetil)
 {
 	if (pProjetil == nullptr) {
 		std::cerr << "Ponteiro de projetil invalido. Impossivel incluir em G.Colisoes.\n" << std::endl;
@@ -101,13 +101,13 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo)
 	{
 		// Tratamento para o jogador 1
-		if (_jogador1 != nullptr&&_jogador1->getVivo()) {
+		if (_jogador1 != nullptr && _jogador1->getVivo()) {
 			sf::Vector2f ds = calculaColisao(_jogador1, (*itObstaculo));
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
-				
+
 				(*itObstaculo)->obstacular(_jogador1);
-				
+
 				if ((*itObstaculo)->getTipo() == 10) continue; // se for obstaculo dificil / espinho
 
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
@@ -147,11 +147,11 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 		}
 
 		// Tratamento para o jogador 2 (similar ao jogador 1)
-		if (_jogador2 != nullptr&&_jogador2->getVivo())
+		if (_jogador2 != nullptr && _jogador2->getVivo())
 		{
-			
+
 			(*itObstaculo)->obstacular(_jogador2);
-			
+
 			if ((*itObstaculo)->getTipo() == 10) continue; // se for obstaculo dificil / espinho
 
 			sf::Vector2f ds = calculaColisao(_jogador2, (*itObstaculo));
@@ -198,16 +198,16 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	// Caso nenhum dos jogadores tenha colidido com o chão, marca que não estão no chão
 	if (!colidiuComChao1 && _jogador1 != nullptr) _jogador1->setGround(false);
 	if (!colidiuComChao2 && _jogador2 != nullptr) _jogador2->setGround(false);
-	
+
 }
 
 
 
 
 
-void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs() 
+void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 {
-	
+
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); itInimigo++)
 	{
 		bool colidiuComChao1 = false;
@@ -275,15 +275,15 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 						(*itInimigo)->danificar(_jogador2);
 					}
 				}
-				
+
 			}
 		}
 	}
-	
+
 
 }
 
-void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis() 
+void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 {
 	// Caso 1: os dois jogadores foram criados
 	if (_jogador1 != nullptr && _jogador2 != nullptr) {
@@ -454,7 +454,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 
 const bool Gerenciadores::Gerenciador_Colisoes::verificarColisao(Entidades::Entidade* pEnt1, Entidades::Entidade* pEnt2) const
 {
-	if (pEnt1 == nullptr || pEnt2 == nullptr) 
+	if (pEnt1 == nullptr || pEnt2 == nullptr)
 	{
 		std::cerr << "Ponteiro de entidade invalido. Impossivel verificar colisao.\n";
 		return false;
@@ -463,7 +463,7 @@ const bool Gerenciadores::Gerenciador_Colisoes::verificarColisao(Entidades::Enti
 	return pEnt1->getBody().getGlobalBounds().intersects(pEnt2->getBody().getGlobalBounds());
 }
 
-void Gerenciadores::Gerenciador_Colisoes::aplicarGravidade() 
+void Gerenciadores::Gerenciador_Colisoes::aplicarGravidade()
 {
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end(); ++itInimigo)
 	{

@@ -6,13 +6,13 @@ namespace Entidades
 	class Cavaleiro :public Inimigo
 	{
 	private:
-		
+
 	public:
 		Cavaleiro(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
-			Entidades::Jogador* pJog = nullptr, int vidas = 1);
+			Entidades::Jogador* pJog = nullptr, int vidas = 2);
 		~Cavaleiro();
 
-		
+
 
 		void executar();
 		//void SalvarDataBuffer();
