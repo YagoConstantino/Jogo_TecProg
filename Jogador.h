@@ -18,29 +18,30 @@ namespace Entidades
 
 		float tempoPulo;
 		int _pontos;
-		
+
 		std::string nome;
 		float _velocidade;
 	public:
 		Jogador(float inlX = 0, float inY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
 			std::string name = "");
-		
+
 		~Jogador();
 
 		void setNome(std::string& name);
 		std::string getNome()const;
-		
+
 		void setParalisado(const bool para, float duracao);
-		
+
 		void AumentarPontos(int pont);
 		int getPontos()const;
 
-		void mover();	
+
+		void mover();
+
 
 		void executar();
 		//void SalvarDataBuffer();
-		
+
 	};
 
 }
-

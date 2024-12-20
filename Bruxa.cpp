@@ -3,6 +3,7 @@
 Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog, int vidas)
 	:Inimigo(inicialX,inicialY,pgra,pJog,vidas),
+
 	_direcao(0)
 {
 	setMaldade(2);
@@ -30,7 +31,13 @@ void Entidades::Bruxa::executar()
 	{
 		mover();
 	}
-	
+	else
+	{
+		Position.y += _speed.y;
+		_body.setPosition(Position);
+	}
+
+
 	if (getDistanciaJogador() <= 700)
 	{
 		atacar = true;
@@ -66,4 +73,6 @@ void Entidades::Bruxa::danificar(Entidades::Jogador* pJog)
 
 	}
 	pJog->knockBack(this);
+
 }
+

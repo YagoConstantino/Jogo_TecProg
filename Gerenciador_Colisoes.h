@@ -30,8 +30,12 @@ namespace Gerenciadores {
 		// Velocidade da gravidade
 		float _gravidade;
 
-	public:
+		//Singleton
+		static Gerenciador_Colisoes* instancia;
 		Gerenciador_Colisoes(float gravidade = 0.08f);
+
+	public:
+		static Gerenciador_Colisoes* getInstancia();
 		~Gerenciador_Colisoes();
 
 		void setJogador1(Entidades::Jogador* pJogador);
@@ -46,7 +50,7 @@ namespace Gerenciadores {
 		void tratarColisoesProjObstacs();
 		void tratarColisoesJogsInimgs();
 		void tratarColisoesJogsProjeteis();
-		
+		void tratarColisoesTela();		
 
 		const bool verificarColisao(Entidades::Entidade* pEnt1, Entidades::Entidade* pEnt2) const;
 

@@ -8,16 +8,18 @@
 Posso fazer um vector de pair<pair<float,float>,bool>(Esses vectores para plataforma e cavaleiro ficariam no .h)
 uso o pair de float para as coordenadas e o booleano para saber
 se a plataforma ja foi gerada, dai posso randomizar melhor os obstaculos dificeis e medios, além de ter mais de 5
-opções de plataformas, ou seja gero umas 10 posições, algumas plataformas podem se sobrepor a outras, portanto antes de 
-gerar elas verifico se outra plataforma muito proxima ja foi gerada, o mesmo pode ser feito para inimigos,posso gerar 
-todas as plataformas e depois verifico quais foram geradas e posso colocara inimigos em todas elas ao inves de me 
+
+opções de plataformas, ou seja gero umas 10 posições, algumas plataformas podem se sobrepor a outras, portanto antes de
+gerar elas verifico se outra plataforma muito proxima ja foi gerada, o mesmo pode ser feito para inimigos,posso gerar
+todas as plataformas e depois verifico quais foram geradas e posso colocara inimigos em todas elas ao inves de me
+
 limitar ao chão, pois é até o momento a unica parte que certamente vai ser gerada
 */
 
-Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra,Entidades::Jogador* j)
-	:_GG(pgra),_jog(j),maxCavaleiros(7),maxPlataformas(8)
+Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j)
+	:_GG(pgra), _jog(j), maxCavaleiros(7), maxPlataformas(8)
 {
-	_GC = new Gerenciadores::Gerenciador_Colisoes(0.005f);
+	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
 }
 
@@ -33,7 +35,7 @@ Fases::Fase::~Fase()
 	//Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
 	_GG = nullptr;
 	_jog = nullptr;
-	
+
 }
 
 void Fases::Fase::gerenciarColisoes()
@@ -45,12 +47,14 @@ void Fases::Fase::criarCavaleiros()
 {
 	//Possibilidade de aleatorizar o y entre 700 e 150 rand()%(700-150)+150
 
-	int n = (rand()% 5)+3; // Quantidade varia de 3 a 7
-    
+
+	int n = (rand() % 5) + 3; // Quantidade varia de 3 a 7
+
+
 
 	float x = 150.f;           //Posicao inicial
-    float anteriorX = x;
-	
+	float anteriorX = x;
+
 	int larguraJanela = _GG->getWindow()->getSize().x; // Largura da janela para testar se nao saiu depois
 
 	for (int i = 0; i < n; i++)
@@ -60,26 +64,28 @@ void Fases::Fase::criarCavaleiros()
 		_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav)); // inserir no Gerenciador de colisoes
 		float larguraCavaleiro = cav->getBody().getGlobalBounds().width; // tamanho do cavaleiro
 
-        x = rand() % (_GG->getWindow()->getSize().x)+150;
-        if (x == anteriorX)
-        {
-            x = (rand() % _GG->getWindow()->getSize().x)+150;
-        }
-		if (x +115+larguraCavaleiro>larguraJanela) // testo se o tamanho do cavaleiro + 115 nao sai da janela
-            x = (rand() % _GG->getWindow()->getSize().x) + 150; 
+		x = rand() % (_GG->getWindow()->getSize().x) + 150;
+		if (x == anteriorX)
+		{
+			x = (rand() % _GG->getWindow()->getSize().x) + 150;
+		}
+		if (x + 115 + larguraCavaleiro > larguraJanela) // testo se o tamanho do cavaleiro + 115 nao sai da janela
+			x = (rand() % _GG->getWindow()->getSize().x) + 150;
 
-        anteriorX = x;
+		anteriorX = x;
 	}
 
 }
 
 void Fases::Fase::criarPlataformas()
 {
-	int n =  (rand() % 5) +4;        // Quantidade de plataformas: entre 3 e 8
-   
+
+	int n = (rand() % 5) + 4;        // Quantidade de plataformas: entre 3 e 8
+
+
 	int i;
-	
-	std::vector<std::pair<float, float>> posicoes = 
+
+	std::vector<std::pair<float, float>> posicoes =
 	{
 		{0.f, 710.f},										// Plataforma 1
 		{468.f, 710.f},										// Plataforma 2 
@@ -96,17 +102,15 @@ void Fases::Fase::criarPlataformas()
 		float x = posicoes[i].first;
 		float y = posicoes[i].second;
 
-		Entidades::Plataforma* plat = new Entidades::Plataforma(x, y, _GG,0);
+		Entidades::Plataforma* plat = new Entidades::Plataforma(x, y, _GG, 0);
 		_GC->incluirObstaculo(static_cast<Entidades::Obstaculo*>(plat));
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(plat));
-		
+
 	}
-    
+
 }
 
 void Fases::Fase::criarCenario()
 {
 	//Implementar depois 
 }
-
-

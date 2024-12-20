@@ -2,13 +2,13 @@
 #include "stdlib.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra,10), _pontos(0), nome(name), tempoPulo(200.f),_velocidade(0.2f), _paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f)
+	:Personagem(inlX, inY, pgra, 10), _pontos(0), nome(name), tempoPulo(200.f), _velocidade(0.2f), _paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f)
 {
 	setTipo(3);
 
 	sf::Texture* textura = new sf::Texture();
-	
-	if (!textura->loadFromFile("assets/Player1.png")) 
+
+	if (!textura->loadFromFile("assets/Player1.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
@@ -24,10 +24,16 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 	}
 
 	telaParalisada.setTexture(*texturaTela);
+
+	// tamanho da tela paralisada
+	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+	float escalaX = (float)tamJanela.x / telaParalisada.getGlobalBounds().width;
+	float escalaY = (float)tamJanela.y / telaParalisada.getGlobalBounds().height;
+
 	telaParalisada.setScale
 	(
-		5.0f,
-		3.5f
+		escalaX,
+		escalaY
 	);
 
 	// Posicao
@@ -36,22 +42,22 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 
 Entidades::Jogador::~Jogador()
 {
-  
-    if (_pTexture)
-    {
-        delete _pTexture;
-    }
+
+	if (_pTexture)
+	{
+		delete _pTexture;
+	}
 	if (texturaTela)
 	{
 		delete texturaTela;
 	}
 
 	_pGraf = nullptr;
-    _pTexture = nullptr;
+	_pTexture = nullptr;
 	texturaTela = nullptr;
 	Position.x = 0.0;
 	Position.y = 0.0;
-	
+
 }
 
 void Entidades::Jogador::setNome(std::string& name)
@@ -64,7 +70,7 @@ std::string Entidades::Jogador::getNome()const
 	return nome;
 }
 
-void Entidades::Jogador::setParalisado(const bool para, float duracao) 
+void Entidades::Jogador::setParalisado(const bool para, float duracao)
 {
 	_paralisado = para;
 	_duracaoParalisia = duracao;
@@ -84,25 +90,25 @@ int Entidades::Jogador::getPontos() const
 
 void Entidades::Jogador::mover()
 {
-	
+
 	_speed.x = 0;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Position.x + _body.getGlobalBounds().width < _pGraf->getWindow()->getSize().x)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		_speed.x += _velocidade;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && (Position.y >= _speed.y))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		
+
 		tempoPulo += _clock.getElapsedTime().asMilliseconds();
 		if (tempoPulo >= 80.f)
 		{
 			pular();
 			tempoPulo = 0.f;
-			
+
 		}
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (Position.x >= _speed.x))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		_speed.x -= _velocidade;
 
 	// (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))
@@ -135,7 +141,7 @@ void Entidades::Jogador::executar()
 		setSpeed(0.3f, getSpeedY());
 	}
 
- 	if (_num_vidas <= 0)
+	if (_num_vidas <= 0)
 	{
 		setVivo(false);
 	}

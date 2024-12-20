@@ -2,6 +2,7 @@
 
 namespace Entidades
 {
+
 	Entidades::Entidade::Entidade(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra):
 		Ente(pgra), Position(inicialX, inicialY),_clock(),_segundos(0.0f),
 		_speed(0,0),_Tipo(0),_onGround(false),_vivo(true)
@@ -47,7 +48,7 @@ namespace Entidades
 
 	sf::Vector2f Entidade::getPosition() const
 	{
-			return Position;
+		return Position;
 	}
 
 	void Entidade::setSpeed(float x, float y)
@@ -72,15 +73,21 @@ namespace Entidades
 
 	void Entidade::knockBack(Entidades::Entidade* ente)
 	{
-		if (getPositionX() > ente->getPositionX())
+
+		float posicaoCentroJog = getPositionX() + (getBody().getGlobalBounds().width / 2.f);
+		float posicaoCentroEnte = ente->getPositionX() + (ente->getBody().getGlobalBounds().width / 2.f);
+
+		if (posicaoCentroJog - posicaoCentroEnte < 0.f)
 			// se a posicao for maior que a do obstaculo, ele empurra para tras
 		{
-			_speed.x += 100;
+			_speed.x -= 100;
+
 		}
 		// se não empurra pra frente 
 		else
 		{
-			_speed.x -= 100;
+
+			_speed.x += 100;
 		}
 
 		Position += _speed;
@@ -89,7 +96,7 @@ namespace Entidades
 
 	void Entidade::sofrerGravidade(float gravidade)
 	{
-		const float maxGravidade = 0.15f; // Limite de velocidade da gravidade
+		const float maxGravidade = 0.3f; // Limite de velocidade da gravidade
 		if (!_onGround)
 		{
 			_speed.y += gravidade;
@@ -98,7 +105,7 @@ namespace Entidades
 				_speed.y = maxGravidade; // Limitar a velocidade máxima da gravidade
 			}
 		}
-		else 
+		else
 		{
 			_speed.y = 0; // Zera a velocidade quando está no chão
 		}
@@ -129,4 +136,3 @@ namespace Entidades
 		_vivo = vivo;
 	}
 }
-
