@@ -11,6 +11,8 @@ namespace Fases
 	class Fase :public Entidades::Ente
 	{
 	protected:
+		bool _mudouEstado;
+
 		Gerenciadores::Gerenciador_Colisoes* _GC;
 		Listas::ListaEntidades* _Lista;
 		Gerenciadores::Gerenciador_Grafico* _GG;
@@ -29,8 +31,5 @@ namespace Fases
 		virtual void executar() = 0;
 		virtual void criarInimigos() = 0;
 		virtual void criarObstaculos() = 0;
-
-
-	
 	};
 }

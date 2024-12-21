@@ -1,3 +1,4 @@
+#include "Jogo.h"
 #include "Floresta.h"
 #include <iostream>
 #include <vector>
@@ -10,19 +11,12 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
 
 {
 
-    _Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
+    //_Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
     _GC->setJogador1(jog);
 }
 
 Fases::Floresta::~Floresta()
 {
-    //Desaloco o Gerenciador de Colisoes e a ListaEntidades
-    if (_GC)
-        delete _GC;
-
-    if (_Lista)
-        delete _Lista;
-
     //Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
     _GG = nullptr;
     _jog = nullptr;
@@ -96,10 +90,25 @@ void Fases::Floresta::criaBruxas()
 
 void Fases::Floresta::executar()
 {
+    while (!_mudouEstado) {
+        sf::Event event;
+        while (_GG->getWindow()->pollEvent(event)) {
+            // Volta para o menu
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+                Jogo::mudarStateNum(10);
+                _mudouEstado = true;
+            }
+        }
 
-    _GC->executar();
-    _Lista->executar();
+        _GG->clear();
 
+        _GC->executar();
+        _GG->desenhar(_jog);
+        _jog->executar();
+        _Lista->executar();
+
+        _GG->display();
+    }
 }
 
 void Fases::Floresta::criarInimigos()

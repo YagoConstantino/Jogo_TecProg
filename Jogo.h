@@ -12,7 +12,7 @@ private:
 	Menu* _menu;
 	Fases::Floresta* _florest;
 
-	int stateNum;
+	static int stateNum;
 
 public:
 	Jogo(std::string nome = "");
@@ -21,9 +21,10 @@ public:
 	void criaFloresta();
 	void criaMenu();
 
-	void executar();
-
 	void JogarFloresta();
 	void JogarMenu();
 
+	void executar();
+
+	static void mudarStateNum(int state);
 };

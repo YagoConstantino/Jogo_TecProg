@@ -11,9 +11,8 @@
 class Menu : public Entidades::Ente 
 {
 private:
-	// State Num
-	int stateNum;
-	
+	bool _mudouEstado;
+
 	sf::Mouse _mouse;
 	bool _houveClique;
 
@@ -48,6 +47,4 @@ public:
 	void executarSair();
 
 	void executar();
-
-	const int getStateNum() const;
 };
