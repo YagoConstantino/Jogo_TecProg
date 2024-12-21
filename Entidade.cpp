@@ -80,14 +80,23 @@ namespace Entidades
 		if (posicaoCentroJog - posicaoCentroEnte < 0.f)
 			// se a posicao for maior que a do obstaculo, ele empurra para tras
 		{
-			_speed.x -= 100;
+			if(this->getTipo() == 3)
+			_speed.x -= 100.0f;
+			else
+			{
+				_speed.x -= 20.0f;
+			}
 
 		}
 		// se não empurra pra frente 
 		else
 		{
-
-			_speed.x += 100;
+			if (this->getTipo() == 3)
+			_speed.x += 100.0f;
+			else
+			{
+				_speed.x += 20.0f;
+			}
 		}
 
 		Position += _speed;

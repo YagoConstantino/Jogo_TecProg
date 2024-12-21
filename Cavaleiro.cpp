@@ -54,12 +54,14 @@ void Entidades::Cavaleiro::mover()
 {
 	//Fazer ele andar em 150 pixeis para direita e 50 pixeis para esquerda OK
 	//Caso ele encoste no jogador da dano * nivelmaldade nele
-	Position += _speed;
+
 
 	if (getDistanciaoInicio() >= 150)
 	{
-		_speed.x *= -1;
+		_direcao *= -1;
+		_speed.x *= _direcao;
 	}
+	Position += _speed;
 	_body.setPosition(Position);
 }
 

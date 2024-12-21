@@ -281,18 +281,30 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 				if (_jogador1 != nullptr)
 				{
 					sf::Vector2f dsInimigoJog = calculaColisao((*itInimigo), _jogador1);
-					if (dsInimigoJog.x < 0.0f && dsInimigoJog.y < 0.0f)
+					if (dsInimigoJog.x < 0.0f && dsInimigoJog.y < 0.0f && ! _jogador1->getAtacando())
 					{
 						(*itInimigo)->danificar(_jogador1);
+					}
+					else if (dsInimigoJog.x < 10.0f && dsInimigoJog.y < 5.0f && _jogador1->getAtacando() &&
+						_jogador1->getDirecao() != (*itInimigo)->getDirecao())
+					{
+						(*itInimigo)->operator--();
+						(*itInimigo)->knockBack(_jogador1);
 					}
 
 				}
 				if (_jogador2 != nullptr)
 				{
-					sf::Vector2f dsInimigoJog2 = calculaColisao((*itInimigo), _jogador2);
-					if (dsInimigoJog2.x < 0.0f && dsInimigoJog2.y < 0.0f)
+					sf::Vector2f dsInimigoJog2 = calculaColisao((*itInimigo) , _jogador2);
+					if (dsInimigoJog2.x < 0.0f && dsInimigoJog2.y < 0.0f && !_jogador2->getAtacando())
 					{
 						(*itInimigo)->danificar(_jogador2);
+					}
+					else if (dsInimigoJog2.x < 10.0f && dsInimigoJog2.y < 5.0f && _jogador2->getAtacando()&&
+						_jogador2->getDirecao()!=(*itInimigo)->getDirecao())
+					{
+						(*itInimigo)->operator--();
+						(*itInimigo)->knockBack(_jogador2);
 					}
 				}
 
@@ -398,7 +410,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 
 	if (_jogador1 != nullptr) {
 		// Lado esquerdo
-		if (_jogador1->getPositionX() <= 0.f) {
+		if (_jogador1->getPositionX() <= 0.f) 
+		{
 			_jogador1->setSpeed(0.f, _jogador1->getSpeedY());
 			_jogador1->setPositionX(0.f);
 		}
@@ -416,7 +429,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 	}
 	if (_jogador2 != nullptr) {
 		// Lado esquerdo
-		if (_jogador2->getPositionX() <= 0.f) {
+		if (_jogador2->getPositionX() <= 0.f) 
+		{
 			_jogador2->setSpeed(0.f, _jogador2->getSpeedY());
 			_jogador2->setPositionX(0.f);
 		}
@@ -437,17 +451,17 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 	// ------- >> Por baixo
 
 	// Para cada inimigo
-	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end() && (*itInimigo)->getVivo(); itInimigo++) {
-		if
-			(
-				(*itInimigo)->getPositionY() + (*itInimigo)->getBody().getGlobalBounds().height
-				>= (*itInimigo)->getGrafico()->getWindow()->getSize().y
-				)
+	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end() && (*itInimigo)->getVivo(); itInimigo++) 
+	{
+		if((*itInimigo)->getPositionY() + (*itInimigo)->getBody().getGlobalBounds().height >=
+			(*itInimigo)->getGrafico()->getWindow()->getSize().y)
+
 			(*itInimigo)->setVivo(false);
 	}
 
 	// Para cada jogador
-	if (_jogador1 != nullptr) {
+	if (_jogador1 != nullptr) 
+	{
 		if
 			(
 				_jogador1->getPositionY() + _jogador1->getBody().getGlobalBounds().height
@@ -458,7 +472,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 			_jogador1->setVidas(-1);
 		}
 	}
-	if (_jogador2 != nullptr) {
+	if (_jogador2 != nullptr) 
+	{
 		if
 			(
 				_jogador2->getPositionY() + _jogador2->getBody().getGlobalBounds().height

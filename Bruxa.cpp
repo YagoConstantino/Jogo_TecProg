@@ -2,12 +2,11 @@
 
 Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog, int vidas)
-	:Inimigo(inicialX,inicialY,pgra,pJog,vidas),
+	:Inimigo(inicialX,inicialY,pgra,pJog,vidas)
 
-	_direcao(0)
 {
 	setMaldade(2);
-	_speed.x = 0.03f;
+	_speed.x = 0.04f;
 
 	sf::Texture* textura = new sf::Texture();
 
@@ -27,6 +26,7 @@ Entidades::Bruxa::~Bruxa()
 
 void Entidades::Bruxa::executar()
 {
+
 	if (atacar)
 	{
 		mover();

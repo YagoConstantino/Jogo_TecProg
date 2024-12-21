@@ -19,7 +19,7 @@ namespace Entidades {
 		int _vidasPerdidas;
 
 		// Movimento
-		int _direcao;
+		
 
 
 	public:
