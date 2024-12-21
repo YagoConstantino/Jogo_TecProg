@@ -1,44 +1,4 @@
-﻿  Ente.cpp
-  Entidade.cpp
-  Fase.cpp
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(68,48): warning C4244: '=': conversão de 'T' para 'float', possível perda de dados
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(68,48): warning C4244:         with
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(68,48): warning C4244:         [
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(68,48): warning C4244:             T=unsigned int
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(68,48): warning C4244:         ]
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(71,49): warning C4244: '=': conversão de 'T' para 'float', possível perda de dados
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(71,49): warning C4244:         with
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(71,49): warning C4244:         [
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(71,49): warning C4244:             T=unsigned int
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(71,49): warning C4244:         ]
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(74,49): warning C4244: '=': conversão de 'T' para 'float', possível perda de dados
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(74,49): warning C4244:         with
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(74,49): warning C4244:         [
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(74,49): warning C4244:             T=unsigned int
-C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(74,49): warning C4244:         ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244: 'inicializando': conversão de '_Ty' para '_Ty1', possível perda de dados
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:         with
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:         [
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:             _Ty=unsigned int
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:         ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:         and
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:         [
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:             _Ty1=float
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:         ]
-  (compilando o arquivo fonte 'Fase.cpp')
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16):
-      o contexto de instanciação do modelo (o mais antigo primeiro) é
-          C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(95,3):
-          consulte a referência à instanciação 'std::pair<float,float>::pair<T,float,0>(_Other1 &&,_Other2 &&) noexcept' do modelo que está sendo compilada
-          with
-          [
-              T=unsigned int,
-              _Other1=unsigned int,
-              _Other2=float
-          ]
-              C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(90,2):
-              veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Fase::criarPlataformas'
-  
+﻿  Bruxa.cpp
   Floresta.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244: 'inicializando': conversão de '_Ty' para '_Ty1', possível perda de dados
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:         with
@@ -52,14 +12,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
   (compilando o arquivo fonte 'Floresta.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16):
       o contexto de instanciação do modelo (o mais antigo primeiro) é
-          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(43,9):
+          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(41,9):
           consulte a referência à instanciação 'std::pair<float,float>::pair<int,float,0>(_Other1 &&,_Other2 &&) noexcept' do modelo que está sendo compilada
           with
           [
               _Other1=int,
               _Other2=float
           ]
-              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(41,5):
+              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(39,5):
               veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Floresta::criaBarrasMagicas'
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244: 'inicializando': conversão de '_Ty' para '_Ty1', possível perda de dados
@@ -74,7 +34,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
   (compilando o arquivo fonte 'Floresta.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16):
       o contexto de instanciação do modelo (o mais antigo primeiro) é
-          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(45,9):
+          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(43,9):
           consulte a referência à instanciação 'std::pair<float,float>::pair<T,float,0>(_Other1 &&,_Other2 &&) noexcept' do modelo que está sendo compilada
           with
           [
@@ -82,28 +42,9 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
               _Other1=unsigned int,
               _Other2=float
           ]
-              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(41,5):
+              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(39,5):
               veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Floresta::criaBarrasMagicas'
   
-  Gerenciador_colisoes.cpp
-  Gerenciador_Grafico.cpp
-  Inimigo.cpp
-  Jogo.cpp
-  Mago.cpp
-  Cavaleiro.cpp
-  Bruxa.cpp
-  Jogador.cpp
-  ListaEntidades.cpp
-  Main.cpp
-  Menu.cpp
-  Obstaculo.cpp
-  Espinho.cpp
-  BarraMagica.cpp
-  Personagem.cpp
-  Plataforma.cpp
-  Gerando Código...
-  Compilando...
-  Projetil.cpp
   Gerando Código...
   LINK : C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe não encontrado ou não compilado pelo o último link incremental; executando link completo
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe

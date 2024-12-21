@@ -10,7 +10,7 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
 
 {
 
-    _Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
+    //_Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
     _GC->setJogador1(jog);
 }
 
@@ -34,8 +34,6 @@ void Fases::Floresta::criaBarrasMagicas()
 
     int n = rand() % 4 + 1;
 
-  
-
     // Posições centrais das plataformas 2, 4 e 6 (caso a plataforma 6 exista)
     std::vector<std::pair<float, float>> posBarras =
     {
@@ -45,14 +43,6 @@ void Fases::Floresta::criaBarrasMagicas()
         {_GG->getWindow()->getSize().x - 200, 630.f},  // Meio da plataforma 3 
         {936.f, 630.f}
     };
-
-    
-
-    
-
-
-
-
 
     for (int i = 0; i < n; i++)
     {
@@ -96,9 +86,26 @@ void Fases::Floresta::criaBruxas()
 
 void Fases::Floresta::executar()
 {
+    while (_GG->getOpen())
+    {
+        sf::Event event;
+        while (_GG->getWindow()->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            return;
 
-    _GC->executar();
-    _Lista->executar();
+        }
+
+        _GG->clear();
+
+        _GC->executar();
+        _jog->executar();
+        _Lista->executar();
+
+        _GG->display();
+    }
+
+    
 
 }
 
