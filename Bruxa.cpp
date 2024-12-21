@@ -7,7 +7,7 @@ Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciad
 	_direcao(0)
 {
 	setMaldade(2);
-	_speed.x = 0.04f;
+	_speed.x = 0.03f;
 
 	sf::Texture* textura = new sf::Texture();
 
@@ -56,6 +56,11 @@ void Entidades::Bruxa::mover()
 		_direcao = -1; // para a esquerda
 	else
 		_direcao = 1;  // para a direita
+
+	if (_pJog->getPositionY() - getPositionY() < -100.f && getDistanciaJogador() < 350.f)
+	{
+		pular();
+	}
 
 	sf::Vector2f velocidadeAtual = _speed;
 	velocidadeAtual.x *= _direcao;
