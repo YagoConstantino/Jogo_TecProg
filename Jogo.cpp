@@ -1,6 +1,7 @@
 #include "Jogo.h"
 #include <iostream>
 
+// ESTÁTICOS
 
 /*
 	StateNum é uma variavel que permite o fluxo de diferentes estados no jogo
@@ -8,12 +9,17 @@
 
 	10 - menu
 	11 - menu de ranking (exemplo)
+	12 - menu de fases
 	20 - fase 1, floresta
 	21 - fase 2, ...
 */
+int Jogo::stateNum = 10;
 
-Jogo::Jogo(std::string nome) : stateNum(10)
+void Jogo::mudarStateNum(int state) { stateNum = state; }
 
+// DEMAIS
+
+Jogo::Jogo(std::string nome)
 {
 	_GerenciadorGráfico = Gerenciadores::Gerenciador_Grafico::getInstancia();
 	_jogador1 = new Entidades::Jogador(0, 0, _GerenciadorGráfico, nome);
@@ -37,33 +43,37 @@ Jogo::~Jogo()
 	{
 		delete _florest;
 	}
+	if (_menu) {
+		delete _menu;
+	}
 }
 
 void Jogo::executar()
 {
-	while (_GerenciadorGráfico->getOpen()) 
-	{
-		sf::Event event;
-		while (_GerenciadorGráfico->getWindow()->pollEvent(event)) 
-		{
-			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-				_GerenciadorGráfico->closeWindow();
-				
-		}
-
-		_GerenciadorGráfico->clear();
-
-		switch (stateNum) 
-		{
+	while (_GerenciadorGráfico->getOpen()) {
+		
+		// Escolhe o estado da janela
+		
+		switch (stateNum) {
+			// Fecha janela
+		case 0:
+			_GerenciadorGráfico->closeWindow();
+			break;
+			
 			// Cria menu principal
 		case 10:
 			criaMenu();
 			JogarMenu();
-			stateNum = _menu->getStateNum();
 			break;
 
 			// Cria o menu de ranking
 		case 11:
+
+			break;
+
+			// Cria o menu de fases
+		case 12:
+
 			break;
 
 			// Cria a fase 1, floresta
@@ -72,8 +82,6 @@ void Jogo::executar()
 			JogarFloresta();
 			break;
 		}
-
-		_GerenciadorGráfico->display();
 	}
 }
 
@@ -86,14 +94,14 @@ void Jogo::JogarFloresta()
 
 void Jogo::criaMenu() {
 	if (_menu == nullptr) {
-		_menu = new Menu(_GerenciadorGráfico);
-
 		// Destroi o estado anterior
 		if (_florest != nullptr) 
 		{
 			delete _florest;
 			_florest = nullptr;
 		}
+
+		_menu = new Menu(_GerenciadorGráfico);
 	}
 }
 
@@ -105,18 +113,16 @@ void Jogo::JogarMenu()
 void Jogo::criaFloresta() 
 {
 	if (_florest == nullptr) {
+		// destroi o estado anterior
+		if (_menu != nullptr) {
+			delete _menu;
+			_menu = nullptr;
+		}
+
 		_florest = new Fases::Floresta(_GerenciadorGráfico, _jogador1);
 
 		_florest->criarInimigos();
 		_florest->criarObstaculos();
-
-		
-		// destroi o estado anterior
-		if(_menu != nullptr){
-			delete _menu;
-			_menu = nullptr;
-		}
-		
 	}
 }
 

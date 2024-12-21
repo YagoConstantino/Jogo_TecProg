@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Jogo.h"
 
 #define TAMANHO_TITULO 145
 #define TAMANHO_BOTOES 50
@@ -10,7 +11,7 @@
 	Botao Sair é o 3
 */
 
-Menu::Menu(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _botoes(), _textosBotoes(), stateNum(10)
+Menu::Menu(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _botoes(), _textosBotoes(), _mudouEstado(false)
 {
 	_botoes.clear();
 	_textosBotoes.clear();
@@ -36,7 +37,7 @@ Menu::~Menu()
 void Menu::carregarFonte()
 {
 	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
-		std::cerr << "Erro ao  incluir fonte.\n";
+		std::cerr << "Erro ao incluir fonte.\n";
 		return;
 	}
 }
@@ -209,33 +210,51 @@ void Menu::padronizar(sf::Text& texto, int id)
 
 void Menu::executarJogar()
 {
-	stateNum = 20;
+	Jogo::mudarStateNum(20);
+	_mudouEstado = true;
 }
 
 void Menu::executarRanking()
 {
-	stateNum = 11;
+	Jogo::mudarStateNum(11);
+	_mudouEstado = true;
 }
 
 void Menu::executarSair()
 {
-	_pGraf->closeWindow();
+	Jogo::mudarStateNum(0);
+	_mudouEstado = true;
 }
 
-void Menu::executar()
+void Menu::desenharMenu()
 {
 	_pGraf->getWindow()->draw(_body);
 	_pGraf->getWindow()->draw(_titulo);
 	_pGraf->getWindow()->draw(_botoes[1]);
 	_pGraf->getWindow()->draw(_botoes[2]);
 	_pGraf->getWindow()->draw(_botoes[3]);
-
-	verificarMouse();
 }
 
-const int Menu::getStateNum() const
+void Menu::executar()
 {
-	return stateNum;
+	while (!_mudouEstado) {
+		sf::Event event;
+		while (_pGraf->getWindow()->pollEvent(event)) {
+			
+			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+				Jogo::mudarStateNum(0);
+				_mudouEstado = true;
+			}
+		}
+
+		_pGraf->clear();
+
+		desenharMenu();
+
+		verificarMouse();
+
+		_pGraf->display();
+	}
 }
 
 

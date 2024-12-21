@@ -35,7 +35,7 @@ namespace Entidades
 		void AumentarPontos(int pont);
 		int getPontos()const;
 
-
+		void pular();
 		void mover();
 
 

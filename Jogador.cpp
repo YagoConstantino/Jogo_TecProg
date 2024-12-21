@@ -88,6 +88,15 @@ int Entidades::Jogador::getPontos() const
 
 
 
+void Entidades::Jogador::pular()
+{
+	if (_onGround)
+	{
+		_speed.y = -1.75f;
+		setGround(false);
+	}
+}
+
 void Entidades::Jogador::mover()
 {
 

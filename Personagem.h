@@ -20,7 +20,7 @@ namespace Entidades
 		void operator++();
 		void operator--();
 
-		void pular();
+		virtual void pular();
 
 		virtual void executar() = 0;
 		
