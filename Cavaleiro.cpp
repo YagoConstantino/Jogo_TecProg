@@ -63,6 +63,7 @@ void Entidades::Cavaleiro::mover()
 	}
 	Position += _speed;
 	_body.setPosition(Position);
+	_speed.x = 0.03f;
 }
 
 void Entidades::Cavaleiro::danificar(Entidades::Jogador* pJog)

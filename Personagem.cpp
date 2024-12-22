@@ -50,10 +50,12 @@ void Entidades::Personagem::pular()
 
 int Entidades::Personagem::getDirecao() const
 {
+
 	return _direcao;
 }
 
 void Entidades::Personagem::setDirecao(int dir)
 {
+
 	_direcao = dir;
 }

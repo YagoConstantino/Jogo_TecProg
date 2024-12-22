@@ -16,10 +16,9 @@ namespace Entidades
 		bool _paralisado;
 		//
 
-		sf::Clock _clockAtaque;
+		//sf::Clock _clockAtaque;
 		bool _atacando;
-		float _tempoAtaque;
-		int _direcao;
+		//float _tempoAtaque;
 
 		float tempoPulo;
 		int _pontos;
@@ -27,6 +26,11 @@ namespace Entidades
 		std::string nome;
 		float _velocidade;
 		std::vector<sf::Texture*> _texturas;
+
+		sf::Sprite* Sword;
+		std::vector<sf::Texture*>_texturasSword;
+
+
 	public:
 		Jogador(float inlX = 0, float inY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
 			std::string name = "");
@@ -43,11 +47,15 @@ namespace Entidades
 
 		void pular();
 		void mover();
+
 		void setTexture(int direcao);
 		void adicionarTextura(const std::string& path);
 
 		bool getAtacando()const;
 		void setAtacando(bool atac);
+
+		void setSword(int direcao);
+		void adicionarSword(const std::string& path);
 
 
 		void executar();

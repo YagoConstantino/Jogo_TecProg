@@ -1,6 +1,7 @@
 #include "Gerenciador_Colisoes.h"
 #include "Inimigo.h"
 
+
 //Singleton inicializando o atributo static
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::instancia = nullptr;
 
@@ -281,32 +282,35 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 				if (_jogador1 != nullptr)
 				{
 					sf::Vector2f dsInimigoJog = calculaColisao((*itInimigo), _jogador1);
-					if (dsInimigoJog.x < 0.0f && dsInimigoJog.y < 0.0f && ! _jogador1->getAtacando())
+					if (dsInimigoJog.x < 0.0f && dsInimigoJog.y < 0.0f && !_jogador1->getAtacando())
 					{
 						(*itInimigo)->danificar(_jogador1);
 					}
 					else if (dsInimigoJog.x < 10.0f && dsInimigoJog.y < 5.0f && _jogador1->getAtacando() &&
-						_jogador1->getDirecao() != (*itInimigo)->getDirecao())
+						((_jogador1->getDirecao() == 1 && (*itInimigo)->getPosition().x > _jogador1->getPosition().x) ||
+							(_jogador1->getDirecao() == -1 && (*itInimigo)->getPosition().x < _jogador1->getPosition().x)))
 					{
 						(*itInimigo)->operator--();
 						(*itInimigo)->knockBack(_jogador1);
 					}
-
 				}
+
 				if (_jogador2 != nullptr)
 				{
-					sf::Vector2f dsInimigoJog2 = calculaColisao((*itInimigo) , _jogador2);
+					sf::Vector2f dsInimigoJog2 = calculaColisao((*itInimigo), _jogador2);
 					if (dsInimigoJog2.x < 0.0f && dsInimigoJog2.y < 0.0f && !_jogador2->getAtacando())
 					{
 						(*itInimigo)->danificar(_jogador2);
 					}
-					else if (dsInimigoJog2.x < 10.0f && dsInimigoJog2.y < 5.0f && _jogador2->getAtacando()&&
-						_jogador2->getDirecao()!=(*itInimigo)->getDirecao())
+					else if (dsInimigoJog2.x < 10.0f && dsInimigoJog2.y < 5.0f && _jogador2->getAtacando() &&
+						((_jogador2->getDirecao() == 1 && (*itInimigo)->getPosition().x > _jogador2->getPosition().x) ||
+							(_jogador2->getDirecao() == -1 && (*itInimigo)->getPosition().x < _jogador2->getPosition().x)))
 					{
 						(*itInimigo)->operator--();
 						(*itInimigo)->knockBack(_jogador2);
 					}
 				}
+
 
 			}
 		}

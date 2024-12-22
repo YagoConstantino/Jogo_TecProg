@@ -4,8 +4,10 @@
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
 	:Personagem(inlX, inY, pgra, 10), _pontos(0), nome(name), tempoPulo(80.f), _velocidade(0.2f), 
 	_paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f),_clockParalisia(),
-	_atacando(false),_clockAtaque(),_tempoAtaque(0)
+	_atacando(false),_texturas(),_texturasSword(),Sword()
 {
+
+	Sword = new sf::Sprite();
 	setTipo(3);
 
 	sf::Texture* textura = new sf::Texture();
@@ -15,8 +17,7 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
 
-	adicionarTextura("assets/Player1.png");
-	adicionarTextura("assets/Player1Esquerda.png");
+	sf::Texture* texturaSword = new sf::Texture();
 
 	Ente::setTexture(textura);
 	_body.setScale(0.1f, 0.1f);
@@ -43,6 +44,13 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 
 	// Posicao
 	telaParalisada.setPosition(0.f, 0.f);
+	adicionarTextura("assets/Player1.png");
+	adicionarTextura("assets/Player1Esquerda.png");
+
+	adicionarSword("assets/EspadaReta1.png");
+	adicionarSword("assets/EspadaDireita.png");
+	adicionarSword("assets/EspadaEsquerda.png");
+	std::cout << "_texturasSword size: " << _texturasSword.size() << std::endl;
 }
 
 Entidades::Jogador::~Jogador()
@@ -56,12 +64,36 @@ Entidades::Jogador::~Jogador()
 	{
 		delete texturaTela;
 	}
+	if (Sword)
+	{
+		delete Sword;
+	}
 
 	_pGraf = nullptr;
 	_pTexture = nullptr;
 	texturaTela = nullptr;
+	Sword = nullptr;
 	Position.x = 0.0;
 	Position.y = 0.0;
+
+	int i;
+	for (i = 0; i < 2; i++)
+	{
+		if (_texturas[i])
+		{
+			delete _texturas[i];
+		}
+	}
+	_texturas.clear();
+
+	for (i = 0; i < 3; i++)
+	{
+		if (_texturasSword[i])
+		{
+			delete _texturasSword[i];
+		}
+	}
+	_texturasSword.clear();
 
 }
 
@@ -106,6 +138,8 @@ void Entidades::Jogador::mover()
 {
 
 	_speed.x = 0;
+	std::cout << "Direcao no mover(): " << getDirecao()<< std::endl;
+
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
@@ -129,21 +163,33 @@ void Entidades::Jogador::mover()
 		_speed.x -= _velocidade;
 		setDirecao(-1);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) 
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 	{
 		setAtacando(true);
+		
+
+		if (Sword) 
+		{
+			setSword(getDirecao());
+		}
 	}
-	// Detectar o soltar da tecla F
-	else 
+	else
 	{
 		setAtacando(false);
+		if (Sword) 
+		{
+			Sword->setTexture(*_texturasSword[0]);
+		
+		}
 	}
 
 	// (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (Position.y + _body.getGlobalBounds().height <= _pGraf->getWindow()->getSize().y))
 		//_speed.y = +_velocidade;
 
 	
-
+	Sword->setPosition(getPosition().x + 12.0f*_direcao, getPosition().y+2.0f);
+	Sword->setScale(0.1f, 0.05f);
 	Position += _speed;
 	setTexture(getDirecao());
 
@@ -185,6 +231,32 @@ void Entidades::Jogador::setAtacando(bool atac)
 	_atacando = atac;
 }
 
+void Entidades::Jogador::setSword(int direcao)
+{
+	int index;
+	if (direcao == 1)
+		index = 1;
+
+	else
+		index = 2;
+	Sword->setTexture(*_texturasSword[index]);
+}
+
+void Entidades::Jogador::adicionarSword(const std::string& path)
+{
+	sf::Texture* textura1 = new sf::Texture();
+
+
+	if (textura1->loadFromFile(path))
+	{
+		_texturasSword.push_back(textura1);
+	}
+	else
+	{
+		std::cout << "Falha ao carregar texturas!" << std::endl;
+	}
+}
+
 
 void Entidades::Jogador::executar()
 {
@@ -220,6 +292,7 @@ void Entidades::Jogador::executar()
 	}
 
 	_body.setPosition(Position);
-	_pGraf->desenhar(this);
+	desenhar();
+	_pGraf->desenhar(Sword);
 
 }

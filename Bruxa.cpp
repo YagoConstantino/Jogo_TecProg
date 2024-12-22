@@ -46,6 +46,10 @@ void Entidades::Bruxa::executar()
 	{
 		atacar = false;
 	}
+	if (_num_vidas <= 0)
+	{
+		setVivo(false);
+	}
 	desenhar();
 }
 
@@ -61,12 +65,13 @@ void Entidades::Bruxa::mover()
 	{
 		pular();
 	}
-
+	
 	sf::Vector2f velocidadeAtual = _speed;
 	velocidadeAtual.x *= _direcao;
 
 	Position += velocidadeAtual;
 	_body.setPosition(Position);
+	_speed.x = 0.04f;
 }
 
 void Entidades::Bruxa::danificar(Entidades::Jogador* pJog)

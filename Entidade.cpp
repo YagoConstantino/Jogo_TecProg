@@ -1,5 +1,7 @@
 #include "Entidade.h"
 
+/*Criar Tratamentos para kcnockback diferentes para cada Inimigo
+O atual atende a bruxa mas o cavaleiro deveria inverter a direcao ao tomar dano*/
 namespace Entidades
 {
 
@@ -84,7 +86,7 @@ namespace Entidades
 			_speed.x -= 100.0f;
 			else
 			{
-				_speed.x -= 20.0f;
+				_speed.x -= 12.0f;
 			}
 
 		}
@@ -95,7 +97,8 @@ namespace Entidades
 			_speed.x += 100.0f;
 			else
 			{
-				_speed.x += 20.0f;
+				
+				_speed.x += 15.0f;
 			}
 		}
 

@@ -6,7 +6,7 @@ Gerenciadores::Gerenciador_Grafico* Gerenciadores::Gerenciador_Grafico::instanci
 
 Gerenciadores::Gerenciador_Grafico::Gerenciador_Grafico() 
 {
-    window = new sf::RenderWindow(sf::VideoMode(900, 600), "Jogo",sf::Style::Fullscreen);
+    window = new sf::RenderWindow(sf::VideoMode(900, 600), "Jogo", sf::Style::Fullscreen);
     view = sf::View(sf::FloatRect(0, 0, 900, 600));
     
 }
@@ -35,7 +35,16 @@ void Gerenciadores::Gerenciador_Grafico::desenhar(Entidades::Ente* pE)
 
 void Gerenciadores::Gerenciador_Grafico::desenhar(sf::Text* texto)
 {
+    if(texto)
     window->draw(*texto);
+}
+
+void Gerenciadores::Gerenciador_Grafico::desenhar(sf::Sprite* sprt)
+{
+    if (sprt)
+    {
+        window->draw(*sprt);
+    }
 }
 
 /*void Gerenciadores::Gerenciador_Grafico::desenhar(sf::RectangleShape& shape)
