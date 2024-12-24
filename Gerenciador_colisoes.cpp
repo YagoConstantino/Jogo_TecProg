@@ -1,7 +1,5 @@
 #include "Gerenciador_Colisoes.h"
 #include "Inimigo.h"
-
-
 //Singleton inicializando o atributo static
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::instancia = nullptr;
 
@@ -286,12 +284,11 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 					{
 						(*itInimigo)->danificar(_jogador1);
 					}
-					else if (dsInimigoJog.x < 10.0f && dsInimigoJog.y < 5.0f && _jogador1->getAtacando() &&
+					else if (dsInimigoJog.x < 10.0f && dsInimigoJog.y < 3.0f && _jogador1->getAtacando() &&
 						((_jogador1->getDirecao() == 1 && (*itInimigo)->getPosition().x > _jogador1->getPosition().x) ||
 							(_jogador1->getDirecao() == -1 && (*itInimigo)->getPosition().x < _jogador1->getPosition().x)))
 					{
-						(*itInimigo)->operator--();
-						(*itInimigo)->knockBack(_jogador1);
+						_jogador1->atacarInimigo((*itInimigo));
 					}
 				}
 
@@ -302,12 +299,11 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 					{
 						(*itInimigo)->danificar(_jogador2);
 					}
-					else if (dsInimigoJog2.x < 10.0f && dsInimigoJog2.y < 5.0f && _jogador2->getAtacando() &&
+					else if (dsInimigoJog2.x < 10.0f && dsInimigoJog2.y < 3.0f && _jogador2->getAtacando() &&
 						((_jogador2->getDirecao() == 1 && (*itInimigo)->getPosition().x > _jogador2->getPosition().x) ||
 							(_jogador2->getDirecao() == -1 && (*itInimigo)->getPosition().x < _jogador2->getPosition().x)))
 					{
-						(*itInimigo)->operator--();
-						(*itInimigo)->knockBack(_jogador2);
+						_jogador2->atacarInimigo((*itInimigo));
 					}
 				}
 
@@ -326,16 +322,16 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador toma dano
-				for (int i = 0; i < (*itProjetil)->getDano(); i++)
-					_jogador1->operator--();
+				//for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador1->operator--((*itProjetil)->getDano());
 
 				// Projetil desaparece
 				(*itProjetil)->setLancar(false);
 			}
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador2))) {
 				// Jogador toma dano
-				for (int i = 0; i < (*itProjetil)->getDano(); i++)
-					_jogador2->operator--();
+				//for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador2->operator--((*itProjetil)->getDano());
 
 				// Projetil desaparece
 				(*itProjetil)->setLancar(false);
@@ -348,8 +344,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador toma dano
-				for (int i = 0; i < (*itProjetil)->getDano(); i++)
-					_jogador1->operator--();
+				//for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador1->operator--((*itProjetil)->getDano());
 
 				// Projetil desaparece
 				(*itProjetil)->setLancar(false);

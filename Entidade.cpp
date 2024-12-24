@@ -82,28 +82,52 @@ namespace Entidades
 		if (posicaoCentroJog - posicaoCentroEnte < 0.f)
 			// se a posicao for maior que a do obstaculo, ele empurra para tras
 		{
-			if(this->getTipo() == 3)
-			_speed.x -= 100.0f;
-			else
+			int tipo = getTipo();
+			switch (tipo)
 			{
-				_speed.x -= 12.0f;
-			}
+				//Jogador
+			case 3:
+				_speed.x -= 60.0f;
+				break;
 
+				//Cavaleiro
+			case 4:
+				_speed.x *= -1;
+				break;
+
+				//Bruxa
+			case 5:
+				_speed.x -= 40.0f;
+				break;
+			}
+				
 		}
 		// se não empurra pra frente 
 		else
 		{
-			if (this->getTipo() == 3)
-			_speed.x += 100.0f;
-			else
+			int tipo = getTipo();
+			switch (tipo)
 			{
-				
-				_speed.x += 15.0f;
+				//Jogador
+			case 3:
+				_speed.x += 100.0f;
+				break;
+
+				//Cavaleiro
+			case 4:
+				_speed.x *= -1;
+				break;
+
+				//Bruxa
+			case 5:
+				_speed.x += 60.0f;
+				break;
 			}
+			
 		}
 
 		Position += _speed;
-		_body.setPosition(Position);
+		_body.setPosition(Position); 
 	}
 
 	void Entidade::sofrerGravidade(float gravidade)

@@ -29,11 +29,11 @@ void Entidades::Personagem::operator++()
 	_num_vidas++;
 }
 
-void Entidades::Personagem::operator--()
+void Entidades::Personagem::operator--(int i)
 {
 	if (_num_vidas >= 0)
 	{
-		_num_vidas--;
+		_num_vidas-=i;
 	}
 }
 

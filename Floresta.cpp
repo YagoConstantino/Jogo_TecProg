@@ -96,7 +96,7 @@ void Fases::Floresta::executar()
         _GC->executar();
         _jog->executar();
         _Lista->executar();
-        std::cout << _jog->getAtacando() << std::endl;
+        std::cout << _jog->getPontos() << std::endl;
         _GG->display();
     }
 }

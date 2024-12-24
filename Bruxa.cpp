@@ -5,6 +5,7 @@ Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciad
 	:Inimigo(inicialX,inicialY,pgra,pJog,vidas)
 
 {
+	setTipo(5);
 	setMaldade(2);
 	_speed.x = 0.04f;
 
@@ -51,6 +52,7 @@ void Entidades::Bruxa::executar()
 		setVivo(false);
 	}
 	desenhar();
+	_speed.x = 0.04f;
 }
 
 void Entidades::Bruxa::mover()
@@ -71,17 +73,13 @@ void Entidades::Bruxa::mover()
 
 	Position += velocidadeAtual;
 	_body.setPosition(Position);
-	_speed.x = 0.04f;
+	
 }
 
 void Entidades::Bruxa::danificar(Entidades::Jogador* pJog)
 {
-	int i;
-	for (i = 0; i < 2; i++)
-	{
-		pJog->operator--();
-
-	}
+	pJog->operator--(2);
+	
 	pJog->knockBack(this);
 
 }

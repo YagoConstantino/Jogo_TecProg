@@ -9,7 +9,7 @@ Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador
 	_vidasPerdidas(0), _projetil(nullptr), _segundosIntervaloPro(0.f) 
 {
 
-	setMaldade(1);
+	setMaldade(3);
 	_speed.x = 0.06f;
 
 	sf::Texture* textura = new sf::Texture();
@@ -116,12 +116,13 @@ void Entidades::Mago::atirar() {
 	}
 }
 
-void Entidades::Mago::bater() {
-	if (_segundos > 0.5f) {
+void Entidades::Mago::bater() 
+{
+	if (_segundos > 0.5f) 
+	{
 		_segundos = 0;
 
-		for (int i = 0; i < getMaldade(); i++)
-			_pJog->operator--();
+		_pJog->operator--(3);
 
 		_pJog->knockBack(this);
 	}

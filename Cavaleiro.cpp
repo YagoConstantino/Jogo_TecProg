@@ -63,7 +63,7 @@ void Entidades::Cavaleiro::mover()
 	}
 	Position += _speed;
 	_body.setPosition(Position);
-	_speed.x = 0.03f;
+	
 }
 
 void Entidades::Cavaleiro::danificar(Entidades::Jogador* pJog)
@@ -71,7 +71,7 @@ void Entidades::Cavaleiro::danificar(Entidades::Jogador* pJog)
 	if (_segundos > 0.75f) {
 		_segundos = 0.f;
 
-		pJog->operator--();
+		pJog->operator--(1);
 		pJog->knockBack(this);
 	}
 }

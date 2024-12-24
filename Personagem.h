@@ -19,7 +19,7 @@ namespace Entidades
 		void setVidas(int vid);
 		
 		void operator++();
-		void operator--();
+		void operator--(int i);
 
 		virtual void pular();
 

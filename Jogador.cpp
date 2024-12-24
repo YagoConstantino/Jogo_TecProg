@@ -1,5 +1,6 @@
 #include "Jogador.h"
 #include "stdlib.h"
+#include "Inimigo.h"
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
 	:Personagem(inlX, inY, pgra, 10), _pontos(0), nome(name), tempoPulo(80.f), _velocidade(0.2f), 
@@ -50,7 +51,7 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 	adicionarSword("assets/EspadaReta1.png");
 	adicionarSword("assets/EspadaDireita.png");
 	adicionarSword("assets/EspadaEsquerda.png");
-	std::cout << "_texturasSword size: " << _texturasSword.size() << std::endl;
+	
 }
 
 Entidades::Jogador::~Jogador()
@@ -138,8 +139,6 @@ void Entidades::Jogador::mover()
 {
 
 	_speed.x = 0;
-	std::cout << "Direcao no mover(): " << getDirecao()<< std::endl;
-
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
@@ -254,6 +253,16 @@ void Entidades::Jogador::adicionarSword(const std::string& path)
 	else
 	{
 		std::cout << "Falha ao carregar texturas!" << std::endl;
+	}
+}
+
+void Entidades::Jogador::atacarInimigo(Entidades::Inimigo* enemy)
+{
+	(enemy)->operator--(1);
+	(enemy)->knockBack(this);
+	if (enemy->getVidas() <= 0)
+	{
+		SetPontos(getPontos() + enemy->getMaldade());
 	}
 }
 

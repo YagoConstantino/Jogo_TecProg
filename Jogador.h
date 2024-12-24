@@ -4,6 +4,7 @@
 #include<SFML/Graphics.hpp>
 namespace Entidades
 {
+	class Inimigo;
 	class Jogador :public Entidades::Personagem
 	{
 	private:
@@ -56,6 +57,8 @@ namespace Entidades
 
 		void setSword(int direcao);
 		void adicionarSword(const std::string& path);
+
+		void atacarInimigo(Entidades::Inimigo* enemy);
 
 
 		void executar();

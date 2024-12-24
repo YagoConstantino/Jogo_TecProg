@@ -41,6 +41,7 @@ namespace Listas {
 
         public:
             Iterator(Elemento* start) : current(start) {}
+            ~Iterator(){}
 
             bool hasPNext() const { return current != nullptr; }
             T* Atual() 
