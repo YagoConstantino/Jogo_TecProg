@@ -3,6 +3,7 @@
 #include "Jogador.h"
 #include "Floresta.h"
 #include "Menu.h"
+#include "Ranking.h"
 
 class Jogo
 {
@@ -11,6 +12,7 @@ private:
 	Gerenciadores::Gerenciador_Grafico* _GerenciadorGráfico;
 	Menu* _menu;
 	Fases::Floresta* _florest;
+	Ranking* rank;
 
 	static int stateNum;
 

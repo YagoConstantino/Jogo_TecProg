@@ -8,6 +8,7 @@
 #include "Ente.h"
 #include "Gerenciador_Grafico.h"
 
+
 class Menu : public Entidades::Ente 
 {
 private:
@@ -24,6 +25,7 @@ private:
 	sf::Font _fonte;
 
 	std::map<int, std::function<void()> > _funcoesBotoes;
+
 
 public:
 	Menu(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr);

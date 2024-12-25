@@ -23,6 +23,8 @@ Jogo::Jogo(std::string nome)
 {
 	_GerenciadorGráfico = Gerenciadores::Gerenciador_Grafico::getInstancia();
 	_jogador1 = new Entidades::Jogador(0, 0, _GerenciadorGráfico, nome);
+	rank = new Ranking();
+	rank->verificaPontos(_jogador1);
 
 	_florest = nullptr;
 	_menu = nullptr;
@@ -45,6 +47,10 @@ Jogo::~Jogo()
 	}
 	if (_menu) {
 		delete _menu;
+	}
+	if (rank)
+	{
+		delete rank;
 	}
 }
 
@@ -80,6 +86,17 @@ void Jogo::executar()
 		case 20:
 			criaFloresta();
 			JogarFloresta();
+			if (rank) 
+			{
+				cout << "Atualizando leaderboard..." << endl;
+				rank->atualizaLeaderboard(_jogador1);
+				rank->imprimirLeaderboard();
+				rank->salvarDados();
+			}
+			else 
+			{
+				cerr << "Erro: rank não inicializado!" << endl;
+			}
 			break;
 		}
 	}
@@ -92,8 +109,10 @@ void Jogo::JogarFloresta()
 
 
 
-void Jogo::criaMenu() {
-	if (_menu == nullptr) {
+void Jogo::criaMenu() 
+{
+	if (_menu == nullptr) 
+	{
 		// Destroi o estado anterior
 		if (_florest != nullptr) 
 		{
@@ -112,9 +131,11 @@ void Jogo::JogarMenu()
 
 void Jogo::criaFloresta() 
 {
-	if (_florest == nullptr) {
+	if (_florest == nullptr) 
+	{
 		// destroi o estado anterior
-		if (_menu != nullptr) {
+		if (_menu != nullptr) 
+		{
 			delete _menu;
 			_menu = nullptr;
 		}

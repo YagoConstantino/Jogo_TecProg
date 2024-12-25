@@ -1,0 +1,4 @@
+Joao 33
+Ana 32
+Gabriel 13
+Yago 0

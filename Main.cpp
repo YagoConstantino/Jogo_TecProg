@@ -62,7 +62,7 @@ int main()
     return 0;*/
     srand(static_cast<unsigned>(time(nullptr)));
 
-    Jogo* principal = new Jogo("Player");
+    Jogo* principal = new Jogo("Joao");
     principal->executar();
 
     return 0;
