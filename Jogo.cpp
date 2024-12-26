@@ -8,11 +8,12 @@
 	Tipos de stateNum's:
 
 	10 - menu
-	11 - menu de ranking (exemplo)
-	12 - menu de fases
+	11 - menu de fases
+	12 - menu de ranking (exemplo)
 	20 - fase 1, floresta
 	21 - fase 2, ...
 */
+
 int Jogo::stateNum = 10;
 
 void Jogo::mudarStateNum(int state) { stateNum = state; }
@@ -26,7 +27,7 @@ Jogo::Jogo(std::string nome)
 
 	_florest = nullptr;
 	_menu = nullptr;
-
+	_menuFases = nullptr;
 }
 
 Jogo::~Jogo()
@@ -46,32 +47,36 @@ Jogo::~Jogo()
 	if (_menu) {
 		delete _menu;
 	}
+	if (_menuFases) {
+		delete _menuFases;
+	}
 }
 
 void Jogo::executar()
 {
 	while (_GerenciadorGráfico->getOpen()) {
-		
+
 		// Escolhe o estado da janela
-		
+
 		switch (stateNum) {
 			// Fecha janela
 		case 0:
 			_GerenciadorGráfico->closeWindow();
 			break;
-			
+
 			// Cria menu principal
 		case 10:
 			criaMenu();
 			JogarMenu();
 			break;
 
-			// Cria o menu de ranking
+			// Cria o menu de fases
 		case 11:
-
+			criaMenuFases();
+			JogarMenuFases();
 			break;
 
-			// Cria o menu de fases
+			// Cria o menu de ranking
 		case 12:
 
 			break;
@@ -95,28 +100,40 @@ void Jogo::JogarFloresta()
 void Jogo::criaMenu() {
 	if (_menu == nullptr) {
 		// Destroi o estado anterior
-		if (_florest != nullptr) 
+		if (_florest != nullptr)
 		{
 			delete _florest;
 			_florest = nullptr;
+		}
+		else if (_menuFases != nullptr) {
+			delete _menuFases;
+			_menuFases = nullptr;
 		}
 
 		_menu = new Menu(_GerenciadorGráfico);
 	}
 }
 
-void Jogo::JogarMenu() 
+void Jogo::criaMenuFases()
 {
-	_menu->executar();
-}
-
-void Jogo::criaFloresta() 
-{
-	if (_florest == nullptr) {
-		// destroi o estado anterior
+	if (_menuFases == nullptr) {
+		// Destroi o estado anterior
 		if (_menu != nullptr) {
 			delete _menu;
 			_menu = nullptr;
+		}
+
+		_menuFases = new MenuFases(_GerenciadorGráfico);
+	}
+}
+
+void Jogo::criaFloresta()
+{
+	if (_florest == nullptr) {
+		// destroi o estado anterior
+		if (_menuFases != nullptr) {
+			delete _menuFases;
+			_menuFases = nullptr;
 		}
 
 		_florest = new Fases::Floresta(_GerenciadorGráfico, _jogador1);
@@ -124,6 +141,16 @@ void Jogo::criaFloresta()
 		_florest->criarInimigos();
 		_florest->criarObstaculos();
 	}
+}
+
+void Jogo::JogarMenu()
+{
+	_menu->executar();
+}
+
+void Jogo::JogarMenuFases()
+{
+	_menuFases->executar();
 }
 
 
