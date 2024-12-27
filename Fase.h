@@ -16,12 +16,13 @@ namespace Fases
 		Gerenciadores::Gerenciador_Colisoes* _GC;
 		Listas::ListaEntidades* _Lista;
 		Gerenciadores::Gerenciador_Grafico* _GG;
-		Entidades::Jogador* _jog;
+		Entidades::Jogador* _jog1;
+		Entidades::Jogador* _jog2;
 		const int maxCavaleiros;
 		const int maxPlataformas;
 
 	public:
-		Fase(Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador* j = nullptr);
+		Fase(Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador* j1 = nullptr, Entidades::Jogador* j2 = nullptr);
 		virtual ~Fase();
 		void gerenciarColisoes();
 		void criarCavaleiros();

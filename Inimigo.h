@@ -11,22 +11,25 @@ namespace Entidades
 
 		bool atacar;
 		int _nivel_maldade;
-		Entidades::Jogador* _pJog;
+		Entidades::Jogador* _pJog1;
+		Entidades::Jogador* _pJog2;
 
 		float posInicialX;
 		float posInicialY;
 	public:
 		Inimigo(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
-			Entidades::Jogador*pJog=nullptr,int vidas = 1);
+			Entidades::Jogador* pJog1 = nullptr, Entidades::Jogador* pJog2 = nullptr, int vidas = 1);
 		virtual ~Inimigo();
 
 		void setMaldade(int mal);
 		int getMaldade()const;
 
-		void setJogador(Entidades::Jogador* pJog);
+		void setJogador1(Entidades::Jogador* pJog);
+		void setJogador2(Entidades::Jogador* pJog);
 		//Entidades::Jogador* getJogador()const;
 
-		double getDistanciaJogador();
+		double getDistanciaJogador1();
+		double getDistanciaJogador2();
 		double getDistanciaoInicio();
 
 		virtual void executar() = 0;

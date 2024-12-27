@@ -16,11 +16,21 @@ todas as plataformas e depois verifico quais foram geradas e posso colocara inim
 limitar ao chão, pois é até o momento a unica parte que certamente vai ser gerada
 */
 
-Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j)
-	:_GG(pgra), _jog(j), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
+Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1,Entidades::Jogador*j2)
+	:_GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
+	if (_jog1)
+	{
+		_GC->setJogador1(_jog1);
+		std::cout << "GC Player 1;" << std::endl;
+	}
+	if (_jog2)
+	{
+		_GC->setJogador2(_jog2);
+		std::cout << " GC Player 2;" << std::endl;
+	}
 	
 }
 
@@ -35,7 +45,8 @@ Fases::Fase::~Fase()
 
 	//Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
 	_GG = nullptr;
-	_jog = nullptr;
+	_jog1 = nullptr;
+	_jog2 = nullptr;
 
 }
 
@@ -60,7 +71,7 @@ void Fases::Fase::criarCavaleiros()
 
 	for (int i = 0; i < n; i++)
 	{
-		Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700, _GG, _jog, 4); // Novo cav na posicao x
+		Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700, _GG, _jog1,_jog2); // Novo cav na posicao x
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(cav)); // inserir na lista
 		_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav)); // inserir no Gerenciador de colisoes
 		float larguraCavaleiro = cav->getBody().getGlobalBounds().width; // tamanho do cavaleiro

@@ -9,7 +9,7 @@ namespace Entidades
 
 	public:
 		Cavaleiro(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
-			Entidades::Jogador* pJog = nullptr, int vidas = 2);
+			Entidades::Jogador* pJog1 = nullptr, Entidades::Jogador* pJog2 = nullptr, int vidas = 3);
 		~Cavaleiro();
 
 

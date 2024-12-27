@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
-	Entidades::Jogador* pJog, int vidas)
-	:Inimigo(inicialX, inicialY, pgra, pJog, vidas)
+	Entidades::Jogador* pJog1,Entidades::Jogador*pJog2, int vidas)
+	:Inimigo(inicialX, inicialY, pgra, pJog1,pJog2, vidas)
 {
 	setTipo(4);
 	setMaldade(1);
@@ -30,7 +30,8 @@ Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::G
 
 Entidades::Cavaleiro::~Cavaleiro()
 {
-	_pJog = nullptr;
+	_pJog1 = nullptr;
+	_pJog2 = nullptr;
 }
 
 

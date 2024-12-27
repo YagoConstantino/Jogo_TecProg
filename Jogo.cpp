@@ -17,15 +17,13 @@ int Jogo::stateNum = 10;
 
 void Jogo::mudarStateNum(int state) { stateNum = state; }
 
+
 // DEMAIS
 
-Jogo::Jogo(std::string nome)
+Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
 {
 	_GerenciadorGráfico = Gerenciadores::Gerenciador_Grafico::getInstancia();
-	_jogador1 = new Entidades::Jogador(0, 0, _GerenciadorGráfico, nome);
 	rank = new Ranking();
-	rank->verificaPontos(_jogador1);
-
 	_florest = nullptr;
 	_menu = nullptr;
 
@@ -37,6 +35,11 @@ Jogo::~Jogo()
 	{
 		delete _jogador1;
 	}
+	if (_jogador2)
+	{
+		delete _jogador2;
+	}
+
 	if (_GerenciadorGráfico)
 	{
 		delete _GerenciadorGráfico;
@@ -52,11 +55,19 @@ Jogo::~Jogo()
 	{
 		delete rank;
 	}
+
+	_jogador1 = nullptr;
+	_jogador1 = nullptr;
+	_GerenciadorGráfico = nullptr;
+	_florest = nullptr;
+	_menu = nullptr;
+	rank = nullptr;
 }
 
 void Jogo::executar()
 {
-	while (_GerenciadorGráfico->getOpen()) {
+	while (_GerenciadorGráfico->getOpen()) 
+	{
 		
 		// Escolhe o estado da janela
 		
@@ -90,6 +101,7 @@ void Jogo::executar()
 			{
 				cout << "Atualizando leaderboard..." << endl;
 				rank->atualizaLeaderboard(_jogador1);
+				rank->atualizaLeaderboard(_jogador2);
 				rank->imprimirLeaderboard();
 				rank->salvarDados();
 			}
@@ -101,6 +113,38 @@ void Jogo::executar()
 		}
 	}
 }
+bool Jogo::criarJogador1(string nome)
+{
+	if (!_jogador1)
+	{
+		_jogador1 = new Entidades::Jogador(0, 0, _GerenciadorGráfico, nome);
+		if (_jogador1)
+		{
+			rank->verificaPontos(_jogador1);
+			return true;
+		}
+		return false;
+	}
+	cerr << "Jogador1 já existente\n";
+	return false;
+}
+
+bool Jogo::criarJogador2(string nome)
+{
+	if (!_jogador2)
+	{
+		_jogador2 = new Entidades::Jogador(600, 500, _GerenciadorGráfico, nome);
+		if (_jogador2) 
+		{ 
+			rank->verificaPontos(_jogador2);
+			return true;
+		};
+		return false;
+	}
+	cerr << "Jogador2 já existente\n";
+	return false;
+}
+
 
 void Jogo::JogarFloresta()
 {
@@ -140,7 +184,7 @@ void Jogo::criaFloresta()
 			_menu = nullptr;
 		}
 
-		_florest = new Fases::Floresta(_GerenciadorGráfico, _jogador1);
+		_florest = new Fases::Floresta(_GerenciadorGráfico, _jogador1,_jogador2);
 
 		_florest->criarInimigos();
 		_florest->criarObstaculos();

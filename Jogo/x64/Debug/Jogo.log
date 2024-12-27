@@ -11,14 +11,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
   (compilando o arquivo fonte 'Floresta.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16):
       o contexto de instanciação do modelo (o mais antigo primeiro) é
-          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(35,9):
+          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(37,9):
           consulte a referência à instanciação 'std::pair<float,float>::pair<int,float,0>(_Other1 &&,_Other2 &&) noexcept' do modelo que está sendo compilada
           with
           [
               _Other1=int,
               _Other2=float
           ]
-              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(33,5):
+              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(35,5):
               veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Floresta::criaBarrasMagicas'
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244: 'inicializando': conversão de '_Ty' para '_Ty1', possível perda de dados
@@ -33,7 +33,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
   (compilando o arquivo fonte 'Floresta.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16):
       o contexto de instanciação do modelo (o mais antigo primeiro) é
-          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(37,9):
+          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(39,9):
           consulte a referência à instanciação 'std::pair<float,float>::pair<T,float,0>(_Other1 &&,_Other2 &&) noexcept' do modelo que está sendo compilada
           with
           [
@@ -41,12 +41,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
               _Other1=unsigned int,
               _Other2=float
           ]
-              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(33,5):
+              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(35,5):
               veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Floresta::criaBarrasMagicas'
   
-  Jogo.cpp
-  Main.cpp
-  Menu.cpp
-  Ranking.cpp
-  Gerando Código...
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe

@@ -5,21 +5,23 @@
 #include <utility>
 
 
-Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog)
+Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog1, Entidades::Jogador* jog2)
 
-    :Fase(pgra,jog),maxBruxas(5),maxBarraMagicas(4)
+    :Fase(pgra,jog1,jog2),maxBruxas(5),maxBarraMagicas(4)
 
 {
 
     //_Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
-    _GC->setJogador1(jog);
+    //_GC->setJogador1(jog);
+   
 }
 
 Fases::Floresta::~Floresta()
 {
     //Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
     _GG = nullptr;
-    _jog = nullptr;
+    _jog1 = nullptr;
+    _jog2 = nullptr;
 }
 
 void Fases::Floresta::criaBarrasMagicas()
@@ -72,7 +74,7 @@ void Fases::Floresta::criaBruxas()
         float x = posicaoBruxa[i].first;
         float y = posicaoBruxa[i].second;
 
-        Entidades::Bruxa* bru = new Entidades::Bruxa(x, y, _GG, _jog);
+        Entidades::Bruxa* bru = new Entidades::Bruxa(x, y, _GG, _jog1,_jog2);
         _GC->incluirInimigo(static_cast<Entidades::Inimigo*>(bru));
         _Lista->insert_back(static_cast<Entidades::Entidade*>(bru));
     }
@@ -92,11 +94,23 @@ void Fases::Floresta::executar()
         }
 
         _GG->clear();
-
         _GC->executar();
-        _jog->executar();
+
+        if (_jog1) 
+        {
+            _jog1->executar();
+           // std::cout << "Executando Player 1;" << std::endl;
+        }
+        if (_jog2)
+        {
+            _jog2->executar();
+           // std::cout << "Exec Player 2;" << std::endl;
+        }
+
         _Lista->executar();
-        std::cout << _jog->getPontos() << std::endl;
+        
+
+        //std::cout << _jog1->getPontos() << std::endl;
         _GG->display();
     }
 }

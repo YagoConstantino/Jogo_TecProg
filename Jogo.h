@@ -9,6 +9,7 @@ class Jogo
 {
 private:
 	Entidades::Jogador* _jogador1;
+	Entidades::Jogador* _jogador2;
 	Gerenciadores::Gerenciador_Grafico* _GerenciadorGráfico;
 	Menu* _menu;
 	Fases::Floresta* _florest;
@@ -17,7 +18,7 @@ private:
 	static int stateNum;
 
 public:
-	Jogo(std::string nome = "");
+	Jogo();
 	~Jogo();
 
 	void criaFloresta();
@@ -25,8 +26,10 @@ public:
 
 	void JogarFloresta();
 	void JogarMenu();
-
 	void executar();
 
 	static void mudarStateNum(int state);
+
+	bool criarJogador1(string nome);
+	bool criarJogador2(string nome);
 };

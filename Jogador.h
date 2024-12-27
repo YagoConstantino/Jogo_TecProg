@@ -7,29 +7,31 @@ namespace Entidades
 	class Inimigo;
 	class Jogador :public Entidades::Personagem
 	{
-	private:
-		// Estado de paralisia
-		sf::Sprite telaParalisada; // pode criar uma classe figura para o sprite e a textura
-		sf::Texture* texturaTela;
-		sf::Clock _clockParalisia; // clock diferente do clock pulo
-		float _duracaoParalisia;
-		float _tempoParalisado;
-		bool _paralisado;
-		//
+		private:
+			// Estado de paralisia
+			sf::Sprite telaParalisada; // pode criar uma classe figura para o sprite e a textura
+			sf::Texture* texturaTela;
+			sf::Clock _clockParalisia; // clock diferente do clock pulo
+			float _duracaoParalisia;
+			float _tempoParalisado;
+			bool _paralisado;
+			//
 
-		//sf::Clock _clockAtaque;
-		bool _atacando;
-		//float _tempoAtaque;
+			//sf::Clock _clockAtaque;
+			bool _atacando;
+			//float _tempoAtaque;
 
-		float tempoPulo;
-		int _pontos;
+			float tempoPulo;
+			int _pontos;
 
-		std::string nome;
-		float _velocidade;
-		std::vector<sf::Texture*> _texturas;
+			std::string nome;
+			float _velocidade;
+			std::vector<sf::Texture*> _texturas;
 
-		sf::Sprite* Sword;
-		std::vector<sf::Texture*>_texturasSword;
+			sf::Sprite* Sword;
+			std::vector<sf::Texture*>_texturasSword;
+			bool _ehJogador1;
+			static int contador;
 
 
 	public:
