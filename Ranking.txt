@@ -1,7 +1,7 @@
-Player1 362
+Player1 384
 Player2 327
 Joao 89
 Ana 32
+Player4 21
 Gabriel 13
 Yago 0
-Player4 0
