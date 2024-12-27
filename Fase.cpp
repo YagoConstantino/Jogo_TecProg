@@ -24,12 +24,12 @@ Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* 
 	if (_jog1)
 	{
 		_GC->setJogador1(_jog1);
-		std::cout << "GC Player 1;" << std::endl;
+		
 	}
 	if (_jog2)
 	{
 		_GC->setJogador2(_jog2);
-		std::cout << " GC Player 2;" << std::endl;
+		
 	}
 	
 }

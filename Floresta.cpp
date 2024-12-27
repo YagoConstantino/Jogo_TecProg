@@ -36,8 +36,8 @@ void Fases::Floresta::criaBarrasMagicas()
 
         {468+234 , 630.f},                               // Meio da plataforma 2
         {234,450.f},                                    // Meio da plataforma 4
-        {_GG->getWindow()->getSize().x - 200, 630.f},  // Meio da plataforma 3 
-        {936.f, 630.f}
+        {_GG->getWindow()->getSize().x - 200, 450.f},  // Meio da plataforma 3 
+        {936.f, 450}
     };
 
     for (int i = 0; i < n; i++)
@@ -99,12 +99,12 @@ void Fases::Floresta::executar()
         if (_jog1) 
         {
             _jog1->executar();
-           // std::cout << "Executando Player 1;" << std::endl;
+           
         }
         if (_jog2)
         {
             _jog2->executar();
-           // std::cout << "Exec Player 2;" << std::endl;
+           
         }
 
         _Lista->executar();

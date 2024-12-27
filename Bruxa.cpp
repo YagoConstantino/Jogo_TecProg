@@ -108,6 +108,11 @@ void Entidades::Bruxa::mover()
 		{
 			_direcao = 1;  // Para a direita
 		}
+
+		if (getPositionY() - jogadorMaisProximo->getPositionY() >= 150)
+		{
+			pular();
+		}
 	}
 
 	// Verificando se o jogador mais próximo não é nulo antes de se mexer

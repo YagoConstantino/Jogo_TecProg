@@ -25,7 +25,7 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 		_body.setScale(0.1f, 0.1f);
 		adicionarTextura("assets/Player1.png");
 		adicionarTextura("assets/Player1Esquerda.png");
-		std:: cout << "Carregado assets Player 1;" << std::endl;
+		
 	}
 	else
 	{
@@ -39,7 +39,7 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 		_body.setScale(0.1f, 0.1f);
 		adicionarTextura("assets/Player2.png");
 		adicionarTextura("assets/Player2Esquerda.png");
-		std::cout << "Carregado assets Player 2;" << std::endl;
+	
 	}
 	
 	
