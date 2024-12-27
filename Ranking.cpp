@@ -1,10 +1,5 @@
 #include "Ranking.h"
 
-
-/*
-Implementar na Criação de jogador uma forma de recuperar os dados no arquivo ranking
-Verificar se tem o mesmo nome e puxar os pontos
-*/
 Ranking::Ranking() : leaderbord(), arquivoEntrada(),arquivoSaida()
 {
     recuperaDados();
@@ -57,7 +52,6 @@ void Ranking::recuperaDados()
 {
     try
     {
-        //in abre o arquivo para Leitura (equivalente ao r em C)
         arquivoEntrada.open("Ranking.txt");
         if (!arquivoEntrada.is_open())
         {
@@ -85,7 +79,6 @@ void Ranking::salvarDados()
 {
     try
     {
-        //out abre o arquivo para escrita e apaga o conteudo anterior (equivalente ao w em C)
         arquivoSaida.open("Ranking.txt");
         if (!arquivoSaida.is_open())
         {
@@ -151,4 +144,9 @@ void Ranking::verificaPontos(Entidades::Jogador* pJog)
         }
     }
     cerr << "Jogador não encontrado no ranking.\n" << endl;
+}
+
+vector<pair<string, int>> Ranking::getVector() const
+{
+    return leaderbord;
 }

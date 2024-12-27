@@ -24,5 +24,6 @@ public:
 	void salvarDados();
 	void atualizaLeaderboard(Entidades::Jogador* pJog);
 	void verificaPontos(Entidades::Jogador* pJog);
+	vector<pair<string, int>> getVector()const;
 	
 };
