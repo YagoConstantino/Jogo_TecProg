@@ -6,6 +6,7 @@
 #include <utility>
 #include <stdexcept> // Para exceções
 #include "Jogador.h"
+
 using namespace std;
 
 class Ranking

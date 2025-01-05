@@ -75,6 +75,7 @@ void Fases::Floresta::criaBruxas()
         float y = posicaoBruxa[i].second;
 
         Entidades::Bruxa* bru = new Entidades::Bruxa(x, y, _GG, _jog1,_jog2);
+        
         _GC->incluirInimigo(static_cast<Entidades::Inimigo*>(bru));
         _Lista->insert_back(static_cast<Entidades::Entidade*>(bru));
     }

@@ -20,7 +20,7 @@
 
 using namespace std;
 
-class Pessoa {
+/*class Pessoa {
 private:
     std::string nome;
     int idade;
@@ -39,7 +39,7 @@ public:
     {
         cout << "Nome: " << nome << ", Idade: " << idade << endl;
     }
-};
+};*/
 
 int main()
 {
