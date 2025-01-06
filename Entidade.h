@@ -16,6 +16,7 @@ namespace Entidades
 		sf::Clock _clock;
 		float _segundos;
 		bool _vivo;
+		bool _ehThread;
 		//ostream buffer;
 
 	public:
@@ -50,6 +51,9 @@ namespace Entidades
 		void setVivo(bool vivo);
 
 		virtual void executar() = 0;
+
+		void setEhThread(bool th);
+		bool getEhThread()const;
 
 		//void SalvarDataBuffer();
 

@@ -1,5 +1,6 @@
 #include "ListaEntidades.h"
 #include "Personagem.h"
+#include "BruxaThread.h"
 Listas::ListaEntidades::ListaEntidades() : List() {}
 
 Listas::ListaEntidades::~ListaEntidades() 
@@ -87,6 +88,37 @@ void Listas::ListaEntidades::percorrer() {
     }
 }
 
+void Listas::ListaEntidades::startThread()
+{
+    Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
+    while (it->hasPNext())
+    {
+        Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
+        if (ente->getEhThread())
+        {
+            Entidades::BruxaThread* bruxaTH = static_cast<Entidades::BruxaThread*>(ente);
+            bruxaTH->start();
+        }
+
+    }
+    delete it;
+}
+
+void Listas::ListaEntidades::joinThread()
+{
+    Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
+    while (it->hasPNext())
+    {
+        Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
+        if (ente->getEhThread())
+        {
+            Entidades::BruxaThread* bruxaTH = static_cast<Entidades::BruxaThread*>(ente);
+            bruxaTH->join();
+        }
+    }
+    delete it;
+}
+
 void Listas::ListaEntidades::executar() 
 {
     Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
@@ -96,6 +128,10 @@ void Listas::ListaEntidades::executar()
         if (ente != nullptr && ente->getVivo()) 
         {
             ente->executar(); // Executa a ação da entidade
+            if (ente->getEhThread())
+            {
+                ente->desenhar();
+            }
         }
         
     }
