@@ -2,7 +2,7 @@
 
 Entidades::BruxaThread::BruxaThread(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1, Entidades::Jogador* pJog2, int vidas)
-	:Bruxa(inicialX, inicialY, pgra, pJog1, pJog2, vidas), ThreadCPP(),Rodar(false)
+	:Bruxa(inicialX, inicialY, pgra, pJog1, pJog2, vidas), ThreadCPP(),_rodar(false)
 {
 	setEhThread(true);
 }
@@ -13,7 +13,7 @@ Entidades::BruxaThread::~BruxaThread()
 
 void Entidades::BruxaThread::setRodar(bool rod)
 {
-	Rodar = rod;
+	_rodar = rod;
 }
 
 void Entidades::BruxaThread::run()
@@ -21,7 +21,7 @@ void Entidades::BruxaThread::run()
 	while (getVivo())
 	{
 
-		if (Rodar)
+		if (_rodar)
 		{
 
 			lockMutex();
@@ -57,7 +57,7 @@ void Entidades::BruxaThread::run()
 			}
 			unlockMutex();
 			setRodar(false);
-			yield();
+			//yield();
 		}
 	}
 }

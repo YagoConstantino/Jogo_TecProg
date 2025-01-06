@@ -103,6 +103,7 @@ void Fases::Floresta::executar()
             {
                 Jogo::mudarStateNum(10);
                 _mudouEstado = true;
+                
             }
         }
 
@@ -127,6 +128,7 @@ void Fases::Floresta::executar()
         _GG->display();
     }
     _Lista->joinThread();
+    
 }
 
 void Fases::Floresta::criarInimigos()
