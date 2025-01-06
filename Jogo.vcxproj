@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BruxaThread.h" />
     <ClInclude Include="Elemento.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
@@ -43,8 +44,10 @@
     <ClInclude Include="Plataforma.h" />
     <ClInclude Include="Projetil.h" />
     <ClInclude Include="Ranking.h" />
+    <ClInclude Include="Thread.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BruxaThread.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Fase.cpp" />
@@ -67,6 +70,7 @@
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="Projetil.cpp" />
     <ClCompile Include="Ranking.cpp" />
+    <ClCompile Include="Thread.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -105,6 +105,12 @@
     <ClInclude Include="Ranking.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="Thread.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="BruxaThread.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -172,6 +178,12 @@
     </ClCompile>
     <ClCompile Include="Ranking.cpp">
       <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="BruxaThread.cpp">
+      <Filter>Entidades\Personagens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  BarraMagica.cpp
   Bruxa.cpp
   Cavaleiro.cpp
@@ -41,6 +42,9 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
               C:\Users\yagoa\Desktop\Game\Jogo\Fase.cpp(101,2):
               veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Fase::criarPlataformas'
   
+=======
+﻿  BruxaThread.cpp
+>>>>>>> Yago
   Floresta.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244: 'inicializando': conversão de '_Ty' para '_Ty1', possível perda de dados
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244:         with
@@ -54,14 +58,22 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
   (compilando o arquivo fonte 'Floresta.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16):
       o contexto de instanciação do modelo (o mais antigo primeiro) é
+<<<<<<< HEAD
           C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(37,9):
+=======
+          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(38,9):
+>>>>>>> Yago
           consulte a referência à instanciação 'std::pair<float,float>::pair<int,float,0>(_Other1 &&,_Other2 &&) noexcept' do modelo que está sendo compilada
           with
           [
               _Other1=int,
               _Other2=float
           ]
+<<<<<<< HEAD
               C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(35,5):
+=======
+              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(36,5):
+>>>>>>> Yago
               veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Floresta::criaBarrasMagicas'
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16): warning C4244: 'inicializando': conversão de '_Ty' para '_Ty1', possível perda de dados
@@ -76,7 +88,11 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
   (compilando o arquivo fonte 'Floresta.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,16):
       o contexto de instanciação do modelo (o mais antigo primeiro) é
+<<<<<<< HEAD
           C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(39,9):
+=======
+          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(40,9):
+>>>>>>> Yago
           consulte a referência à instanciação 'std::pair<float,float>::pair<T,float,0>(_Other1 &&,_Other2 &&) noexcept' do modelo que está sendo compilada
           with
           [
@@ -84,7 +100,11 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
               _Other1=unsigned int,
               _Other2=float
           ]
+<<<<<<< HEAD
               C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(35,5):
+=======
+              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(36,5):
+>>>>>>> Yago
               veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Floresta::criaBarrasMagicas'
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,54): warning C4244: 'inicializando': conversão de '_Ty' para '_Ty2', possível perda de dados
@@ -99,13 +119,18 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
   (compilando o arquivo fonte 'Floresta.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(247,54):
       o contexto de instanciação do modelo (o mais antigo primeiro) é
+<<<<<<< HEAD
           C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(40,9):
+=======
+          C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(41,9):
+>>>>>>> Yago
           consulte a referência à instanciação 'std::pair<float,float>::pair<float,int,0>(_Other1 &&,_Other2 &&) noexcept' do modelo que está sendo compilada
           with
           [
               _Other1=float,
               _Other2=int
           ]
+<<<<<<< HEAD
               C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(35,5):
               veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Floresta::criaBarrasMagicas'
   
@@ -121,6 +146,11 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.3412
   Personagem.cpp
   Plataforma.cpp
   Ranking.cpp
+=======
+              C:\Users\yagoa\Desktop\Game\Jogo\Floresta.cpp(36,5):
+              veja a primeira referência a 'std::pair<float,float>::pair' em 'Fases::Floresta::criaBarrasMagicas'
+  
+>>>>>>> Yago
   Gerando Código...
   LINK : C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe não encontrado ou não compilado pelo o último link incremental; executando link completo
   Jogo.vcxproj -> C:\Users\yagoa\Desktop\Game\Jogo\x64\Debug\Jogo.exe

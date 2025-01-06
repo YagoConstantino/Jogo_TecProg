@@ -1,5 +1,7 @@
 #include "ListaEntidades.h"
 #include "Personagem.h"
+#include "BruxaThread.h"
+#include "Thread.h"
 Listas::ListaEntidades::ListaEntidades() : List() {}
 
 Listas::ListaEntidades::~ListaEntidades() 
@@ -7,12 +9,14 @@ Listas::ListaEntidades::~ListaEntidades()
     limpar();
 }
 
-void Listas::ListaEntidades::insert_front(Entidades::Entidade* enti) {
-    List.insert_front(enti); // Passa o ponteiro diretamente
+void Listas::ListaEntidades::insert_front(Entidades::Entidade* enti) 
+{
+    List.insert_front(enti); 
 }
 
-void Listas::ListaEntidades::insert_back(Entidades::Entidade* enti) {
-    List.insert_back(enti); // Passa o ponteiro diretamente
+void Listas::ListaEntidades::insert_back(Entidades::Entidade* enti) 
+{
+    List.insert_back(enti); 
 }
 
 void Listas::ListaEntidades::remove_front() {
@@ -87,6 +91,37 @@ void Listas::ListaEntidades::percorrer() {
     }
 }
 
+void Listas::ListaEntidades::startThread()
+{
+    Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
+    while (it->hasPNext())
+    {
+        Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
+        if (ente->getEhThread())
+        {
+            Entidades::BruxaThread* bruxaTH = static_cast<Entidades::BruxaThread*>(ente);
+            bruxaTH->start();
+        }
+
+    }
+    delete it;
+}
+
+void Listas::ListaEntidades::joinThread()
+{
+    Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
+    while (it->hasPNext())
+    {
+        Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
+        if (ente->getEhThread())
+        {
+            Entidades::BruxaThread* bruxaTH = static_cast<Entidades::BruxaThread*>(ente);
+            bruxaTH->join();
+        }
+    }
+    delete it;
+}
+
 void Listas::ListaEntidades::executar() 
 {
     Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
@@ -95,7 +130,14 @@ void Listas::ListaEntidades::executar()
         Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
         if (ente != nullptr && ente->getVivo()) 
         {
-            ente->executar(); // Executa a ação da entidade
+            ente->executar(); 
+            if(ente->getEhThread())
+            {
+                Entidades::BruxaThread* bru = static_cast<Entidades::BruxaThread*>(ente);
+                bru->lockMutex();
+                bru->setRodar(true);
+                bru->unlockMutex();
+            }
         }
         
     }

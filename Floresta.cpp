@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include "BruxaThread.h"
 
 
 Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog1, Entidades::Jogador* jog2)
@@ -73,23 +74,36 @@ void Fases::Floresta::criaBruxas()
     {
         float x = posicaoBruxa[i].first;
         float y = posicaoBruxa[i].second;
-
-        Entidades::Bruxa* bru = new Entidades::Bruxa(x, y, _GG, _jog1,_jog2);
-        _GC->incluirInimigo(static_cast<Entidades::Inimigo*>(bru));
-        _Lista->insert_back(static_cast<Entidades::Entidade*>(bru));
+        if (i < 2)
+        {
+            Entidades::BruxaThread* bru = new Entidades::BruxaThread(x, y, _GG, _jog1, _jog2);
+            _GC->incluirInimigo(static_cast<Entidades::Inimigo*>(bru));
+            _Lista->insert_back(static_cast<Entidades::Entidade*>(bru));
+        }
+        else
+        {
+            Entidades::Bruxa* bru = new Entidades::Bruxa(x, y, _GG, _jog1, _jog2);
+            _GC->incluirInimigo(static_cast<Entidades::Inimigo*>(bru));
+            _Lista->insert_back(static_cast<Entidades::Entidade*>(bru));
+        }
+            
     }
 }
 
 void Fases::Floresta::executar()
 {
-
-    while (!_mudouEstado) {
+    _Lista->startThread();
+    while (!_mudouEstado) 
+    {
         sf::Event event;
-        while (_GG->getWindow()->pollEvent(event)) {
+        while (_GG->getWindow()->pollEvent(event)) 
+        {
             // Volta para o menu
-            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+            {
                 Jogo::mudarStateNum(10);
                 _mudouEstado = true;
+                
             }
         }
 
@@ -113,6 +127,8 @@ void Fases::Floresta::executar()
         //std::cout << _jog1->getPontos() << std::endl;
         _GG->display();
     }
+    _Lista->joinThread();
+    
 }
 
 void Fases::Floresta::criarInimigos()

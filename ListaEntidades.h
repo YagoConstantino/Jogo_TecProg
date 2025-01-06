@@ -23,6 +23,8 @@ namespace Listas
 		bool empty();
 
 		void percorrer();
+		void startThread();
+		void joinThread();
 		void executar();
 
 	};

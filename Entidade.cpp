@@ -1,13 +1,16 @@
 #include "Entidade.h"
 
 /*Criar Tratamentos para kcnockback diferentes para cada Inimigo
-O atual atende a bruxa mas o cavaleiro deveria inverter a direcao ao tomar dano*/
+O atual atende a bruxa mas o cavaleiro deveria inverter a direcao ao tomar dano
+Talvez seja melhor teleportar ao inves de mudar o speed para que nao tenhamos problemas como a bruxa ficar muito rapida
+ou o Mago ficar muito rapido tambem,ou criar uma forma da speed voltar ao valor original simulando uma desaceleração
+*/
 namespace Entidades
 {
 
 	Entidades::Entidade::Entidade(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra):
 		Ente(pgra), Position(inicialX, inicialY),_clock(),_segundos(0.0f),
-		_speed(0,0),_Tipo(0),_onGround(false),_vivo(true)
+		_speed(0,0),_Tipo(0),_onGround(false),_vivo(true),_ehThread(false)
 	{
 		_body.setPosition(Position);
 	}
@@ -87,7 +90,7 @@ namespace Entidades
 			{
 				//Jogador
 			case 3:
-				_speed.x -= 60.0f;
+				_speed.x -= 100.0f;
 				break;
 
 				//Cavaleiro
@@ -170,5 +173,13 @@ namespace Entidades
 	void Entidade::setVivo(bool vivo)
 	{
 		_vivo = vivo;
+	}
+	void Entidade::setEhThread(bool th)
+	{
+		_ehThread = th;
+	}
+	bool Entidade::getEhThread() const
+	{
+		return _ehThread;
 	}
 }

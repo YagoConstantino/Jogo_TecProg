@@ -71,18 +71,18 @@ void Fases::Fase::criarCavaleiros()
 
 	for (int i = 0; i < n; i++)
 	{
-		Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700, _GG, _jog1,_jog2); // Novo cav na posicao x
+		Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700.0f, _GG, _jog1,_jog2); // Novo cav na posicao x
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(cav)); // inserir na lista
 		_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav)); // inserir no Gerenciador de colisoes
 		float larguraCavaleiro = cav->getBody().getGlobalBounds().width; // tamanho do cavaleiro
 
-		x = rand() % (_GG->getWindow()->getSize().x) + 150;
+		x =(float) (rand() % (_GG->getWindow()->getSize().x) + 150.0f);
 		if (x == anteriorX)
 		{
-			x = (rand() % _GG->getWindow()->getSize().x) + 150;
+			x =(float) ((rand() % _GG->getWindow()->getSize().x) + 150.0f);
 		}
 		if (x + 115 + larguraCavaleiro > larguraJanela) // testo se o tamanho do cavaleiro + 115 nao sai da janela
-			x = (rand() % _GG->getWindow()->getSize().x) + 150;
+			x = (float)((rand() % _GG->getWindow()->getSize().x) + 150.0f);
 
 		anteriorX = x;
 	}
@@ -93,8 +93,6 @@ void Fases::Fase::criarPlataformas()
 {
 
 	int n = (rand() % 5) + 4;        // Quantidade de plataformas: entre 3 e 8
-
-
 	int i;
 
 	std::vector<std::pair<float, float>> posicoes =
@@ -103,10 +101,10 @@ void Fases::Fase::criarPlataformas()
 		{468.f, 710.f},										// Plataforma 2 
 		{936.f, 710.f},										// Plataforma 3
 		{0.f, 530.f},										// Plataforma 4
-		{_GG->getWindow()->getSize().x - 468, 530.f},		// Plataforma 5
+		{_GG->getWindow()->getSize().x - 468.f, 530.f},		// Plataforma 5
 		{450.f, 360.f},										// Plataforma 6
 		{0.f, 200.f},										// Plataforma 7
-		{_GG->getWindow()->getSize().x - 468, 200.f}		// Plataforma 8
+		{_GG->getWindow()->getSize().x - 468.f, 200.f}		// Plataforma 8
 	};
 
 	for (i = 0; i < n; i++)

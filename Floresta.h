@@ -2,6 +2,7 @@
 
 #include "Fase.h"
 #include "Bruxa.h"
+
 #include "BarraMagica.h"
 namespace Fases
 {
