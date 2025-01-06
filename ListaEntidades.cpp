@@ -1,6 +1,7 @@
 #include "ListaEntidades.h"
 #include "Personagem.h"
 #include "BruxaThread.h"
+#include "Thread.h"
 Listas::ListaEntidades::ListaEntidades() : List() {}
 
 Listas::ListaEntidades::~ListaEntidades() 
@@ -128,9 +129,12 @@ void Listas::ListaEntidades::executar()
         if (ente != nullptr && ente->getVivo()) 
         {
             ente->executar(); // Executa a ação da entidade
-            if (ente->getEhThread())
+            if(ente->getEhThread())
             {
-                ente->desenhar();
+                Entidades::BruxaThread* bru = static_cast<Entidades::BruxaThread*>(ente);
+                bru->lockMutex();
+                bru->setRodar(true);
+                bru->unlockMutex();
             }
         }
         

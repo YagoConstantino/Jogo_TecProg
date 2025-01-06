@@ -183,7 +183,7 @@
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="BruxaThread.cpp">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Entidades\Personagens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
