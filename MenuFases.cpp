@@ -3,7 +3,7 @@
 
 #define TAMANHO_BOTOES 50
 
-MenuFases::MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _mudouEstado(false), _faseFloresta(false), _fase2(false), _umJog(false), _doisJog(false), _confirmaFase(false), _estaDigitandoCaixa1(false), _estaDigitandoCaixa2(false), _confirmaNomes(false), _primeiraVezCaixa1(true), _primeiraVezCaixa2(true), _retangulos(), _textos(), sizeRetangulos(0), sizeTextos(0)
+MenuFases::MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _mudouEstado(false), _faseFloresta(false), _faseCastelo(false), _umJog(false), _doisJog(false), _confirmaFase(false), _estaDigitandoCaixa1(false), _estaDigitandoCaixa2(false), _confirmaNomes(false), _primeiraVezCaixa1(true), _primeiraVezCaixa2(true), _retangulos(), _textos(), sizeRetangulos(0), sizeTextos(0)
 {
 	carregarFonte();
 	criaBackground();
@@ -81,13 +81,13 @@ void MenuFases::criaMedadeEsquerda()
 		std::cerr << "Erro ao criar background menu fases.\n";
 		return;
 	}
-	_imagemFase2.setSize(sf::Vector2f(textura2->getSize()));
-	_imagemFase2.setTexture(textura2);
-	_imagemFase2.setScale(3.f, 3.f);
+	_imagemFaseCastelo.setSize(sf::Vector2f(textura2->getSize()));
+	_imagemFaseCastelo.setTexture(textura2);
+	_imagemFaseCastelo.setScale(3.f, 3.f);
 
-	_imagemFase2.setPosition
+	_imagemFaseCastelo.setPosition
 	(
-		_imagemFase2.getPosition().x + _imagemFase2.getGlobalBounds().width + (float)tamJanela.x / 10.f,
+		_imagemFaseCastelo.getPosition().x + _imagemFaseCastelo.getGlobalBounds().width + (float)tamJanela.x / 10.f,
 		(float)tamJanela.y / 3.5f
 	);
 
@@ -100,7 +100,7 @@ void MenuFases::criaMedadeEsquerda()
 	_textoFases.setFillColor(sf::Color::Black);
 
 	float meioXImagemFase1 = _imagemFaseFloresta.getPosition().x + (float)_imagemFaseFloresta.getGlobalBounds().width / 2.f;
-	float meioXImagemFase2 = _imagemFase2.getPosition().x + (float)_imagemFase2.getGlobalBounds().width / 2.f;
+	float meioXImagemFase2 = _imagemFaseCastelo.getPosition().x + (float)_imagemFaseCastelo.getGlobalBounds().width / 2.f;
 	float meioXTextoFases = (meioXImagemFase1 + meioXImagemFase2) / 2.f;
 	meioXTextoFases -= (float)_textoFases.getGlobalBounds().width / 2.f;
 
@@ -128,18 +128,18 @@ void MenuFases::criaMedadeEsquerda()
 
 	// ------ >> Cria o nome da fase 2
 
-	_nomeFase2.setFont(_fonte);
-	_nomeFase2.setString("2");
-	_nomeFase2.setCharacterSize(TAMANHO_BOTOES);
-	_nomeFase2.setStyle(sf::Text::Style::Regular);
-	_nomeFase2.setFillColor(sf::Color::Black);
+	_nomeFaseCastelo.setFont(_fonte);
+	_nomeFaseCastelo.setString("2");
+	_nomeFaseCastelo.setCharacterSize(TAMANHO_BOTOES);
+	_nomeFaseCastelo.setStyle(sf::Text::Style::Regular);
+	_nomeFaseCastelo.setFillColor(sf::Color::Black);
 
-	float meioXNomeFase2 = meioXImagemFase2 - (float)_nomeFase2.getGlobalBounds().width / 2.f;
+	float meioXNomeFase2 = meioXImagemFase2 - (float)_nomeFaseCastelo.getGlobalBounds().width / 2.f;
 
-	_nomeFase2.setPosition
+	_nomeFaseCastelo.setPosition
 	(
 		meioXNomeFase2,
-		_imagemFase2.getPosition().y - (float)_nomeFase2.getGlobalBounds().height * 1.85f
+		_imagemFaseCastelo.getPosition().y - (float)_nomeFaseCastelo.getGlobalBounds().height * 1.85f
 	);
 
 	// ------ >> Cria botao para confirmar a seleção da fase
@@ -151,7 +151,7 @@ void MenuFases::criaMedadeEsquerda()
 	_botaoConfirmaFase.setFillColor(sf::Color::Black);
 
 	sf::Vector2f posicaoFase1 = _imagemFaseFloresta.getPosition();
-	sf::Vector2f posicaoFase2 = _imagemFase2.getPosition();
+	sf::Vector2f posicaoFase2 = _imagemFaseCastelo.getPosition();
 	sf::Vector2f posicaoBotao;
 	posicaoBotao.x = (posicaoFase1.x + posicaoFase2.x) / 2.f;
 	posicaoBotao.y = (posicaoFase1.y + _imagemFaseFloresta.getGlobalBounds().height) + (float)tamJanela.y / 10.f;
@@ -177,7 +177,7 @@ void MenuFases::criaMedadeDireita()
 	_botaoDoisJog.setPosition
 	(
 		((float)tamJanela.x - (float)tamJanela.x / 12.f) - (float)_botaoDoisJog.getGlobalBounds().width,
-		_nomeFase2.getPosition().y
+		_nomeFaseCastelo.getPosition().y
 	);
 
 	// ------ >> Cria o botao do um jogador
@@ -191,7 +191,7 @@ void MenuFases::criaMedadeDireita()
 	_botaoUmJog.setPosition
 	(
 		_botaoDoisJog.getPosition().x - ((float)tamJanela.x / 10.f) - _botaoUmJog.getGlobalBounds().width,
-		_nomeFase2.getPosition().y
+		_nomeFaseCastelo.getPosition().y
 	);
 
 	// ------ >> Cria o titulo dos botoes
@@ -285,8 +285,8 @@ void MenuFases::carregarObjetos()
 
 	_retangulos.emplace_back
 	(
-		&_imagemFase2,
-		[this]() { executarFase2(); }
+		&_imagemFaseCastelo,
+		[this]() { executarFaseCastelo(); }
 	);
 
 	_textos.emplace_back
@@ -364,11 +364,9 @@ void MenuFases::verificarConfirma()
 			_mudouEstado = true;
 			Jogo::mudarStateNum(20);
 		}
-		else if (_fase2) {
-			/*
+		else if (_faseCastelo) {
 			_mudouEstado = true;
-			Jogo::mudarStateNum();
-			*/
+			Jogo::mudarStateNum(21);
 		}
 
 		// Salvo o(s) nome(s) do(s) jogadore(s)
@@ -422,7 +420,7 @@ void MenuFases::desenhar()
 
 	_pGraf->getWindow()->draw(_textoFases);
 	_pGraf->getWindow()->draw(_nomeFaseFloresta);
-	_pGraf->getWindow()->draw(_nomeFase2);
+	_pGraf->getWindow()->draw(_nomeFaseCastelo);
 	_pGraf->getWindow()->draw(_textoJogadores);
 	_pGraf->getWindow()->draw(_nomeJog1);
 	_pGraf->getWindow()->draw(_nomeJog2);
@@ -458,17 +456,17 @@ void MenuFases::executarFaseFloresta()
 		destacar(&_imagemFaseFloresta);
 
 		// Padronizo a outra imagem
-		_fase2 = false;
-		padronizar(&_imagemFase2);
+		_faseCastelo = false;
+		padronizar(&_imagemFaseCastelo);
 	}
 }
 
-void MenuFases::executarFase2()
+void MenuFases::executarFaseCastelo()
 {
-	if (!_fase2 && !_confirmaFase) {
+	if (!_faseCastelo && !_confirmaFase) {
 		// Destaco a imagem clicada
-		_fase2 = true;
-		destacar(&_imagemFase2);
+		_faseCastelo = true;
+		destacar(&_imagemFaseCastelo);
 
 		// Padronizo a outra imagem
 		_faseFloresta = false;
@@ -478,7 +476,7 @@ void MenuFases::executarFase2()
 
 void MenuFases::executarConfirmaFase()
 {
-	if (_faseFloresta || _fase2) {
+	if (_faseFloresta || _faseCastelo) {
 		if (!_confirmaFase) {
 			_confirmaFase = true;
 			destacar(&_botaoConfirmaFase);

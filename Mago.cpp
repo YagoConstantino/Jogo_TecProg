@@ -84,7 +84,7 @@ void Entidades::Mago::mover() {
 
 void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
 	// Fora de alcance
-	if (getDistanciaJogador() > 500.f) return;
+	if (getDistanciaJogador() > 800.f) return;
 	
 	// Dentro do alcance para se mover
 	mover();

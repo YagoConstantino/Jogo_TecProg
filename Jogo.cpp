@@ -11,7 +11,7 @@
 	11 - menu de fases
 	12 - menu de ranking (exemplo)
 	20 - fase 1, floresta
-	21 - fase 2, ...
+	21 - fase 2, castelo
 */
 
 int Jogo::stateNum = 10;
@@ -25,6 +25,7 @@ Jogo::Jogo(std::string nome)
 	_GerenciadorGráfico = Gerenciadores::Gerenciador_Grafico::getInstancia();
 	_jogador1 = new Entidades::Jogador(0, 0, _GerenciadorGráfico, nome);
 
+	_castelo = nullptr;
 	_florest = nullptr;
 	_menu = nullptr;
 	_menuFases = nullptr;
@@ -39,6 +40,10 @@ Jogo::~Jogo()
 	if (_GerenciadorGráfico)
 	{
 		delete _GerenciadorGráfico;
+	}
+	if (_castelo)
+	{
+		delete _castelo;
 	}
 	if (_florest)
 	{
@@ -86,8 +91,18 @@ void Jogo::executar()
 			criaFloresta();
 			JogarFloresta();
 			break;
+
+		case 21: // Cria a fase 2, castelo
+			criaCastelo();
+			JogarCastelo();
+			break;
 		}
 	}
+}
+
+void Jogo::JogarCastelo()
+{
+	_castelo->executar();
 }
 
 void Jogo::JogarFloresta()
@@ -104,6 +119,10 @@ void Jogo::criaMenu() {
 		{
 			delete _florest;
 			_florest = nullptr;
+		}
+		else if (_castelo != nullptr) {
+			delete _castelo;
+			_castelo = nullptr;
 		}
 		else if (_menuFases != nullptr) {
 			delete _menuFases;
@@ -127,6 +146,20 @@ void Jogo::criaMenuFases()
 	}
 }
 
+void Jogo::criaCastelo()
+{
+	if (_castelo == nullptr) {
+		// destroi o estado anterior
+		if (_menuFases != nullptr) {
+			delete _menuFases;
+			_menuFases = nullptr;
+		}
+
+		// Cria o estado atual
+		_castelo = new Fases::Castelo(_GerenciadorGráfico, _jogador1);
+	}
+}
+
 void Jogo::criaFloresta()
 {
 	if (_florest == nullptr) {
@@ -136,6 +169,7 @@ void Jogo::criaFloresta()
 			_menuFases = nullptr;
 		}
 
+		// Cria o estado atual
 		_florest = new Fases::Floresta(_GerenciadorGráfico, _jogador1);
 
 		_florest->criarInimigos();

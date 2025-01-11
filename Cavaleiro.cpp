@@ -1,6 +1,8 @@
 #include "Cavaleiro.h"
+#include <cmath>
 #include <stdlib.h>
 #include <time.h>
+
 Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog, int vidas)
 	:Inimigo(inicialX, inicialY, pgra, pJog, vidas)
@@ -33,8 +35,6 @@ Entidades::Cavaleiro::~Cavaleiro()
 	_pJog = nullptr;
 }
 
-
-
 void Entidades::Cavaleiro::executar()
 {
 	// controla a frequencia para bater no jogador
@@ -52,11 +52,9 @@ void Entidades::Cavaleiro::executar()
 
 void Entidades::Cavaleiro::mover()
 {
-	//Fazer ele andar em 150 pixeis para direita e 50 pixeis para esquerda OK
-	//Caso ele encoste no jogador da dano * nivelmaldade nele
 	Position += _speed;
 
-	if (getDistanciaoInicio() >= 150)
+	if (abs(getDistanciaInicioVector().x) >= 300)
 	{
 		_speed.x *= -1;
 	}

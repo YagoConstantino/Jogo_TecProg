@@ -17,7 +17,7 @@ limitar ao chão, pois é até o momento a unica parte que certamente vai ser gerad
 */
 
 Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j)
-	:_GG(pgra), _jog(j), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
+	:Ente(pgra), _GG(pgra), _jog(j), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();

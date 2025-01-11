@@ -105,6 +105,9 @@
     <ClInclude Include="MenuFases.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="Castelo.h">
+      <Filter>Fases</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="MenuFases.cpp">
       <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Castelo.cpp">
+      <Filter>Fases</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

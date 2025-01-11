@@ -17,15 +17,16 @@ namespace Fases
 		Listas::ListaEntidades* _Lista;
 		Gerenciadores::Gerenciador_Grafico* _GG;
 		Entidades::Jogador* _jog;
-		const int maxCavaleiros;
-		const int maxPlataformas;
+		int maxCavaleiros;
+		int maxPlataformas; // Pois cada fase tem um numero diferente
 
 	public:
 		Fase(Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador* j = nullptr);
 		virtual ~Fase();
 		void gerenciarColisoes();
-		void criarCavaleiros();
-		void criarPlataformas();
+		
+		virtual void criarCavaleiros();  // Pois cada fase determina onde será gerado
+		virtual void criarPlataformas();
 		virtual void criarCenario();
 
 		virtual void executar() = 0;

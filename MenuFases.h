@@ -18,14 +18,14 @@ private:
 
 	sf::Text _textoFases;
 	sf::Text _nomeFaseFloresta;
-	sf::Text _nomeFase2;
+	sf::Text _nomeFaseCastelo;
 	sf::Text _textoJogadores;
 
 	sf::RectangleShape _imagemFaseFloresta;
-	sf::RectangleShape _imagemFase2;
+	sf::RectangleShape _imagemFaseCastelo;
 	sf::Text _botaoConfirmaFase;
 	bool _faseFloresta;
-	bool _fase2;
+	bool _faseCastelo;
 	bool _confirmaFase;
 
 	sf::Text _botaoUmJog;
@@ -55,7 +55,7 @@ private:
 
 protected:
 	void executarFaseFloresta();
-	void executarFase2();
+	void executarFaseCastelo();
 	void executarConfirmaFase();
 	void executarUmJog();
 	void executarDoisJog();
