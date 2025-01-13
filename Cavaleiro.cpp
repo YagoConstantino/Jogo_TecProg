@@ -4,8 +4,8 @@
 #include <time.h>
 
 Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
-	Entidades::Jogador* pJog, int vidas)
-	:Inimigo(inicialX, inicialY, pgra, pJog, vidas)
+	Entidades::Jogador* pJog1,Entidades::Jogador*pJog2, int vidas)
+	:Inimigo(inicialX, inicialY, pgra, pJog1,pJog2, vidas)
 {
 	setTipo(4);
 	setMaldade(1);
@@ -32,7 +32,8 @@ Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::G
 
 Entidades::Cavaleiro::~Cavaleiro()
 {
-	_pJog = nullptr;
+	_pJog1 = nullptr;
+	_pJog2 = nullptr;
 }
 
 void Entidades::Cavaleiro::executar()
@@ -52,13 +53,14 @@ void Entidades::Cavaleiro::executar()
 
 void Entidades::Cavaleiro::mover()
 {
-	Position += _speed;
-
 	if (abs(getDistanciaInicioVector().x) >= 300)
 	{
-		_speed.x *= -1;
+		_direcao *= -1;
+		_speed.x *= _direcao;
 	}
+	Position += _speed;
 	_body.setPosition(Position);
+	
 }
 
 void Entidades::Cavaleiro::danificar(Entidades::Jogador* pJog)
@@ -66,7 +68,7 @@ void Entidades::Cavaleiro::danificar(Entidades::Jogador* pJog)
 	if (_segundos > 0.75f) {
 		_segundos = 0.f;
 
-		pJog->operator--();
+		pJog->operator--(1);
 		pJog->knockBack(this);
 	}
 }

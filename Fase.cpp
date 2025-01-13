@@ -7,20 +7,30 @@
 /*Implementar posteriormente:
 Posso fazer um vector de pair<pair<float,float>,bool>(Esses vectores para plataforma e cavaleiro ficariam no .h)
 uso o pair de float para as coordenadas e o booleano para saber
-se a plataforma ja foi gerada, dai posso randomizar melhor os obstaculos dificeis e medios, além de ter mais de 5
+se a plataforma ja foi gerada, dai posso randomizar melhor os obstaculos dificeis e medios, alï¿½m de ter mais de 5
 
-opções de plataformas, ou seja gero umas 10 posições, algumas plataformas podem se sobrepor a outras, portanto antes de
+opï¿½ï¿½es de plataformas, ou seja gero umas 10 posiï¿½ï¿½es, algumas plataformas podem se sobrepor a outras, portanto antes de
 gerar elas verifico se outra plataforma muito proxima ja foi gerada, o mesmo pode ser feito para inimigos,posso gerar
 todas as plataformas e depois verifico quais foram geradas e posso colocara inimigos em todas elas ao inves de me
 
-limitar ao chão, pois é até o momento a unica parte que certamente vai ser gerada
+limitar ao chï¿½o, pois ï¿½ atï¿½ o momento a unica parte que certamente vai ser gerada
 */
 
-Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j)
-	:Ente(pgra), _GG(pgra), _jog(j), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
+Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1,Entidades::Jogador*j2)
+	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
+	if (_jog1)
+	{
+		_GC->setJogador1(_jog1);
+		
+	}
+	if (_jog2)
+	{
+		_GC->setJogador2(_jog2);
+		
+	}
 	
 }
 
@@ -33,9 +43,10 @@ Fases::Fase::~Fase()
 	if (_Lista)
 		delete _Lista;
 
-	//Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
+	//Seto como nulo os ponteiros para o Gerenciador grï¿½fico e jogador
 	_GG = nullptr;
-	_jog = nullptr;
+	_jog1 = nullptr;
+	_jog2 = nullptr;
 
 }
 
@@ -60,18 +71,18 @@ void Fases::Fase::criarCavaleiros()
 
 	for (int i = 0; i < n; i++)
 	{
-		Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700, _GG, _jog, 4); // Novo cav na posicao x
+		Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700.0f, _GG, _jog1,_jog2); // Novo cav na posicao x
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(cav)); // inserir na lista
 		_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav)); // inserir no Gerenciador de colisoes
 		float larguraCavaleiro = cav->getBody().getGlobalBounds().width; // tamanho do cavaleiro
 
-		x = rand() % (_GG->getWindow()->getSize().x) + 150;
+		x =(float) (rand() % (_GG->getWindow()->getSize().x) + 150.0f);
 		if (x == anteriorX)
 		{
-			x = (rand() % _GG->getWindow()->getSize().x) + 150;
+			x =(float) ((rand() % _GG->getWindow()->getSize().x) + 150.0f);
 		}
 		if (x + 115 + larguraCavaleiro > larguraJanela) // testo se o tamanho do cavaleiro + 115 nao sai da janela
-			x = (rand() % _GG->getWindow()->getSize().x) + 150;
+			x = (float)((rand() % _GG->getWindow()->getSize().x) + 150.0f);
 
 		anteriorX = x;
 	}
@@ -82,8 +93,6 @@ void Fases::Fase::criarPlataformas()
 {
 
 	int n = (rand() % 5) + 4;        // Quantidade de plataformas: entre 3 e 8
-
-
 	int i;
 
 	std::vector<std::pair<float, float>> posicoes =
@@ -92,10 +101,10 @@ void Fases::Fase::criarPlataformas()
 		{468.f, 710.f},										// Plataforma 2 
 		{936.f, 710.f},										// Plataforma 3
 		{0.f, 530.f},										// Plataforma 4
-		{_GG->getWindow()->getSize().x - 468, 530.f},		// Plataforma 5
+		{_GG->getWindow()->getSize().x - 468.f, 530.f},		// Plataforma 5
 		{450.f, 360.f},										// Plataforma 6
 		{0.f, 200.f},										// Plataforma 7
-		{_GG->getWindow()->getSize().x - 468, 200.f}		// Plataforma 8
+		{_GG->getWindow()->getSize().x - 468.f, 200.f}		// Plataforma 8
 	};
 
 	for (i = 0; i < n; i++)

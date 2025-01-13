@@ -1,7 +1,7 @@
 #include "Personagem.h"
 
 Entidades::Personagem::Personagem(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, int vidas)
-	:Entidade(inicialX, inicialY, pgra), _num_vidas(vidas)
+	:Entidade(inicialX, inicialY, pgra), _num_vidas(vidas),_direcao(1)
 {
 	setTipo(1);
 }
@@ -29,11 +29,11 @@ void Entidades::Personagem::operator++()
 	_num_vidas++;
 }
 
-void Entidades::Personagem::operator--()
+void Entidades::Personagem::operator--(int i)
 {
 	if (_num_vidas >= 0)
 	{
-		_num_vidas--;
+		_num_vidas-=i;
 	}
 }
 
@@ -46,4 +46,16 @@ void Entidades::Personagem::pular()
 		setGround(false);
 	}
 	
+}
+
+int Entidades::Personagem::getDirecao() const
+{
+
+	return _direcao;
+}
+
+void Entidades::Personagem::setDirecao(int dir)
+{
+
+	_direcao = dir;
 }

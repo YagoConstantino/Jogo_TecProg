@@ -5,21 +5,24 @@
 #include "Castelo.h"
 #include "Menu.h"
 #include "MenuFases.h"
+#include "Ranking.h"
 
 class Jogo
 {
 private:
 	Entidades::Jogador* _jogador1;
-	Gerenciadores::Gerenciador_Grafico* _GerenciadorGráfico;
+	Entidades::Jogador* _jogador2;
+	Gerenciadores::Gerenciador_Grafico* _GerenciadorGrï¿½fico;
 	Menu* _menu;
 	MenuFases* _menuFases;
 	Fases::Floresta* _florest;
 	Fases::Castelo* _castelo;
+	Ranking* rank;
 
 	static int stateNum;
 
 public:
-	Jogo(std::string nome = "");
+	Jogo();
 	~Jogo();
 
 	void criaCastelo();
@@ -35,4 +38,7 @@ public:
 	void executar();
 
 	static void mudarStateNum(int state);
+
+	bool criarJogador1(string nome);
+	bool criarJogador2(string nome);
 };

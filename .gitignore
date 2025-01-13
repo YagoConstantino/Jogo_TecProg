@@ -2,6 +2,7 @@
 # Ignore arquivos e pastas do Visual Studio
 .vs/
 *.ipch
+*.vcxproj
 *.vcxproj.user
 *.vcxproj.filters
 *.suo
@@ -37,3 +38,4 @@ SFML-*/
 # Ignore outros arquivos comuns
 .DS_Store
 Thumbs.db
+*.ilk

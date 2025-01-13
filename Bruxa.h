@@ -6,15 +6,14 @@ namespace Entidades
 	class Bruxa :public Inimigo
 	{
 	private:
-		int _direcao;
 	public:
 		Bruxa(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
-			Entidades::Jogador* pJog = nullptr, int vidas = 4);
-		~Bruxa();
+			Entidades::Jogador* pJog1 = nullptr, Entidades::Jogador* pJog2 = nullptr, int vidas = 5);
+		virtual ~Bruxa();
 
-		void executar();
+		virtual void executar();
 		//void SalvarDataBuffer();
-		void mover();
-		void danificar(Entidades::Jogador* pJog);
+		virtual void mover();
+		virtual void danificar(Entidades::Jogador* pJog);
 	};
 }

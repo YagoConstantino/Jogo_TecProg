@@ -7,6 +7,7 @@ namespace Entidades
 	{
 	protected:
 		int _num_vidas;
+		int _direcao;
 	public:
 		Personagem(float inicialX = 0, float inicialY = 0, 
 			Gerenciadores::Gerenciador_Grafico* pgra = nullptr, int vidas = 10 );
@@ -18,9 +19,12 @@ namespace Entidades
 		void setVidas(int vid);
 		
 		void operator++();
-		void operator--();
+		void operator--(int i);
 
 		virtual void pular();
+
+		int getDirecao()const;
+		void setDirecao(int dir);
 
 		virtual void executar() = 0;
 		

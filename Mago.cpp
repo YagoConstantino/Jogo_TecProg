@@ -1,15 +1,15 @@
 #include "Mago.h"
 
 // IMPORTANTE
-// direcao = -1 é esquerda, direcao = 1 é direita
+// direcao = -1 ï¿½ esquerda, direcao = 1 ï¿½ direita
 // _clock e _segundos controlam a frequencia de bater do boss
 
-Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog, int vidas) 
-	: Inimigo(inicialX, inicialY, pgra, pJog, vidas), 
-	_vidasPerdidas(0), _projetil(nullptr), _direcao(0), _segundosIntervaloPro(0.f) 
+Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog1, Entidades::Jogador* pJog2, int vidas)
+	: Inimigo(inicialX, inicialY, pgra, pJog1,pJog2, vidas), 
+	_vidasPerdidas(0), _projetil(nullptr), _segundosIntervaloPro(0.f) 
 {
 
-	setMaldade(1);
+	setMaldade(3);
 	_speed.x = 0.06f;
 
 	sf::Texture* textura = new sf::Texture();
@@ -26,9 +26,11 @@ Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador
 	deltaTime.restart();
 }
 
-Entidades::Mago::~Mago() {
+Entidades::Mago::~Mago() 
+{
 	_projetil = nullptr;
-
+	_pJog1 = nullptr;
+	_pJog2 = nullptr;
 	_vidasPerdidas = 0;
 	_direcao = 0;
 }
@@ -58,7 +60,7 @@ void Entidades::Mago::executar()
 
 	desenhar();
 	 
-	danificar(_pJog);
+	danificar(_pJog1);
 }
 
 void Entidades::Mago::verificarVida() {
@@ -68,9 +70,10 @@ void Entidades::Mago::verificarVida() {
 	}
 }
 
-void Entidades::Mago::mover() {
+void Entidades::Mago::mover() 
+{
 	// Define a direcao do inimigo
-	if (_pJog->getPositionX() - getPositionX() < 0.f) 
+	if (_pJog1->getPositionX() - getPositionX() < 0.f) 
 		_direcao = -1; // para a esquerda
 	else 
 		_direcao = 1;  // para a direita
@@ -90,7 +93,7 @@ void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
 	mover();
 
 	// Dentro do alcance para atirar
-	if (getDistanciaJogador() > _body.getGlobalBounds().width * 1.65f) {
+	if (getDistanciaJogador1() > _body.getGlobalBounds().width * 1.65f) {
 		atirar();
 	}
 	// Dentro do alcance para bater
@@ -109,21 +112,22 @@ void Entidades::Mago::atirar() {
 		_projetil->setPosition
 		(
 			getPositionX(),
-			_pJog->getPositionY() + (_pJog->getBody().getGlobalBounds().height / 4.f)
+			_pJog1->getPositionY() + (_pJog1->getBody().getGlobalBounds().height / 4.f)
 		);
 
 		_projetil->lancar(0.15f * _direcao, 0.f, getMaldade());
 	}
 }
 
-void Entidades::Mago::bater() {
-	if (_segundos > 0.5f) {
+void Entidades::Mago::bater() 
+{
+	if (_segundos > 0.5f) 
+	{
 		_segundos = 0;
 
-		for (int i = 0; i < getMaldade(); i++)
-			_pJog->operator--();
+		_pJog1->operator--(3);
 
-		_pJog->knockBack(this);
+		_pJog1->knockBack(this);
 	}
 }
 

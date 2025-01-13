@@ -1,6 +1,5 @@
 #include "Gerenciador_Colisoes.h"
 #include "Inimigo.h"
-
 //Singleton inicializando o atributo static
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::instancia = nullptr;
 
@@ -103,21 +102,17 @@ sf::Vector2f Gerenciadores::Gerenciador_Colisoes::calculaColisao(Entidades::Enti
 
 	return sf::Vector2f(distanciaEntreCentros.x - somaMetades.x, distanciaEntreCentros.y - somaMetades.y);
 }
-
-void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
-{
+void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 	bool colidiuComChao1 = false; // Flag para verificar se o jogador 1 está no chão
 	bool colidiuComChao2 = false; // Flag para verificar se o jogador 2 está no chão
 
 	// Itera sobre todos os obstáculos
-	for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo)
-	{
+	for (itObstaculo = _listaObstaculos.begin(); itObstaculo != _listaObstaculos.end(); ++itObstaculo) {
 		// Tratamento para o jogador 1
 		if (_jogador1 != nullptr && _jogador1->getVivo()) {
 			sf::Vector2f ds = calculaColisao(_jogador1, (*itObstaculo));
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
-
 				(*itObstaculo)->obstacular(_jogador1);
 
 				if ((*itObstaculo)->getTipo() == 10) continue; // se for obstaculo dificil / espinho
@@ -159,16 +154,14 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 		}
 
 		// Tratamento para o jogador 2 (similar ao jogador 1)
-		if (_jogador2 != nullptr && _jogador2->getVivo())
-		{
-
-			(*itObstaculo)->obstacular(_jogador2);
-
-			if ((*itObstaculo)->getTipo() == 10) continue; // se for obstaculo dificil / espinho
+		if (_jogador2 != nullptr && _jogador2->getVivo()) {
 
 			sf::Vector2f ds = calculaColisao(_jogador2, (*itObstaculo));
 			if (ds.x < 0.0f && ds.y < 0.0f) // Verifica se há colisão
 			{
+				(*itObstaculo)->obstacular(_jogador2);
+
+				if ((*itObstaculo)->getTipo() == 10) continue; // se for obstaculo dificil / espinho
 
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
@@ -210,12 +203,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	// Caso nenhum dos jogadores tenha colidido com o chão, marca que não estão no chão
 	if (!colidiuComChao1 && _jogador1 != nullptr) _jogador1->setGround(false);
 	if (!colidiuComChao2 && _jogador2 != nullptr) _jogador2->setGround(false);
-
 }
-
-
-
-
 
 void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 {
@@ -281,20 +269,33 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsInimgs()
 				if (_jogador1 != nullptr)
 				{
 					sf::Vector2f dsInimigoJog = calculaColisao((*itInimigo), _jogador1);
-					if (dsInimigoJog.x < 0.0f && dsInimigoJog.y < 0.0f)
+					if (dsInimigoJog.x < 0.0f && dsInimigoJog.y < 0.0f && !_jogador1->getAtacando())
 					{
 						(*itInimigo)->danificar(_jogador1);
 					}
-
+					else if (dsInimigoJog.x < 10.0f && dsInimigoJog.y < 3.0f && _jogador1->getAtacando() &&
+						((_jogador1->getDirecao() == 1 && (*itInimigo)->getPosition().x > _jogador1->getPosition().x) ||
+							(_jogador1->getDirecao() == -1 && (*itInimigo)->getPosition().x < _jogador1->getPosition().x)))
+					{
+						_jogador1->atacarInimigo((*itInimigo));
+					}
 				}
+
 				if (_jogador2 != nullptr)
 				{
 					sf::Vector2f dsInimigoJog2 = calculaColisao((*itInimigo), _jogador2);
-					if (dsInimigoJog2.x < 0.0f && dsInimigoJog2.y < 0.0f)
+					if (dsInimigoJog2.x < 0.0f && dsInimigoJog2.y < 0.0f && !_jogador2->getAtacando())
 					{
 						(*itInimigo)->danificar(_jogador2);
 					}
+					else if (dsInimigoJog2.x < 10.0f && dsInimigoJog2.y < 3.0f && _jogador2->getAtacando() &&
+						((_jogador2->getDirecao() == 1 && (*itInimigo)->getPosition().x > _jogador2->getPosition().x) ||
+							(_jogador2->getDirecao() == -1 && (*itInimigo)->getPosition().x < _jogador2->getPosition().x)))
+					{
+						_jogador2->atacarInimigo((*itInimigo));
+					}
 				}
+
 
 			}
 		}
@@ -310,16 +311,16 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador toma dano
-				for (int i = 0; i < (*itProjetil)->getDano(); i++)
-					_jogador1->operator--();
+				//for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador1->operator--((*itProjetil)->getDano());
 
 				// Projetil desaparece
 				(*itProjetil)->setLancar(false);
 			}
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador2))) {
 				// Jogador toma dano
-				for (int i = 0; i < (*itProjetil)->getDano(); i++)
-					_jogador2->operator--();
+				//for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador2->operator--((*itProjetil)->getDano());
 
 				// Projetil desaparece
 				(*itProjetil)->setLancar(false);
@@ -332,8 +333,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsProjeteis()
 		for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); itProjetil++) {
 			if (verificarColisao(static_cast<Entidades::Entidade*>(*itProjetil), static_cast<Entidades::Entidade*>(_jogador1))) {
 				// Jogador toma dano
-				for (int i = 0; i < (*itProjetil)->getDano(); i++)
-					_jogador1->operator--();
+				//for (int i = 0; i < (*itProjetil)->getDano(); i++)
+					_jogador1->operator--((*itProjetil)->getDano());
 
 				// Projetil desaparece
 				(*itProjetil)->setLancar(false);
@@ -379,7 +380,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 	// Para cada inimigo
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end() && (*itInimigo)->getVivo(); itInimigo++) {
 		// Lado esquerdo
-		if ((*itInimigo)->getPositionX() <= 0.f) {
+		if ((*itInimigo)->getPositionX() <= 0.f) 
+		{
 			(*itInimigo)->setSpeed((*itInimigo)->getSpeedX() * -1.f, (*itInimigo)->getSpeedY());
 		}
 
@@ -398,7 +400,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 
 	if (_jogador1 != nullptr) {
 		// Lado esquerdo
-		if (_jogador1->getPositionX() <= 0.f) {
+		if (_jogador1->getPositionX() <= 0.f) 
+		{
 			_jogador1->setSpeed(0.f, _jogador1->getSpeedY());
 			_jogador1->setPositionX(0.f);
 		}
@@ -416,7 +419,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 	}
 	if (_jogador2 != nullptr) {
 		// Lado esquerdo
-		if (_jogador2->getPositionX() <= 0.f) {
+		if (_jogador2->getPositionX() <= 0.f) 
+		{
 			_jogador2->setSpeed(0.f, _jogador2->getSpeedY());
 			_jogador2->setPositionX(0.f);
 		}
@@ -437,17 +441,17 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 	// ------- >> Por baixo
 
 	// Para cada inimigo
-	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end() && (*itInimigo)->getVivo(); itInimigo++) {
-		if
-			(
-				(*itInimigo)->getPositionY() + (*itInimigo)->getBody().getGlobalBounds().height
-				>= (*itInimigo)->getGrafico()->getWindow()->getSize().y
-				)
+	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end() && (*itInimigo)->getVivo(); itInimigo++) 
+	{
+		if((*itInimigo)->getPositionY() + (*itInimigo)->getBody().getGlobalBounds().height >=
+			(*itInimigo)->getGrafico()->getWindow()->getSize().y)
+
 			(*itInimigo)->setVivo(false);
 	}
 
 	// Para cada jogador
-	if (_jogador1 != nullptr) {
+	if (_jogador1 != nullptr) 
+	{
 		if
 			(
 				_jogador1->getPositionY() + _jogador1->getBody().getGlobalBounds().height
@@ -458,7 +462,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 			_jogador1->setVidas(-1);
 		}
 	}
-	if (_jogador2 != nullptr) {
+	if (_jogador2 != nullptr) 
+	{
 		if
 			(
 				_jogador2->getPositionY() + _jogador2->getBody().getGlobalBounds().height
