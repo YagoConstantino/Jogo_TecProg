@@ -31,6 +31,7 @@ namespace Entidades
 		double getDistanciaJogador1();
 		double getDistanciaJogador2();
 		double getDistanciaoInicio();
+		sf::Vector2f getDistanciaInicioVector();
 
 		virtual void executar() = 0;
 		//void SalvarDataBuffer();

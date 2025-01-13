@@ -7,17 +7,17 @@
 /*Implementar posteriormente:
 Posso fazer um vector de pair<pair<float,float>,bool>(Esses vectores para plataforma e cavaleiro ficariam no .h)
 uso o pair de float para as coordenadas e o booleano para saber
-se a plataforma ja foi gerada, dai posso randomizar melhor os obstaculos dificeis e medios, além de ter mais de 5
+se a plataforma ja foi gerada, dai posso randomizar melhor os obstaculos dificeis e medios, alï¿½m de ter mais de 5
 
-opções de plataformas, ou seja gero umas 10 posições, algumas plataformas podem se sobrepor a outras, portanto antes de
+opï¿½ï¿½es de plataformas, ou seja gero umas 10 posiï¿½ï¿½es, algumas plataformas podem se sobrepor a outras, portanto antes de
 gerar elas verifico se outra plataforma muito proxima ja foi gerada, o mesmo pode ser feito para inimigos,posso gerar
 todas as plataformas e depois verifico quais foram geradas e posso colocara inimigos em todas elas ao inves de me
 
-limitar ao chão, pois é até o momento a unica parte que certamente vai ser gerada
+limitar ao chï¿½o, pois ï¿½ atï¿½ o momento a unica parte que certamente vai ser gerada
 */
 
 Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1,Entidades::Jogador*j2)
-	:_GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
+	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
@@ -43,7 +43,7 @@ Fases::Fase::~Fase()
 	if (_Lista)
 		delete _Lista;
 
-	//Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
+	//Seto como nulo os ponteiros para o Gerenciador grï¿½fico e jogador
 	_GG = nullptr;
 	_jog1 = nullptr;
 	_jog2 = nullptr;

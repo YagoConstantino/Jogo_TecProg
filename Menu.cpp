@@ -210,13 +210,13 @@ void Menu::padronizar(sf::Text& texto, int id)
 
 void Menu::executarJogar()
 {
-	Jogo::mudarStateNum(20);
+	Jogo::mudarStateNum(11);
 	_mudouEstado = true;
 }
 
 void Menu::executarRanking()
 {
-	Jogo::mudarStateNum(11);
+	Jogo::mudarStateNum(12);
 	_mudouEstado = true;
 }
 

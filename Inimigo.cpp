@@ -77,3 +77,15 @@ double Entidades::Inimigo::getDistanciaoInicio()
 	return sqrt(pow(getPositionX() - posInicialX, 2) + pow(getPositionY() - posInicialY, 2));
 }
 
+sf::Vector2f Entidades::Inimigo::getDistanciaInicioVector()
+{
+	sf::Vector2f distancia;
+
+	distancia.x = getPosition().x - posInicialX;
+	distancia.y = getPosition().y - posInicialY;
+
+	return distancia;
+}
+
+
+

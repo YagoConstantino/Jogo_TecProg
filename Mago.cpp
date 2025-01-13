@@ -1,7 +1,7 @@
 #include "Mago.h"
 
 // IMPORTANTE
-// direcao = -1 é esquerda, direcao = 1 é direita
+// direcao = -1 ï¿½ esquerda, direcao = 1 ï¿½ direita
 // _clock e _segundos controlam a frequencia de bater do boss
 
 Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* pJog1, Entidades::Jogador* pJog2, int vidas)
@@ -87,7 +87,7 @@ void Entidades::Mago::mover()
 
 void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
 	// Fora de alcance
-	if (getDistanciaJogador1() > 500.f) return;
+	if (getDistanciaInicioVector().x > 800.f) return;
 	
 	// Dentro do alcance para se mover
 	mover();
