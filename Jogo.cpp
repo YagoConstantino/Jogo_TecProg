@@ -30,6 +30,7 @@ Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
 	_florest = nullptr;
 	_menu = nullptr;
 	_menuFases = nullptr;
+	_menuRanking = nullptr;
 }
 
 Jogo::~Jogo()
@@ -101,7 +102,8 @@ void Jogo::executar()
 
 			// Cria o menu de ranking
 		case 12:
-
+			criaMenuRanking();
+			JogarMenuRanking();
 			break;
 
 			// Cria a fase 1, floresta
@@ -193,7 +195,7 @@ void Jogo::criaMenu()
 			_menuFases = nullptr;
 		}
 
-		_menu = new Menu(_GerenciadorGrafico);
+		_menu = new Menus::Menu(_GerenciadorGrafico);
 	}
 }
 
@@ -206,7 +208,20 @@ void Jogo::criaMenuFases()
 			_menu = nullptr;
 		}
 
-		_menuFases = new MenuFases(_GerenciadorGrafico);
+		_menuFases = new Menus::MenuFases(_GerenciadorGrafico);
+	}
+}
+
+void Jogo::criaMenuRanking()
+{
+	if (_menuRanking == nullptr) {
+		// Destroi o estado anterior
+		if (_menu != nullptr) {
+			delete _menu;
+			_menu = nullptr;
+		}
+
+		_menuRanking = new Menus::MenuRanking(_GerenciadorGrafico,rank);
 	}
 }
 
@@ -249,6 +264,11 @@ void Jogo::JogarMenu()
 void Jogo::JogarMenuFases()
 {
 	_menuFases->executar();
+}
+
+void Jogo::JogarMenuRanking()
+{
+	_menuRanking->executar();
 }
 
 

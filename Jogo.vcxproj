@@ -39,6 +39,7 @@
     <ClInclude Include="ListaTemplate.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuFases.h" />
+    <ClInclude Include="MenuRanking.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Espinho.h" />
     <ClInclude Include="BarraMagica.h" />
@@ -67,6 +68,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuFases.cpp" />
+    <ClCompile Include="MenuRanking.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Espinho.cpp" />
     <ClCompile Include="BarraMagica.cpp" />
@@ -75,11 +77,6 @@
     <ClCompile Include="Projetil.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Thread.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\menu\floresta.png" />
-    <Image Include="assets\menu\pergaminho.jpg" />
-    <Image Include="assets\menu\temporario.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

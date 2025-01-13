@@ -2,7 +2,7 @@
 #include "Jogo.h"
 
 #define TAMANHO_BOTOES 50
-
+using namespace Menus;
 MenuFases::MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _mudouEstado(false), _faseFloresta(false), _faseCastelo(false), _umJog(false), _doisJog(false), _confirmaFase(false), _estaDigitandoCaixa1(false), _estaDigitandoCaixa2(false), _confirmaNomes(false), _primeiraVezCaixa1(true), _primeiraVezCaixa2(true), _retangulos(), _textos(), sizeRetangulos(0), sizeTextos(0)
 {
 	carregarFonte();
@@ -371,6 +371,7 @@ void MenuFases::verificarConfirma()
 
 		// Salvo o(s) nome(s) do(s) jogadore(s)
 		if (_doisJog) {
+			
 
 		}
 		else if (_umJog) {

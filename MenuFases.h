@@ -6,84 +6,87 @@
 #include <functional>
 #include "Ente.h"
 #include "Gerenciador_Grafico.h"
-
-class MenuFases : public Entidades::Ente
+namespace Menus
 {
-private:
-	bool _mudouEstado;
 
-	sf::Mouse mouse;
+	class MenuFases : public Entidades::Ente
+	{
+	private:
+		bool _mudouEstado;
 
-	sf::Font _fonte;
+		sf::Mouse mouse;
 
-	sf::Text _textoFases;
-	sf::Text _nomeFaseFloresta;
-	sf::Text _nomeFaseCastelo;
-	sf::Text _textoJogadores;
+		sf::Font _fonte;
 
-	sf::RectangleShape _imagemFaseFloresta;
-	sf::RectangleShape _imagemFaseCastelo;
-	sf::Text _botaoConfirmaFase;
-	bool _faseFloresta;
-	bool _faseCastelo;
-	bool _confirmaFase;
+		sf::Text _textoFases;
+		sf::Text _nomeFaseFloresta;
+		sf::Text _nomeFaseCastelo;
+		sf::Text _textoJogadores;
 
-	sf::Text _botaoUmJog;
-	sf::Text _botaoDoisJog;
-	bool _umJog;
-	bool _doisJog;
+		sf::RectangleShape _imagemFaseFloresta;
+		sf::RectangleShape _imagemFaseCastelo;
+		sf::Text _botaoConfirmaFase;
+		bool _faseFloresta;
+		bool _faseCastelo;
+		bool _confirmaFase;
 
-	sf::RectangleShape _caixaTexto1;
-	sf::Text _nomeJog1;
-	std::string _nome1;
-	bool _estaDigitandoCaixa1;
-	bool _primeiraVezCaixa1;
+		sf::Text _botaoUmJog;
+		sf::Text _botaoDoisJog;
+		bool _umJog;
+		bool _doisJog;
 
-	sf::RectangleShape _caixaTexto2;
-	sf::Text _nomeJog2;
-	std::string _nome2;
-	bool _estaDigitandoCaixa2;
-	bool _primeiraVezCaixa2;
+		sf::RectangleShape _caixaTexto1;
+		sf::Text _nomeJog1;
+		std::string _nome1;
+		bool _estaDigitandoCaixa1;
+		bool _primeiraVezCaixa1;
 
-	sf::Text _botaoConfirmaNomes;
-	bool _confirmaNomes;
+		sf::RectangleShape _caixaTexto2;
+		sf::Text _nomeJog2;
+		std::string _nome2;
+		bool _estaDigitandoCaixa2;
+		bool _primeiraVezCaixa2;
 
-	std::vector<std::pair<sf::RectangleShape*, std::function<void()>>> _retangulos;
-	std::vector<std::pair<sf::Text*, std::function<void()>>> _textos;
-	int sizeRetangulos;
-	int sizeTextos;
+		sf::Text _botaoConfirmaNomes;
+		bool _confirmaNomes;
 
-protected:
-	void executarFaseFloresta();
-	void executarFaseCastelo();
-	void executarConfirmaFase();
-	void executarUmJog();
-	void executarDoisJog();
-	void executarCaixaTexto1();
-	void executarCaixaTexto2();
-	void executarConfirmaNomes();
+		std::vector<std::pair<sf::RectangleShape*, std::function<void()>>> _retangulos;
+		std::vector<std::pair<sf::Text*, std::function<void()>>> _textos;
+		int sizeRetangulos;
+		int sizeTextos;
 
-public:
-	MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr);
-	~MenuFases();
+	protected:
+		void executarFaseFloresta();
+		void executarFaseCastelo();
+		void executarConfirmaFase();
+		void executarUmJog();
+		void executarDoisJog();
+		void executarCaixaTexto1();
+		void executarCaixaTexto2();
+		void executarConfirmaNomes();
 
-	void carregarFonte();
+	public:
+		MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr);
+		~MenuFases();
 
-	void criaBackground();
-	void criaMedadeEsquerda();
-	void criaMedadeDireita();
+		void carregarFonte();
 
-	void carregarObjetos();
+		void criaBackground();
+		void criaMedadeEsquerda();
+		void criaMedadeDireita();
 
-	void verificarCliques();
-	void verificarConfirma();
+		void carregarObjetos();
 
-	void destacar(sf::Text* texto);
-	void destacar(sf::RectangleShape* retangulo);
-	void padronizar(sf::Text* texto);
-	void padronizar(sf::RectangleShape* retangulo);
+		void verificarCliques();
+		void verificarConfirma();
 
-	void desenhar();
+		void destacar(sf::Text* texto);
+		void destacar(sf::RectangleShape* retangulo);
+		void padronizar(sf::Text* texto);
+		void padronizar(sf::RectangleShape* retangulo);
 
-	void executar();
-};
+		void desenhar();
+
+		void executar();
+	};
+}

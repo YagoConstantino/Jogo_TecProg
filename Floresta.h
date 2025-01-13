@@ -15,6 +15,7 @@ namespace Fases
 		Floresta(Gerenciadores::Gerenciador_Grafico* pgra = nullptr, Entidades::Jogador* jog1 = nullptr,Entidades::Jogador* jog2 = nullptr);
 		~Floresta();
 
+		void criaCenario();
 		void criaBarrasMagicas();
 		void criaBruxas();
 

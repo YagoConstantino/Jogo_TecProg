@@ -1,7 +1,3 @@
-Player1 1355
+Player1 1462
 Player2 327
-<<<<<<< HEAD
-Player4 151
-=======
-Player4 195
->>>>>>> Yago
+Player4 24

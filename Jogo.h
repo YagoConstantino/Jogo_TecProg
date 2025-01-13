@@ -5,6 +5,7 @@
 #include "Castelo.h"
 #include "Menu.h"
 #include "MenuFases.h"
+#include "MenuRanking.h"
 #include "Ranking.h"
 
 class Jogo
@@ -13,8 +14,9 @@ private:
 	Entidades::Jogador* _jogador1;
 	Entidades::Jogador* _jogador2;
 	Gerenciadores::Gerenciador_Grafico* _GerenciadorGrafico;
-	Menu* _menu;
-	MenuFases* _menuFases;
+	Menus::Menu* _menu;
+	Menus::MenuFases* _menuFases;
+	Menus::MenuRanking* _menuRanking;
 	Fases::Floresta* _florest;
 	Fases::Castelo* _castelo;
 	Ranking* rank;
@@ -29,11 +31,13 @@ public:
 	void criaFloresta();
 	void criaMenu();
 	void criaMenuFases();
+	void criaMenuRanking();
 
 	void JogarCastelo();
 	void JogarFloresta();
 	void JogarMenu();
 	void JogarMenuFases();
+	void JogarMenuRanking();
 
 	void executar();
 

@@ -10,7 +10,7 @@
 	Botao Ranking é o 2
 	Botao Sair é o 3
 */
-
+using namespace Menus;
 Menu::Menu(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _botoes(), _textosBotoes(), _mudouEstado(false)
 {
 	_botoes.clear();
@@ -128,7 +128,7 @@ void Menu::criarBackground()
 {
 	sf::Texture* textura = new sf::Texture();
 
-	if (!textura->loadFromFile("assets/menu/FundoMedieval.png")) {
+	if (!textura->loadFromFile("assets/menu/FundoMedievalMelhorado.png")) {
 		std::cerr<<"Erro ao criar background menu.\n";
 		return;
 	}

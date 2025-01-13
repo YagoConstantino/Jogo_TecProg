@@ -1,16 +1,15 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <string>
-#include <functional>
-#include <vector>
-#include <map>
 #include "Ente.h"
 #include "Gerenciador_Grafico.h"
+#include "Ranking.h"
 
 namespace Menus
 {
-	class Menu : public Entidades::Ente
+
+	class MenuRanking :public Entidades::Ente
 	{
 	private:
 		bool _mudouEstado;
@@ -20,21 +19,19 @@ namespace Menus
 
 		sf::Text _titulo;
 
-		std::map<int, sf::Text> _botoes;
-		std::vector<std::string> _textosBotoes;
+		sf::Text _botaoVoltarMenuPrincipal;
+		std::string _textosBotao;
 
 		sf::Font _fonte;
-
-		std::map<int, std::function<void()> > _funcoesBotoes;
-
+		Ranking* _rank;
 
 	public:
-		Menu(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr);
-		~Menu();
+		MenuRanking(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr, Ranking* rank = nullptr);
+		~MenuRanking();
 
 		void carregarFonte();
 
-		void criarBotoes();
+		void criarBotao();
 		void criarTitulo();
 		void criarBackground();
 
@@ -43,13 +40,13 @@ namespace Menus
 
 		void destacarTexto(sf::Text& texto);
 		void reposicionarTexto(sf::Text& texto);
-		void padronizar(sf::Text& texto, int id);
+		void padronizar(sf::Text& texto);
 
-		void executarJogar();
-		void executarRanking();
-		void executarSair();
 		void desenharMenu();
 
 		void executar();
+		void mostrarRanking(Ranking* rank);
+		void retornaMenuPrincipal();
+
 	};
 }

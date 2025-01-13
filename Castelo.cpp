@@ -296,7 +296,7 @@ void Fases::Castelo::executar()
 		_GG->clear();
 
 		_GC->executar();
-		_pGraf->desenhar(static_cast<Ente*>(this));
+		desenhar();
 		_jog1->executar();
 		_Lista->executar();
 

@@ -1,0 +1,217 @@
+#include "MenuRanking.h"
+#include "Jogo.h"
+#define TAMANHO_TITULO 115
+#define TAMANHO_BOTOES 50
+using namespace Menus;
+MenuRanking::MenuRanking(Gerenciadores::Gerenciador_Grafico* _pGraf, Ranking* rank)
+	:Ente(_pGraf),_mudouEstado(false),_botaoVoltarMenuPrincipal(),_textosBotao(),_mouse(),
+	_houveClique(false),_titulo(),_fonte(),_rank(rank)
+{
+	carregarFonte();
+	criarBackground();
+	criarTitulo();
+	criarBotao();
+}
+
+MenuRanking::~MenuRanking()
+{
+	_pGraf = nullptr;
+}
+
+void MenuRanking::carregarFonte()
+{
+	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
+		std::cerr << "Erro ao incluir fonte.\n";
+		return;
+	}
+}
+
+void MenuRanking::criarBotao()
+{
+	// --------- >> Botao voltar
+
+	// Caracteristicas do conteudo
+	_textosBotao = "Voltar ";
+	_botaoVoltarMenuPrincipal.setFont(_fonte);
+	_botaoVoltarMenuPrincipal.setString("Jogar");
+	_botaoVoltarMenuPrincipal.setCharacterSize(TAMANHO_BOTOES);
+	_botaoVoltarMenuPrincipal.setStyle(sf::Text::Style::Regular);
+	_botaoVoltarMenuPrincipal.setFillColor(sf::Color::White);
+}
+
+void MenuRanking::criarTitulo()
+{
+	// Caracteristicas do conteudo
+	_titulo.setFont(_fonte);
+	_titulo.setString("Ranking");
+	_titulo.setCharacterSize(TAMANHO_TITULO);
+	_titulo.setStyle(sf::Text::Style::Regular);
+	_titulo.setFillColor(sf::Color::White);
+
+	// Posicao
+	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+	sf::FloatRect tamTexto = _titulo.getGlobalBounds();
+
+	sf::Vector2f posicao;
+	posicao.x = ((float)tamJanela.x / 2.f) - (tamTexto.width / 2.f);
+	posicao.y = (float)tamJanela.y / 15.f;
+
+	_titulo.setPosition(posicao);
+}
+
+void MenuRanking::criarBackground()
+{
+	sf::Texture* textura = new sf::Texture();
+
+	if (!textura->loadFromFile("assets/menu/pergaminho.jpg")) {
+		std::cerr << "Erro ao criar background menu.\n";
+		return;
+	}
+	setTexture(textura);
+
+	// tamanho do background
+	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+	float escalaX = (float)tamJanela.x / _body.getGlobalBounds().width;
+	float escalaY = (float)tamJanela.y / _body.getGlobalBounds().height;
+
+	_body.setScale
+	(
+		escalaX,
+		escalaY
+	);
+}
+
+void MenuRanking::verificarMouse()
+{
+	verificarMovimento();
+
+	_houveClique = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+}
+
+void MenuRanking::verificarMovimento()
+{
+	sf::Vector2i posicaoMouse = _mouse.getPosition();
+
+	// Verifica onde o mouse esta e destaca o botao
+	
+		if (_botaoVoltarMenuPrincipal.getGlobalBounds().contains((float)posicaoMouse.x, (float)posicaoMouse.y)) {
+			// Destaca
+			destacarTexto(_botaoVoltarMenuPrincipal);
+
+			// Aplica a funcao correspondente
+			if (_houveClique)retornaMenuPrincipal();
+		}
+		else {
+			padronizar(_botaoVoltarMenuPrincipal);
+		}
+	
+}
+
+void MenuRanking::destacarTexto(sf::Text& texto)
+{
+	char c = *(texto.getString().begin());
+	if (c != '>') {
+		std::string frase = "> " + texto.getString() + " <";
+		texto.setCharacterSize(TAMANHO_BOTOES + 10);
+		texto.setString(frase);
+		texto.setStyle(sf::Text::Style::Underlined);
+
+		// Reposiciona no meio da janela
+		reposicionarTexto(texto);
+	}
+}
+
+void MenuRanking::reposicionarTexto(sf::Text& texto)
+{
+	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+	sf::FloatRect tamTexto = texto.getGlobalBounds();
+
+	sf::Vector2f posicao;
+	posicao.x = ((float)tamJanela.x / 2.f) - (tamTexto.width / 2.f);
+	posicao.y = texto.getPosition().y;
+
+	texto.setPosition(posicao);
+}
+
+void MenuRanking::padronizar(sf::Text& texto)
+{
+	texto.setCharacterSize(TAMANHO_BOTOES);
+	texto.setString(_textosBotao);
+	texto.setStyle(sf::Text::Style::Regular);
+
+	// Reposiciona no meio da janela
+	reposicionarTexto(texto);
+}
+
+void MenuRanking::desenharMenu()
+{
+	_pGraf->getWindow()->draw(_body);
+	_pGraf->getWindow()->draw(_titulo);
+	_pGraf->getWindow()->draw(_botaoVoltarMenuPrincipal);
+	
+}
+
+void MenuRanking::executar()
+{
+	while (!_mudouEstado) {
+		sf::Event event;
+		while (_pGraf->getWindow()->pollEvent(event)) {
+
+			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+				retornaMenuPrincipal();
+			}
+		}
+
+		_pGraf->clear();
+
+		desenharMenu();
+		mostrarRanking(_rank);
+
+		verificarMouse();
+
+		_pGraf->display();
+	}
+}
+
+void MenuRanking::mostrarRanking(Ranking* rank)
+{
+	// Obtem os dados do Ranking
+	std::vector<std::pair<std::string, int>> dados;
+	dados = rank->getVector();
+
+	// Configurações iniciais para os textos
+	sf::Text texto;
+	texto.setFont(_fonte);
+	texto.setCharacterSize(TAMANHO_BOTOES);
+	texto.setFillColor(sf::Color::White);
+
+	// Posição inicial para desenhar os textos
+	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+	float posicaoX = tamJanela.x / 4.f; // Alinhar à esquerda
+	float posicaoY = tamJanela.y / 4.5f; // Começar abaixo do título
+	float incrementoY = TAMANHO_BOTOES + 12; // Espaçamento entre linhas
+
+	for (int i = 0; i < dados.size(); ++i) {
+		std::string nome = dados[i].first;
+		int pontos = dados[i].second;
+
+
+		// Cria o texto formatado
+		std::string textoFormatado = nome;
+		textoFormatado += std::string(30 - nome.size() - std::to_string(pontos).size(), '.');
+		textoFormatado += std::to_string(pontos);
+
+		// Configura o texto
+		texto.setString(textoFormatado);
+		texto.setPosition(posicaoX, posicaoY + i * incrementoY);
+
+		// Desenha o texto
+		_pGraf->getWindow()->draw(texto);
+	}
+}
+
+void MenuRanking::retornaMenuPrincipal()
+{
+	Jogo::mudarStateNum(10);
+	_mudouEstado = true;
+}
