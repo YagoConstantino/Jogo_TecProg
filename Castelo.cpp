@@ -217,7 +217,7 @@ void Fases::Castelo::criarCavaleiros()
 	for (int i = 0; i < minCavaleiros + adicionalCavaleiros; i++) {
 		y = _platsCavaleiros[i]->getPosition().y - dimCavaleiro.y;
 
-		cavaleiro = new Entidades::Cavaleiro(x, y, _pGraf, _jog);
+		cavaleiro = new Entidades::Cavaleiro(x, y, _pGraf, _jog1);
 
 		_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cavaleiro));
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(cavaleiro));
@@ -246,7 +246,7 @@ void Fases::Castelo::criarMagos()
 	for (int i = 0; i < minMagos; i++) {
 		y = _platsCavaleiros[i]->getPosition().y - dimMago.y;
 
-		mago = new Entidades::Mago(x, y, _pGraf, _jog);
+		mago = new Entidades::Mago(x, y, _pGraf, _jog1);
 		projetil = new Entidades::Projetil(0.f, 0.f, _pGraf);
 
 		mago->setProjetil(projetil);
@@ -267,7 +267,7 @@ void Fases::Castelo::criarMagos()
 	x = (_pGraf->getWindow()->getSize().x * 9.f) / 10.f;
 	y = _platsBases[0]->getPosition().y - dimMago.y;
 
-	mago = new Entidades::Mago(x, y, _pGraf, _jog);
+	mago = new Entidades::Mago(x, y, _pGraf, _jog1);
 	projetil = new Entidades::Projetil(0.f, 0.f, _pGraf);
 
 	mago->setProjetil(projetil);
@@ -297,7 +297,7 @@ void Fases::Castelo::executar()
 
 		_GC->executar();
 		_pGraf->desenhar(static_cast<Ente*>(this));
-		_jog->executar();
+		_jog1->executar();
 		_Lista->executar();
 
 		verificarCavaleiros();

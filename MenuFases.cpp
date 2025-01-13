@@ -129,7 +129,7 @@ void MenuFases::criaMedadeEsquerda()
 	// ------ >> Cria o nome da fase 2
 
 	_nomeFaseCastelo.setFont(_fonte);
-	_nomeFaseCastelo.setString("2");
+	_nomeFaseCastelo.setString("O castelo");
 	_nomeFaseCastelo.setCharacterSize(TAMANHO_BOTOES);
 	_nomeFaseCastelo.setStyle(sf::Text::Style::Regular);
 	_nomeFaseCastelo.setFillColor(sf::Color::Black);

@@ -133,7 +133,7 @@ bool Jogo::criarJogador1(string nome)
 {
 	if (!_jogador1)
 	{
-		_jogador1 = new Entidades::Jogador(0, 0, _GerenciadorGr�fico, nome);
+		_jogador1 = new Entidades::Jogador(0, 0, _GerenciadorGrafico, nome);
 		if (_jogador1)
 		{
 			rank->verificaPontos(_jogador1);

@@ -12,7 +12,7 @@ class Jogo
 private:
 	Entidades::Jogador* _jogador1;
 	Entidades::Jogador* _jogador2;
-	Gerenciadores::Gerenciador_Grafico* _GerenciadorGr�fico;
+	Gerenciadores::Gerenciador_Grafico* _GerenciadorGrafico;
 	Menu* _menu;
 	MenuFases* _menuFases;
 	Fases::Floresta* _florest;
