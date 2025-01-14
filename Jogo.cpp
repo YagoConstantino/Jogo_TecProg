@@ -186,14 +186,22 @@ void Jogo::criaMenu()
 			delete _florest;
 			_florest = nullptr;
 		}
-		else if (_castelo != nullptr) {
+		else if (_castelo != nullptr) 
+		{
 			delete _castelo;
 			_castelo = nullptr;
 		}
-		else if (_menuFases != nullptr) {
+		else if (_menuFases != nullptr) 
+		{
 			delete _menuFases;
 			_menuFases = nullptr;
 		}
+		else if (_menuRanking != nullptr) 
+		{
+			delete _menuRanking;
+			_menuRanking = nullptr;
+		}
+		
 
 		_menu = new Menus::Menu(_GerenciadorGrafico);
 	}
