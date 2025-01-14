@@ -122,23 +122,33 @@ void Jogo::executar()
 }
 void Jogo::destroiEstadosAnteriores()
 {
-	if (_menu) {
+	if (_menu) 
+	{
+		
 		delete _menu;
 		_menu = nullptr;
 	}
-	if (_menuFases) {
+	if (_menuFases) 
+	{
+		
 		delete _menuFases;
 		_menuFases = nullptr;
 	}
-	if (_menuRanking) {
+	if (_menuRanking) 
+	{
+		
 		delete _menuRanking;
 		_menuRanking = nullptr;
 	}
-	if (_florest) {
+	if (_florest) 
+	{
+		
 		delete _florest;
 		_florest = nullptr;
 	}
-	if (_castelo) {
+	if (_castelo) 
+	{
+		
 		delete _castelo;
 		_castelo = nullptr;
 	}

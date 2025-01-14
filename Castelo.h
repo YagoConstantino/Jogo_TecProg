@@ -12,7 +12,8 @@
 #include <cstdlib>
 
 namespace Fases {
-	class Castelo : public Fase {
+	class Castelo : public Fase 
+	{
 	private:
 		const int _maxMagos;
 		int _maxEspinhos;
