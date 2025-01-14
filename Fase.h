@@ -25,6 +25,7 @@ namespace Fases
 	public:
 		Fase(Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador* j1 = nullptr, Entidades::Jogador* j2 = nullptr);
 		virtual ~Fase();
+
 		void gerenciarColisoes();
 		
 		virtual void criarCavaleiros();  // Pois cada fase determina onde será gerado
@@ -34,5 +35,7 @@ namespace Fases
 		virtual void executar() = 0;
 		virtual void criarInimigos() = 0;
 		virtual void criarObstaculos() = 0;
+
+		void verificarJogadores();
 	};
 }

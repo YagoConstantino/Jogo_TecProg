@@ -122,7 +122,8 @@ void Fases::Floresta::executar()
         }
 
         _Lista->executar();
-        
+
+        verificarJogadores();
 
         //std::cout << _jog1->getPontos() << std::endl;
         _GG->display();

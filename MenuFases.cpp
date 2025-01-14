@@ -77,7 +77,7 @@ void MenuFases::criaMedadeEsquerda()
 	// ------ >> Cria imagem da fase 2
 	
 	sf::Texture* textura2 = new sf::Texture();
-	if (!textura2->loadFromFile("assets/menu/temporario.png")) {
+	if (!textura2->loadFromFile("assets/menu/castelo.jpg")) {
 		std::cerr << "Erro ao criar background menu fases.\n";
 		return;
 	}

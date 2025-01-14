@@ -1,4 +1,5 @@
 #include "Fase.h"
+#include "Jogo.h"
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
@@ -123,4 +124,34 @@ void Fases::Fase::criarPlataformas()
 void Fases::Fase::criarCenario()
 {
 	//Implementar depois 
+}
+
+void Fases::Fase::verificarJogadores()
+{
+	// ------ >> verifica se o(s) jogador(es) estao morto(s)
+
+	// Caso 1: os dois jogadores foram criados
+	if (_jog1 != nullptr && _jog2 != nullptr) {
+		if (!_jog1->getVivo() && !_jog2->getVivo()) {
+			// Finaliza o jogo
+			Jogo::mudarStateNum(30);
+			_mudouEstado = true;
+		}
+	}
+	// Caso 2: apenas o jogador 1 foi criado
+	else if (_jog1 != nullptr) {
+		if (!_jog1->getVivo()) {
+			// Finaliza o jogo
+			Jogo::mudarStateNum(30);
+			_mudouEstado = true;
+		}
+	}
+	// Caso 3: apenas o jogador 2 foi criado
+	else if (_jog2 != nullptr) {
+		if (!_jog2->getVivo()) {
+			// Finaliza o jogo
+			Jogo::mudarStateNum(30);
+			_mudouEstado = true;
+		}
+	}
 }

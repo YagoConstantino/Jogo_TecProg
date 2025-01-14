@@ -6,6 +6,7 @@
 #include "Menu.h"
 #include "MenuFases.h"
 #include "Ranking.h"
+#include "TelaFimDeJogo.h"
 
 class Jogo
 {
@@ -18,6 +19,7 @@ private:
 	Fases::Floresta* _florest;
 	Fases::Castelo* _castelo;
 	Ranking* rank;
+	TelaFimDeJogo* _telaFimDeJogo;
 
 	static int stateNum;
 
@@ -29,11 +31,13 @@ public:
 	void criaFloresta();
 	void criaMenu();
 	void criaMenuFases();
+	void criaTelaFimDeJogo();
 
 	void JogarCastelo();
 	void JogarFloresta();
 	void JogarMenu();
 	void JogarMenuFases();
+	void JogarTelaFimDeJogo();
 
 	void executar();
 

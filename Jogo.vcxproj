@@ -46,6 +46,7 @@
     <ClInclude Include="Plataforma.h" />
     <ClInclude Include="Projetil.h" />
     <ClInclude Include="Ranking.h" />
+    <ClInclude Include="TelaFimDeJogo.h" />
     <ClInclude Include="Thread.h" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +75,7 @@
     <ClCompile Include="Plataforma.cpp" />
     <ClCompile Include="Projetil.cpp" />
     <ClCompile Include="Ranking.cpp" />
+    <ClCompile Include="TelaFimDeJogo.cpp" />
     <ClCompile Include="Thread.cpp" />
   </ItemGroup>
   <ItemGroup>

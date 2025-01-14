@@ -302,6 +302,7 @@ void Fases::Castelo::executar()
 
 		verificarCavaleiros();
 		verificarMagos();
+		verificarJogadores();
 
 		_GG->display();
 	}

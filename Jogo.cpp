@@ -12,6 +12,7 @@
 	12 - menu de ranking (exemplo)
 	20 - fase 1, floresta
 	21 - fase 2, castelo
+	30 - tela de fim de jogo
 */
 
 int Jogo::stateNum = 10;
@@ -30,6 +31,7 @@ Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
 	_florest = nullptr;
 	_menu = nullptr;
 	_menuFases = nullptr;
+	_telaFimDeJogo = nullptr;
 }
 
 Jogo::~Jogo()
@@ -65,13 +67,18 @@ Jogo::~Jogo()
 	{
 		delete rank;
 	}
+	if (_telaFimDeJogo)
+	{
+		delete _telaFimDeJogo;
+	}
 
 	_jogador1 = nullptr;
-	_jogador1 = nullptr;
+	_jogador2 = nullptr;
 	_GerenciadorGrafico = nullptr;
 	_florest = nullptr;
 	_menu = nullptr;
 	rank = nullptr;
+	_telaFimDeJogo = nullptr;
 }
 
 void Jogo::executar()
@@ -118,13 +125,18 @@ void Jogo::executar()
 			}
 			else 
 			{
-				cerr << "Erro: rank n�o inicializado!" << endl;
+				cerr << "Erro: rank nao inicializado!" << endl;
 			}
 			break;
 
 		case 21: // Cria a fase 2, castelo
 			criaCastelo();
 			JogarCastelo();
+			break;
+
+		case 30: // Cria a tela de fim de jogo
+			criaTelaFimDeJogo();
+			JogarTelaFimDeJogo();
 			break;
 		}
 	}
@@ -192,6 +204,10 @@ void Jogo::criaMenu()
 			delete _menuFases;
 			_menuFases = nullptr;
 		}
+		else if (_telaFimDeJogo != nullptr) {
+			delete _telaFimDeJogo;
+			_telaFimDeJogo = nullptr;
+		}
 
 		_menu = new Menu(_GerenciadorGrafico);
 	}
@@ -207,6 +223,24 @@ void Jogo::criaMenuFases()
 		}
 
 		_menuFases = new MenuFases(_GerenciadorGrafico);
+	}
+}
+
+void Jogo::criaTelaFimDeJogo()
+{
+	if (_telaFimDeJogo == nullptr) {
+		// Destroi o estado anterior
+		if (_florest != nullptr) {
+			delete _florest;
+			_florest = nullptr;
+		}
+		else if (_castelo != nullptr) {
+			delete _castelo;
+			_castelo = nullptr;
+		}
+
+		// Cria o estado atual
+		_telaFimDeJogo = new TelaFimDeJogo(_GerenciadorGrafico, _jogador1, _jogador2);
 	}
 }
 
@@ -249,6 +283,11 @@ void Jogo::JogarMenu()
 void Jogo::JogarMenuFases()
 {
 	_menuFases->executar();
+}
+
+void Jogo::JogarTelaFimDeJogo()
+{
+	_telaFimDeJogo->executar();
 }
 
 
