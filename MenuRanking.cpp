@@ -187,14 +187,13 @@ void MenuRanking::mostrarRanking(Ranking* rank)
 
 	// Posição inicial para desenhar os textos
 	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
-	float posicaoX = tamJanela.x / 4.f; // Alinhar à esquerda
 	float posicaoY = tamJanela.y / 4.5f; // Começar abaixo do título
 	float incrementoY = TAMANHO_BOTOES + 12; // Espaçamento entre linhas
 
-	for (int i = 0; i < dados.size(); ++i) {
+	for (int i = 0; i < dados.size(); ++i)
+	{
 		std::string nome = dados[i].first;
 		int pontos = dados[i].second;
-
 
 		// Cria o texto formatado
 		std::string textoFormatado = nome;
@@ -203,6 +202,12 @@ void MenuRanking::mostrarRanking(Ranking* rank)
 
 		// Configura o texto
 		texto.setString(textoFormatado);
+
+		// Agora que o texto foi configurado, calculamos o tamanho
+		sf::FloatRect tamTexto = texto.getGlobalBounds();
+
+		// Calcula a posição centralizada
+		float posicaoX = ((float)tamJanela.x / 2.f) - (tamTexto.width / 2.f);
 		texto.setPosition(posicaoX, posicaoY + i * incrementoY);
 
 		// Desenha o texto
