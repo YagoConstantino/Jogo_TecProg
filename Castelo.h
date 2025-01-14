@@ -16,6 +16,7 @@ namespace Fases {
 	private:
 		const int _maxMagos;
 		int _maxEspinhos;
+		bool _magosNaoCriados;
 
 		std::vector<Entidades::Plataforma*> _platsBases;
 		std::vector<Entidades::Plataforma*> _platsCavaleiros;

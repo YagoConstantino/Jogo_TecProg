@@ -40,7 +40,8 @@ public:
 	void JogarMenuRanking();
 
 	void executar();
-	//void destroiEstadosAnteriores();
+	void destroiEstadosAnteriores();
+	void atualizaRanking();
 
 	static void mudarStateNum(int state);
 

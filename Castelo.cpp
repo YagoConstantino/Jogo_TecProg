@@ -1,7 +1,9 @@
 #include "Castelo.h"
 #include "Jogo.h"
 
-Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog) : Fase(pgra, jog), _maxMagos(4), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), _platsBases(), _cavaleiros(), _magos()
+Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog)
+	: Fase(pgra, jog), _maxMagos(4), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
+	_platsBases(), _cavaleiros(), _magos(),_magosNaoCriados(true)
 {
 	_platsBases.clear();
 	_platsCavaleiros.clear();
@@ -316,8 +318,12 @@ void Fases::Castelo::verificarCavaleiros()
 	for (size_t i = 0; i < tam; i++)
 		vivos += (int)_cavaleiros[i]->getVivo();
 	
-	if (!vivos)
+	if (!vivos && _magosNaoCriados)
+	{
 		criarMagos();
+		_magosNaoCriados = false;
+	}
+		
 }
 
 void Fases::Castelo::verificarMagos()

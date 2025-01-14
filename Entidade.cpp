@@ -100,7 +100,12 @@ namespace Entidades
 
 				//Bruxa
 			case 5:
-				_speed.x -= 40.0f;
+				setPositionX((getPositionX() - 40.0f));
+				break;
+
+				//Mago
+			case 6:
+				setPositionX((getPositionX()-60.0f));
 				break;
 			}
 				
@@ -123,7 +128,12 @@ namespace Entidades
 
 				//Bruxa
 			case 5:
-				_speed.x += 60.0f;
+				setPositionX((getPositionX() + 40.0f));
+				break;
+
+				//Mago
+			case 6:
+				setPositionX((getPositionX() + 60.0f));
 				break;
 			}
 			

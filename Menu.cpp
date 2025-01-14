@@ -128,7 +128,7 @@ void Menu::criarBackground()
 {
 	sf::Texture* textura = new sf::Texture();
 
-	if (!textura->loadFromFile("assets/menu/FundoMedievalMelhorado.png")) {
+	if (!textura->loadFromFile("assets/menu/FundoMedieval.png")) {
 		std::cerr<<"Erro ao criar background menu.\n";
 		return;
 	}
