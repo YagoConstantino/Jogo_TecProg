@@ -121,7 +121,7 @@ void Fases::Floresta::executar()
     _Lista->startThread();
     while (!_mudouEstado) 
     {
-        desenhar();
+        
         sf::Event event;
         while (_GG->getWindow()->pollEvent(event)) 
         {
@@ -135,6 +135,7 @@ void Fases::Floresta::executar()
         }
 
         _GG->clear();
+        desenhar();
         _GC->executar();
 
         if (_jog1) 

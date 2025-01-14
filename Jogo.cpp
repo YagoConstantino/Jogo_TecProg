@@ -36,42 +36,40 @@ Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
 Jogo::~Jogo()
 {
 	if (_jogador1)
-	{
 		delete _jogador1;
-	}
+	
 	if (_jogador2)
-	{
 		delete _jogador2;
-	}
-
+	
 	if (_GerenciadorGrafico)
-	{
 		delete _GerenciadorGrafico;
-	}
+	
 	if (_castelo)
-	{
 		delete _castelo;
-	}
+	
 	if (_florest)
-	{
 		delete _florest;
-	}
-	if (_menu) {
+	
+	if (_menu) 
 		delete _menu;
-	}
-	if (_menuFases) {
+	
+	if (_menuFases) 
 		delete _menuFases;
-	}
+	
+	if (_menuRanking) 
+		delete _menuRanking;
+	
 	if (rank)
-	{
 		delete rank;
-	}
+	
 
 	_jogador1 = nullptr;
 	_jogador1 = nullptr;
 	_GerenciadorGrafico = nullptr;
 	_florest = nullptr;
 	_menu = nullptr;
+	_menuFases = nullptr;
+	_menuRanking = nullptr;
 	rank = nullptr;
 }
 
@@ -115,7 +113,7 @@ void Jogo::executar()
 				cout << "Atualizando leaderboard..." << endl;
 				rank->atualizaLeaderboard(_jogador1);
 				rank->atualizaLeaderboard(_jogador2);
-				rank->imprimirLeaderboard();
+				
 				rank->salvarDados();
 			}
 			else 
@@ -127,6 +125,18 @@ void Jogo::executar()
 		case 21: // Cria a fase 2, castelo
 			criaCastelo();
 			JogarCastelo();
+			if (rank)
+			{
+				cout << "Atualizando leaderboard..." << endl;
+				rank->atualizaLeaderboard(_jogador1);
+				rank->atualizaLeaderboard(_jogador2);
+
+				rank->salvarDados();
+			}
+			else
+			{
+				cerr << "Erro: rank n�o inicializado!" << endl;
+			}
 			break;
 		}
 	}
@@ -143,7 +153,7 @@ bool Jogo::criarJogador1(string nome)
 		}
 		return false;
 	}
-	cerr << "Jogador1 j� existente\n";
+	cerr << "Jogador1 ja existente\n";
 	return false;
 }
 
@@ -159,7 +169,7 @@ bool Jogo::criarJogador2(string nome)
 		};
 		return false;
 	}
-	cerr << "Jogador2 j� existente\n";
+	cerr << "Jogador2 ja existente\n";
 	return false;
 }
 

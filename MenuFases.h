@@ -72,8 +72,8 @@ namespace Menus
 		void carregarFonte();
 
 		void criaBackground();
-		void criaMedadeEsquerda();
-		void criaMedadeDireita();
+		void criaMetadeEsquerda();
+		void criaMetadeDireita();
 
 		void carregarObjetos();
 

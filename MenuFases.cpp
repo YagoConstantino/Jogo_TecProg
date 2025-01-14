@@ -7,8 +7,8 @@ MenuFases::MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::En
 {
 	carregarFonte();
 	criaBackground();
-	criaMedadeEsquerda();
-	criaMedadeDireita();
+	criaMetadeEsquerda();
+	criaMetadeDireita();
 
 	carregarObjetos();
 }
@@ -54,7 +54,7 @@ void MenuFases::criaBackground()
 	);
 }
 
-void MenuFases::criaMedadeEsquerda()
+void MenuFases::criaMetadeEsquerda()
 {
 	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
 
@@ -159,7 +159,7 @@ void MenuFases::criaMedadeEsquerda()
 	_botaoConfirmaFase.setPosition(posicaoBotao);
 }
 
-void MenuFases::criaMedadeDireita()
+void MenuFases::criaMetadeDireita()
 {
 	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
 	sf::Color cor(192, 192, 192);
@@ -357,6 +357,11 @@ void MenuFases::verificarCliques()
 
 void MenuFases::verificarConfirma()
 {
+	/*
+	Aqui de duas uma, ou colocamos um ponteiro para jogo e chamamos criarJogador1 e criarJogador2 por meio desse
+	ponteiroantes de mudar o Estado
+	ou fazemos essas funções serem estaticas e chamamos da mesma forma que Jogo::mudarStateNum();
+	*/
 	// Verifico se os dois confirmas foram clicados
 	if (_confirmaFase && _confirmaNomes) {
 		// Mudo o estado e levo para a fase escolhida
@@ -370,11 +375,13 @@ void MenuFases::verificarConfirma()
 		}
 
 		// Salvo o(s) nome(s) do(s) jogadore(s)
-		if (_doisJog) {
+		if (_doisJog) 
+		{
 			
 
 		}
-		else if (_umJog) {
+		else if (_umJog) 
+		{
 
 		}
 	}
