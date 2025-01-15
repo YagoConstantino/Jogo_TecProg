@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 
 #include <SFML/Graphics.hpp>
 #include "Fase.h"
@@ -12,10 +12,12 @@
 #include <cstdlib>
 
 namespace Fases {
-	class Castelo : public Fase {
+	class Castelo : public Fase 
+	{
 	private:
 		const int _maxMagos;
 		int _maxEspinhos;
+		bool _magosNaoCriados;
 
 		std::vector<Entidades::Plataforma*> _platsBases;
 		std::vector<Entidades::Plataforma*> _platsCavaleiros;

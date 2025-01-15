@@ -10,7 +10,7 @@
 	Botao Ranking é o 2
 	Botao Sair é o 3
 */
-
+using namespace Menus;
 Menu::Menu(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _botoes(), _textosBotoes(), _mudouEstado(false)
 {
 	_botoes.clear();

@@ -10,6 +10,7 @@ Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador
 {
 
 	setMaldade(3);
+	setTipo(6);
 	_speed.x = 0.06f;
 
 	sf::Texture* textura = new sf::Texture();
@@ -61,13 +62,19 @@ void Entidades::Mago::executar()
 	desenhar();
 	 
 	danificar(_pJog1);
+	if (_speed.x > 0.09f)
+	{
+		_speed.x = 0.06f * _direcao;
+	}
+
 }
 
 void Entidades::Mago::verificarVida() {
 	if (_vidasPerdidas > _num_vidas / 2) {
-		_speed.x = 0.09f;
+		_speed.x = 0.09f*_direcao;
 		setMaldade(2);
 	}
+	
 }
 
 void Entidades::Mago::mover() 

@@ -11,10 +11,14 @@ Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciad
 
 	sf::Texture* textura = new sf::Texture();
 
+	
 	if (!textura->loadFromFile("assets/Mortovivo-.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+	
+	
+	
 
 	setTexture(textura);
 	_body.setScale(1.f, 1.f);

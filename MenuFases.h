@@ -6,55 +6,63 @@
 #include <functional>
 #include "Ente.h"
 #include "Gerenciador_Grafico.h"
-
-class MenuFases : public Entidades::Ente
+namespace Menus
 {
-private:
-	bool _mudouEstado;
 
-	sf::Mouse mouse;
+	class MenuFases : public Entidades::Ente
+	{
+	private:
+		bool _mudouEstado;
 
-	sf::Font _fonte;
+		sf::Mouse mouse;
 
-	sf::Text _textoFases;
-	sf::Text _nomeFaseFloresta;
-	sf::Text _nomeFaseCastelo;
+		sf::Text _textoFases;
+		sf::Text _nomeFaseFloresta;
+		sf::Text _nomeFaseCastelo;
 
-	sf::RectangleShape _imagemFaseFloresta;
-	sf::RectangleShape _imagemFaseCastelo;
-	sf::Text _botaoConfirmaFase;
-	bool _faseFloresta;
-	bool _faseCastelo;
+		sf::RectangleShape _imagemFaseFloresta;
+		sf::RectangleShape _imagemFaseCastelo;
+		sf::Text _botaoConfirmaFase;
+		bool _faseFloresta;
+		bool _faseCastelo;
 
-	std::vector<std::pair<sf::RectangleShape*, std::function<void()>>> _retangulos;
-	std::vector<std::pair<sf::Text*, std::function<void()>>> _textos;
-	int sizeRetangulos;
-	int sizeTextos;
+		sf::Text _botaoConfirmaNomes;
+		bool _confirmaNomes;
 
-protected:
-	void executarFaseFloresta();
-	void executarFaseCastelo();
-	void executarConfirmaFase();
+		std::vector<std::pair<sf::RectangleShape*, std::function<void()>>> _retangulos;
+		std::vector<std::pair<sf::Text*, std::function<void()>>> _textos;
+		int sizeRetangulos;
+		int sizeTextos;
 
-public:
-	MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr);
-	~MenuFases();
+	protected:
+		void executarFaseFloresta();
+		void executarFaseCastelo();
+		void executarConfirmaFase();
 
-	void carregarFonte();
+	public:
+		MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr);
+		~MenuFases();
 
-	void criaBackground();
-	void criaResto();
+		void carregarFonte();
 
-	void carregarObjetos();
+		void criaBackground();
+		void criaResto();
 
-	void verificarCliques();
+		void criaBackground();
+		void criaMetadeEsquerda();
+		void criaMetadeDireita();
 
-	void destacar(sf::Text* texto);
-	void destacar(sf::RectangleShape* retangulo);
-	void padronizar(sf::Text* texto);
-	void padronizar(sf::RectangleShape* retangulo);
+		void carregarObjetos();
 
-	void desenhar();
+		void verificarCliques();
 
-	void executar();
-};
+		void destacar(sf::Text* texto);
+		void destacar(sf::RectangleShape* retangulo);
+		void padronizar(sf::Text* texto);
+		void padronizar(sf::RectangleShape* retangulo);
+
+		void desenhar();
+
+		void executar();
+	};
+}
