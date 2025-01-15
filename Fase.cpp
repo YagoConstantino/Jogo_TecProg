@@ -37,11 +37,15 @@ Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* 
 Fases::Fase::~Fase()
 {
 	//Desaloco o Gerenciador de Colisoes e a ListaEntidades
-	if (_GC)
+	/*if (_GC)
 		delete _GC;
-
-	if (_Lista)
+		*/
+	if (_Lista) 
+	{
+		_Lista->joinThread();
 		delete _Lista;
+	}
+		
 
 	//Seto como nulo os ponteiros para o Gerenciador gr�fico e jogador
 	_GG = nullptr;

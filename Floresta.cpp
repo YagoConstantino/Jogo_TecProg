@@ -20,6 +20,17 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
 
 Fases::Floresta::~Floresta()
 {
+    if (_Lista)
+    {
+        _Lista->joinThread();
+        delete _Lista;
+        _Lista = nullptr;
+    }
+    if (_pTexture)
+    {
+        delete _pTexture;
+        _pTexture = nullptr;
+    }
     //Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
     _GG = nullptr;
     _jog1 = nullptr;
