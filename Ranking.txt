@@ -1,3 +1,2 @@
-Player1 2287
+Player1 1355
 Player2 327
-Player4 24

@@ -38,51 +38,55 @@ Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
 	_menuJogadores = nullptr;
 	_menuFases = nullptr;
 	_telaFimDeJogo = nullptr;
-	_menuRanking = nullptr;
 }
 
 Jogo::~Jogo()
 {
 	if (_jogador1)
+	{
 		delete _jogador1;
-	
+	}
 	if (_jogador2)
+	{
 		delete _jogador2;
-	
+	}
 	if (_GerenciadorGrafico)
+	{
 		delete _GerenciadorGrafico;
-	
+	}
 	if (_castelo)
+	{
 		delete _castelo;
-	
+	}
 	if (_florest)
+	{
 		delete _florest;
-	
-	if (_menu) 
+	}
+	if (_menu)
+	{
 		delete _menu;
-	
+	}
 	if (_menuJogadores)
+	{
 		delete _menuJogadores;
-	
-	if (_menuFases) 
+	}
+	if (_menuFases) {
 		delete _menuFases;
-	
-	if (_menuRanking) 
-		delete _menuRanking;
-	
+	}
 	if (rank)
+	{
 		delete rank;
-
+	}
 	if (_telaFimDeJogo)
+	{
 		delete _telaFimDeJogo;
+	}
 
 	_jogador1 = nullptr;
 	_jogador2 = nullptr;
 	_GerenciadorGrafico = nullptr;
 	_florest = nullptr;
 	_menu = nullptr;
-	_menuFases = nullptr;
-	_menuRanking = nullptr;
 	rank = nullptr;
 	_telaFimDeJogo = nullptr;
 	_menuJogadores = nullptr;
@@ -115,8 +119,7 @@ void Jogo::executar()
 
 			// Cria o menu de ranking
 		case 12:
-			criaMenuRanking();
-			JogarMenuRanking();
+
 			break;
 
 		case 13: // Cria o menu de jogadores
@@ -128,13 +131,23 @@ void Jogo::executar()
 		case 20:
 			criaFloresta();
 			JogarFloresta();
-			atualizaRanking();
+			if (rank) 
+			{
+				cout << "Atualizando leaderboard..." << endl;
+				rank->atualizaLeaderboard(_jogador1);
+				rank->atualizaLeaderboard(_jogador2);
+				rank->imprimirLeaderboard();
+				rank->salvarDados();
+			}
+			else 
+			{
+				cerr << "Erro: rank nao inicializado!" << endl;
+			}
 			break;
 
 		case 21: // Cria a fase 2, castelo
 			criaCastelo();
 			JogarCastelo();
-			atualizaRanking();
 			break;
 
 		case 30: // Cria a tela de fim de jogo
@@ -145,60 +158,6 @@ void Jogo::executar()
 	}
 }
 
-void Jogo::destroiEstadosAnteriores()
-{
-	if (_menu) 
-	{
-		delete _menu;
-		_menu = nullptr;
-	}
-	else if (_menuJogadores)
-	{
-		delete _menuJogadores;
-		_menuJogadores = nullptr;
-	}
-	else if (_menuFases) 
-	{
-		delete _menuFases;
-		_menuFases = nullptr;
-	}
-	else if (_menuRanking) 
-	{
-		delete _menuRanking;
-		_menuRanking = nullptr;
-	}
-	else if (_florest) 
-	{
-		delete _florest;
-		_florest = nullptr;
-	}
-	else if (_castelo) 
-	{
-		delete _castelo;
-		_castelo = nullptr;
-	}
-	else if (_telaFimDeJogo)
-	{
-		delete _telaFimDeJogo;
-		_telaFimDeJogo = nullptr;
-	}
-}
-void Jogo::atualizaRanking()
-{
-	if (rank)
-	{
-		cout << "Atualizando leaderboard..." << endl;
-		rank->atualizaLeaderboard(_jogador1);
-		rank->atualizaLeaderboard(_jogador2);
-
-		rank->salvarDados();
-	}
-	else
-	{
-		cerr << "Erro: rank n�o inicializado!" << endl;
-	}
-	
-}
 bool Jogo::criarJogador1(string nome)
 {
 	if (_jogador1 == nullptr)
@@ -246,8 +205,25 @@ void Jogo::criaMenu()
 	if (_menu == nullptr) 
 	{
 		// Destroi o estado anterior
-		destroiEstadosAnteriores();
-		_menu = new Menus::Menu(_GerenciadorGrafico);
+		if (_florest != nullptr)
+		{
+			delete _florest;
+			_florest = nullptr;
+		}
+		else if (_castelo != nullptr) {
+			delete _castelo;
+			_castelo = nullptr;
+		}
+		else if (_menuJogadores != nullptr) {
+			delete _menuJogadores;
+			_menuJogadores = nullptr;
+		}
+		else if (_telaFimDeJogo != nullptr) {
+			delete _telaFimDeJogo;
+			_telaFimDeJogo = nullptr;
+		}
+
+		_menu = new Menu(_GerenciadorGrafico);
 	}
 }
 
@@ -255,10 +231,13 @@ void Jogo::criaMenuFases()
 {
 	if (_menuFases == nullptr) {
 		// Destroi o estado anterior
-		destroiEstadosAnteriores();
+		if (_menuJogadores != nullptr) {
+			delete _menuJogadores;
+			_menuJogadores = nullptr;
+		}
 
 		// Cria o estado atual
-		_menuFases = new Menus::MenuFases(_GerenciadorGrafico);
+		_menuFases = new MenuFases(_GerenciadorGrafico);
 	}
 }
 
@@ -266,7 +245,14 @@ void Jogo::criaMenuJogadores()
 {
 	if (_menuJogadores == nullptr) {
 		// Destroi o estado anterior
-		destroiEstadosAnteriores();
+		if (_menu != nullptr) {
+			delete _menu;
+			_menu = nullptr;
+		}
+		else if (_menuFases != nullptr) {
+			delete _menuFases;
+			_menuFases = nullptr;
+		}
 
 		// Cria o estado atual
 		deletarJogadores();
@@ -278,20 +264,17 @@ void Jogo::criaTelaFimDeJogo()
 {
 	if (_telaFimDeJogo == nullptr) {
 		// Destroi o estado anterior
-		destroiEstadosAnteriores();
+		if (_florest != nullptr) {
+			delete _florest;
+			_florest = nullptr;
+		}
+		else if (_castelo != nullptr) {
+			delete _castelo;
+			_castelo = nullptr;
+		}
 
 		// Cria o estado atual
 		_telaFimDeJogo = new TelaFimDeJogo(_GerenciadorGrafico, _jogador1, _jogador2);
-	}
-}
-
-void Jogo::criaMenuRanking()
-{
-	if (_menuRanking == nullptr) {
-		// Destroi o estado anterior
-		destroiEstadosAnteriores();
-
-		_menuRanking = new Menus::MenuRanking(_GerenciadorGrafico,rank);
 	}
 }
 
@@ -299,7 +282,10 @@ void Jogo::criaCastelo()
 {
 	if (_castelo == nullptr) {
 		// destroi o estado anterior
-		destroiEstadosAnteriores();
+		if (_menuFases != nullptr) {
+			delete _menuFases;
+			_menuFases = nullptr;
+		}
 
 		// Cria o estado atual
 		_castelo = new Fases::Castelo(_GerenciadorGrafico, _jogador1);
@@ -310,7 +296,10 @@ void Jogo::criaFloresta()
 {
 	if (_florest == nullptr) {
 		// destroi o estado anterior
-		destroiEstadosAnteriores();
+		if (_menuFases != nullptr) {
+			delete _menuFases;
+			_menuFases = nullptr;
+		}
 
 		// Cria o estado atual
 		_florest = new Fases::Floresta(_GerenciadorGrafico, _jogador1,_jogador2);
@@ -350,9 +339,6 @@ void Jogo::deletarJogadores()
 		delete _jogador2;
 		_jogador2 = nullptr;
 	}
-void Jogo::JogarMenuRanking()
-{
-	_menuRanking->executar();
 }
 
 

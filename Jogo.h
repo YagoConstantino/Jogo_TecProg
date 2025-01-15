@@ -6,7 +6,6 @@
 #include "Menu.h"
 #include "MenuFases.h"
 #include "MenuJogadores.h"
-#include "MenuRanking.h"
 #include "Ranking.h"
 #include "TelaFimDeJogo.h"
 
@@ -17,10 +16,9 @@ private:
 	Entidades::Jogador* _jogador2;
 
 	Gerenciadores::Gerenciador_Grafico* _GerenciadorGrafico;
-	Menus::Menu* _menu;
+	Menu* _menu;
 	MenuJogadores* _menuJogadores;
-	Menus::MenuFases* _menuFases;
-	Menus::MenuRanking* _menuRanking;
+	MenuFases* _menuFases;
 	Fases::Floresta* _florest;
 	Fases::Castelo* _castelo;
 	Ranking* rank;
@@ -38,7 +36,6 @@ public:
 	void criaMenuFases();
 	void criaMenuJogadores();
 	void criaTelaFimDeJogo();
-	void criaMenuRanking();
 
 	void JogarCastelo();
 	void JogarFloresta();
@@ -46,13 +43,10 @@ public:
 	void JogarMenuFases();
 	void JogarMenuJogadores();
 	void JogarTelaFimDeJogo();
-	void JogarMenuRanking();
 
 	void deletarJogadores();
 
 	void executar();
-	void destroiEstadosAnteriores();
-	void atualizaRanking();
 
 	static void mudarStateNum(int state);
 

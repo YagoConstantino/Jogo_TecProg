@@ -1,9 +1,7 @@
 #include "Castelo.h"
 #include "Jogo.h"
 
-Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog)
-	: Fase(pgra, jog), _maxMagos(4), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
-	_platsBases(), _cavaleiros(), _magos(),_magosNaoCriados(true)
+Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog) : Fase(pgra, jog), _maxMagos(4), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), _platsBases(), _cavaleiros(), _magos()
 {
 	_platsBases.clear();
 	_platsCavaleiros.clear();
@@ -289,8 +287,7 @@ void Fases::Castelo::executar()
 		sf::Event event;
 		while (_GG->getWindow()->pollEvent(event)) {
 			// Volta para o menu
-			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
-			{
+			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 				Jogo::mudarStateNum(10);
 				_mudouEstado = true;
 			}
@@ -299,7 +296,7 @@ void Fases::Castelo::executar()
 		_GG->clear();
 
 		_GC->executar();
-		desenhar();
+		_pGraf->desenhar(static_cast<Ente*>(this));
 		_jog1->executar();
 		_Lista->executar();
 
@@ -320,12 +317,8 @@ void Fases::Castelo::verificarCavaleiros()
 	for (size_t i = 0; i < tam; i++)
 		vivos += (int)_cavaleiros[i]->getVivo();
 	
-	if (!vivos && _magosNaoCriados)
-	{
+	if (!vivos)
 		criarMagos();
-		_magosNaoCriados = false;
-	}
-		
 }
 
 void Fases::Castelo::verificarMagos()

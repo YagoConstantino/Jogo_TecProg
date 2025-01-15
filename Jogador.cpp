@@ -1,7 +1,6 @@
 #include "Jogador.h"
 #include "stdlib.h"
 #include "Inimigo.h"
-#include "BruxaThread.h"
 int Entidades::Jogador::contador(0);
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
@@ -334,20 +333,8 @@ void Entidades::Jogador::adicionarSword(const std::string& path)
 
 void Entidades::Jogador::atacarInimigo(Entidades::Inimigo* enemy)
 {
-	if (enemy->getEhThread())
-	{
-		Entidades::BruxaThread* bru = static_cast<BruxaThread*>(enemy);
-		bru->lockMutex();
-		bru->operator--(1);
-		bru->knockBack(this);
-		bru->unlockMutex();
-	}
-	else
-	{
-		(enemy)->operator--(1);
-		(enemy)->knockBack(this);
-	}
-	
+	(enemy)->operator--(1);
+	(enemy)->knockBack(this);
 	if (enemy->getVidas() <= 0)
 	{
 		SetPontos(getPontos() + enemy->getMaldade());

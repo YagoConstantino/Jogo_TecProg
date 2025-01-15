@@ -3,8 +3,6 @@
 
 #define TAMANHO_BOTOES 50
 
-using namespace Menus;
-
 MenuFases::MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _mudouEstado(false), _faseFloresta(false), _faseCastelo(false), _retangulos(), _textos(), sizeRetangulos(0), sizeTextos(0)
 {
 	carregarFonte();
@@ -133,7 +131,7 @@ void MenuFases::criaResto()
 
 	_imagemFaseCastelo.setPosition(posicao);
 
-	// ------ >> Cria botao para confirmar a selecao da fase
+	// ------ >> Cria botao para confirmar a seleção da fase
 
 	_botaoConfirmaFase.setFont(_fonte);
 	_botaoConfirmaFase.setString("Confirmar fase");
