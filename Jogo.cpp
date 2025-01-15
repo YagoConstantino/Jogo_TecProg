@@ -50,7 +50,6 @@ Jogo::~Jogo()
 	{
 		delete _jogador2;
 	}
-
 	if (_GerenciadorGrafico)
 	{
 		delete _GerenciadorGrafico;
@@ -63,10 +62,12 @@ Jogo::~Jogo()
 	{
 		delete _florest;
 	}
-	if (_menu) {
+	if (_menu)
+	{
 		delete _menu;
 	}
-	if (_menuJogadores) {
+	if (_menuJogadores)
+	{
 		delete _menuJogadores;
 	}
 	if (_menuFases) {
@@ -156,9 +157,10 @@ void Jogo::executar()
 		}
 	}
 }
+
 bool Jogo::criarJogador1(string nome)
 {
-	if (!_jogador1)
+	if (_jogador1 == nullptr)
 	{
 		_jogador1 = new Entidades::Jogador(0, 0, _GerenciadorGrafico, nome);
 		if (_jogador1)
@@ -174,7 +176,7 @@ bool Jogo::criarJogador1(string nome)
 
 bool Jogo::criarJogador2(string nome)
 {
-	if (!_jogador2)
+	if (_jogador2 == nullptr)
 	{
 		_jogador2 = new Entidades::Jogador(30, 0, _GerenciadorGrafico, nome);
 		if (_jogador2) 
@@ -253,7 +255,8 @@ void Jogo::criaMenuJogadores()
 		}
 
 		// Cria o estado atual
-		_menuJogadores = new MenuJogadores(_GerenciadorGrafico);
+		deletarJogadores();
+		_menuJogadores = new MenuJogadores(this, _GerenciadorGrafico);
 	}
 }
 
@@ -324,6 +327,18 @@ void Jogo::JogarMenuJogadores()
 void Jogo::JogarTelaFimDeJogo()
 {
 	_telaFimDeJogo->executar();
+}
+
+void Jogo::deletarJogadores()
+{
+	if (_jogador1 != nullptr) {
+		delete _jogador1;
+		_jogador1 = nullptr;
+	}
+	if (_jogador2 != nullptr) {
+		delete _jogador2;
+		_jogador2 = nullptr;
+	}
 }
 
 

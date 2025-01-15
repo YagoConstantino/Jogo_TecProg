@@ -14,6 +14,7 @@ class Jogo
 private:
 	Entidades::Jogador* _jogador1;
 	Entidades::Jogador* _jogador2;
+
 	Gerenciadores::Gerenciador_Grafico* _GerenciadorGrafico;
 	Menu* _menu;
 	MenuJogadores* _menuJogadores;
@@ -42,6 +43,8 @@ public:
 	void JogarMenuFases();
 	void JogarMenuJogadores();
 	void JogarTelaFimDeJogo();
+
+	void deletarJogadores();
 
 	void executar();
 

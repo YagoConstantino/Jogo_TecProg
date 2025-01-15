@@ -4,8 +4,12 @@
 #include "Ente.h"
 #include "Gerenciador_Grafico.h"
 
+class Jogo;
+
 class MenuJogadores : public Entidades::Ente {
 private:
+	Jogo* _jogo;
+	
 	bool _mudouEstado;
 
 	sf::Mouse _mouse;
@@ -38,7 +42,7 @@ private:
 
 
 public:
-	MenuJogadores(Gerenciadores::Gerenciador_Grafico* pGraf = nullptr);
+	MenuJogadores(Jogo* jogo = nullptr, Gerenciadores::Gerenciador_Grafico* pGraf = nullptr);
 	~MenuJogadores();
 
 	void carregarFonte();

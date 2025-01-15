@@ -3,7 +3,7 @@
 
 #define TAMANHO_BOTOES 50
 
-MenuJogadores::MenuJogadores(Gerenciadores::Gerenciador_Grafico* pGraf) : Ente(pGraf), _mudouEstado(false), _estaDigitandoCaixa1(false), _estaDigitandoCaixa2(false), _primeiraVezCaixa1(true), _primeiraVezCaixa2(true)
+MenuJogadores::MenuJogadores(Jogo* jogo, Gerenciadores::Gerenciador_Grafico* pGraf) : Ente(pGraf), _jogo(jogo), _mudouEstado(false), _estaDigitandoCaixa1(false), _estaDigitandoCaixa2(false), _primeiraVezCaixa1(true), _primeiraVezCaixa2(true)
 {
 	carregarFonte();
 
@@ -288,15 +288,19 @@ void MenuJogadores::executarConfirmaNomes()
 	if (!_nome1.empty() && !_primeiraVezCaixa1)
 	{
 		// Entra no menu de fases
-		Jogo::mudarStateNum(13);
-		_mudouEstado = true;
+		if (_jogo->criarJogador1(_nome1)) {
+			Jogo::mudarStateNum(13);
+			_mudouEstado = true;
+		}
 	}
 	// Verifica se o nome do jogador 2 nao foi preenchido
 	if (!_nome2.empty() && !_primeiraVezCaixa2)
 	{
 		// Entra no menu de fases
-		Jogo::mudarStateNum(13);
-		_mudouEstado = true;
+		if (_jogo->criarJogador2(_nome2)) {
+			Jogo::mudarStateNum(13);
+			_mudouEstado = true;
+		}
 	}
 }
 
