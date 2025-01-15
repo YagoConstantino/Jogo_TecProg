@@ -28,6 +28,7 @@
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="TelaFimDeJogo.cpp" />
+    <ClCompile Include="MenuJogadores.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Castelo.h" />
@@ -59,6 +60,7 @@
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Thread.h" />
     <ClInclude Include="TelaFimDeJogo.h" />
+    <ClInclude Include="MenuJogadores.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\menu\floresta.png" />

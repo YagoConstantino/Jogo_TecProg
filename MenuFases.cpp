@@ -3,12 +3,11 @@
 
 #define TAMANHO_BOTOES 50
 
-MenuFases::MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _mudouEstado(false), _faseFloresta(false), _faseCastelo(false), _umJog(false), _doisJog(false), _confirmaFase(false), _estaDigitandoCaixa1(false), _estaDigitandoCaixa2(false), _confirmaNomes(false), _primeiraVezCaixa1(true), _primeiraVezCaixa2(true), _retangulos(), _textos(), sizeRetangulos(0), sizeTextos(0)
+MenuFases::MenuFases(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _mudouEstado(false), _faseFloresta(false), _faseCastelo(false), _retangulos(), _textos(), sizeRetangulos(0), sizeTextos(0)
 {
 	carregarFonte();
 	criaBackground();
-	criaMedadeEsquerda();
-	criaMedadeDireita();
+	criaResto();
 
 	carregarObjetos();
 }
@@ -54,11 +53,52 @@ void MenuFases::criaBackground()
 	);
 }
 
-void MenuFases::criaMedadeEsquerda()
+void MenuFases::criaResto()
 {
 	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+	sf::Vector2f posicao;
 
-	// ------ >> Cria imagem da fase floresta, 1
+	// ------ >> Cria texto Fases
+
+	_textoFases.setFont(_fonte);
+	_textoFases.setString("Selecione a fase:");
+	_textoFases.setCharacterSize(TAMANHO_BOTOES + 10);
+	_textoFases.setStyle(sf::Text::Style::Regular);
+	_textoFases.setFillColor(sf::Color::Black);
+
+	posicao.x = ((float)tamJanela.x / 2.f) - ((float)_textoFases.getGlobalBounds().width / 2.f);
+	posicao.y = (float)tamJanela.y / 10.f;
+
+	_textoFases.setPosition(posicao);
+
+	// ------ >> Cria o nome da fase Floresta
+
+	_nomeFaseFloresta.setFont(_fonte);
+	_nomeFaseFloresta.setString("A floresta");
+	_nomeFaseFloresta.setCharacterSize(TAMANHO_BOTOES);
+	_nomeFaseFloresta.setStyle(sf::Text::Style::Regular);
+	_nomeFaseFloresta.setFillColor(sf::Color::Black);
+
+	posicao.x = ((float)tamJanela.x / 3.f) - ((float)_nomeFaseFloresta.getGlobalBounds().width / 2.f);
+	posicao.y = (float)tamJanela.y / 10.f * 2.5f;
+
+	_nomeFaseFloresta.setPosition(posicao);
+
+	// ------ >> Cria o nome da fase Castelo
+
+	_nomeFaseCastelo.setFont(_fonte);
+	_nomeFaseCastelo.setString("O castelo");
+	_nomeFaseCastelo.setCharacterSize(TAMANHO_BOTOES);
+	_nomeFaseCastelo.setStyle(sf::Text::Style::Regular);
+	_nomeFaseCastelo.setFillColor(sf::Color::Black);
+
+	posicao.x = ((float)tamJanela.x / 3.f * 2.f) - ((float)_nomeFaseCastelo.getGlobalBounds().width / 2.f);
+	posicao.y = (float)tamJanela.y / 10.f * 2.5f;
+
+	_nomeFaseCastelo.setPosition(posicao);
+
+	// ------ >> Cria imagem da fase floresta
+
 	sf::Texture* textura1 = new sf::Texture();
 	if (!textura1->loadFromFile("assets/menu/floresta.png")) {
 		std::cerr << "Erro ao criar background menu fases.\n";
@@ -68,11 +108,11 @@ void MenuFases::criaMedadeEsquerda()
 	_imagemFaseFloresta.setTexture(textura1);
 	_imagemFaseFloresta.setScale(3.f, 3.f);
 
-	_imagemFaseFloresta.setPosition
-	(
-		(float)tamJanela.x / 12.f,
-		(float)tamJanela.y / 3.5f
-	);
+	posicao.x = _nomeFaseFloresta.getPosition().x + (float)_nomeFaseFloresta.getGlobalBounds().width / 2.f;
+	posicao.x -= (float)_imagemFaseFloresta.getGlobalBounds().width / 2.f;
+	posicao.y = _nomeFaseFloresta.getPosition().y + (float)_nomeFaseFloresta.getGlobalBounds().height * 3.f;
+
+	_imagemFaseFloresta.setPosition(posicao);
 
 	// ------ >> Cria imagem da fase 2
 	
@@ -85,62 +125,11 @@ void MenuFases::criaMedadeEsquerda()
 	_imagemFaseCastelo.setTexture(textura2);
 	_imagemFaseCastelo.setScale(3.f, 3.f);
 
-	_imagemFaseCastelo.setPosition
-	(
-		_imagemFaseCastelo.getPosition().x + _imagemFaseCastelo.getGlobalBounds().width + (float)tamJanela.x / 10.f,
-		(float)tamJanela.y / 3.5f
-	);
+	posicao.x = _nomeFaseCastelo.getPosition().x + (float)_nomeFaseCastelo.getGlobalBounds().width / 2.f;
+	posicao.x -= (float)_imagemFaseCastelo.getGlobalBounds().width / 2.f;
+	posicao.y = _nomeFaseCastelo.getPosition().y + (float)_nomeFaseCastelo.getGlobalBounds().height * 3.f;
 
-	// ------ >> Cria texto Fases
-
-	_textoFases.setFont(_fonte);
-	_textoFases.setString("Selecione a fase:");
-	_textoFases.setCharacterSize(TAMANHO_BOTOES + 10);
-	_textoFases.setStyle(sf::Text::Style::Regular);
-	_textoFases.setFillColor(sf::Color::Black);
-
-	float meioXImagemFase1 = _imagemFaseFloresta.getPosition().x + (float)_imagemFaseFloresta.getGlobalBounds().width / 2.f;
-	float meioXImagemFase2 = _imagemFaseCastelo.getPosition().x + (float)_imagemFaseCastelo.getGlobalBounds().width / 2.f;
-	float meioXTextoFases = (meioXImagemFase1 + meioXImagemFase2) / 2.f;
-	meioXTextoFases -= (float)_textoFases.getGlobalBounds().width / 2.f;
-
-	_textoFases.setPosition
-	(
-		meioXTextoFases,
-		(float)tamJanela.y / 7.5f
-	);
-
-	// ------ >> Cria o nome da fase Floresta
-
-	_nomeFaseFloresta.setFont(_fonte);
-	_nomeFaseFloresta.setString("A floresta");
-	_nomeFaseFloresta.setCharacterSize(TAMANHO_BOTOES);
-	_nomeFaseFloresta.setStyle(sf::Text::Style::Regular);
-	_nomeFaseFloresta.setFillColor(sf::Color::Black);
-
-	float meioXNomeFase1 = meioXImagemFase1 - (float)_nomeFaseFloresta.getGlobalBounds().width / 2.f;
-
-	_nomeFaseFloresta.setPosition
-	(
-		meioXNomeFase1,
-		_imagemFaseFloresta.getPosition().y - (float)_nomeFaseFloresta.getGlobalBounds().height * 1.85f
-	);
-
-	// ------ >> Cria o nome da fase 2
-
-	_nomeFaseCastelo.setFont(_fonte);
-	_nomeFaseCastelo.setString("O castelo");
-	_nomeFaseCastelo.setCharacterSize(TAMANHO_BOTOES);
-	_nomeFaseCastelo.setStyle(sf::Text::Style::Regular);
-	_nomeFaseCastelo.setFillColor(sf::Color::Black);
-
-	float meioXNomeFase2 = meioXImagemFase2 - (float)_nomeFaseCastelo.getGlobalBounds().width / 2.f;
-
-	_nomeFaseCastelo.setPosition
-	(
-		meioXNomeFase2,
-		_imagemFaseCastelo.getPosition().y - (float)_nomeFaseCastelo.getGlobalBounds().height * 1.85f
-	);
+	_imagemFaseCastelo.setPosition(posicao);
 
 	// ------ >> Cria botao para confirmar a seleção da fase
 
@@ -150,125 +139,10 @@ void MenuFases::criaMedadeEsquerda()
 	_botaoConfirmaFase.setStyle(sf::Text::Style::Regular);
 	_botaoConfirmaFase.setFillColor(sf::Color::Black);
 
-	sf::Vector2f posicaoFase1 = _imagemFaseFloresta.getPosition();
-	sf::Vector2f posicaoFase2 = _imagemFaseCastelo.getPosition();
-	sf::Vector2f posicaoBotao;
-	posicaoBotao.x = (posicaoFase1.x + posicaoFase2.x) / 2.f;
-	posicaoBotao.y = (posicaoFase1.y + _imagemFaseFloresta.getGlobalBounds().height) + (float)tamJanela.y / 10.f;
+	posicao.x = ((float)tamJanela.x / 2.f) - ((float)_botaoConfirmaFase.getGlobalBounds().width / 2.f);
+	posicao.y = tamJanela.y / 10.f * 8.f;
 
-	_botaoConfirmaFase.setPosition(posicaoBotao);
-}
-
-void MenuFases::criaMedadeDireita()
-{
-	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
-	sf::Color cor(192, 192, 192);
-
-	// ------ >> Cria o botao do dois jogador
-	
-	sf::Color cor2(0, 0, 0);
-
-	_botaoDoisJog.setFont(_fonte);
-	_botaoDoisJog.setString("Dois jogadores");
-	_botaoDoisJog.setCharacterSize(TAMANHO_BOTOES);
-	_botaoDoisJog.setStyle(sf::Text::Style::Regular);
-	_botaoDoisJog.setFillColor(cor2);
-
-	_botaoDoisJog.setPosition
-	(
-		((float)tamJanela.x - (float)tamJanela.x / 12.f) - (float)_botaoDoisJog.getGlobalBounds().width,
-		_nomeFaseCastelo.getPosition().y
-	);
-
-	// ------ >> Cria o botao do um jogador
-
-	_botaoUmJog.setFont(_fonte);
-	_botaoUmJog.setString("Um jogador");
-	_botaoUmJog.setCharacterSize(TAMANHO_BOTOES);
-	_botaoUmJog.setStyle(sf::Text::Style::Regular);
-	_botaoUmJog.setFillColor(cor2);
-
-	_botaoUmJog.setPosition
-	(
-		_botaoDoisJog.getPosition().x - ((float)tamJanela.x / 10.f) - _botaoUmJog.getGlobalBounds().width,
-		_nomeFaseCastelo.getPosition().y
-	);
-
-	// ------ >> Cria o titulo dos botoes
-
-	_textoJogadores.setFont(_fonte);
-	_textoJogadores.setString("Número de jogadores:");
-	_textoJogadores.setCharacterSize(TAMANHO_BOTOES + 10);
-	_textoJogadores.setStyle(sf::Text::Style::Regular);
-	_textoJogadores.setFillColor(sf::Color::Black);
-
-	float meioXBotaoUmJog = _botaoUmJog.getPosition().x + (float)_botaoUmJog.getGlobalBounds().width / 2.f;
-	float meioXBotaoDoisJog = _botaoDoisJog.getPosition().x + (float)_botaoDoisJog.getGlobalBounds().width / 2.f;
-	float meioXTextoJogadores = (meioXBotaoUmJog + meioXBotaoDoisJog) / 2.f;
-	meioXTextoJogadores -= (float)_textoJogadores.getGlobalBounds().width / 2.f;
-
-	_textoJogadores.setPosition
-	(
-		meioXTextoJogadores,
-		_textoFases.getPosition().y
-	);
-
-	// ------ >> Cria as caixas de texto
-
-	sf::FloatRect tamBotaoDoisJog = _botaoDoisJog.getGlobalBounds();
-	sf::Vector2f tamCaixaTexto2;
-	tamCaixaTexto2.x = (float)tamBotaoDoisJog.width;
-	tamCaixaTexto2.y = (float)tamBotaoDoisJog.height;
-
-	_caixaTexto2.setSize(tamCaixaTexto2);
-	_caixaTexto2.setFillColor(cor);
-	_caixaTexto2.setPosition
-	(
-		_botaoDoisJog.getPosition().x,
-		_botaoDoisJog.getPosition().y + tamBotaoDoisJog.height * 2.f
-	);
-
-	_nomeJog2.setFont(_fonte);
-	_nomeJog2.setString("Nome jogador 2:");
-	_nomeJog2.setCharacterSize(TAMANHO_BOTOES - 10);
-	_nomeJog2.setStyle(sf::Text::Style::Regular);
-	_nomeJog2.setFillColor(sf::Color::Black);
-
-	_nomeJog2.setPosition(_caixaTexto2.getPosition().x + 5.f, _caixaTexto2.getPosition().y - 8.f);
-
-	_caixaTexto1.setSize(_caixaTexto2.getSize());
-	_caixaTexto1.setFillColor(cor);
-	_caixaTexto1.setPosition
-	(
-		_botaoUmJog.getPosition().x + (_botaoUmJog.getGlobalBounds().width / 2.f) - (_caixaTexto1.getGlobalBounds().width / 2.f),
-		_caixaTexto2.getPosition().y
-	);
-
-	_nomeJog1.setFont(_fonte);
-	_nomeJog1.setString("Nome jogador 1:");
-	_nomeJog1.setCharacterSize(TAMANHO_BOTOES - 10);
-	_nomeJog1.setStyle(sf::Text::Style::Regular);
-	_nomeJog1.setFillColor(sf::Color::Black);
-
-	_nomeJog1.setPosition(_caixaTexto1.getPosition().x + 5.f, _caixaTexto1.getPosition().y - 8.f);
-
-	// ------ >> Cria o botao de confirma nomes
-
-	_botaoConfirmaNomes.setFont(_fonte);
-	_botaoConfirmaNomes.setString("Confirmar nome(s)");
-	_botaoConfirmaNomes.setCharacterSize(TAMANHO_BOTOES);
-	_botaoConfirmaNomes.setStyle(sf::Text::Style::Regular);
-	_botaoConfirmaNomes.setFillColor(sf::Color::Black);
-
-	float meioXCaixaTexto1 = _caixaTexto1.getPosition().x + ((float)_caixaTexto1.getGlobalBounds().width / 2.f);
-	float meioXCaixaTexto2 = _caixaTexto2.getPosition().x + ((float)_caixaTexto2.getGlobalBounds().width / 2.f);
-	float meioXCaixas = (meioXCaixaTexto1 + meioXCaixaTexto2) / 2.f;
-
-	_botaoConfirmaNomes.setPosition
-	(
-		meioXCaixas - _botaoConfirmaNomes.getGlobalBounds().width / 2.f,
-		_botaoConfirmaFase.getPosition().y
-	);
+	_botaoConfirmaFase.setPosition(posicao);
 }
 
 // Preenche o vetor de objetos interagiveis com os seus respectivos metodos
@@ -293,36 +167,6 @@ void MenuFases::carregarObjetos()
 	(
 		&_botaoConfirmaFase,
 		[this]() { executarConfirmaFase(); }
-	);
-
-	_textos.emplace_back
-	(
-		&_botaoUmJog,
-		[this]() { executarUmJog(); }
-	);
-
-	_textos.emplace_back
-	(
-		&_botaoDoisJog,
-		[this]() { executarDoisJog(); }
-	);
-
-	_retangulos.emplace_back
-	(
-		&_caixaTexto1,
-		[this]() { executarCaixaTexto1(); }
-	);
-
-	_retangulos.emplace_back
-	(
-		&_caixaTexto2,
-		[this]() { executarCaixaTexto2(); }
-	);
-
-	_textos.emplace_back
-	(
-		&_botaoConfirmaNomes,
-		[this]() { executarConfirmaNomes(); }
 	);
 
 	sizeRetangulos = static_cast<int>(_retangulos.size());
@@ -351,30 +195,6 @@ void MenuFases::verificarCliques()
 	for (int i = 0; i < _textos.size(); i++) {
 		if (_textos[i].first != nullptr && _textos[i].first->getGlobalBounds().contains(posicaoMouse)) {
 			_textos[i].second();
-		}
-	}
-}
-
-void MenuFases::verificarConfirma()
-{
-	// Verifico se os dois confirmas foram clicados
-	if (_confirmaFase && _confirmaNomes) {
-		// Mudo o estado e levo para a fase escolhida
-		if (_faseFloresta) {
-			_mudouEstado = true;
-			Jogo::mudarStateNum(20);
-		}
-		else if (_faseCastelo) {
-			_mudouEstado = true;
-			Jogo::mudarStateNum(21);
-		}
-
-		// Salvo o(s) nome(s) do(s) jogadore(s)
-		if (_doisJog) {
-
-		}
-		else if (_umJog) {
-
 		}
 	}
 }
@@ -421,10 +241,6 @@ void MenuFases::desenhar()
 	_pGraf->getWindow()->draw(_textoFases);
 	_pGraf->getWindow()->draw(_nomeFaseFloresta);
 	_pGraf->getWindow()->draw(_nomeFaseCastelo);
-	_pGraf->getWindow()->draw(_textoJogadores);
-	_pGraf->getWindow()->draw(_nomeJog1);
-	_pGraf->getWindow()->draw(_nomeJog2);
-	
 }
 
 void MenuFases::executar()
@@ -433,7 +249,7 @@ void MenuFases::executar()
 		sf::Event event;
 		while (_pGraf->getWindow()->pollEvent(event)) {
 			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-				Jogo::mudarStateNum(10);
+				Jogo::mudarStateNum(11);
 				_mudouEstado = true;
 			}
 		}
@@ -442,7 +258,6 @@ void MenuFases::executar()
 
 		desenhar();
 		verificarCliques();
-		verificarConfirma();
 
 		_pGraf->display();
 	}
@@ -450,7 +265,7 @@ void MenuFases::executar()
 
 void MenuFases::executarFaseFloresta()
 {
-	if (!_faseFloresta && !_confirmaFase) {
+	if (!_faseFloresta) {
 		// Destaco a imagem clicada
 		_faseFloresta = true;
 		destacar(&_imagemFaseFloresta);
@@ -463,7 +278,7 @@ void MenuFases::executarFaseFloresta()
 
 void MenuFases::executarFaseCastelo()
 {
-	if (!_faseCastelo && !_confirmaFase) {
+	if (!_faseCastelo) {
 		// Destaco a imagem clicada
 		_faseCastelo = true;
 		destacar(&_imagemFaseCastelo);
@@ -476,170 +291,12 @@ void MenuFases::executarFaseCastelo()
 
 void MenuFases::executarConfirmaFase()
 {
-	if (_faseFloresta || _faseCastelo) {
-		if (!_confirmaFase) {
-			_confirmaFase = true;
-			destacar(&_botaoConfirmaFase);
-		}
+	if (_faseFloresta) {
+		Jogo::mudarStateNum(20);
+		_mudouEstado = true;
 	}
-	else {
-		padronizar(&_botaoConfirmaFase);
-	}
-}
-
-void MenuFases::executarUmJog()
-{
-	if (!_umJog && !_confirmaNomes) {
-		// Destaco o botao "um jogador"
-		_umJog = true;
-		destacar(&_botaoUmJog);
-
-		// Padronizo o botao "dois jogadores"
-		_doisJog = false;
-		padronizar(&_botaoDoisJog);
-	}
-}
-
-void MenuFases::executarDoisJog()
-{
-	if (!_doisJog && !_confirmaNomes) {
-		// Destaco o botao "dois jogadores"
-		_doisJog = true;
-		destacar(&_botaoDoisJog);
-
-		// Padronizo o botao "um jogador"
-		_umJog = false;
-		padronizar(&_botaoUmJog);
-	}
-}
-
-void MenuFases::executarCaixaTexto1()
-{	
-	if (!(_umJog ^ _doisJog) || _confirmaNomes) return;
-
-	if (_primeiraVezCaixa1) {
-		_primeiraVezCaixa1 = false;
-		_nomeJog1.setString("");
-	}
-
-	destacar(&_caixaTexto1);
-
-	_estaDigitandoCaixa1 = true;
-
-	sf::Event event;
-	while (_estaDigitandoCaixa1) {
-		while (_pGraf->getWindow()->pollEvent(event)) {
-			// Detecta se o usuário pressionou Enter ou Escape
-			if 
-			(
-				event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::Enter || event.key.code == sf::Keyboard::Escape)
-			) 
-			{
-				_estaDigitandoCaixa1 = false; // Sai do modo de digitação
-			}
-
-			// Captura o texto digitado
-			if (event.type == sf::Event::TextEntered) {
-				if (event.text.unicode < 32) { // Casos específicos
-					if (event.text.unicode == 8 && _nome1.size() > 0)
-						// Apaga o ultimo caracter
-						_nome1.pop_back();
-				}
-				else if (event.text.unicode < 128 && _nome1.size() < 9) { // Caso geral
-					_nome1 += static_cast<char>(event.text.unicode);
-				}
-				_nomeJog1.setString(_nome1);
-			}
-		}
-		_pGraf->clear();
-
-		desenhar();
-
-		_pGraf->display();
-	}
-
-	padronizar(&_caixaTexto1);
-}
-
-void MenuFases::executarCaixaTexto2()
-{
-	if (!_doisJog || _confirmaNomes) return;
-
-	if (_primeiraVezCaixa2) {
-		_primeiraVezCaixa2 = false;
-		_nomeJog2.setString("");
-	}
-
-	destacar(&_caixaTexto2);
-
-	_estaDigitandoCaixa2 = true;
-
-	sf::Event event;
-	while (_estaDigitandoCaixa2) {
-		while (_pGraf->getWindow()->pollEvent(event)) {
-			// Detecta se o usuário pressionou Enter ou Escape
-			if
-			(
-				event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::Enter || event.key.code == sf::Keyboard::Escape)
-			)
-			{
-				_estaDigitandoCaixa2 = false; // Sai do modo de digitação
-			}
-
-			// Captura o texto digitado
-			if (event.type == sf::Event::TextEntered) {
-				if (event.text.unicode < 32) { // Casos específicos
-					if (event.text.unicode == 8 && _nome2.size() > 0)
-						// Apaga o ultimo caracter
-						_nome2.pop_back();
-				}
-				else if (event.text.unicode < 128 && _nome2.size() < 9) { // Caso geral
-					_nome2 += static_cast<char>(event.text.unicode);
-				}
-				_nomeJog2.setString(_nome2);
-			}
-		}
-		_pGraf->clear();
-
-		desenhar();
-
-		_pGraf->display();
-	}
-
-	padronizar(&_caixaTexto2);
-}
-
-void MenuFases::executarConfirmaNomes()
-{
-	if (_doisJog) {
-		// Verifica se o botao ja foi clicado uma vez
-		// Verifica se um dos dois nomes não foi preenchido
-		// Verifica se o nome ja existe
-		if 
-		(
-			!_confirmaNomes &&
-			!_nome1.empty() && !_nome2.empty() && !_primeiraVezCaixa1 && !_primeiraVezCaixa2
-		)
-		{
-			_confirmaNomes = true;
-			destacar(&_botaoConfirmaNomes);
-		}
-	}
-	else if (_umJog) {
-		// Verifica se o botao ja foi clicado uma vez
-		// Verifica se o nome não foi preenchido
-		// Verifica se o nome ja existe
-		if
-		(
-			!_confirmaNomes &&
-			!_nome1.empty() && !_primeiraVezCaixa1
-		)
-		{
-			_confirmaNomes = true;
-			destacar(&_botaoConfirmaNomes);
-		}
-	}
-	else {
-		padronizar(&_botaoConfirmaNomes);
+	else if (_faseCastelo) {
+		Jogo::mudarStateNum(21);
+		_mudouEstado = true;
 	}
 }

@@ -1,24 +1,29 @@
 #include "Jogo.h"
 #include <iostream>
 
-// EST�TICOS
+// ESTATICOS
 
 /*
-	StateNum � uma variavel que permite o fluxo de diferentes estados no jogo
+	StateNum eh uma variavel que permite o fluxo de diferentes estados no jogo
 	Tipos de stateNum's:
 
+	--- > MENUS
 	10 - menu
-	11 - menu de fases
-	12 - menu de ranking (exemplo)
+	11 - menu de jogadores
+	12 - menu de ranking
+	13 - menu de fases
+
+	--- > FASES
 	20 - fase 1, floresta
 	21 - fase 2, castelo
+
+	-- > EXTRAS
 	30 - tela de fim de jogo
 */
 
 int Jogo::stateNum = 10;
 
 void Jogo::mudarStateNum(int state) { stateNum = state; }
-
 
 // DEMAIS
 
@@ -30,6 +35,7 @@ Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
 	_castelo = nullptr;
 	_florest = nullptr;
 	_menu = nullptr;
+	_menuJogadores = nullptr;
 	_menuFases = nullptr;
 	_telaFimDeJogo = nullptr;
 }
@@ -60,6 +66,9 @@ Jogo::~Jogo()
 	if (_menu) {
 		delete _menu;
 	}
+	if (_menuJogadores) {
+		delete _menuJogadores;
+	}
 	if (_menuFases) {
 		delete _menuFases;
 	}
@@ -79,6 +88,7 @@ Jogo::~Jogo()
 	_menu = nullptr;
 	rank = nullptr;
 	_telaFimDeJogo = nullptr;
+	_menuJogadores = nullptr;
 }
 
 void Jogo::executar()
@@ -100,15 +110,20 @@ void Jogo::executar()
 			JogarMenu();
 			break;
 
-			// Cria o menu de fases
+			// Cria o menu de jogadores
 		case 11:
-			criaMenuFases();
-			JogarMenuFases();
+			criaMenuJogadores();
+			JogarMenuJogadores();
 			break;
 
 			// Cria o menu de ranking
 		case 12:
 
+			break;
+
+		case 13: // Cria o menu de jogadores
+			criaMenuFases();
+			JogarMenuFases();
 			break;
 
 			// Cria a fase 1, floresta
@@ -153,7 +168,7 @@ bool Jogo::criarJogador1(string nome)
 		}
 		return false;
 	}
-	cerr << "Jogador1 j� existente\n";
+	cerr << "Jogador1 ja existente\n";
 	return false;
 }
 
@@ -169,10 +184,9 @@ bool Jogo::criarJogador2(string nome)
 		};
 		return false;
 	}
-	cerr << "Jogador2 j� existente\n";
+	cerr << "Jogador2 ja existente\n";
 	return false;
 }
-
 
 void Jogo::JogarCastelo()
 {
@@ -183,8 +197,6 @@ void Jogo::JogarFloresta()
 {
 	_florest->executar();
 }
-
-
 
 void Jogo::criaMenu() 
 {
@@ -200,9 +212,9 @@ void Jogo::criaMenu()
 			delete _castelo;
 			_castelo = nullptr;
 		}
-		else if (_menuFases != nullptr) {
-			delete _menuFases;
-			_menuFases = nullptr;
+		else if (_menuJogadores != nullptr) {
+			delete _menuJogadores;
+			_menuJogadores = nullptr;
 		}
 		else if (_telaFimDeJogo != nullptr) {
 			delete _telaFimDeJogo;
@@ -217,12 +229,31 @@ void Jogo::criaMenuFases()
 {
 	if (_menuFases == nullptr) {
 		// Destroi o estado anterior
+		if (_menuJogadores != nullptr) {
+			delete _menuJogadores;
+			_menuJogadores = nullptr;
+		}
+
+		// Cria o estado atual
+		_menuFases = new MenuFases(_GerenciadorGrafico);
+	}
+}
+
+void Jogo::criaMenuJogadores()
+{
+	if (_menuJogadores == nullptr) {
+		// Destroi o estado anterior
 		if (_menu != nullptr) {
 			delete _menu;
 			_menu = nullptr;
 		}
+		else if (_menuFases != nullptr) {
+			delete _menuFases;
+			_menuFases = nullptr;
+		}
 
-		_menuFases = new MenuFases(_GerenciadorGrafico);
+		// Cria o estado atual
+		_menuJogadores = new MenuJogadores(_GerenciadorGrafico);
 	}
 }
 
@@ -283,6 +314,11 @@ void Jogo::JogarMenu()
 void Jogo::JogarMenuFases()
 {
 	_menuFases->executar();
+}
+
+void Jogo::JogarMenuJogadores()
+{
+	_menuJogadores->executar();
 }
 
 void Jogo::JogarTelaFimDeJogo()

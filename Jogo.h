@@ -5,6 +5,7 @@
 #include "Castelo.h"
 #include "Menu.h"
 #include "MenuFases.h"
+#include "MenuJogadores.h"
 #include "Ranking.h"
 #include "TelaFimDeJogo.h"
 
@@ -15,6 +16,7 @@ private:
 	Entidades::Jogador* _jogador2;
 	Gerenciadores::Gerenciador_Grafico* _GerenciadorGrafico;
 	Menu* _menu;
+	MenuJogadores* _menuJogadores;
 	MenuFases* _menuFases;
 	Fases::Floresta* _florest;
 	Fases::Castelo* _castelo;
@@ -31,12 +33,14 @@ public:
 	void criaFloresta();
 	void criaMenu();
 	void criaMenuFases();
+	void criaMenuJogadores();
 	void criaTelaFimDeJogo();
 
 	void JogarCastelo();
 	void JogarFloresta();
 	void JogarMenu();
 	void JogarMenuFases();
+	void JogarMenuJogadores();
 	void JogarTelaFimDeJogo();
 
 	void executar();

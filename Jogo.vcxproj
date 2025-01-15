@@ -39,6 +39,7 @@
     <ClInclude Include="ListaTemplate.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuFases.h" />
+    <ClInclude Include="MenuJogadores.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Espinho.h" />
     <ClInclude Include="BarraMagica.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuFases.cpp" />
+    <ClCompile Include="MenuJogadores.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Espinho.cpp" />
     <ClCompile Include="BarraMagica.cpp" />
