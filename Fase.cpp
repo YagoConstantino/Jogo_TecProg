@@ -17,18 +17,21 @@ limitar ao ch�o, pois � at� o momento a unica parte que certamente vai ser
 */
 
 Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1,Entidades::Jogador*j2)
-	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false)
+	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false),
+	_hudJog1(nullptr),_hudJog2(nullptr)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
 	if (_jog1)
 	{
 		_GC->setJogador1(_jog1);
+		_hudJog1 = new Hud(_jog1);
 		
 	}
 	if (_jog2)
 	{
 		_GC->setJogador2(_jog2);
+		_hudJog2 = new Hud(_jog2);
 		
 	}
 	
@@ -44,6 +47,16 @@ Fases::Fase::~Fase()
 	{
 		_Lista->joinThread();
 		delete _Lista;
+	}
+	if (_hudJog1)
+	{
+		delete _hudJog1;
+		_hudJog1 = nullptr;
+	}
+	if (_hudJog2)
+	{
+		delete _hudJog2;
+		_hudJog2 = nullptr;
 	}
 		
 

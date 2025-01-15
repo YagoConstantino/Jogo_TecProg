@@ -26,11 +26,7 @@ Fases::Floresta::~Floresta()
         delete _Lista;
         _Lista = nullptr;
     }
-    if (_pTexture)
-    {
-        delete _pTexture;
-        _pTexture = nullptr;
-    }
+    
     //Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
     _GG = nullptr;
     _jog1 = nullptr;
@@ -152,11 +148,21 @@ void Fases::Floresta::executar()
         if (_jog1) 
         {
             _jog1->executar();
+            if (_hudJog1)
+            {
+                _hudJog1->executar();
+                _hudJog1->setContador(_jog1->getVidas());
+            }
            
         }
         if (_jog2)
         {
             _jog2->executar();
+            if (_hudJog2)
+            {
+                _hudJog2->executar();
+                _hudJog2->setContador(_jog2->getVidas());
+            }
            
         }
 

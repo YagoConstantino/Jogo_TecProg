@@ -61,7 +61,7 @@ namespace Entidades
 		void adicionarSword(const std::string& path);
 
 		void atacarInimigo(Entidades::Inimigo* enemy);
-
+		bool getEhJogador1()const;
 
 		void executar();
 		//void SalvarDataBuffer();
