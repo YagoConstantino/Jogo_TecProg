@@ -505,6 +505,14 @@ void Gerenciadores::Gerenciador_Colisoes::aplicarGravidade()
 		}
 	}
 
+	for (itProjetil = _listaProjetil.begin(); itProjetil != _listaProjetil.end(); ++itProjetil)
+	{
+		if (*itProjetil)
+		{
+			(*itProjetil)->sofrerGravidade(_gravidade);
+		}
+	}
+
 	if (_jogador1)
 	{
 		_jogador1->sofrerGravidade(_gravidade);

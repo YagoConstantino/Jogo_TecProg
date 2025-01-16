@@ -12,6 +12,7 @@ namespace Entidades
 		virtual ~Bruxa();
 
 		virtual void executar();
+	
 		//void SalvarDataBuffer();
 		virtual void mover();
 		virtual void danificar(Entidades::Jogador* pJog);

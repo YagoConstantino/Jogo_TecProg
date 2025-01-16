@@ -1,8 +1,8 @@
 #include "Castelo.h"
 #include "Jogo.h"
 
-Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog)
-	: Fase(pgra, jog), _maxMagos(4), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
+Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1, Entidades::Jogador* j2)
+	: Fase(pgra, j1,j2), _maxMagos(4), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
 	_platsBases(), _cavaleiros(), _magos(),_magosNaoCriados(true)
 {
 	_platsBases.clear();
@@ -11,17 +11,29 @@ Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jog
 	_cavaleiros.clear();
 	_magos.clear();
 
-	_GC->setJogador1(jog);
+	//_GC->setJogador1(j);
 
 	criarCenario();
 	criarObstaculos();
 	criarInimigos();
 
-	jog->setPosition
-	(
-		_pGraf->getWindow()->getSize().x / 10.f,
-		_platsBases[0]->getPosition().y - jog->getBody().getGlobalBounds().height
-	);
+	if (_jog1)
+	{
+		_jog1->setPosition
+		(
+			_pGraf->getWindow()->getSize().x / 10.f,
+			_platsBases[0]->getPosition().y - _jog1->getBody().getGlobalBounds().height
+		);
+	}
+	if (_jog2)
+	{
+		_jog2->setPosition
+		(
+			_pGraf->getWindow()->getSize().x / 9.f,
+			_platsBases[0]->getPosition().y - _jog2->getBody().getGlobalBounds().height
+		);
+	}
+	
 }
 
 Fases::Castelo::~Castelo()
@@ -248,7 +260,7 @@ void Fases::Castelo::criarMagos()
 	for (int i = 0; i < minMagos; i++) {
 		y = _platsCavaleiros[i]->getPosition().y - dimMago.y;
 
-		mago = new Entidades::Mago(x, y, _pGraf, _jog1);
+		mago = new Entidades::Mago(x, y, _pGraf, _jog1,_jog2);
 		projetil = new Entidades::Projetil(0.f, 0.f, _pGraf);
 
 		mago->setProjetil(projetil);
@@ -300,7 +312,28 @@ void Fases::Castelo::executar()
 
 		_GC->executar();
 		desenhar();
-		_jog1->executar();
+		
+		if (_jog1) 
+        {
+            _jog1->executar();
+            if (_hudJog1)
+            {
+                _hudJog1->executar();
+                _hudJog1->setContador(_jog1->getVidas());
+            }
+           
+        }
+		if (_jog2)
+		{
+			_jog2->executar();
+			if (_hudJog2)
+			{
+				_hudJog2->executar();
+				_hudJog2->setContador(_jog2->getVidas());
+			}
+			
+		}
+		
 		_Lista->executar();
 
 		verificarCavaleiros();

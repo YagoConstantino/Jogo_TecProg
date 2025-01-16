@@ -250,7 +250,7 @@ void Jogo::criaCastelo()
 		destroiEstadosAnteriores();
 
 		// Cria o estado atual
-		_castelo = new Fases::Castelo(_GerenciadorGrafico, _jogador1);
+		_castelo = new Fases::Castelo(_GerenciadorGrafico, _jogador1,_jogador2);
 	}
 }
 

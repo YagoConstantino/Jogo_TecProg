@@ -61,7 +61,7 @@ Fases::Fase::~Fase()
 		
 
 	//Seto como nulo os ponteiros para o Gerenciador gr�fico e jogador
-	_GG = nullptr;
+	//_GG = nullptr;
 	_jog1 = nullptr;
 	_jog2 = nullptr;
 

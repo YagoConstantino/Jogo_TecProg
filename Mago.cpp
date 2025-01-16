@@ -79,38 +79,58 @@ void Entidades::Mago::verificarVida() {
 
 void Entidades::Mago::mover() 
 {
-	// Define a direcao do inimigo
-	if (_pJog1->getPositionX() - getPositionX() < 0.f) 
-		_direcao = -1; // para a esquerda
-	else 
-		_direcao = 1;  // para a direita
+	Entidades::Jogador* jogadorAlvo = getJogadorMaisProximo();
+	if (jogadorAlvo) 
+	{
+		if ((jogadorAlvo->getPositionX() - getPositionX() < 0.f))
+			_direcao = -1;
+		else
+			_direcao = 1;
 
-	sf::Vector2f velocidadeAtual = _speed;
-	velocidadeAtual.x *= _direcao;
+		sf::Vector2f velocidadeAtual = _speed;
+		velocidadeAtual.x *= _direcao;
 
-	Position += velocidadeAtual;
-	_body.setPosition(Position);
+		Position += velocidadeAtual;
+		_body.setPosition(Position);
+	}
 }
 
 void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
+	
 	// Fora de alcance
 	if (getDistanciaInicioVector().x > 800.f) return;
 	
 	// Dentro do alcance para se mover
 	mover();
-
+	Entidades::Jogador* jogProximo = getJogadorMaisProximo();
 	// Dentro do alcance para atirar
-	if (getDistanciaJogador1() > _body.getGlobalBounds().width * 1.65f) {
-		atirar();
+	if (jogProximo == _pJog1)
+	{
+		if (getDistanciaJogador1() > _body.getGlobalBounds().width * 1.65f) {
+			atirar();
+		}
+		// Dentro do alcance para bater
+		else {
+			bater();
+		}
 	}
-	// Dentro do alcance para bater
-	else {
-		bater();
+	else
+	{
+		if (getDistanciaJogador2() > _body.getGlobalBounds().width * 1.65f) {
+			atirar();
+		}
+		// Dentro do alcance para bater
+		else {
+			bater();
+		}
 	}
+	
 }
 
 void Entidades::Mago::atirar() {
 	// Cria o projetil
+	Entidades::Jogador* jogadorProximo = getJogadorMaisProximo();
+
 	if (!_projetil->getLancar() && _segundosIntervaloPro > 3.f) {
 		// Zera o cronometro
 		_segundosIntervaloPro = 0.f;
@@ -119,10 +139,24 @@ void Entidades::Mago::atirar() {
 		_projetil->setPosition
 		(
 			getPositionX(),
-			_pJog1->getPositionY() + (_pJog1->getBody().getGlobalBounds().height / 4.f)
+			getPositionY()
 		);
 
-		_projetil->lancar(0.15f * _direcao, 0.f, getMaldade());
+		if (jogadorProximo == _pJog1) 
+		{
+			_projetil->lancar
+			(
+				0.20f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador1(), 0.005f, 0.20f) * -1, getMaldade()
+			);
+		}
+		else
+		{
+			_projetil->lancar
+			(
+				0.20f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador2(), 0.005f, 0.20f) * -1, getMaldade()
+			);
+		}
+		
 	}
 }
 

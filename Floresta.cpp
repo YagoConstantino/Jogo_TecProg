@@ -28,7 +28,7 @@ Fases::Floresta::~Floresta()
     }
     
     //Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
-    _GG = nullptr;
+   // _GG = nullptr;
     _jog1 = nullptr;
     _jog2 = nullptr;
 }

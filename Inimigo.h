@@ -33,6 +33,8 @@ namespace Entidades
 		double getDistanciaoInicio();
 		sf::Vector2f getDistanciaInicioVector();
 
+		Entidades::Jogador* getJogadorMaisProximo();
+
 		virtual void executar() = 0;
 		//void SalvarDataBuffer();
 		virtual void mover() = 0;

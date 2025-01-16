@@ -29,7 +29,7 @@ namespace Entidades {
 		const bool estaDentroDaJanela() const;
 		const bool tempoDeVooExcedido() const;
 		void resetar();
-
+		double calcularForcaY(double distancia, double gravidade, double forcaX);
 		void inverteLado();
 	};
 }

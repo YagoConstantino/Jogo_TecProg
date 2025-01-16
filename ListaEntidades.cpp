@@ -116,7 +116,11 @@ void Listas::ListaEntidades::joinThread()
         if (ente->getEhThread())
         {
             Entidades::BruxaThread* bruxaTH = static_cast<Entidades::BruxaThread*>(ente);
+            bruxaTH->lockMutex();
+            bruxaTH->setRodar(false);
+            bruxaTH->setVivo(false);
             bruxaTH->join();
+            bruxaTH->unlockMutex();
         }
     }
     delete it;

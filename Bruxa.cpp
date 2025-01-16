@@ -69,38 +69,11 @@ void Entidades::Bruxa::executar()
 	
 }
 
+
+
 void Entidades::Bruxa::mover()
 {
-	Entidades::Jogador* jogadorMaisProximo = nullptr;
-
-	double distanciaJog1 = -1;
-	double distanciaJog2 = -1;
-
-	if (_pJog1) distanciaJog1 = getDistanciaJogador1();
-	if (_pJog2) distanciaJog2 = getDistanciaJogador2();
-
-	if (_pJog1 != nullptr && _pJog2 != nullptr)
-	{
-		if (distanciaJog1 >= 0 && distanciaJog1 <= distanciaJog2)
-		{
-			jogadorMaisProximo = _pJog1;
-		}
-		else
-		{
-			jogadorMaisProximo = _pJog2;
-		}
-	}
-	else
-	{
-		if (_pJog1)
-		{
-			jogadorMaisProximo = _pJog1;
-		}
-		else if (_pJog2)
-		{
-			jogadorMaisProximo = _pJog2;
-		}
-	}
+	Entidades::Jogador* jogadorMaisProximo = getJogadorMaisProximo();
 
 	if (jogadorMaisProximo != nullptr)
 	{

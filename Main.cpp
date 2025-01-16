@@ -27,7 +27,7 @@ int main()
 
     Jogo* principal = new Jogo();
     principal->criarJogador1("Yago");
-    //principal->criarJogador2("Gabriel");
+    principal->criarJogador2("Gabriel");
     principal->executar();
 
     return 0;

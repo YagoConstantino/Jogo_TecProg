@@ -27,7 +27,7 @@ namespace Fases {
 		std::vector<Entidades::Mago*> _magos;
 
 	public:
-		Castelo(Gerenciadores::Gerenciador_Grafico* pgra = nullptr, Entidades::Jogador* jog = nullptr);
+		Castelo(Gerenciadores::Gerenciador_Grafico* pgra = nullptr, Entidades::Jogador* j1 = nullptr, Entidades::Jogador* j2 = nullptr);
 		~Castelo();
 
 		void criarCenario();
