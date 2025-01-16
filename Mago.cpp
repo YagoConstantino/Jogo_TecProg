@@ -165,10 +165,22 @@ void Entidades::Mago::bater()
 	if (_segundos > 0.5f) 
 	{
 		_segundos = 0;
+		Entidades::Jogador* jogProximo = getJogadorMaisProximo();
 
-		_pJog1->operator--(3);
+		if (jogProximo == _pJog1)
+		{
+			_pJog1->operator--(3);
 
-		_pJog1->knockBack(this);
+			_pJog1->knockBack(this);
+		}
+		else
+		{
+			_pJog2->operator--(3);
+
+			_pJog2->knockBack(this);
+		}
+			
+		
 	}
 }
 
