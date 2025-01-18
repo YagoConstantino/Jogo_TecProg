@@ -119,6 +119,7 @@ Entidades::Jogador* Entidades::Inimigo::getJogadorMaisProximo()
 			return  _pJog2;
 		}
 	}
+	return nullptr;
 }
 
 

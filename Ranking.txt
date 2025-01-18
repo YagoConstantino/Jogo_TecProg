@@ -1,5 +1,5 @@
 Player1 2442
-Yago 690
+Yago 708
 Gabriel 650
 Player2 327
 Player4 104
