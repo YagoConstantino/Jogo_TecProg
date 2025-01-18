@@ -29,6 +29,75 @@
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="TelaFimDeJogo.cpp" />
     <ClCompile Include="MenuJogadores.cpp" />
+    <ClCompile Include="BarraMagica.cpp">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Bruxa.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="BruxaThread.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Castelo.cpp">
+      <Filter>Fases</Filter>
+    </ClCompile>
+    <ClCompile Include="Cavaleiro.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Ente.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Entidade.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Espinho.cpp">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase.cpp">
+      <Filter>Fases</Filter>
+    </ClCompile>
+    <ClCompile Include="Floresta.cpp">
+      <Filter>Fases</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_colisoes.cpp">
+      <Filter>Gerenciadores</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerenciador_Grafico.cpp">
+      <Filter>Gerenciadores</Filter>
+    </ClCompile>
+    <ClCompile Include="Inimigo.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Jogador.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaEntidades.cpp">
+      <Filter>Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="Mago.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Personagem.cpp">
+      <Filter>Entidades\Personagens</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstaculo.cpp">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Plataforma.cpp">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClCompile>
+    <ClCompile Include="Projetil.cpp">
+      <Filter>Entidades</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuFases.cpp">
+      <Filter>Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart.cpp" />
+    <ClCompile Include="Hud.cpp" />
+    <ClCompile Include="MenuRanking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Castelo.h" />
@@ -61,6 +130,84 @@
     <ClInclude Include="Thread.h" />
     <ClInclude Include="TelaFimDeJogo.h" />
     <ClInclude Include="MenuJogadores.h" />
+    <ClInclude Include="BarraMagica.h">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Bruxa.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="BruxaThread.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Castelo.h">
+      <Filter>Fases</Filter>
+    </ClInclude>
+    <ClInclude Include="Cavaleiro.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Ente.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="Entidade.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="Espinho.h">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Fase.h">
+      <Filter>Fases</Filter>
+    </ClInclude>
+    <ClInclude Include="Floresta.h">
+      <Filter>Fases</Filter>
+    </ClInclude>
+    <ClInclude Include="Gerenciador_Colisoes.h">
+      <Filter>Gerenciadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Gerenciador_Grafico.h">
+      <Filter>Gerenciadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Inimigo.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Jogador.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Elemento.h">
+      <Filter>Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="Lista.h">
+      <Filter>Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaTemplate.h">
+      <Filter>Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaEntidades.h">
+      <Filter>Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="Mago.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Personagem.h">
+      <Filter>Entidades\Personagens</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstaculo.h">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Plataforma.h">
+      <Filter>Entidades\Obstaculos</Filter>
+    </ClInclude>
+    <ClInclude Include="Projetil.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFases.h">
+      <Filter>Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart.h" />
+    <ClInclude Include="Hud.h" />
+    <ClInclude Include="MenuRanking.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\menu\floresta.png" />

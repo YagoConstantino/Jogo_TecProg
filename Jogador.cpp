@@ -341,6 +341,11 @@ void Entidades::Jogador::atacarInimigo(Entidades::Inimigo* enemy)
 	}
 }
 
+bool Entidades::Jogador::getEhJogador1() const
+{
+	return _ehJogador1;
+}
+
 
 void Entidades::Jogador::executar()
 {

@@ -3,7 +3,7 @@
 // ------------------------------- PUBLIC ----------------------------------------------------
 
 Entidades::Projetil::Projetil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pGraf)
-	: Entidade(inicialX, inicialY, pGraf), _lancar(false), _dano(0), dt(0.f), _tempoMaxVoo(6.f){
+	: Entidade(inicialX, inicialY, pGraf), _lancar(false), _dano(0), dt(0.f), _tempoMaxVoo(12.f){
 
 	sf::Texture* textura = new sf::Texture();
 
@@ -31,7 +31,8 @@ Entidades::Projetil::~Projetil() {
 	_pTexture = nullptr;
 }
 
-void Entidades::Projetil::executar() {
+void Entidades::Projetil::executar() 
+{
 	if (_lancar) {
 		dt += _clock.restart().asSeconds();
 
@@ -43,7 +44,7 @@ void Entidades::Projetil::executar() {
 
 void Entidades::Projetil::mover() {
 	if (!tempoDeVooExcedido()) {
-		Position.x += getSpeedX();
+		Position += _speed;
 		_body.setPosition(Position);
 	}
 	else {
@@ -67,6 +68,18 @@ void Entidades::Projetil::resetar() {
 	dt = 0.f;
 	_lancar = false;
 	setPosition(0.f, 0.f);
+}
+
+double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, double forcaX)
+{
+	double tempo = distancia / forcaX;          // Tempo para alcançar a distância no eixo X
+	double forcaY = (tempo * gravidade) / 7.0f;    // Força em Y
+	return forcaY;
+	/*
+	Formula do tempo T = (2*Vy)/g
+
+	logo (T*g)/2 = Vy
+	*/
 }
 
 void Entidades::Projetil::inverteLado() {

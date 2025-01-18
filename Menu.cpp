@@ -4,11 +4,13 @@
 #define TAMANHO_TITULO 145
 #define TAMANHO_BOTOES 50
 
+using namespace Menus;
+
 /*
 	IMPORTANTE:
-	Botao Jogar é o 1
-	Botao Ranking é o 2
-	Botao Sair é o 3
+	Botao Jogar eh o 1
+	Botao Ranking eh o 2
+	Botao Sair eh o 3
 */
 
 Menu::Menu(Gerenciadores::Gerenciador_Grafico* _pGraf) : Entidades::Ente(_pGraf), _botoes(), _textosBotoes(), _mudouEstado(false)

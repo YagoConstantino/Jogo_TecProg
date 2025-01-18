@@ -3,6 +3,8 @@
 
 #define TAMANHO_BOTOES 50
 
+using namespace Menus;
+
 MenuJogadores::MenuJogadores(Jogo* jogo, Gerenciadores::Gerenciador_Grafico* pGraf) : Ente(pGraf), _jogo(jogo), _mudouEstado(false), _estaDigitandoCaixa1(false), _estaDigitandoCaixa2(false), _primeiraVezCaixa1(true), _primeiraVezCaixa2(true)
 {
 	carregarFonte();
@@ -204,18 +206,18 @@ void MenuJogadores::executarCaixaTexto1()
 	sf::Event event;
 	while (_estaDigitandoCaixa1) {
 		while (_pGraf->getWindow()->pollEvent(event)) {
-			// Detecta se o usuário pressionou Enter ou Escape
+			// Detecta se o usuï¿½rio pressionou Enter ou Escape
 			if
 			(
 				event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::Enter || event.key.code == sf::Keyboard::Escape)
 			)
 			{
-				_estaDigitandoCaixa1 = false; // Sai do modo de digitação
+				_estaDigitandoCaixa1 = false; // Sai do modo de digitaï¿½ï¿½o
 			}
 
 			// Captura o texto digitado
 			if (event.type == sf::Event::TextEntered) {
-				if (event.text.unicode < 32) { // Casos específicos
+				if (event.text.unicode < 32) { // Casos especï¿½ficos
 					if (event.text.unicode == 8 && _nome1.size() > 0)
 						// Apaga o ultimo caracter
 						_nome1.pop_back();
@@ -250,18 +252,18 @@ void MenuJogadores::executarCaixaTexto2()
 	sf::Event event;
 	while (_estaDigitandoCaixa2) {
 		while (_pGraf->getWindow()->pollEvent(event)) {
-			// Detecta se o usuário pressionou Enter ou Escape
+			// Detecta se o usuï¿½rio pressionou Enter ou Escape
 			if
 			(
 				event.type == sf::Event::KeyPressed && (event.key.code == sf::Keyboard::Enter || event.key.code == sf::Keyboard::Escape)
 			)
 			{
-				_estaDigitandoCaixa2 = false; // Sai do modo de digitação
+				_estaDigitandoCaixa2 = false; // Sai do modo de digitaï¿½ï¿½o
 			}
 
 			// Captura o texto digitado
 			if (event.type == sf::Event::TextEntered) {
-				if (event.text.unicode < 32) { // Casos específicos
+				if (event.text.unicode < 32) { // Casos especï¿½ficos
 					if (event.text.unicode == 8 && _nome2.size() > 0)
 						// Apaga o ultimo caracter
 						_nome2.pop_back();

@@ -87,5 +87,39 @@ sf::Vector2f Entidades::Inimigo::getDistanciaInicioVector()
 	return distancia;
 }
 
+Entidades::Jogador* Entidades::Inimigo::getJogadorMaisProximo()
+{
+	Entidades::Jogador* jogadorMaisProximo = nullptr;
+
+	double distanciaJog1 = -1;
+	double distanciaJog2 = -1;
+
+	if (_pJog1) distanciaJog1 = getDistanciaJogador1();
+	if (_pJog2) distanciaJog2 = getDistanciaJogador2();
+
+	if (_pJog1 != nullptr && _pJog2 != nullptr)
+	{
+		if (distanciaJog1 >= 0 && distanciaJog1 <= distanciaJog2)
+		{
+			return _pJog1;
+		}
+		else
+		{
+			return _pJog2;
+		}
+	}
+	else
+	{
+		if (_pJog1)
+		{
+			return _pJog1;
+		}
+		else if (_pJog2)
+		{
+			return  _pJog2;
+		}
+	}
+}
+
 
 

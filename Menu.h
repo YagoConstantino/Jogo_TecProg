@@ -8,46 +8,47 @@
 #include "Ente.h"
 #include "Gerenciador_Grafico.h"
 
+namespace Menus {
+	class Menu : public Entidades::Ente
+	{
+	private:
+		bool _mudouEstado;
 
-class Menu : public Entidades::Ente 
-{
-private:
-	bool _mudouEstado;
+		sf::Mouse _mouse;
+		bool _houveClique;
 
-	sf::Mouse _mouse;
-	bool _houveClique;
+		sf::Text _titulo;
 
-	sf::Text _titulo;
+		std::map<int, sf::Text> _botoes;
+		std::vector<std::string> _textosBotoes;
 
-	std::map<int, sf::Text> _botoes;
-	std::vector<std::string> _textosBotoes;
+		sf::Font _fonte;
 
-	sf::Font _fonte;
-
-	std::map<int, std::function<void()> > _funcoesBotoes;
+		std::map<int, std::function<void()> > _funcoesBotoes;
 
 
-public:
-	Menu(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr);
-	~Menu();
-	
-	void carregarFonte();
+	public:
+		Menu(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr);
+		~Menu();
 
-	void criarBotoes();
-	void criarTitulo();
-	void criarBackground();
-	
-	void verificarMouse();
-	void verificarMovimento();
+		void carregarFonte();
 
-	void destacarTexto(sf::Text& texto);
-	void reposicionarTexto(sf::Text& texto);
-	void padronizar(sf::Text& texto, int id);
+		void criarBotoes();
+		void criarTitulo();
+		void criarBackground();
 
-	void executarJogar();
-	void executarRanking();
-	void executarSair();
-	void desenharMenu();
+		void verificarMouse();
+		void verificarMovimento();
 
-	void executar();
-};
+		void destacarTexto(sf::Text& texto);
+		void reposicionarTexto(sf::Text& texto);
+		void padronizar(sf::Text& texto, int id);
+
+		void executarJogar();
+		void executarRanking();
+		void executarSair();
+		void desenharMenu();
+
+		void executar();
+	};
+}

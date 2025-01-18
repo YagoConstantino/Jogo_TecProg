@@ -6,56 +6,58 @@
 
 class Jogo;
 
-class MenuJogadores : public Entidades::Ente {
-private:
-	Jogo* _jogo;
-	
-	bool _mudouEstado;
+namespace Menus {
+	class MenuJogadores : public Entidades::Ente {
+	private:
+		Jogo* _jogo;
 
-	sf::Mouse _mouse;
+		bool _mudouEstado;
 
-	sf::Font _fonte;
+		sf::Mouse _mouse;
 
-	sf::Text _textoJogadores;
+		sf::Font _fonte;
 
-	sf::Text _botaoUmJog;
-	sf::Text _botaoDoisJog;
+		sf::Text _textoJogadores;
 
-	sf::RectangleShape _caixaTexto1;
-	sf::Text _nomeJog1;
-	std::string _nome1;
-	bool _estaDigitandoCaixa1;
-	bool _primeiraVezCaixa1;
+		sf::Text _botaoUmJog;
+		sf::Text _botaoDoisJog;
 
-	sf::RectangleShape _caixaTexto2;
-	sf::Text _nomeJog2;
-	std::string _nome2;
-	bool _estaDigitandoCaixa2;
-	bool _primeiraVezCaixa2;
+		sf::RectangleShape _caixaTexto1;
+		sf::Text _nomeJog1;
+		std::string _nome1;
+		bool _estaDigitandoCaixa1;
+		bool _primeiraVezCaixa1;
 
-	sf::Text _botaoConfirmaNomes;
+		sf::RectangleShape _caixaTexto2;
+		sf::Text _nomeJog2;
+		std::string _nome2;
+		bool _estaDigitandoCaixa2;
+		bool _primeiraVezCaixa2;
 
-private:
-	void executarCaixaTexto1();
-	void executarCaixaTexto2();
-	void executarConfirmaNomes();
+		sf::Text _botaoConfirmaNomes;
+
+	private:
+		void executarCaixaTexto1();
+		void executarCaixaTexto2();
+		void executarConfirmaNomes();
 
 
-public:
-	MenuJogadores(Jogo* jogo = nullptr, Gerenciadores::Gerenciador_Grafico* pGraf = nullptr);
-	~MenuJogadores();
+	public:
+		MenuJogadores(Jogo* jogo = nullptr, Gerenciadores::Gerenciador_Grafico* pGraf = nullptr);
+		~MenuJogadores();
 
-	void carregarFonte();
+		void carregarFonte();
 
-	void criaBackground();
-	void criaResto();
+		void criaBackground();
+		void criaResto();
 
-	void destacar(sf::RectangleShape* retangulo);
-	void padronizar(sf::RectangleShape* retangulo);
+		void destacar(sf::RectangleShape* retangulo);
+		void padronizar(sf::RectangleShape* retangulo);
 
-	void desenhar();
+		void desenhar();
 
-	void verificarCliques();
+		void verificarCliques();
 
-	void executar();
-};
+		void executar();
+	};
+}
