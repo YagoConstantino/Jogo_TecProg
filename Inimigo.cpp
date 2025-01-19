@@ -101,12 +101,12 @@ Entidades::Jogador* Entidades::Inimigo::getJogadorMaisProximo()
 	{
 		if (distanciaJog1 >= 0 && distanciaJog1 <= distanciaJog2)
 		{
-			if (_pJog1->getVivo())
+			
 			return _pJog1;
 		}
 		else
 		{
-			if (_pJog2->getVivo())
+			
 			return _pJog2;
 		}
 	}
@@ -114,12 +114,12 @@ Entidades::Jogador* Entidades::Inimigo::getJogadorMaisProximo()
 	{
 		if (_pJog1)
 		{
-			if (_pJog1->getVivo())
+			
 			return _pJog1;
 		}
 		else if (_pJog2)
 		{
-			if (_pJog2->getVivo())
+			
 			return  _pJog2;
 		}
 	}
