@@ -96,6 +96,7 @@ double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, d
 		Vy = sqrt( dS * g - Vx² )
 	*/
 
+	//double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
 	double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
 
 	return forcaY;

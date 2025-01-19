@@ -131,7 +131,7 @@ void Entidades::Mago::atirar() {
 		// "Cria" projetil
 		_projetil->setPosition
 		(
-			getPositionX(),
+			getPositionX() + (float) getBody().getGlobalBounds().width / 2.f,
 			getPositionY()
 		);
 
