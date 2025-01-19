@@ -10,6 +10,7 @@ Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador
 {
 
 	setMaldade(3);
+	setTipo(6);
 	_speed.x = 0.06f;
 
 	sf::Texture* textura = new sf::Texture();
