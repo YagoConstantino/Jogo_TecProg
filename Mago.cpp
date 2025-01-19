@@ -35,8 +35,10 @@ Entidades::Mago::~Mago()
 	_direcao = 0;
 }
 
-void Entidades::Mago::setProjetil(Entidades::Projetil* pProj) {
-	if (pProj == nullptr) {
+void Entidades::Mago::setProjetil(Entidades::Projetil* pProj) 
+{
+	if (pProj == nullptr) 
+	{
 		std::cerr << "Ponteiro de projetil invalido. Impossivel vincular com boss.\n";
 		return;
 	}
@@ -99,17 +101,20 @@ void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
 	// Dentro do alcance para atirar
 	if (jogProximo == _pJog1)
 	{
-		if (getDistanciaJogador1() > _body.getGlobalBounds().width * 1.65f) {
+		if (getDistanciaJogador1() > _body.getGlobalBounds().width * 1.65f) 
+		{
 			atirar();
 		}
 		// Dentro do alcance para bater
-		else {
+		else 
+		{
 			bater();
 		}
 	}
 	else
 	{
-		if (getDistanciaJogador2() > _body.getGlobalBounds().width * 1.65f) {
+		if (getDistanciaJogador2() > _body.getGlobalBounds().width * 1.65f) 
+		{
 			atirar();
 		}
 		// Dentro do alcance para bater

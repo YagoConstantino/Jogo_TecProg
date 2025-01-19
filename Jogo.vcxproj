@@ -86,11 +86,6 @@
     <ClCompile Include="TelaFimDeJogo.cpp" />
     <ClCompile Include="Thread.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\menu\floresta.png" />
-    <Image Include="assets\menu\pergaminho.jpg" />
-    <Image Include="assets\menu\temporario.png" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

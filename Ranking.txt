@@ -1,7 +1,1 @@
-Player1 2442
-Gabriel 1371
-Yago 690
-Player2 327
-Player4 104
-K 17
-l 0
+Gabriel 0

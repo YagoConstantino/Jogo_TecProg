@@ -21,5 +21,6 @@ namespace Fases
 		void executar();
 		void criarInimigos();
 		void criarObstaculos();
+		void criarCenario();
 	};
 }

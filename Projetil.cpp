@@ -4,7 +4,7 @@
 // ------------------------------- PUBLIC ----------------------------------------------------
 
 Entidades::Projetil::Projetil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pGraf)
-	: Entidade(inicialX, inicialY, pGraf), _lancar(false), _dano(0), dt(0.f), _tempoMaxVoo(12.f){
+	: Entidade(inicialX, inicialY, pGraf), _lancar(false), _dano(0), dt(0.f), _tempoMaxVoo(15.f){
 
 	sf::Texture* textura = new sf::Texture();
 
@@ -74,8 +74,8 @@ void Entidades::Projetil::resetar() {
 double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, double forcaX)
 {
 	/*
-	double tempo = distancia / forcaX;          // Tempo para alcançar a distância no eixo X
-	double forcaY = (tempo * gravidade) / 2.0f;    // Força em Y
+	double tempo = distancia / forcaX;          // Tempo para alcanï¿½ar a distï¿½ncia no eixo X
+	double forcaY = (tempo * gravidade) / 2.0f;    // Forï¿½a em Y
 	return forcaY;
 	
 	Formula do tempo T = (2*Vy)/g
@@ -86,17 +86,16 @@ double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, d
 	/*
 		Usando a formula de lancamento obliquo:
 
-		dS = V² * sin(2 * theta) / g
-		theta = 45º
-		dS = V² * 1 / g
-		dS = ( Vx² + Vy² ) / g
-		dS * g = ( Vx² + Vy² )
-		dS * g - Vx² = Vy²
+		dS = Vï¿½ * sin(2 * theta) / g
+		theta = 45ï¿½
+		dS = Vï¿½ * 1 / g
+		dS = ( Vxï¿½ + Vyï¿½ ) / g
+		dS * g = ( Vxï¿½ + Vyï¿½ )
+		dS * g - Vxï¿½ = Vyï¿½
 		
-		Vy = sqrt( dS * g - Vx² )
+		Vy = sqrt( dS * g - Vxï¿½ )
 	*/
 
-	//double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
 	double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
 
 	return forcaY;
@@ -104,7 +103,8 @@ double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, d
 
 void Entidades::Projetil::inverteLado() {
 	// Para a direita
-	if (getSpeedX() > 0.f) {
+	if (getSpeedX() > 0.f) 
+	{
 		_body.setRotation(180.f);
 	}
 	// Para a esquerda

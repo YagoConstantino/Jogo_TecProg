@@ -6,6 +6,7 @@ Entidades::Inimigo::Inimigo(float inicialX, float inicialY, Gerenciadores::Geren
 	_pJog1(pJog1),_pJog2(pJog2), 
 	atacar(false), _nivel_maldade(0), posInicialX(inicialX), posInicialY(inicialY)
 {
+
 }
 
 Entidades::Inimigo::~Inimigo()
@@ -89,7 +90,6 @@ sf::Vector2f Entidades::Inimigo::getDistanciaInicioVector()
 
 Entidades::Jogador* Entidades::Inimigo::getJogadorMaisProximo()
 {
-	Entidades::Jogador* jogadorMaisProximo = nullptr;
 
 	double distanciaJog1 = -1;
 	double distanciaJog2 = -1;
@@ -101,10 +101,12 @@ Entidades::Jogador* Entidades::Inimigo::getJogadorMaisProximo()
 	{
 		if (distanciaJog1 >= 0 && distanciaJog1 <= distanciaJog2)
 		{
+			
 			return _pJog1;
 		}
 		else
 		{
+			
 			return _pJog2;
 		}
 	}
@@ -112,13 +114,16 @@ Entidades::Jogador* Entidades::Inimigo::getJogadorMaisProximo()
 	{
 		if (_pJog1)
 		{
+			
 			return _pJog1;
 		}
 		else if (_pJog2)
 		{
+			
 			return  _pJog2;
 		}
 	}
+	return nullptr;
 }
 
 
