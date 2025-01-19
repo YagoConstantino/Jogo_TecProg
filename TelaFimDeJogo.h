@@ -6,7 +6,8 @@
 #include "Gerenciador_Grafico.h"
 #include "Jogador.h"
 
-class TelaFimDeJogo : public Entidades::Ente {
+class TelaFimDeJogo : public Entidades::Ente 
+{
 private:
 	bool _mudouEstado;
 

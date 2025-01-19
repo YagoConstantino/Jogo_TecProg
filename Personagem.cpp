@@ -33,7 +33,7 @@ void Entidades::Personagem::operator--(int i)
 {
 	if (_num_vidas >= 0)
 	{
-		_num_vidas-=i;
+		_num_vidas -= i;
 	}
 }
 

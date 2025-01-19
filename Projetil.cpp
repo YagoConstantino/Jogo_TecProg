@@ -3,7 +3,7 @@
 // ------------------------------- PUBLIC ----------------------------------------------------
 
 Entidades::Projetil::Projetil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pGraf)
-	: Entidade(inicialX, inicialY, pGraf), _lancar(false), _dano(0), dt(0.f), _tempoMaxVoo(12.f){
+	: Entidade(inicialX, inicialY, pGraf), _lancar(false), _dano(0), dt(0.f), _tempoMaxVoo(15.f){
 
 	sf::Texture* textura = new sf::Texture();
 
@@ -73,7 +73,7 @@ void Entidades::Projetil::resetar() {
 double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, double forcaX)
 {
 	double tempo = distancia / forcaX;          // Tempo para alcançar a distância no eixo X
-	double forcaY = (tempo * gravidade) / 7.0f;    // Força em Y
+	double forcaY = (tempo * gravidade) / 5.f;    // Força em Y
 	return forcaY;
 	/*
 	Formula do tempo T = (2*Vy)/g
@@ -84,7 +84,8 @@ double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, d
 
 void Entidades::Projetil::inverteLado() {
 	// Para a direita
-	if (getSpeedX() > 0.f) {
+	if (getSpeedX() > 0.f) 
+	{
 		_body.setRotation(180.f);
 	}
 	// Para a esquerda
