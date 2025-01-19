@@ -1,4 +1,5 @@
 #include "Projetil.h"
+#include <cmath>
 
 // ------------------------------- PUBLIC ----------------------------------------------------
 
@@ -72,14 +73,32 @@ void Entidades::Projetil::resetar() {
 
 double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, double forcaX)
 {
-	double tempo = distancia / forcaX;          // Tempo para alcançar a distância no eixo X
-	double forcaY = (tempo * gravidade) / 7.0f;    // Força em Y
-	return forcaY;
 	/*
+	double tempo = distancia / forcaX;          // Tempo para alcançar a distância no eixo X
+	double forcaY = (tempo * gravidade) / 2.0f;    // Força em Y
+	return forcaY;
+	
 	Formula do tempo T = (2*Vy)/g
 
 	logo (T*g)/2 = Vy
 	*/
+
+	/*
+		Usando a formula de lancamento obliquo:
+
+		dS = V² * sin(2 * theta) / g
+		theta = 45º
+		dS = V² * 1 / g
+		dS = ( Vx² + Vy² ) / g
+		dS * g = ( Vx² + Vy² )
+		dS * g - Vx² = Vy²
+		
+		Vy = sqrt( dS * g - Vx² )
+	*/
+
+	double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
+
+	return forcaY;
 }
 
 void Entidades::Projetil::inverteLado() {
