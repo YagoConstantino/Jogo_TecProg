@@ -32,7 +32,7 @@ namespace Menus {
 		int sizeRetangulos;
 		int sizeTextos;
 
-	protected:
+	private:
 		void executarFaseFloresta();
 		void executarFaseCastelo();
 		void executarConfirmaFase();
