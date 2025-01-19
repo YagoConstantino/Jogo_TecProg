@@ -72,14 +72,33 @@ void Entidades::Projetil::resetar() {
 
 double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, double forcaX)
 {
-	double tempo = distancia / forcaX;          // Tempo para alcançar a distância no eixo X
-	double forcaY = (tempo * gravidade) / 5.f;    // Força em Y
-	return forcaY;
 	/*
+	double tempo = distancia / forcaX;          // Tempo para alcanï¿½ar a distï¿½ncia no eixo X
+	double forcaY = (tempo * gravidade) / 2.0f;    // Forï¿½a em Y
+	return forcaY;
+	
 	Formula do tempo T = (2*Vy)/g
 
 	logo (T*g)/2 = Vy
 	*/
+
+	/*
+		Usando a formula de lancamento obliquo:
+
+		dS = Vï¿½ * sin(2 * theta) / g
+		theta = 45ï¿½
+		dS = Vï¿½ * 1 / g
+		dS = ( Vxï¿½ + Vyï¿½ ) / g
+		dS * g = ( Vxï¿½ + Vyï¿½ )
+		dS * g - Vxï¿½ = Vyï¿½
+		
+		Vy = sqrt( dS * g - Vxï¿½ )
+	*/
+
+	//double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
+	double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
+
+	return forcaY;
 }
 
 void Entidades::Projetil::inverteLado() {
