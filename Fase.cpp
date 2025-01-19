@@ -78,7 +78,7 @@ void Fases::Fase::criarCavaleiros()
 	//Possibilidade de aleatorizar o y entre 700 e 150 rand()%(700-150)+150
 
 
-	int n = (rand() % 5) + 3; // Quantidade varia de 3 a 7
+	int n = (rand() % 5) + 4; // Quantidade varia de 3 a 7
 
 
 
@@ -110,7 +110,7 @@ void Fases::Fase::criarCavaleiros()
 void Fases::Fase::criarPlataformas()
 {
 
-	int n = (rand() % 5) + 4;        // Quantidade de plataformas: entre 3 e 8
+	int n = (rand() % 6) + 3;        // Quantidade de plataformas: entre 3 e 8
 	int i;
 
 	std::vector<std::pair<float, float>> posicoes =

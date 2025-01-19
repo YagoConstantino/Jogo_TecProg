@@ -333,6 +333,7 @@ void Entidades::Jogador::adicionarSword(const std::string& path)
 
 void Entidades::Jogador::atacarInimigo(Entidades::Inimigo* enemy)
 {
+
 	(enemy)->operator--(1);
 	(enemy)->knockBack(this);
 	if (enemy->getVidas() <= 0)

@@ -14,6 +14,7 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
 
     //_Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
     //_GC->setJogador1(jog);
+    criarCenario();
    
 }
 
@@ -28,6 +29,11 @@ Fases::Floresta::~Floresta()
     
     //Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
    // _GG = nullptr;
+    if (_pTexture)
+    {
+        delete _pTexture;
+        _pTexture = nullptr;
+    }
     _jog1 = nullptr;
     _jog2 = nullptr;
 }
@@ -99,6 +105,7 @@ void Fases::Floresta::criaBruxas()
 
 void Fases::Floresta::executar()
 {
+    
     _Lista->startThread();
     while (!_mudouEstado) 
     {
@@ -115,6 +122,7 @@ void Fases::Floresta::executar()
         }
 
         _GG->clear();
+        desenhar();
         _GC->executar();
 
         if (_jog1) 
@@ -161,3 +169,28 @@ void Fases::Floresta::criarObstaculos()
     criaBarrasMagicas();
 
 }
+
+void Fases::Floresta::criarCenario()
+{
+    _pTexture = new sf::Texture();
+    if (!_pTexture->loadFromFile("assets/FundoFlorest.png")) 
+    {
+        std::cerr << "Erro ao criar o background da fase 2.\n";
+        return;
+    }
+    _body.setTexture(*_pTexture);
+
+    // redimensiona de acordo com o tamanho da janela
+    sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+    float escalaX = (float)tamJanela.x / _body.getGlobalBounds().width;
+    float escalaY = (float)tamJanela.y / _body.getGlobalBounds().height;
+
+    _body.setScale
+    (
+        escalaX,
+        escalaY
+    );
+
+    _body.setPosition(0.f, 0.f);
+}
+
