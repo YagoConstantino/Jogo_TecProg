@@ -151,7 +151,7 @@ sf::Font Gerenciadores::Gerenciador_Grafico::getFont()
 }
 
 /*
-Font assets/fontes/EnglishTowne.ttf
+
 Jogador1_Direita assets/Player1.png
 Jogador1_Esquerda assets/Player1Esquerda.png
 Jogador2_Direita assets/Player2.png

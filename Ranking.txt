@@ -1,5 +1,5 @@
-Yago 1025
-Joao 219
+Yago 1073
+Joao 244
 yago 131
 YGO 12
 Gabriel 0

@@ -108,10 +108,13 @@ void MenuFases::criaResto()
 	// ------ >> Cria imagem da fase floresta
 
 	sf::Texture* textura1 = new sf::Texture();
+	textura1 = _pGraf->getTextura("Floresta_Icone");
+	/*
 	if (!textura1->loadFromFile("assets/menu/floresta.png")) {
 		std::cerr << "Erro ao criar background menu fases.\n";
 		return;
 	}
+	*/
 	_imagemFaseFloresta.setSize(sf::Vector2f(textura1->getSize()));
 	_imagemFaseFloresta.setTexture(textura1);
 	_imagemFaseFloresta.setScale(3.f, 3.f);
@@ -125,10 +128,13 @@ void MenuFases::criaResto()
 	// ------ >> Cria imagem da fase 2
 	
 	sf::Texture* textura2 = new sf::Texture();
+	textura2 = _pGraf->getTextura("Castelo_Icone");
+	/*
 	if (!textura2->loadFromFile("assets/menu/castelo.jpg")) {
 		std::cerr << "Erro ao criar background menu fases.\n";
 		return;
 	}
+	*/
 	_imagemFaseCastelo.setSize(sf::Vector2f(textura2->getSize()));
 	_imagemFaseCastelo.setTexture(textura2);
 	_imagemFaseCastelo.setScale(3.f, 3.f);
