@@ -13,12 +13,14 @@ Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador
 	setTipo(Constantes::TIPO_MAGO);
 	_speed.x = Constantes::VEL_MAGO;
 
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("Mago");
 
+	/*
 	if (!textura->loadFromFile("assets/chefe.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+	*/
 
 	setTexture(textura);
 	_body.setScale(0.1f, 0.1f);

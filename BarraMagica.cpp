@@ -9,11 +9,14 @@ Entidades::BarraMagica::BarraMagica(float inicialX, float inicialY, Gerenciadore
 	// que a cadeia de construtoras garante a inicialização
 
 	// Imagem do obstaculo
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("BarraMagica");
 
+	/*
 	if (!textura->loadFromFile("assets/BarreiraEletrica.png")) {
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+
+	*/
 	setTexture(textura);
 	_body.setScale(1.f, 1.f);
 

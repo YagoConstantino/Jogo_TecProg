@@ -20,10 +20,13 @@ MenuRanking::~MenuRanking()
 
 void MenuRanking::carregarFonte()
 {
+	_fonte = _pGraf->getFont();
+	/*
 	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
 		std::cerr << "Erro ao incluir fonte.\n";
 		return;
 	}
+	*/
 }
 
 void MenuRanking::criarBotao()
@@ -62,11 +65,14 @@ void MenuRanking::criarTitulo()
 void MenuRanking::criarBackground()
 {
 	sf::Texture* textura = new sf::Texture();
+	textura = _pGraf->getTextura("Pergaminho");
 
+	/*
 	if (!textura->loadFromFile("assets/menu/pergaminho.jpg")) {
 		std::cerr << "Erro ao criar background menu.\n";
 		return;
 	}
+	*/
 	setTexture(textura);
 
 	// tamanho do background
@@ -217,6 +223,6 @@ void MenuRanking::mostrarRanking(Ranking* rank)
 
 void MenuRanking::retornaMenuPrincipal()
 {
-	Jogo::mudarStateNum(10);
+	Jogo::mudarStateNum(Constantes::STATE_MENU);
 	_mudouEstado = true;
 }

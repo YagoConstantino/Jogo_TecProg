@@ -4,14 +4,21 @@
 Fases::Heart::Heart(Gerenciadores::Gerenciador_Grafico* pGraf):
 	Ente(pGraf),fullHeart(new sf::Texture()),emptyHeart(new sf::Texture())
 {
+	fullHeart = _pGraf->getTextura("Heart_Full");
+	/*
 	if (!fullHeart->loadFromFile("assets/HeartFULL.png"))
 	{
 		std::cerr << "Erro ao carregar a textura do coração cheio" << std::endl;
 	}
+	*/
+	emptyHeart = _pGraf->getTextura("Heart_Empty");
+
+	/*
 	if (!emptyHeart->loadFromFile("assets/HeartEMPTY.png"))
 	{
 		std::cerr << "Erro ao carregar a textura do coração vazio" << std::endl;
 	}
+	*/
 	setTexture(fullHeart);
 	setPosX(0);
 	setPosY(35);

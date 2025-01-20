@@ -9,12 +9,14 @@ Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciad
 	setMaldade(Constantes::MALDADE_BRUXA);
 	_speed.x = Constantes::VEL_BRUXA;
 
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("MortoVivo");
 
+	/*
 	if (!textura->loadFromFile("assets/Mortovivo-.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+	*/
 
 	setTexture(textura);
 	_body.setScale(1.f, 1.f);

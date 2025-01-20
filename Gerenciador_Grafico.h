@@ -2,6 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <map>
+#include <string>
+#include <fstream>
 
 namespace Entidades { class Ente; }
 
@@ -11,6 +14,8 @@ namespace Gerenciadores{
 		// Atributos
 		sf::RenderWindow* window;
 		sf::View view;
+		std::map<std::string, std::string> _mapPathsTextures;
+		std::ifstream arquivoLeitura;
 
 		//Implementando Singleton
 		static Gerenciador_Grafico* instancia;
@@ -30,7 +35,10 @@ namespace Gerenciadores{
 		sf::RenderWindow* getWindow()const;
 		bool getOpen()const;
 		void closeWindow();
-		
 
+		void criaMap();
+		sf::Texture* getTextura(std::string chave);
+		sf::Font getFont();
+		
 	};
 } 

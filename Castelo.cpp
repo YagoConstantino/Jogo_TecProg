@@ -48,10 +48,13 @@ Fases::Castelo::~Castelo()
 void Fases::Castelo::criarCenario()
 {
 	_pTexture = new sf::Texture();
+	_pTexture = _pGraf->getTextura("Fundo_Castelo");
+	/*
 	if (!_pTexture->loadFromFile("assets/Fase castelo/background.jpg")) {
 		std::cerr << "Erro ao criar o background da fase 2.\n";
 		return;
 	}
+	*/
 	_body.setTexture(*_pTexture);
 
 	// redimensiona de acordo com o tamanho da janela

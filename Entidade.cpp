@@ -95,6 +95,7 @@ namespace Entidades
 				//Cavaleiro
 			case Constantes::TIPO_CAVALEIRO:
 				_speed.x *= -1;
+				setPositionX((getPositionX() - 40.0f));
 				break;
 
 				//Bruxa
@@ -123,6 +124,7 @@ namespace Entidades
 				//Cavaleiro
 			case Constantes::TIPO_CAVALEIRO:
 				_speed.x *= -1;
+				setPositionX((getPositionX() + 40.0f));
 				break;
 
 				//Bruxa

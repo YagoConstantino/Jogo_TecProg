@@ -27,20 +27,26 @@ MenuFases::~MenuFases()
 
 void MenuFases::carregarFonte()
 {
+	_fonte = _pGraf->getFont();
+	/*
 	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
 		std::cerr << "Erro ao incluir fonte.\n";
 		return;
 	}
+	*/
 }
 
 void MenuFases::criaBackground()
 {
 	sf::Texture* textura = new sf::Texture();
+	textura = _pGraf->getTextura("Pergaminho");
 
+	/*
 	if (!textura->loadFromFile("assets/menu/pergaminho.jpg")) {
 		std::cerr << "Erro ao criar background menu.\n";
 		return;
 	}
+	*/
 	setTexture(textura);
 
 	// tamanho do background

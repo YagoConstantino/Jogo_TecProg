@@ -16,18 +16,21 @@ namespace Constantes
 	constexpr float PULO_JOGADOR = -1.75f;
 
 	//Cavaleiro
+	constexpr int VIDAS_CAVALEIRO = 3;
 	constexpr float VEL_CAVALEIRO = 0.03f;
 	constexpr float DISTANCIA_INICIO_CAVALEIRO = 300.0f;
 	constexpr int MALDADE_CAVALEIRO = 1;
 	constexpr int TIPO_CAVALEIRO = 4;
 
 	//Bruxa
+	constexpr int VIDAS_BRUXA = 5;
 	constexpr float VEL_BRUXA = 0.04f;
 	constexpr double DISTANCIA_ATIVACAO_BRUXA = 700.0f;
 	constexpr int MALDADE_BRUXA = 2;
 	constexpr int TIPO_BRUXA = 5;
 
 	//Mago
+	constexpr int VIDAS_MAGO = 10;
 	constexpr float VEL_MAGO = 0.06f;
 	constexpr float VEL_MAGO_BUFF = 0.09f;
 	constexpr double DISTANCIA_ATIVACAO_MAGO = 800.0f;

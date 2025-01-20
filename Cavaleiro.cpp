@@ -17,12 +17,14 @@ Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::G
 		_speed.x *= -1;
 	}
 
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("Cavaleiro");
 
+	/*
 	if (!textura->loadFromFile("assets/Inimigo.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+	*/
 
 	setTexture(textura);
 	_body.setScale(0.1f, 0.1f);

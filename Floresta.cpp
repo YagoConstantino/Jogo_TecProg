@@ -174,11 +174,14 @@ void Fases::Floresta::criarObstaculos()
 void Fases::Floresta::criarCenario()
 {
     _pTexture = new sf::Texture();
+    _pTexture = _pGraf->getTextura("Fundo_Floresta");
+    /*
     if (!_pTexture->loadFromFile("assets/FundoFlorest.png")) 
     {
         std::cerr << "Erro ao criar o background da fase Floresta.\n";
         return;
     }
+    */
     _body.setTexture(*_pTexture);
 
     // redimensiona de acordo com o tamanho da janela

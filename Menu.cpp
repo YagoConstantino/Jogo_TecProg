@@ -37,10 +37,13 @@ Menu::~Menu()
 
 void Menu::carregarFonte()
 {
+	_fonte = _pGraf->getFont();
+	/*
 	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
 		std::cerr << "Erro ao incluir fonte.\n";
 		return;
 	}
+	*/
 }
 
 void Menu::criarBotoes()
@@ -127,12 +130,13 @@ void Menu::criarTitulo()
 
 void Menu::criarBackground()
 {
-	sf::Texture* textura = new sf::Texture();
-
+	sf::Texture* textura = _pGraf->getTextura("FundoMedieval");
+	/*
 	if (!textura->loadFromFile("assets/menu/FundoMedieval.png")) {
 		std::cerr<<"Erro ao criar background menu.\n";
 		return;
 	}
+	*/
 	setTexture(textura);
 
 	// tamanho do background
