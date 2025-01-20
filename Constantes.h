@@ -45,7 +45,7 @@ namespace Constantes
 	constexpr int TIPO_PLATAFORMA = 9;
 	constexpr int TIPO_BARRA_MAGICA = 10;
 	constexpr int TIPO_ESPINHO = 11;
-	constexpr float DURACAO_PARALISIA = 80.f;
+	constexpr float DURACAO_PARALISIA = 8000.f;
 
 	//Projetil
 	constexpr float TEMPO_MAX_VOO = 15.f;

@@ -127,7 +127,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 			{
 				(*itObstaculo)->obstacular(_jogador1);
 
-				if ((*itObstaculo)->getTipo() == 10) continue; // se for obstaculo dificil / espinho
+				if ((*itObstaculo)->getTipo() == 11) continue; // se for obstaculo dificil / espinho
 
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
