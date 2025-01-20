@@ -83,7 +83,6 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 	adicionarSword("Espada_Direita");
 	adicionarSword("Espada_Esquerda");
 	
-	
 }
 
 Entidades::Jogador::~Jogador()

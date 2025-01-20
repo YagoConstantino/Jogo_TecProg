@@ -1,8 +1,9 @@
 #include "Espinho.h"
-
+#include "Constantes.h"
 Entidades::Espinho::Espinho(int dano, float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra)
 	: Obstaculo(inicialX,inicialY,pgra), _dano(dano)
 {
+	setTipo(Constantes::TIPO_ESPINHO);
 	// Gerenciador grafico
 	//_pGraf = pgra;
 
