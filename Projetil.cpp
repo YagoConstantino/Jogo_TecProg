@@ -1,5 +1,7 @@
 #include "Projetil.h"
 #include "Constantes.h"
+#include <cmath>
+
 // ------------------------------- PUBLIC ----------------------------------------------------
 
 Entidades::Projetil::Projetil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pGraf)
@@ -95,7 +97,6 @@ double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, d
 		Vy = sqrt( dS * g - Vx� )
 	*/
 
-	//double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
 	double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);
 
 	return forcaY;

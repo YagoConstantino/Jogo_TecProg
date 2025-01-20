@@ -140,7 +140,7 @@ void Entidades::Mago::atirar() {
 		// "Cria" projetil
 		_projetil->setPosition
 		(
-			getPositionX(),
+			getPositionX() + (float) getBody().getGlobalBounds().width / 2.f,
 			getPositionY()
 		);
 
@@ -148,14 +148,14 @@ void Entidades::Mago::atirar() {
 		{
 			_projetil->lancar
 			(
-				0.20f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador1(), Constantes::GRAVIDADE, 0.20f) * -1, getMaldade()
+				0.30f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador1(), Constantes::GRAVIDADE, 0.30f) * -1, getMaldade()
 			);
 		}
 		else
 		{
 			_projetil->lancar
 			(
-				0.20f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador2(), Constantes::GRAVIDADE, 0.20f) * -1, getMaldade()
+				0.30f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador2(), Constantes::GRAVIDADE, 0.30f) * -1, getMaldade()
 			);
 		}
 		

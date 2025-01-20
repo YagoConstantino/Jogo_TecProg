@@ -17,6 +17,7 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
     //_GC->setJogador1(jog);
     criarCenario();
    
+    criarCenario();
 }
 
 Fases::Floresta::~Floresta()
@@ -28,7 +29,7 @@ Fases::Floresta::~Floresta()
         _Lista = nullptr;
     }
     
-    //Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
+    //Seto como nulo os ponteiros para o Gerenciador grÃ¡fico e jogador
    // _GG = nullptr;
     if (_pTexture)
     {
@@ -41,11 +42,11 @@ Fases::Floresta::~Floresta()
 
 void Fases::Floresta::criaBarrasMagicas()
 {
-    // Determinar o número de barras mágicas a serem criadas: entre 1 e 3
+    // Determinar o nÃºmero de barras mÃ¡gicas a serem criadas: entre 1 e 3
 
     int n = rand() % 4 + 1;
 
-    // Posições centrais das plataformas 2, 4 e 6 (caso a plataforma 6 exista)
+    // PosiÃ§Ãµes centrais das plataformas 2, 4 e 6 (caso a plataforma 6 exista)
     std::vector<std::pair<float, float>> posBarras =
     {
 
@@ -123,6 +124,7 @@ void Fases::Floresta::executar()
         }
 
         _GG->clear();
+
         desenhar();
         _GC->executar();
 
@@ -174,6 +176,7 @@ void Fases::Floresta::criarObstaculos()
 void Fases::Floresta::criarCenario()
 {
     _pTexture = new sf::Texture();
+  
     _pTexture = _pGraf->getTextura("Fundo_Floresta");
     /*
     if (!_pTexture->loadFromFile("assets/FundoFlorest.png")) 
@@ -182,6 +185,7 @@ void Fases::Floresta::criarCenario()
         return;
     }
     */
+
     _body.setTexture(*_pTexture);
 
     // redimensiona de acordo com o tamanho da janela
