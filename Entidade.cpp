@@ -1,5 +1,5 @@
 #include "Entidade.h"
-
+#include "Constantes.h"
 /*Criar Tratamentos para kcnockback diferentes para cada Inimigo
 O atual atende a bruxa mas o cavaleiro deveria inverter a direcao ao tomar dano
 Talvez seja melhor teleportar ao inves de mudar o speed para que nao tenhamos problemas como a bruxa ficar muito rapida
@@ -88,22 +88,23 @@ namespace Entidades
 			switch (tipo)
 			{
 				//Jogador
-			case 3:
+			case Constantes::TIPO_JOGADOR:
 				_speed.x -= 100.0f;
 				break;
 
 				//Cavaleiro
-			case 4:
+			case Constantes::TIPO_CAVALEIRO:
 				_speed.x *= -1;
+				setPositionX((getPositionX() - 40.0f));
 				break;
 
 				//Bruxa
-			case 5:
+			case Constantes::TIPO_BRUXA:
 				setPositionX((getPositionX() - 40.0f));
 				break;
 
 				//Mago
-			case 6:
+			case Constantes::TIPO_MAGO:
 				setPositionX((getPositionX() - 60.0f));
 				break;
 			}
@@ -116,22 +117,23 @@ namespace Entidades
 			switch (tipo)
 			{
 				//Jogador
-			case 3:
+			case Constantes::TIPO_JOGADOR:
 				_speed.x += 100.0f;
 				break;
 
 				//Cavaleiro
-			case 4:
+			case Constantes::TIPO_CAVALEIRO:
 				_speed.x *= -1;
+				setPositionX((getPositionX() + 40.0f));
 				break;
 
 				//Bruxa
-			case 5:
+			case Constantes::TIPO_BRUXA:
 				setPositionX((getPositionX() + 40.0f));
 				break;
 
 				//Mago
-			case 6:
+			case Constantes::TIPO_MAGO:
 				setPositionX((getPositionX() + 60.0f));
 				break;
 			}
@@ -144,7 +146,7 @@ namespace Entidades
 
 	void Entidade::sofrerGravidade(float gravidade)
 	{
-		const float maxGravidade = 0.3f; // Limite de velocidade da gravidade
+		const float maxGravidade = Constantes::MAX_GRAVIDADE; // Limite de velocidade da gravidade
 		if (!_onGround)
 		{
 			_speed.y += gravidade;
@@ -158,7 +160,7 @@ namespace Entidades
 			_speed.y = 0; // Zera a velocidade quando está no chão
 		}
 
-		if (getTipo() == 2) // Caso seja um Obstaculo é empurrado com a mesma força para a outra direção mantendo estatico
+		if (getTipo() == Constantes::TIPO_OBSTACULO) // Caso seja um Obstaculo é empurrado com a mesma força para a outra direção mantendo estatico
 		{
 			_speed.y -= gravidade;
 		}

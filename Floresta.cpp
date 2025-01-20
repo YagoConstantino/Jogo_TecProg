@@ -4,16 +4,18 @@
 #include <vector>
 #include <utility>
 #include "BruxaThread.h"
+#include "Constantes.h"
 
 
 Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog1, Entidades::Jogador* jog2)
 
-    :Fase(pgra,jog1,jog2),maxBruxas(5),maxBarraMagicas(4)
+    :Fase(pgra,jog1,jog2),maxBruxas(Constantes::MAX_BRUXAS),maxBarraMagicas(Constantes::MAX_BARRAS_MAGICAS)
 
 {
 
     //_Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
     //_GC->setJogador1(jog);
+    criarCenario();
    
     criarCenario();
 }
@@ -27,19 +29,24 @@ Fases::Floresta::~Floresta()
         _Lista = nullptr;
     }
     
-    //Seto como nulo os ponteiros para o Gerenciador gráfico e jogador
+    //Seto como nulo os ponteiros para o Gerenciador grÃ¡fico e jogador
    // _GG = nullptr;
+    if (_pTexture)
+    {
+        delete _pTexture;
+        _pTexture = nullptr;
+    }
     _jog1 = nullptr;
     _jog2 = nullptr;
 }
 
 void Fases::Floresta::criaBarrasMagicas()
 {
-    // Determinar o número de barras mágicas a serem criadas: entre 1 e 3
+    // Determinar o nÃºmero de barras mÃ¡gicas a serem criadas: entre 1 e 3
 
     int n = rand() % 4 + 1;
 
-    // Posições centrais das plataformas 2, 4 e 6 (caso a plataforma 6 exista)
+    // PosiÃ§Ãµes centrais das plataformas 2, 4 e 6 (caso a plataforma 6 exista)
     std::vector<std::pair<float, float>> posBarras =
     {
 
@@ -100,6 +107,7 @@ void Fases::Floresta::criaBruxas()
 
 void Fases::Floresta::executar()
 {
+    
     _Lista->startThread();
     while (!_mudouEstado) 
     {
@@ -168,11 +176,16 @@ void Fases::Floresta::criarObstaculos()
 void Fases::Floresta::criarCenario()
 {
     _pTexture = new sf::Texture();
-    if (!_pTexture->loadFromFile("assets/FundoFloresta.jpg"))
+  
+    _pTexture = _pGraf->getTextura("Fundo_Floresta");
+    /*
+    if (!_pTexture->loadFromFile("assets/FundoFlorest.png")) 
     {
-        std::cerr << "Erro ao criar o background da fase 2.\n";
+        std::cerr << "Erro ao criar o background da fase Floresta.\n";
         return;
     }
+    */
+
     _body.setTexture(*_pTexture);
 
     // redimensiona de acordo com o tamanho da janela
@@ -188,3 +201,4 @@ void Fases::Floresta::criarCenario()
 
     _body.setPosition(0.f, 0.f);
 }
+

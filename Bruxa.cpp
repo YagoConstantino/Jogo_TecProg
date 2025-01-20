@@ -1,20 +1,22 @@
 #include "Bruxa.h"
-
+#include "Constantes.h"
 Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1, Entidades::Jogador* pJog2, int vidas)
 	:Inimigo(inicialX,inicialY,pgra,pJog1,pJog2,vidas)
 
 {
-	setTipo(5);
-	setMaldade(2);
-	_speed.x = 0.04f;
+	setTipo(Constantes::TIPO_BRUXA);
+	setMaldade(Constantes::MALDADE_BRUXA);
+	_speed.x = Constantes::VEL_BRUXA;
 
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("MortoVivo");
 
+	/*
 	if (!textura->loadFromFile("assets/Mortovivo-.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+	*/
 
 	setTexture(textura);
 	_body.setScale(1.f, 1.f);
@@ -34,7 +36,10 @@ void Entidades::Bruxa::executar()
 	if(_pJog1) distanciaJog1 = getDistanciaJogador1();
 	if(_pJog2) distanciaJog2 = getDistanciaJogador2();
 
-	if ((distanciaJog1 > 0 && distanciaJog1 <= 700) || (distanciaJog2 > 0 && distanciaJog2 <= 700))
+	if (
+		(distanciaJog1 > 0 && distanciaJog1 <= Constantes::DISTANCIA_ATIVACAO_BRUXA) 
+		|| (distanciaJog2 > 0 && distanciaJog2 <= Constantes::DISTANCIA_ATIVACAO_BRUXA)
+		)
 	{
 		atacar = true;
 	}

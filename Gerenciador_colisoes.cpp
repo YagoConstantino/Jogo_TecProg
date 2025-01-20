@@ -1,5 +1,17 @@
 #include "Gerenciador_Colisoes.h"
 #include "Inimigo.h"
+#include "Constantes.h"
+
+/*
+Os cálculos vetoriais utilizados na função calculaColisao foram desenvolvidos por Mateus Burda.
+Créditos ao autor:
+GitHub: https://github.com/MatheusBurda
+YouTube: https://www.youtube.com/@burdacanal9100
+
+Agradecimentos pelo compartilhamento do conhecimento e pelas contribuições à comunidade.
+*/
+
+
 //Singleton inicializando o atributo static
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::instancia = nullptr;
 
@@ -18,7 +30,7 @@ Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::getIns
 {
 	if (instancia==nullptr)
 	{
-		instancia = new Gerenciadores::Gerenciador_Colisoes(0.005f);
+		instancia = new Gerenciadores::Gerenciador_Colisoes(Constantes::GRAVIDADE);
 	}
 	return instancia;
 }

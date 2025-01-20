@@ -2,14 +2,14 @@
 #include <cmath>
 #include <stdlib.h>
 #include <time.h>
-
+#include "Constantes.h"
 Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1,Entidades::Jogador*pJog2, int vidas)
 	:Inimigo(inicialX, inicialY, pgra, pJog1,pJog2, vidas)
 {
-	setTipo(4);
-	setMaldade(1);
-	_speed.x = 0.03f;
+	setTipo(Constantes::TIPO_CAVALEIRO);
+	setMaldade(Constantes::MALDADE_CAVALEIRO);
+	_speed.x = Constantes::VEL_CAVALEIRO;
 
 
 	if (rand() % 2)
@@ -17,12 +17,14 @@ Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::G
 		_speed.x *= -1;
 	}
 
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("Cavaleiro");
 
+	/*
 	if (!textura->loadFromFile("assets/Inimigo.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+	*/
 
 	setTexture(textura);
 	_body.setScale(0.1f, 0.1f);
@@ -53,7 +55,7 @@ void Entidades::Cavaleiro::executar()
 
 void Entidades::Cavaleiro::mover()
 {
-	if (abs(getDistanciaInicioVector().x) >= 300)
+	if (abs(getDistanciaInicioVector().x) >= Constantes::DISTANCIA_INICIO_CAVALEIRO)
 	{
 		_direcao *= -1;
 		_speed.x *= _direcao;

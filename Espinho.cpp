@@ -7,11 +7,16 @@ Entidades::Espinho::Espinho(int dano, float inicialX, float inicialY, Gerenciado
 	//_pGraf = pgra;
 
 	// Imagem
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("Espinho");
 
-	if (!textura->loadFromFile("assets/PlataformaEspinho.png")) {
+	/*
+	if (!textura->loadFromFile("assets/PlataformaEspinho.png")) 
+	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+	*/
+
+
 	setTexture(textura);
 	_body.setScale(0.8f, 1.5f);
 

@@ -4,6 +4,7 @@
 #include "Gerenciador_Grafico.h"
 #include "Jogador.h"
 #include "Projetil.h"
+#include "Constantes.h"
 
 namespace Entidades {
 	class Mago : public Inimigo 
@@ -25,7 +26,7 @@ namespace Entidades {
 
 	public:
 		Mago(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
-			Entidades::Jogador* pJog1 = nullptr, Entidades::Jogador* pJog2 = nullptr, int vidas = 10);
+			Entidades::Jogador* pJog1 = nullptr, Entidades::Jogador* pJog2 = nullptr, int vidas = Constantes::VIDAS_MAGO);
 		~Mago();
 
 		void setProjetil(Entidades::Projetil* pProj);

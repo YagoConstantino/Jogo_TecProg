@@ -10,10 +10,13 @@ Fases::Hud::Hud(Entidades::Jogador* pjog)
 {
 	_hearts.clear();
 	_pGraf = Gerenciadores::Gerenciador_Grafico::getInstancia();
-	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) 
+	_fonte = _pGraf->getFont();
+	/*
+	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf"))
 	{
 		std::cerr << "Erro ao incluir fonte.\n";
 	}
+	*/
 
 	if (_pJogador)
 	{

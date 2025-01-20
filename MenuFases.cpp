@@ -1,7 +1,7 @@
 #include "MenuFases.h"
 #include "Jogo.h"
+#include "Constantes.h"
 
-#define TAMANHO_BOTOES 50
 
 using namespace Menus;
 
@@ -27,20 +27,26 @@ MenuFases::~MenuFases()
 
 void MenuFases::carregarFonte()
 {
+	_fonte = _pGraf->getFont();
+	/*
 	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
 		std::cerr << "Erro ao incluir fonte.\n";
 		return;
 	}
+	*/
 }
 
 void MenuFases::criaBackground()
 {
 	sf::Texture* textura = new sf::Texture();
+	textura = _pGraf->getTextura("Pergaminho");
 
+	/*
 	if (!textura->loadFromFile("assets/menu/pergaminho.jpg")) {
 		std::cerr << "Erro ao criar background menu.\n";
 		return;
 	}
+	*/
 	setTexture(textura);
 
 	// tamanho do background
@@ -64,7 +70,7 @@ void MenuFases::criaResto()
 
 	_textoFases.setFont(_fonte);
 	_textoFases.setString("Selecione a fase:");
-	_textoFases.setCharacterSize(TAMANHO_BOTOES + 10);
+	_textoFases.setCharacterSize(Constantes::MENU_FASES_TAMANHO_BOTOES + 10);
 	_textoFases.setStyle(sf::Text::Style::Regular);
 	_textoFases.setFillColor(sf::Color::Black);
 
@@ -77,7 +83,7 @@ void MenuFases::criaResto()
 
 	_nomeFaseFloresta.setFont(_fonte);
 	_nomeFaseFloresta.setString("A floresta");
-	_nomeFaseFloresta.setCharacterSize(TAMANHO_BOTOES);
+	_nomeFaseFloresta.setCharacterSize(Constantes::MENU_FASES_TAMANHO_BOTOES);
 	_nomeFaseFloresta.setStyle(sf::Text::Style::Regular);
 	_nomeFaseFloresta.setFillColor(sf::Color::Black);
 
@@ -90,7 +96,7 @@ void MenuFases::criaResto()
 
 	_nomeFaseCastelo.setFont(_fonte);
 	_nomeFaseCastelo.setString("O castelo");
-	_nomeFaseCastelo.setCharacterSize(TAMANHO_BOTOES);
+	_nomeFaseCastelo.setCharacterSize(Constantes::MENU_FASES_TAMANHO_BOTOES);
 	_nomeFaseCastelo.setStyle(sf::Text::Style::Regular);
 	_nomeFaseCastelo.setFillColor(sf::Color::Black);
 
@@ -102,10 +108,13 @@ void MenuFases::criaResto()
 	// ------ >> Cria imagem da fase floresta
 
 	sf::Texture* textura1 = new sf::Texture();
+	textura1 = _pGraf->getTextura("Floresta_Icone");
+	/*
 	if (!textura1->loadFromFile("assets/menu/floresta.png")) {
 		std::cerr << "Erro ao criar background menu fases.\n";
 		return;
 	}
+	*/
 	_imagemFaseFloresta.setSize(sf::Vector2f(textura1->getSize()));
 	_imagemFaseFloresta.setTexture(textura1);
 	_imagemFaseFloresta.setScale(3.f, 3.f);
@@ -119,10 +128,13 @@ void MenuFases::criaResto()
 	// ------ >> Cria imagem da fase 2
 	
 	sf::Texture* textura2 = new sf::Texture();
+	textura2 = _pGraf->getTextura("Castelo_Icone");
+	/*
 	if (!textura2->loadFromFile("assets/menu/castelo.jpg")) {
 		std::cerr << "Erro ao criar background menu fases.\n";
 		return;
 	}
+	*/
 	_imagemFaseCastelo.setSize(sf::Vector2f(textura2->getSize()));
 	_imagemFaseCastelo.setTexture(textura2);
 	_imagemFaseCastelo.setScale(3.f, 3.f);
@@ -137,7 +149,7 @@ void MenuFases::criaResto()
 
 	_botaoConfirmaFase.setFont(_fonte);
 	_botaoConfirmaFase.setString("Confirmar fase");
-	_botaoConfirmaFase.setCharacterSize(TAMANHO_BOTOES);
+	_botaoConfirmaFase.setCharacterSize(Constantes::MENU_FASES_TAMANHO_BOTOES);
 	_botaoConfirmaFase.setStyle(sf::Text::Style::Regular);
 	_botaoConfirmaFase.setFillColor(sf::Color::Black);
 
@@ -251,7 +263,8 @@ void MenuFases::executar()
 		sf::Event event;
 		while (_pGraf->getWindow()->pollEvent(event)) {
 			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-				Jogo::mudarStateNum(11);
+				//Voltar para o menu Jogadores
+				Jogo::mudarStateNum(Constantes::STATE_MENU_JOGADORES);
 				_mudouEstado = true;
 			}
 		}
@@ -294,11 +307,13 @@ void MenuFases::executarFaseCastelo()
 void MenuFases::executarConfirmaFase()
 {
 	if (_faseFloresta) {
-		Jogo::mudarStateNum(20);
+		//Jogar Floresta
+		Jogo::mudarStateNum(Constantes::STATE_FLORESTA);
 		_mudouEstado = true;
 	}
 	else if (_faseCastelo) {
-		Jogo::mudarStateNum(21);
+		//Jogar Castelo
+		Jogo::mudarStateNum(Constantes::STATE_CASTELO);
 		_mudouEstado = true;
 	}
 }

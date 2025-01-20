@@ -1,8 +1,8 @@
 #include "Castelo.h"
 #include "Jogo.h"
-
+#include "Constantes.h"
 Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1, Entidades::Jogador* j2)
-	: Fase(pgra, j1,j2), _maxMagos(4), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
+	: Fase(pgra, j1,j2), _maxMagos(Constantes::MAX_MAGOS), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
 	_platsBases(), _cavaleiros(), _magos(),_magosNaoCriados(true)
 {
 	_platsBases.clear();
@@ -48,10 +48,13 @@ Fases::Castelo::~Castelo()
 void Fases::Castelo::criarCenario()
 {
 	_pTexture = new sf::Texture();
+	_pTexture = _pGraf->getTextura("Fundo_Castelo");
+	/*
 	if (!_pTexture->loadFromFile("assets/Fase castelo/background.jpg")) {
 		std::cerr << "Erro ao criar o background da fase 2.\n";
 		return;
 	}
+	*/
 	_body.setTexture(*_pTexture);
 
 	// redimensiona de acordo com o tamanho da janela

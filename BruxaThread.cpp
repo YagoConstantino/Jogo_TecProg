@@ -5,13 +5,15 @@ Entidades::BruxaThread::BruxaThread(float inicialX, float inicialY, Gerenciadore
 	:Bruxa(inicialX, inicialY, pgra, pJog1, pJog2, vidas), ThreadCPP(),_rodar(false)
 {
 	setEhThread(true);
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("MortoVivoThread");
 
 
+	/*
 	if (!textura->loadFromFile("assets/MortovivoTH.png"))
 	{
 		std::cout << "Falha ao carregar textura!" << std::endl;
 	}
+	*/
 
 	setTexture(textura);
 	_body.setScale(1.f, 1.f);

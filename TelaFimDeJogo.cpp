@@ -1,9 +1,6 @@
 #include "TelaFimDeJogo.h"
 #include "Jogo.h"
-
-#define TAMANHO_TITULO 125
-#define TAMANHO_SUBTITULO 85
-#define TAMANHO_BOTOES 50
+#include "Constantes.h"
 
 TelaFimDeJogo::TelaFimDeJogo(Gerenciadores::Gerenciador_Grafico* _pGraf, Entidades::Jogador* jog1, Entidades::Jogador* jog2) : Ente(_pGraf), cor(190, 190, 190), _mudouEstado(false), _jogador1(jog1), _jogador2(jog2)
 {
@@ -22,20 +19,28 @@ TelaFimDeJogo::~TelaFimDeJogo()
 
 void TelaFimDeJogo::carregarFonte()
 {
-	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
+	_fonte = _pGraf->getFont();
+
+	/*
+	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) 
+	{
 		std::cerr << "Erro ao incluir fonte.\n";
 		return;
 	}
+	*/
 }
 
 void TelaFimDeJogo::criaBackground()
 {
 	sf::Texture* textura = new sf::Texture();
 
-	if (!textura->loadFromFile("assets/tela fim de jogo/background.jpg")) {
+	textura = _pGraf->getTextura("Fim_De_Jogo");
+	/*
+	if (!textura->loadFromFile("assets/tela fim de jogo/background2.jpg")) {
 		std::cerr << "Erro ao criar background menu.\n";
 		return;
 	}
+	*/
 	setTexture(textura);
 
 	// tamanho do background
@@ -55,7 +60,7 @@ void TelaFimDeJogo::criarTitulo()
 	// Caracteristicas do conteudo
 	_titulo.setFont(_fonte);
 	_titulo.setString("Fim de jogo");
-	_titulo.setCharacterSize(TAMANHO_TITULO);
+	_titulo.setCharacterSize(Constantes::TAMANHO_TITULO);
 	_titulo.setStyle(sf::Text::Style::Regular);
 	_titulo.setFillColor(cor);
 
@@ -120,7 +125,7 @@ void TelaFimDeJogo::criarSubTitulo()
 	// Caracteristicas do conteudo
 	_subTitulo.setFont(_fonte);
 	_subTitulo.setString(nome);
-	_subTitulo.setCharacterSize(TAMANHO_SUBTITULO);
+	_subTitulo.setCharacterSize(Constantes::TAMANHO_SUBTITULO);
 	_subTitulo.setStyle(sf::Text::Style::Regular);
 	_subTitulo.setFillColor(cor);
 
@@ -140,7 +145,7 @@ void TelaFimDeJogo::criarBotao()
 	// Caracteristicas do conteudo
 	_botaoVoltarAoMenu.setFont(_fonte);
 	_botaoVoltarAoMenu.setString("Voltar ao menu");
-	_botaoVoltarAoMenu.setCharacterSize(TAMANHO_BOTOES);
+	_botaoVoltarAoMenu.setCharacterSize(Constantes::TAMANHO_BOTOES);
 	_botaoVoltarAoMenu.setStyle(sf::Text::Style::Regular);
 	_botaoVoltarAoMenu.setFillColor(cor);
 
@@ -179,7 +184,7 @@ void TelaFimDeJogo::destacar()
 	char c = *(_botaoVoltarAoMenu.getString().begin());
 	if (c != '>') {
 		std::string frase = "> " + _botaoVoltarAoMenu.getString() + " <";
-		_botaoVoltarAoMenu.setCharacterSize(TAMANHO_BOTOES + 10);
+		_botaoVoltarAoMenu.setCharacterSize(Constantes::TAMANHO_BOTOES + 10);
 		_botaoVoltarAoMenu.setString(frase);
 		_botaoVoltarAoMenu.setStyle(sf::Text::Style::Underlined);
 
@@ -190,7 +195,7 @@ void TelaFimDeJogo::destacar()
 
 void TelaFimDeJogo::padronizar()
 {
-	_botaoVoltarAoMenu.setCharacterSize(TAMANHO_BOTOES);
+	_botaoVoltarAoMenu.setCharacterSize(Constantes::TAMANHO_BOTOES);
 	_botaoVoltarAoMenu.setString("Voltar ao menu");
 	_botaoVoltarAoMenu.setStyle(sf::Text::Style::Regular);
 

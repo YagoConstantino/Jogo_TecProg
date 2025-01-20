@@ -1,6 +1,6 @@
 #include "Jogo.h"
 #include <iostream>
-
+#include "Constantes.h"
 // ESTATICOS
 
 /*
@@ -21,7 +21,7 @@
 	30 - tela de fim de jogo
 */
 
-int Jogo::stateNum = 10;
+int Jogo::stateNum = Constantes::STATE_MENU;
 
 void Jogo::mudarStateNum(int state) { stateNum = state; }
 
@@ -37,6 +37,7 @@ Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
 	_menu = nullptr;
 	_menuJogadores = nullptr;
 	_menuFases = nullptr;
+	_menuRanking = nullptr;
 	_telaFimDeJogo = nullptr;
 }
 
@@ -106,47 +107,47 @@ void Jogo::executar()
 
 		switch (stateNum) {
 			// Fecha janela
-		case 0:
+		case Constantes::STATE_FECHAR_JANELA:
 			_GerenciadorGrafico->closeWindow();
 			break;
 
 			// Cria menu principal
-		case 10:
+		case Constantes::STATE_MENU:
 			criaMenu();
 			JogarMenu();
 			break;
 
 			// Cria o menu de jogadores
-		case 11:
+		case Constantes::STATE_MENU_JOGADORES:
 			criaMenuJogadores();
 			JogarMenuJogadores();
 			break;
 
 			// Cria o menu de ranking
-		case 12:
+		case Constantes::STATE_MENU_RANKING:
 			criaMenuRanking();
 			JogarMenuRanking();
 			break;
 
-		case 13: // Cria o menu de jogadores
+		case Constantes::STATE_MENU_FASES: // Cria o menu de Fases
 			criaMenuFases();
 			JogarMenuFases();
 			break;
 
 			// Cria a fase 1, floresta
-		case 20:
+		case Constantes::STATE_FLORESTA:
 			criaFloresta();
 			JogarFloresta();
 			atualizaRanking();
 			break;
 
-		case 21: // Cria a fase 2, castelo
+		case Constantes::STATE_CASTELO: // Cria a fase 2, castelo
 			criaCastelo();
 			JogarCastelo();
 			atualizaRanking();
 			break;
 
-		case 30: // Cria a tela de fim de jogo
+		case Constantes::STATE_FIM_JOGO: // Cria a tela de fim de jogo
 			criaTelaFimDeJogo();
 			JogarTelaFimDeJogo();
 			break;
