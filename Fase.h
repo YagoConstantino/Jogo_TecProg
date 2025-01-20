@@ -5,7 +5,7 @@
 #include "Plataforma.h"
 #include "Cavaleiro.h"
 #include "Hud.h"
-
+#include "MenuPause.h"
 
 namespace Fases
 {
@@ -17,6 +17,7 @@ namespace Fases
 		Gerenciadores::Gerenciador_Colisoes* _GC;
 		Listas::ListaEntidades* _Lista;
 		Gerenciadores::Gerenciador_Grafico* _GG;
+		Menus::MenuPause* _menuPause;
 
 		Entidades::Jogador * _jog1;
 		Entidades::Jogador* _jog2;
@@ -40,5 +41,9 @@ namespace Fases
 		virtual void criarObstaculos() = 0;
 
 		void verificarJogadores();
+
+		void pause();
+		void verificarSaidaPause();
+		void normalizarBackground();
 	};
 }

@@ -1,9 +1,10 @@
 #include "MenuPause.h"
+#include "Constantes.h"
 
-#define TAMANHO_BOTOES 50
-
-Menus::MenuPause::MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf, sf::Sprite* imgFase) : Entidades::Ente(_pGraf), _imagemFase(imgFase), _houveClique(false), _mudouEstado(false)
+Menus::MenuPause::MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf, sf::Sprite* imgFase) : Entidades::Ente(_pGraf), _imagemFase(imgFase), _houveClique(false), _mudouEstado(false), _voltaAoMenu(false)
 {
+	_clock.restart();
+
 	carregarFonte();
 
 	criarImagemFase();
@@ -17,12 +18,14 @@ Menus::MenuPause::~MenuPause()
 	_imagemFase = nullptr;
 }
 
+const bool Menus::MenuPause::getVoltaAoMenu() const
+{
+	return _voltaAoMenu;
+}
+
 void Menus::MenuPause::carregarFonte()
 {
-	if (!_fonte.loadFromFile("assets/fontes/EnglishTowne.ttf")) {
-		std::cerr << "Erro ao incluir fonte.\n";
-		return;
-	}
+	_fonte = _pGraf->getFont();
 }
 
 void Menus::MenuPause::criarImagemFase()
@@ -32,12 +35,8 @@ void Menus::MenuPause::criarImagemFase()
 
 void Menus::MenuPause::criarImagemPause()
 {
-	sf::Texture* textura = new sf::Texture();
+	sf::Texture* textura = _pGraf->getTextura("Imagem_Pause");
 
-	if (!textura->loadFromFile("assets/menu/menuPause.jpg")) {
-		std::cerr << "Erro ao criar background menu de pause.\n";
-		return;
-	}
 	setTexture(textura);
 
 	// tamanho do background
@@ -50,6 +49,12 @@ void Menus::MenuPause::criarImagemPause()
 		escalaX,
 		escalaY
 	);
+
+	sf::Vector2f posicao;
+	posicao.x = ((float)_pGraf->getWindow()->getSize().x / 2.f) - ((float)_body.getGlobalBounds().width / 2.f);
+	posicao.y = 0.f;
+
+	_body.setPosition(posicao);
 }
 
 void Menus::MenuPause::criarTitulo()
@@ -60,15 +65,16 @@ void Menus::MenuPause::criarTitulo()
 	// Caracteristicas do conteudo
 	_titulo.setFont(_fonte);
 	_titulo.setString("Pausado");
-	_titulo.setCharacterSize(TAMANHO_BOTOES + 10);
+	_titulo.setCharacterSize(Constantes::TAMANHO_BOTOES + 20);
 	_titulo.setStyle(sf::Text::Style::Regular);
-	_titulo.setFillColor(sf::Color::White);
+	_titulo.setFillColor(sf::Color::Black);
 
 	// Posicao
 	tamTexto = _titulo.getGlobalBounds();
 
 	sf::Vector2f posicao;
-	posicao.x = ((float)tamImagemPause.height / 2.f) - ((float)tamTexto.width / 2.f);
+	posicao.x = ((float)tamImagemPause.width / 2.f) - ((float)tamTexto.width / 2.f);
+	posicao.x += _body.getPosition().x;
 	posicao.y = (float)tamImagemPause.width / 10.f;
 
 	_titulo.setPosition(posicao);
@@ -85,15 +91,16 @@ void Menus::MenuPause::criarBotoes()
 	// Caracteristicas do conteudo
 	_botaoRetomar.setFont(_fonte);
 	_botaoRetomar.setString("Retomar");
-	_botaoRetomar.setCharacterSize(TAMANHO_BOTOES - 10);
+	_botaoRetomar.setCharacterSize(Constantes::TAMANHO_BOTOES);
 	_botaoRetomar.setStyle(sf::Text::Style::Regular);
-	_botaoRetomar.setFillColor(sf::Color::White);
+	_botaoRetomar.setFillColor(sf::Color::Black);
 
 
 	// Posicao
 	tamTexto = _botaoRetomar.getGlobalBounds();
 
 	posicao.x = ((float)tamImagemPause.width / 2.f) - ((float)tamTexto.width / 2.f);
+	posicao.x += _body.getPosition().x;
 	posicao.y = (float)tamImagemPause.height / 10.f * 5.f;
 
 	_botaoRetomar.setPosition(posicao);
@@ -103,15 +110,16 @@ void Menus::MenuPause::criarBotoes()
 	// Caracteristicas do conteudo
 	_botaoSalvarSair.setFont(_fonte);
 	_botaoSalvarSair.setString("Salvar e sair");
-	_botaoSalvarSair.setCharacterSize(TAMANHO_BOTOES - 10);
+	_botaoSalvarSair.setCharacterSize(Constantes::TAMANHO_BOTOES);
 	_botaoSalvarSair.setStyle(sf::Text::Style::Regular);
-	_botaoSalvarSair.setFillColor(sf::Color::White);
+	_botaoSalvarSair.setFillColor(sf::Color::Black);
 
 
 	// Posicao
-	tamTexto = _botaoRetomar.getGlobalBounds();
+	tamTexto = _botaoSalvarSair.getGlobalBounds();
 
 	posicao.x = ((float)tamImagemPause.width / 2.f) - ((float)tamTexto.width / 2.f);
+	posicao.x += _body.getPosition().x;
 	posicao.y = (float)tamImagemPause.height / 10.f * 6.5f;
 
 	_botaoSalvarSair.setPosition(posicao);
@@ -128,7 +136,8 @@ void Menus::MenuPause::verificarMovimento()
 {
 	sf::Vector2i posicaoMouse = _mouse.getPosition();
 
-	// Verifica onde o mouse esta e destaca o botao
+	// Verifica onde o mouse esta e destaca ou padroniza o botao
+
 	if (_botaoRetomar.getGlobalBounds().contains((float)posicaoMouse.x, (float)posicaoMouse.y)) {
 		destacarTexto(_botaoRetomar);
 
@@ -155,7 +164,7 @@ void Menus::MenuPause::destacarTexto(sf::Text& texto)
 	char c = *(texto.getString().begin());
 	if (c != '>') {
 		std::string frase = "> " + texto.getString() + " <";
-		texto.setCharacterSize(TAMANHO_BOTOES + 10);
+		texto.setCharacterSize(Constantes::TAMANHO_BOTOES + 5);
 		texto.setString(frase);
 		texto.setStyle(sf::Text::Style::Underlined);
 
@@ -171,6 +180,7 @@ void Menus::MenuPause::reposicionarTexto(sf::Text& texto)
 
 	sf::Vector2f posicao;
 	posicao.x = ((float)tamImagemPause.width / 2.f) - ((float)tamTexto.width / 2.f);
+	posicao.x += _body.getPosition().x;
 	posicao.y = texto.getPosition().y;
 
 	texto.setPosition(posicao);
@@ -178,4 +188,64 @@ void Menus::MenuPause::reposicionarTexto(sf::Text& texto)
 
 void Menus::MenuPause::padronizar(sf::Text& texto)
 {
+	char c = *(texto.getString().begin());
+	if (c == '>') {
+		std::string fraseTexto = texto.getString();
+		std::string fraseNova = fraseTexto.substr(2, fraseTexto.size() - 4);
+
+		texto.setCharacterSize(Constantes::TAMANHO_BOTOES - 10);
+		texto.setString(fraseNova);
+		texto.setStyle(sf::Text::Style::Regular);
+
+		// Reposiciona no meio da janela
+		reposicionarTexto(texto);
+	}
+}
+
+void Menus::MenuPause::executarRetomar()
+{
+	// Volta a fase
+	_mudouEstado = true;
+}
+
+void Menus::MenuPause::executarSalvarSair()
+{
+	// Volta ao menu e salva a pontuacao
+	_mudouEstado = true;
+	_voltaAoMenu = true;
+}
+
+void Menus::MenuPause::desenharMenu()
+{
+	_pGraf->getWindow()->draw(*_imagemFase);
+	_pGraf->getWindow()->draw(_body);
+	_pGraf->getWindow()->draw(_titulo);
+	_pGraf->getWindow()->draw(_botaoRetomar);
+	_pGraf->getWindow()->draw(_botaoSalvarSair);
+}
+
+void Menus::MenuPause::executar()
+{
+	while (!_mudouEstado) {
+		sf::Event event;
+
+		while (_pGraf->getWindow()->pollEvent(event) && _segundos > 0.5f) {
+			_segundos = 1.f;
+
+			// Volta a fase
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+				executarRetomar();
+			}
+		}
+
+		_pGraf->clear();
+
+		desenharMenu();
+
+		verificarMouse();
+
+		_segundos += _clock.restart().asSeconds();
+
+		_pGraf->display();
+	}
 }

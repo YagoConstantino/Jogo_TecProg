@@ -303,10 +303,10 @@ void Fases::Castelo::executar()
 	while (!_mudouEstado) {
 		sf::Event event;
 		while (_GG->getWindow()->pollEvent(event)) {
-			// Volta para o menu
-			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-				Jogo::mudarStateNum(10);
-				_mudouEstado = true;
+
+			// Cria o menu pause
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+				pause();
 			}
 		}
 

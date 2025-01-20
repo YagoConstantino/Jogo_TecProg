@@ -23,3 +23,4 @@ FundoMedieval assets/menu/FundoMedieval.png
 Pergaminho assets/menu/pergaminho.jpg
 Floresta_Icone assets/menu/floresta.png
 Castelo_Icone assets/menu/castelo.jpg
+Imagem_Pause assets/menu/menuPause.jpg

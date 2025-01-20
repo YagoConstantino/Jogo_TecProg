@@ -19,7 +19,7 @@ limitar ao ch�o, pois � at� o momento a unica parte que certamente vai ser
 
 Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1,Entidades::Jogador*j2)
 	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(Constantes::MAX_CAVALEIROS),
-	maxPlataformas(Constantes::MAX_PLATAFORMA), _mudouEstado(false),_hudJog1(nullptr),_hudJog2(nullptr)
+	maxPlataformas(Constantes::MAX_PLATAFORMA), _mudouEstado(false),_hudJog1(nullptr),_hudJog2(nullptr), _menuPause(nullptr)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
@@ -171,4 +171,33 @@ void Fases::Fase::verificarJogadores()
 			_mudouEstado = true;
 		}
 	}
+}
+
+void Fases::Fase::pause()
+{
+	if (_menuPause == nullptr) {
+		_menuPause = new Menus::MenuPause(_pGraf, &_body);
+
+		_menuPause->executar();
+
+		verificarSaidaPause();
+
+		delete _menuPause;
+		_menuPause = nullptr;
+
+		normalizarBackground();
+	}
+}
+
+void Fases::Fase::verificarSaidaPause()
+{
+	if (_menuPause->getVoltaAoMenu()) {
+		Jogo::mudarStateNum(Constantes::STATE_MENU);
+		_mudouEstado = true;
+	}
+}
+
+void Fases::Fase::normalizarBackground()
+{
+	_body.setColor(sf::Color(255, 255, 255));
 }

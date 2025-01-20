@@ -1,2 +1,4 @@
-Gabriel 0
+Gabriel 3
 YAGO 0
+YAgo 0
+g 0

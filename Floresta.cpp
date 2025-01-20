@@ -114,12 +114,10 @@ void Fases::Floresta::executar()
         sf::Event event;
         while (_GG->getWindow()->pollEvent(event)) 
         {
-            // Volta para o menu
-            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+            // Cria o menu de pause
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
             {
-                Jogo::mudarStateNum(10);
-                _mudouEstado = true;
-                
+                pause();                
             }
         }
 
@@ -175,8 +173,6 @@ void Fases::Floresta::criarObstaculos()
 
 void Fases::Floresta::criarCenario()
 {
-    _pTexture = new sf::Texture();
-  
     _pTexture = _pGraf->getTextura("Fundo_Floresta");
     /*
     if (!_pTexture->loadFromFile("assets/FundoFlorest.png")) 

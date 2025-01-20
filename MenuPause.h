@@ -8,6 +8,10 @@ namespace Menus {
 	class MenuPause : public Entidades::Ente{
 	private:
 		bool _mudouEstado;
+		bool _voltaAoMenu;
+
+		sf::Clock _clock;
+		float _segundos;
 
 		sf::Sprite* _imagemFase;
 
@@ -23,6 +27,8 @@ namespace Menus {
 	public:
 		MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr, sf::Sprite* imgFase = nullptr);
 		~MenuPause();
+
+		const bool getVoltaAoMenu() const;
 
 		void carregarFonte();
 
