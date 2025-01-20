@@ -1,7 +1,7 @@
 #include "MenuFases.h"
 #include "Jogo.h"
+#include "Constantes.h"
 
-#define TAMANHO_BOTOES 50
 
 using namespace Menus;
 
@@ -64,7 +64,7 @@ void MenuFases::criaResto()
 
 	_textoFases.setFont(_fonte);
 	_textoFases.setString("Selecione a fase:");
-	_textoFases.setCharacterSize(TAMANHO_BOTOES + 10);
+	_textoFases.setCharacterSize(Constantes::MENU_FASES_TAMANHO_BOTOES + 10);
 	_textoFases.setStyle(sf::Text::Style::Regular);
 	_textoFases.setFillColor(sf::Color::Black);
 
@@ -77,7 +77,7 @@ void MenuFases::criaResto()
 
 	_nomeFaseFloresta.setFont(_fonte);
 	_nomeFaseFloresta.setString("A floresta");
-	_nomeFaseFloresta.setCharacterSize(TAMANHO_BOTOES);
+	_nomeFaseFloresta.setCharacterSize(Constantes::MENU_FASES_TAMANHO_BOTOES);
 	_nomeFaseFloresta.setStyle(sf::Text::Style::Regular);
 	_nomeFaseFloresta.setFillColor(sf::Color::Black);
 
@@ -90,7 +90,7 @@ void MenuFases::criaResto()
 
 	_nomeFaseCastelo.setFont(_fonte);
 	_nomeFaseCastelo.setString("O castelo");
-	_nomeFaseCastelo.setCharacterSize(TAMANHO_BOTOES);
+	_nomeFaseCastelo.setCharacterSize(Constantes::MENU_FASES_TAMANHO_BOTOES);
 	_nomeFaseCastelo.setStyle(sf::Text::Style::Regular);
 	_nomeFaseCastelo.setFillColor(sf::Color::Black);
 
@@ -137,7 +137,7 @@ void MenuFases::criaResto()
 
 	_botaoConfirmaFase.setFont(_fonte);
 	_botaoConfirmaFase.setString("Confirmar fase");
-	_botaoConfirmaFase.setCharacterSize(TAMANHO_BOTOES);
+	_botaoConfirmaFase.setCharacterSize(Constantes::MENU_FASES_TAMANHO_BOTOES);
 	_botaoConfirmaFase.setStyle(sf::Text::Style::Regular);
 	_botaoConfirmaFase.setFillColor(sf::Color::Black);
 
@@ -251,7 +251,8 @@ void MenuFases::executar()
 		sf::Event event;
 		while (_pGraf->getWindow()->pollEvent(event)) {
 			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-				Jogo::mudarStateNum(11);
+				//Voltar para o menu Jogadores
+				Jogo::mudarStateNum(Constantes::STATE_MENU_JOGADORES);
 				_mudouEstado = true;
 			}
 		}
@@ -294,11 +295,13 @@ void MenuFases::executarFaseCastelo()
 void MenuFases::executarConfirmaFase()
 {
 	if (_faseFloresta) {
-		Jogo::mudarStateNum(20);
+		//Jogar Floresta
+		Jogo::mudarStateNum(Constantes::STATE_FLORESTA);
 		_mudouEstado = true;
 	}
 	else if (_faseCastelo) {
-		Jogo::mudarStateNum(21);
+		//Jogar Castelo
+		Jogo::mudarStateNum(Constantes::STATE_CASTELO);
 		_mudouEstado = true;
 	}
 }

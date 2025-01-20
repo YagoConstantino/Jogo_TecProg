@@ -1,9 +1,9 @@
 #include "Obstaculo.h"
-
+#include "Constantes.h"
 Entidades::Obstaculo::Obstaculo(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra)
 	:Entidade(inicialX,inicialY,pgra),_danoso(false)
 {
-	setTipo(2);
+	setTipo(Constantes::TIPO_OBSTACULO);
 }
 
 Entidades::Obstaculo::~Obstaculo()

@@ -1,5 +1,5 @@
 #include "Mago.h"
-
+#include "Constantes.h"
 // IMPORTANTE
 // direcao = -1 � esquerda, direcao = 1 � direita
 // _clock e _segundos controlam a frequencia de bater do boss
@@ -9,9 +9,9 @@ Entidades::Mago::Mago(float inicialX, float inicialY, Gerenciadores::Gerenciador
 	_vidasPerdidas(0), _projetil(nullptr), _segundosIntervaloPro(0.f) 
 {
 
-	setMaldade(3);
-	setTipo(6);
-	_speed.x = 0.06f;
+	setMaldade(Constantes::MALDADE_MAGO);
+	setTipo(Constantes::TIPO_MAGO);
+	_speed.x = Constantes::VEL_MAGO;
 
 	sf::Texture* textura = new sf::Texture();
 
@@ -68,8 +68,9 @@ void Entidades::Mago::executar()
 
 void Entidades::Mago::verificarVida() {
 	if (_vidasPerdidas > _num_vidas / 2) {
-		_speed.x = 0.09f;
-		setMaldade(2);
+		_speed.x = Constantes::VEL_MAGO_BUFF;
+		//Maldade mudada para 2
+		setMaldade(Constantes::MALDADE_BRUXA);
 	}
 }
 
@@ -94,7 +95,7 @@ void Entidades::Mago::mover()
 void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
 	
 	// Fora de alcance
-	if (getDistanciaInicioVector().x > 800.f) return;
+	if (getDistanciaInicioVector().x > Constantes::DISTANCIA_ATIVACAO_MAGO) return;
 	
 	// Dentro do alcance para se mover
 	mover();
@@ -145,14 +146,14 @@ void Entidades::Mago::atirar() {
 		{
 			_projetil->lancar
 			(
-				0.20f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador1(), 0.005f, 0.20f) * -1, getMaldade()
+				0.20f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador1(), Constantes::GRAVIDADE, 0.20f) * -1, getMaldade()
 			);
 		}
 		else
 		{
 			_projetil->lancar
 			(
-				0.20f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador2(), 0.005f, 0.20f) * -1, getMaldade()
+				0.20f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador2(), Constantes::GRAVIDADE, 0.20f) * -1, getMaldade()
 			);
 		}
 		
@@ -168,13 +169,13 @@ void Entidades::Mago::bater()
 
 		if (jogProximo == _pJog1)
 		{
-			_pJog1->operator--(3);
+			_pJog1->operator--(Constantes::DANO_BATER);
 
 			_pJog1->knockBack(this);
 		}
 		else
 		{
-			_pJog2->operator--(3);
+			_pJog2->operator--(Constantes::DANO_BATER);
 
 			_pJog2->knockBack(this);
 		}

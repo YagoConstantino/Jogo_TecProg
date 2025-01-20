@@ -1,7 +1,6 @@
 #include "MenuJogadores.h"
 #include "Jogo.h"
-
-#define TAMANHO_BOTOES 50
+#include "Constantes.h"
 
 using namespace Menus;
 
@@ -55,7 +54,7 @@ void MenuJogadores::criaResto() {
 
 	_textoJogadores.setFont(_fonte);
 	_textoJogadores.setString("Escreva o(s) nome(s) do(s) jogador(es):");
-	_textoJogadores.setCharacterSize(TAMANHO_BOTOES + 10);
+	_textoJogadores.setCharacterSize(Constantes::MENU_JOG_TAMANHO_BOTOES + 10);
 	_textoJogadores.setStyle(sf::Text::Style::Regular);
 	_textoJogadores.setFillColor(sf::Color::Black);
 
@@ -67,7 +66,7 @@ void MenuJogadores::criaResto() {
 
 	_botaoUmJog.setFont(_fonte);
 	_botaoUmJog.setString("Jogador 1:");
-	_botaoUmJog.setCharacterSize(TAMANHO_BOTOES);
+	_botaoUmJog.setCharacterSize(Constantes::MENU_JOG_TAMANHO_BOTOES);
 	_botaoUmJog.setStyle(sf::Text::Style::Regular);
 	_botaoUmJog.setFillColor(sf::Color::Black);
 
@@ -79,7 +78,7 @@ void MenuJogadores::criaResto() {
 
 	_botaoDoisJog.setFont(_fonte);
 	_botaoDoisJog.setString("Jogador 2:");
-	_botaoDoisJog.setCharacterSize(TAMANHO_BOTOES);
+	_botaoDoisJog.setCharacterSize(Constantes::MENU_JOG_TAMANHO_BOTOES);
 	_botaoDoisJog.setStyle(sf::Text::Style::Regular);
 	_botaoDoisJog.setFillColor(sf::Color::Black);
 
@@ -107,7 +106,7 @@ void MenuJogadores::criaResto() {
 
 	_nomeJog1.setFont(_fonte);
 	_nomeJog1.setString("Nome jogador 1:");
-	_nomeJog1.setCharacterSize(TAMANHO_BOTOES - 10);
+	_nomeJog1.setCharacterSize(Constantes::MENU_JOG_TAMANHO_BOTOES - 10);
 	_nomeJog1.setStyle(sf::Text::Style::Regular);
 	_nomeJog1.setFillColor(sf::Color::Black);
 
@@ -126,7 +125,7 @@ void MenuJogadores::criaResto() {
 
 	_nomeJog2.setFont(_fonte);
 	_nomeJog2.setString("Nome jogador 2:");
-	_nomeJog2.setCharacterSize(TAMANHO_BOTOES - 10);
+	_nomeJog2.setCharacterSize(Constantes::MENU_JOG_TAMANHO_BOTOES - 10);
 	_nomeJog2.setStyle(sf::Text::Style::Regular);
 	_nomeJog2.setFillColor(sf::Color::Black);
 
@@ -136,7 +135,7 @@ void MenuJogadores::criaResto() {
 
 	_botaoConfirmaNomes.setFont(_fonte);
 	_botaoConfirmaNomes.setString("Confirmar nome(s)");
-	_botaoConfirmaNomes.setCharacterSize(TAMANHO_BOTOES);
+	_botaoConfirmaNomes.setCharacterSize(Constantes::MENU_JOG_TAMANHO_BOTOES);
 	_botaoConfirmaNomes.setStyle(sf::Text::Style::Regular);
 	_botaoConfirmaNomes.setFillColor(sf::Color::Black);
 
@@ -291,7 +290,7 @@ void MenuJogadores::executarConfirmaNomes()
 	{
 		// Entra no menu de fases
 		if (_jogo->criarJogador1(_nome1)) {
-			Jogo::mudarStateNum(13);
+			Jogo::mudarStateNum(Constantes::STATE_MENU_FASES);
 			_mudouEstado = true;
 		}
 	}
@@ -300,7 +299,7 @@ void MenuJogadores::executarConfirmaNomes()
 	{
 		// Entra no menu de fases
 		if (_jogo->criarJogador2(_nome2)) {
-			Jogo::mudarStateNum(13);
+			Jogo::mudarStateNum(Constantes::STATE_MENU_FASES);
 			_mudouEstado = true;
 		}
 	}

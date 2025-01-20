@@ -322,6 +322,7 @@
     <ClInclude Include="TelaFimDeJogo.h">
       <Filter>Entidades</Filter>
     </ClInclude>
+    <ClInclude Include="Constantes.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Entidades">

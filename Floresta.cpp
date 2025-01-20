@@ -4,11 +4,12 @@
 #include <vector>
 #include <utility>
 #include "BruxaThread.h"
+#include "Constantes.h"
 
 
 Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog1, Entidades::Jogador* jog2)
 
-    :Fase(pgra,jog1,jog2),maxBruxas(5),maxBarraMagicas(4)
+    :Fase(pgra,jog1,jog2),maxBruxas(Constantes::MAX_BRUXAS),maxBarraMagicas(Constantes::MAX_BARRAS_MAGICAS)
 
 {
 
@@ -175,7 +176,7 @@ void Fases::Floresta::criarCenario()
     _pTexture = new sf::Texture();
     if (!_pTexture->loadFromFile("assets/FundoFlorest.png")) 
     {
-        std::cerr << "Erro ao criar o background da fase 2.\n";
+        std::cerr << "Erro ao criar o background da fase Floresta.\n";
         return;
     }
     _body.setTexture(*_pTexture);

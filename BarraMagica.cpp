@@ -1,7 +1,7 @@
 #include "BarraMagica.h"
-
+#include "Constantes.h"
 Entidades::BarraMagica::BarraMagica(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra)
-	:Obstaculo(inicialX,inicialY,pgra), _duracaoParalisia(8000.f)
+	:Obstaculo(inicialX,inicialY,pgra), _duracaoParalisia(Constantes::DURACAO_PARALISIA)
 {
 
 	// Gerenciador grafico

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <utility>
-
+#include "Constantes.h"
 /*Implementar posteriormente:
 Posso fazer um vector de pair<pair<float,float>,bool>(Esses vectores para plataforma e cavaleiro ficariam no .h)
 uso o pair de float para as coordenadas e o booleano para saber
@@ -18,8 +18,8 @@ limitar ao ch�o, pois � at� o momento a unica parte que certamente vai ser
 */
 
 Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1,Entidades::Jogador*j2)
-	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(7), maxPlataformas(8), _mudouEstado(false),
-	_hudJog1(nullptr),_hudJog2(nullptr)
+	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(Constantes::MAX_CAVALEIROS),
+	maxPlataformas(Constantes::MAX_PLATAFORMA), _mudouEstado(false),_hudJog1(nullptr),_hudJog2(nullptr)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
@@ -110,7 +110,7 @@ void Fases::Fase::criarCavaleiros()
 void Fases::Fase::criarPlataformas()
 {
 
-	int n = (rand() % 6) + 3;        // Quantidade de plataformas: entre 3 e 8
+	int n = (rand() % 5) +4 ;        // Quantidade de plataformas: entre 3 e 8
 	int i;
 
 	std::vector<std::pair<float, float>> posicoes =

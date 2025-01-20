@@ -1,5 +1,5 @@
 #include "Personagem.h"
-
+#include "Constantes.h"
 Entidades::Personagem::Personagem(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, int vidas)
 	:Entidade(inicialX, inicialY, pgra), _num_vidas(vidas),_direcao(1)
 {
@@ -42,7 +42,7 @@ void Entidades::Personagem::pular()
 {
 	if (_onGround)
 	{
-		_speed.y = -1.55f;
+		_speed.y = Constantes::PULO_PERSONAGEM;
 		setGround(false);
 	}
 	

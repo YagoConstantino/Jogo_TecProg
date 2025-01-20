@@ -1,17 +1,18 @@
 #include "Jogador.h"
 #include "stdlib.h"
 #include "Inimigo.h"
+#include "Constantes.h"
 int Entidades::Jogador::contador(0);
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
-	:Personagem(inlX, inY, pgra, 10), _pontos(0), nome(name), tempoPulo(80.f), _velocidade(0.2f),
-	_paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f), _clockParalisia(),
+	:Personagem(inlX, inY, pgra,Constantes::VIDAS_JOGADOR), _pontos(0), nome(name), tempoPulo(Constantes::TEMPO_PULO)
+	, _velocidade(Constantes::VEL_JOGADOR),_paralisado(false), _duracaoParalisia(0.f), _tempoParalisado(0.f), _clockParalisia(),
 	_atacando(false), _texturas(), _texturasSword(), Sword(), _ehJogador1(!contador)
 {
 	contador++;
 
 	Sword = new sf::Sprite();
-	setTipo(3);
+	setTipo(Constantes::TIPO_JOGADOR);
 
 	if (_ehJogador1)
 	{
@@ -156,7 +157,7 @@ void Entidades::Jogador::pular()
 {
 	if (_onGround)
 	{
-		_speed.y = -1.75f;
+		_speed.y = Constantes::PULO_JOGADOR;
 		setGround(false);
 	}
 }

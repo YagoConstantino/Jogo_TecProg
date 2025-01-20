@@ -14243,7 +14243,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 2606,
-									"top": 1946,
+									"top": 2010,
 									"height": 11,
 									"alpha": 1,
 									"distance": 30,
@@ -14263,7 +14263,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 2619,
-									"top": 1954,
+									"top": 2018,
 									"height": 11,
 									"alpha": 1,
 									"distance": 15,
@@ -14283,7 +14283,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 2644,
-									"top": 1954,
+									"top": 2018,
 									"height": 11,
 									"alpha": -1,
 									"distance": 15,
@@ -14300,7 +14300,7 @@
 							"tail": {
 								"$ref": "DA0n5F+WR0extjj+YwdZLQAA"
 							},
-							"points": "2728:1968;2632:1968;2632:1616",
+							"points": "2728:2032;2632:2032;2632:1616",
 							"showProperty": false,
 							"nameLabel": {
 								"$ref": "QpD4q3eO7E+MENJybawnFQAA"
@@ -14875,7 +14875,7 @@
 							"font": "Arial;13;0",
 							"parentStyle": false,
 							"left": 3032,
-							"top": 4576,
+							"top": 4504,
 							"width": 513,
 							"height": 44,
 							"text": "A partir desta classes, seus relacionamentos e afins, criar outras visando atender os requisitos postos.\n"
@@ -14891,7 +14891,7 @@
 							"font": "Arial;13;0",
 							"parentStyle": false,
 							"left": 1288,
-							"top": 4560,
+							"top": 4496,
 							"width": 580,
 							"height": 44,
 							"text": "Eis um diagrama em fase inicial que começa a atender os requisitos postos e deve ser extendido e finalizado para tal.\n"
@@ -20835,7 +20835,7 @@
 							"tail": {
 								"$ref": "hcGUofPML0SvamMbUz4PaAAA"
 							},
-							"points": "1900:4464;1900:4582;1868:4582"
+							"points": "1900:4464;1900:4518;1868:4518"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -20853,7 +20853,7 @@
 							"tail": {
 								"$ref": "hcGUofPML0SvamMbUz4PaAAA"
 							},
-							"points": "3056:4464;3056:4576"
+							"points": "3056:4464;3056:4504"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -29578,12 +29578,12 @@
 									},
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 2171,
-									"top": 4372,
+									"left": 1983,
+									"top": 4312,
 									"width": 59.6298828125,
 									"height": 13,
-									"alpha": -3.3352146834690704,
-									"distance": 51.97114584074513,
+									"alpha": -4.762851107926208,
+									"distance": 198.25236442474022,
 									"hostEdge": {
 										"$ref": "AAAAAAGUZCsbhJcjMeU="
 									},

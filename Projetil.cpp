@@ -1,9 +1,9 @@
 #include "Projetil.h"
-
+#include "Constantes.h"
 // ------------------------------- PUBLIC ----------------------------------------------------
 
 Entidades::Projetil::Projetil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pGraf)
-	: Entidade(inicialX, inicialY, pGraf), _lancar(false), _dano(0), dt(0.f), _tempoMaxVoo(15.f){
+	: Entidade(inicialX, inicialY, pGraf), _lancar(false), _dano(0), dt(0.f), _tempoMaxVoo(Constantes::TEMPO_MAX_VOO){
 
 	sf::Texture* textura = new sf::Texture();
 

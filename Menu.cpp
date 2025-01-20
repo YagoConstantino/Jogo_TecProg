@@ -1,8 +1,7 @@
 #include "Menu.h"
 #include "Jogo.h"
+#include "Constantes.h"
 
-#define TAMANHO_TITULO 145
-#define TAMANHO_BOTOES 50
 
 using namespace Menus;
 
@@ -52,7 +51,7 @@ void Menu::criarBotoes()
 	_textosBotoes.push_back("Jogar");
 	_botoes[1].setFont(_fonte);
 	_botoes[1].setString("Jogar");
-	_botoes[1].setCharacterSize(TAMANHO_BOTOES);
+	_botoes[1].setCharacterSize(Constantes::MENU_TAMANHO_BOTOES);
 	_botoes[1].setStyle(sf::Text::Style::Regular);
 	_botoes[1].setFillColor(sf::Color::White);
 	
@@ -73,7 +72,7 @@ void Menu::criarBotoes()
 	_textosBotoes.push_back("Ranking");
 	_botoes[2].setFont(_fonte);
 	_botoes[2].setString("Ranking");
-	_botoes[2].setCharacterSize(TAMANHO_BOTOES);
+	_botoes[2].setCharacterSize(Constantes::MENU_TAMANHO_BOTOES);
 	_botoes[2].setStyle(sf::Text::Style::Regular);
 	_botoes[2].setFillColor(sf::Color::White);
 
@@ -92,7 +91,7 @@ void Menu::criarBotoes()
 	_textosBotoes.push_back("Sair");
 	_botoes[3].setFont(_fonte);
 	_botoes[3].setString("Sair");
-	_botoes[3].setCharacterSize(TAMANHO_BOTOES);
+	_botoes[3].setCharacterSize(Constantes::MENU_TAMANHO_BOTOES);
 	_botoes[3].setStyle(sf::Text::Style::Regular);
 	_botoes[3].setFillColor(sf::Color::White);
 
@@ -111,7 +110,7 @@ void Menu::criarTitulo()
 	// Caracteristicas do conteudo
 	_titulo.setFont(_fonte);
 	_titulo.setString("JOGO");
-	_titulo.setCharacterSize(TAMANHO_TITULO);
+	_titulo.setCharacterSize(Constantes::MENU_TAMANHO_TITULO);
 	_titulo.setStyle(sf::Text::Style::Regular);
 	_titulo.setFillColor(sf::Color::White);
 
@@ -179,7 +178,7 @@ void Menu::destacarTexto(sf::Text& texto)
 	char c = *(texto.getString().begin());
 	if (c != '>') {
 		std::string frase = "> " + texto.getString() + " <";
-		texto.setCharacterSize(TAMANHO_BOTOES + 10);
+		texto.setCharacterSize(Constantes::MENU_TAMANHO_BOTOES + 10);
 		texto.setString(frase);
 		texto.setStyle(sf::Text::Style::Underlined);
 
@@ -202,7 +201,7 @@ void Menu::reposicionarTexto(sf::Text& texto)
 
 void Menu::padronizar(sf::Text& texto, int id)
 {
-	texto.setCharacterSize(TAMANHO_BOTOES);
+	texto.setCharacterSize(Constantes::MENU_TAMANHO_BOTOES);
 	texto.setString(_textosBotoes[id - 1]);
 	texto.setStyle(sf::Text::Style::Regular);
 
@@ -212,19 +211,22 @@ void Menu::padronizar(sf::Text& texto, int id)
 
 void Menu::executarJogar()
 {
-	Jogo::mudarStateNum(11);
+	//ENTRAR NO MENU JOGADORES
+	Jogo::mudarStateNum(Constantes::STATE_MENU_JOGADORES);
 	_mudouEstado = true;
 }
 
 void Menu::executarRanking()
 {
-	Jogo::mudarStateNum(12);
+	//ENTRAR NO RANKING
+	Jogo::mudarStateNum(Constantes::STATE_MENU_RANKING);
 	_mudouEstado = true;
 }
 
 void Menu::executarSair()
 {
-	Jogo::mudarStateNum(0);
+	//FECHAR JANELA
+	Jogo::mudarStateNum(Constantes::STATE_FECHAR_JANELA);
 	_mudouEstado = true;
 }
 
@@ -244,7 +246,7 @@ void Menu::executar()
 		while (_pGraf->getWindow()->pollEvent(event)) {
 			
 			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-				Jogo::mudarStateNum(0);
+				Jogo::mudarStateNum(Constantes::STATE_FECHAR_JANELA);
 				_mudouEstado = true;
 			}
 		}

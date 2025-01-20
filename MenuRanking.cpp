@@ -1,7 +1,7 @@
 #include "MenuRanking.h"
 #include "Jogo.h"
-#define TAMANHO_TITULO 115
-#define TAMANHO_BOTOES 50
+#include "Constantes.h"
+
 using namespace Menus;
 MenuRanking::MenuRanking(Gerenciadores::Gerenciador_Grafico* _pGraf, Ranking* rank)
 	:Ente(_pGraf),_mudouEstado(false),_botaoVoltarMenuPrincipal(),_textosBotao(),_mouse(),
@@ -34,7 +34,7 @@ void MenuRanking::criarBotao()
 	_textosBotao = "Voltar ";
 	_botaoVoltarMenuPrincipal.setFont(_fonte);
 	_botaoVoltarMenuPrincipal.setString("Jogar");
-	_botaoVoltarMenuPrincipal.setCharacterSize(TAMANHO_BOTOES);
+	_botaoVoltarMenuPrincipal.setCharacterSize(Constantes::RANKING_TAMANHO_BOTOES);
 	_botaoVoltarMenuPrincipal.setStyle(sf::Text::Style::Regular);
 	_botaoVoltarMenuPrincipal.setFillColor(sf::Color::White);
 }
@@ -44,7 +44,7 @@ void MenuRanking::criarTitulo()
 	// Caracteristicas do conteudo
 	_titulo.setFont(_fonte);
 	_titulo.setString("Ranking");
-	_titulo.setCharacterSize(TAMANHO_TITULO);
+	_titulo.setCharacterSize(Constantes::RANKING_TAMANHO_TITULO);
 	_titulo.setStyle(sf::Text::Style::Regular);
 	_titulo.setFillColor(sf::Color::White);
 
@@ -112,7 +112,7 @@ void MenuRanking::destacarTexto(sf::Text& texto)
 	char c = *(texto.getString().begin());
 	if (c != '>') {
 		std::string frase = "> " + texto.getString() + " <";
-		texto.setCharacterSize(TAMANHO_BOTOES + 10);
+		texto.setCharacterSize(Constantes::RANKING_TAMANHO_BOTOES + 10);
 		texto.setString(frase);
 		texto.setStyle(sf::Text::Style::Underlined);
 
@@ -135,7 +135,7 @@ void MenuRanking::reposicionarTexto(sf::Text& texto)
 
 void MenuRanking::padronizar(sf::Text& texto)
 {
-	texto.setCharacterSize(TAMANHO_BOTOES);
+	texto.setCharacterSize(Constantes::RANKING_TAMANHO_BOTOES);
 	texto.setString(_textosBotao);
 	texto.setStyle(sf::Text::Style::Regular);
 
@@ -182,13 +182,13 @@ void MenuRanking::mostrarRanking(Ranking* rank)
 	// Configurações iniciais para os textos
 	sf::Text texto;
 	texto.setFont(_fonte);
-	texto.setCharacterSize(TAMANHO_BOTOES);
+	texto.setCharacterSize(Constantes::RANKING_TAMANHO_BOTOES);
 	texto.setFillColor(sf::Color::White);
 
 	// Posição inicial para desenhar os textos
 	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
 	float posicaoY = tamJanela.y / 4.5f; // Começar abaixo do título
-	float incrementoY = TAMANHO_BOTOES + 12; // Espaçamento entre linhas
+	float incrementoY = Constantes::RANKING_TAMANHO_BOTOES + 12; // Espaçamento entre linhas
 
 	for (int i = 0; i < dados.size(); ++i)
 	{
