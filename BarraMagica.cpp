@@ -29,7 +29,8 @@ Entidades::BarraMagica::BarraMagica(float inicialX, float inicialY, Gerenciadore
 	_danoso = true;
 }
 
-Entidades::BarraMagica::~BarraMagica() {
+Entidades::BarraMagica::~BarraMagica() 
+{
 	_pGraf = nullptr;
 	_danoso = false;
 
@@ -40,7 +41,8 @@ Entidades::BarraMagica::~BarraMagica() {
 	_pTexture = nullptr;
 }
 
-void Entidades::BarraMagica::executar() {
+void Entidades::BarraMagica::executar() 
+{
 	desenhar();
 }
 
@@ -55,12 +57,16 @@ void Entidades::BarraMagica::obstacular(Entidades::Jogador* pJog)
 	sf::FloatRect JogBounds = pJog->getBody().getGlobalBounds();
 	sf::FloatRect ObsBound = getBody().getGlobalBounds();
 
-	if (JogBounds.top + JogBounds.height <= ObsBound.top + 5.f)
+	if (JogBounds.top + JogBounds.height <= ObsBound.top + 3.f)
 	{
 		//Para paralisar e depois pular acho que teriamos que ter um booleano firstTimeOnTop, se for a primeira vez ele paralisa
 		//Se for a segunda vez ele pular inves de paralisar
 		if (!pJog->getParalisado())
+		{
+			pJog->setGround(true);
 			pJog->pular();
+		}
+		
 	}
 	else
 	{

@@ -124,7 +124,7 @@ void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
 		// Dentro do alcance para bater
 		else 
 		{
-			//bater();
+			bater();
 		}
 	}
 	
