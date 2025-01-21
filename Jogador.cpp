@@ -145,6 +145,12 @@ void Entidades::Jogador::setParalisado(const bool para, float duracao)
 	_duracaoParalisia = duracao;
 }
 
+
+bool Entidades::Jogador::getParalisado() const
+{
+	return _paralisado;
+}
+
 void Entidades::Jogador::SetPontos(int pont)
 {
 	_pontos = pont;
@@ -359,14 +365,17 @@ bool Entidades::Jogador::getEhJogador1() const
 
 void Entidades::Jogador::executar()
 {
-	if (!_paralisado) {
+	if (!_paralisado) 
+	{
 		mover();
 		_clockParalisia.restart();
 	}
-	else {
+	else 
+	{
 		_tempoParalisado += _clockParalisia.getElapsedTime().asSeconds();
 
-		if (_tempoParalisado > _duracaoParalisia) {
+		if (_tempoParalisado > _duracaoParalisia) 
+		{
 			_tempoParalisado = 0.f;
 			_paralisado = false;
 			_clockParalisia.restart();
@@ -376,19 +385,16 @@ void Entidades::Jogador::executar()
 	}
 
 	if (_speed.x > 0.3f)
-	{
 		setSpeed(0.3f, getSpeedY());
-	}
+	
 
 	if (_num_vidas <= 0)
-	{
 		setVivo(false);
-	}
+	
 
 	if (_onGround)
-	{
 		restartClock();
-	}
+	
 
 	_body.setPosition(Position);
 	desenhar();

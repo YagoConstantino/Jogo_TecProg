@@ -49,10 +49,10 @@ void Fases::Floresta::criaBarrasMagicas()
     std::vector<std::pair<float, float>> posBarras =
     {
 
-        {468+234 , 630.f},                               // Meio da plataforma 2
-        {234,450.f},                                    // Meio da plataforma 4
-        {_GG->getWindow()->getSize().x - 200, 450.f},  // Meio da plataforma 3 
-        {936.f, 450}
+        {468+234 , 640.f},                               // Meio da plataforma 2
+        {234,460.f},                                    // Meio da plataforma 4
+        {_GG->getWindow()->getSize().x - 200, 460.f},  // Meio da plataforma 3 
+        {936.f, 460}
     };
 
     for (int i = 0; i < n; i++)
