@@ -127,7 +127,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 			{
 				(*itObstaculo)->obstacular(_jogador1);
 
-				if ((*itObstaculo)->getTipo() == 10) continue; // se for obstaculo dificil / espinho
+				if ((*itObstaculo)->getTipo() == 11) continue; // se for obstaculo dificil / espinho
 
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
@@ -154,6 +154,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 						_jogador1->setGround(true); // Marca que o jogador está no chão
 						_jogador1->setSpeed(_jogador1->getSpeedX(), 0); // Zera a velocidade vertical do jogador
 						_jogador1->setPosition(_jogador1->getPosition().x, (*itObstaculo)->getPosition().y - _jogador1->getBody().getGlobalBounds().height);
+						
 					}
 					else
 					{
@@ -173,7 +174,7 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 			{
 				(*itObstaculo)->obstacular(_jogador2);
 
-				if ((*itObstaculo)->getTipo() == 10) continue; // se for obstaculo dificil / espinho
+				if ((*itObstaculo)->getTipo() == 11) continue; // se for obstaculo dificil / espinho
 
 				if (fabs(ds.x) < fabs(ds.y)) // Testa qual direção da colisão é predominante (horizontal ou vertical)
 				{
@@ -538,10 +539,11 @@ void Gerenciadores::Gerenciador_Colisoes::aplicarGravidade()
 
 void Gerenciadores::Gerenciador_Colisoes::executar()
 {
-	aplicarGravidade();
+	
 	tratarColisoesJogsObstacs();
 	tratarColisoesJogsProjeteis();
 	tratarColisoesJogsInimgs();
 	//tratarColisoesProjObstacs();
 	tratarColisoesTela();
+	aplicarGravidade();
 }

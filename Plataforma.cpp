@@ -1,8 +1,9 @@
 #include "Plataforma.h"
-
+#include "Constantes.h"
 Entidades::Plataforma::Plataforma(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra, float alt)
 	:Obstaculo(inicialX,inicialY,pgra),altura(alt)
 {
+	setTipo(Constantes::TIPO_PLATAFORMA);
 	sf::Texture* textura = _pGraf->getTextura("Plat");
 
 	/*

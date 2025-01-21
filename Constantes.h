@@ -28,6 +28,7 @@ namespace Constantes
 	constexpr double DISTANCIA_ATIVACAO_BRUXA = 700.0f;
 	constexpr int MALDADE_BRUXA = 2;
 	constexpr int TIPO_BRUXA = 5;
+	constexpr int TIPO_BRUXA_THREAD = 7;
 
 	//Mago
 	constexpr int VIDAS_MAGO = 10;
@@ -40,7 +41,10 @@ namespace Constantes
 
 
 	//Obstaculo
-	constexpr int TIPO_OBSTACULO = 2;
+	constexpr int TIPO_OBSTACULO = 8;
+	constexpr int TIPO_PLATAFORMA = 9;
+	constexpr int TIPO_BARRA_MAGICA = 10;
+	constexpr int TIPO_ESPINHO = 11;
 	constexpr float DURACAO_PARALISIA = 8000.f;
 
 	//Projetil

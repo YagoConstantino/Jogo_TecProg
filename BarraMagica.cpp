@@ -3,7 +3,7 @@
 Entidades::BarraMagica::BarraMagica(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra)
 	:Obstaculo(inicialX,inicialY,pgra), _duracaoParalisia(Constantes::DURACAO_PARALISIA)
 {
-
+	setTipo(Constantes::TIPO_BARRA_MAGICA);
 	// Gerenciador grafico
 	//_pGraf = pgra; não precisa fazer isso aqui,é inicializado lá no Ente, basta chamar a construtura de Obstaculo
 	// que a cadeia de construtoras garante a inicialização
@@ -44,13 +44,31 @@ void Entidades::BarraMagica::executar() {
 	desenhar();
 }
 
-void Entidades::BarraMagica::obstacular(Entidades::Jogador* pJog) {
-	if (pJog == nullptr) {
+void Entidades::BarraMagica::obstacular(Entidades::Jogador* pJog) 
+{
+	if (pJog == nullptr) 
+	{
 		std::cerr << "Erro ao acessar ponteiro jogador.\n";
 		return;
 	}
 
-	pJog->setParalisado(true, _duracaoParalisia);
+	sf::FloatRect JogBounds = pJog->getBody().getGlobalBounds();
+	sf::FloatRect ObsBound = getBody().getGlobalBounds();
+
+	if (JogBounds.top + JogBounds.height <= ObsBound.top + 5.f)
+	{
+		//Para paralisar e depois pular acho que teriamos que ter um booleano firstTimeOnTop, se for a primeira vez ele paralisa
+		//Se for a segunda vez ele pular inves de paralisar
+		if (!pJog->getParalisado())
+			pJog->pular();
+	}
+	else
+	{
+		pJog->setParalisado(true, _duracaoParalisia);
+	}
+	
+
+	//pJog->setParalisado(true, _duracaoParalisia);
 }
 
 
