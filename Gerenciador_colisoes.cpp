@@ -543,7 +543,7 @@ void Gerenciadores::Gerenciador_Colisoes::executar()
 	tratarColisoesJogsObstacs();
 	tratarColisoesJogsProjeteis();
 	tratarColisoesJogsInimgs();
-	//tratarColisoesProjObstacs();
+	tratarColisoesProjObstacs();
 	tratarColisoesTela();
 	aplicarGravidade();
 }

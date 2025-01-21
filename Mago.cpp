@@ -122,14 +122,16 @@ void Entidades::Mago::danificar(Entidades::Jogador* pJog) {
 			atirar();
 		}
 		// Dentro do alcance para bater
-		else {
-			bater();
+		else 
+		{
+			//bater();
 		}
 	}
 	
 }
 
-void Entidades::Mago::atirar() {
+void Entidades::Mago::atirar() 
+{
 	// Cria o projetil
 	Entidades::Jogador* jogadorProximo = getJogadorMaisProximo();
 
