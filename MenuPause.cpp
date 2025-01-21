@@ -179,3 +179,19 @@ void Menus::MenuPause::reposicionarTexto(sf::Text& texto)
 void Menus::MenuPause::padronizar(sf::Text& texto)
 {
 }
+
+void Menus::MenuPause::executarRetomar()
+{
+}
+
+void Menus::MenuPause::executarSalvarSair()
+{
+}
+
+void Menus::MenuPause::desenharMenu()
+{
+}
+
+void Menus::MenuPause::executar()
+{
+}
