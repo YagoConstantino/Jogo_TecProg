@@ -59,6 +59,11 @@ Fases::Fase::~Fase()
 		delete _hudJog2;
 		_hudJog2 = nullptr;
 	}
+	if (_menuPause)
+	{
+		delete _menuPause;
+		_menuPause = nullptr;
+	}
 		
 
 	//Seto como nulo os ponteiros para o Gerenciador gr�fico e jogador
@@ -143,6 +148,32 @@ void Fases::Fase::criarCenario()
 	//Implementar depois 
 }
 
+void Fases::Fase::pause()
+{
+	if (_menuPause != nullptr) return;
+
+	// Executo o pause
+	_menuPause = new Menus::MenuPause(_GG, &_body);
+	_menuPause->executar();
+
+	// verifico se volto para a fase ou para o menu principal
+	verificarSaidaPause();
+
+	delete _menuPause;
+	_menuPause = nullptr;
+
+	// Conserto as cores do background
+	_body.setColor(sf::Color(255, 255, 255));
+}
+
+void Fases::Fase::verificarSaidaPause()
+{
+	if (!_menuPause->getVoltaFase()) {
+		Jogo::mudarStateNum(Constantes::STATE_MENU);
+		_mudouEstado = true;
+	}
+}
+
 void Fases::Fase::verificarJogadores()
 {
 	// ------ >> verifica se o(s) jogador(es) estao morto(s)
@@ -171,33 +202,4 @@ void Fases::Fase::verificarJogadores()
 			_mudouEstado = true;
 		}
 	}
-}
-
-void Fases::Fase::pause()
-{
-	if (_menuPause == nullptr) {
-		_menuPause = new Menus::MenuPause(_pGraf, &_body);
-
-		_menuPause->executar();
-
-		verificarSaidaPause();
-
-		delete _menuPause;
-		_menuPause = nullptr;
-
-		normalizarBackground();
-	}
-}
-
-void Fases::Fase::verificarSaidaPause()
-{
-	if (_menuPause->getVoltaAoMenu()) {
-		Jogo::mudarStateNum(Constantes::STATE_MENU);
-		_mudouEstado = true;
-	}
-}
-
-void Fases::Fase::normalizarBackground()
-{
-	_body.setColor(sf::Color(255, 255, 255));
 }

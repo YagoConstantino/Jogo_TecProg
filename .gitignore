@@ -51,3 +51,5 @@ Thumbs.db
 *.exe
 *.obj
 *.lastbuildstate
+*.iobj
+*.ipdb

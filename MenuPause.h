@@ -5,10 +5,10 @@
 #include "Gerenciador_Grafico.h"
 
 namespace Menus {
-	class MenuPause : public Entidades::Ente{
+	class MenuPause : public Entidades::Ente {
 	private:
 		bool _mudouEstado;
-		bool _voltaAoMenu;
+		bool _voltaFase;
 
 		sf::Clock _clock;
 		float _segundos;
@@ -28,7 +28,7 @@ namespace Menus {
 		MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr, sf::Sprite* imgFase = nullptr);
 		~MenuPause();
 
-		const bool getVoltaAoMenu() const;
+		const bool getVoltaFase() const;
 
 		void carregarFonte();
 
@@ -43,6 +43,8 @@ namespace Menus {
 		void destacarTexto(sf::Text& texto);
 		void reposicionarTexto(sf::Text& texto);
 		void padronizar(sf::Text& texto);
+
+		void atualizarClock();
 
 		void executarRetomar();
 		void executarSalvarSair();

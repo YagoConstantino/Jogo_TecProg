@@ -1,7 +1,7 @@
 #include "MenuPause.h"
 #include "Constantes.h"
 
-Menus::MenuPause::MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf, sf::Sprite* imgFase) : Entidades::Ente(_pGraf), _imagemFase(imgFase), _houveClique(false), _mudouEstado(false), _voltaAoMenu(false)
+Menus::MenuPause::MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf, sf::Sprite* imgFase) : Entidades::Ente(_pGraf), _imagemFase(imgFase), _houveClique(false), _mudouEstado(false), _voltaFase(false), _segundos(0.f)
 {
 	_clock.restart();
 
@@ -16,11 +16,13 @@ Menus::MenuPause::MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf, sf::Spri
 Menus::MenuPause::~MenuPause()
 {
 	_imagemFase = nullptr;
+
+	_segundos = 0.f;
 }
 
-const bool Menus::MenuPause::getVoltaAoMenu() const
+const bool Menus::MenuPause::getVoltaFase() const
 {
-	return _voltaAoMenu;
+	return _voltaFase;
 }
 
 void Menus::MenuPause::carregarFonte()
@@ -35,8 +37,7 @@ void Menus::MenuPause::criarImagemFase()
 
 void Menus::MenuPause::criarImagemPause()
 {
-	sf::Texture* textura = _pGraf->getTextura("Imagem_Pause");
-
+	sf::Texture* textura = _pGraf->getTextura("Pause");
 	setTexture(textura);
 
 	// tamanho do background
@@ -50,11 +51,9 @@ void Menus::MenuPause::criarImagemPause()
 		escalaY
 	);
 
-	sf::Vector2f posicao;
-	posicao.x = ((float)_pGraf->getWindow()->getSize().x / 2.f) - ((float)_body.getGlobalBounds().width / 2.f);
-	posicao.y = 0.f;
+	float posicaoX = ((float)tamJanela.x / 2.f) - ((float)_body.getGlobalBounds().width / 2.f);
 
-	_body.setPosition(posicao);
+	_body.setPosition(posicaoX, 0.f);
 }
 
 void Menus::MenuPause::criarTitulo()
@@ -75,7 +74,8 @@ void Menus::MenuPause::criarTitulo()
 	sf::Vector2f posicao;
 	posicao.x = ((float)tamImagemPause.width / 2.f) - ((float)tamTexto.width / 2.f);
 	posicao.x += _body.getPosition().x;
-	posicao.y = (float)tamImagemPause.width / 10.f;
+	posicao.y = (float)tamImagemPause.width / 10.f * 1.5f;
+	posicao.y += _body.getPosition().y;
 
 	_titulo.setPosition(posicao);
 }
@@ -95,13 +95,13 @@ void Menus::MenuPause::criarBotoes()
 	_botaoRetomar.setStyle(sf::Text::Style::Regular);
 	_botaoRetomar.setFillColor(sf::Color::Black);
 
-
 	// Posicao
 	tamTexto = _botaoRetomar.getGlobalBounds();
 
 	posicao.x = ((float)tamImagemPause.width / 2.f) - ((float)tamTexto.width / 2.f);
 	posicao.x += _body.getPosition().x;
 	posicao.y = (float)tamImagemPause.height / 10.f * 5.f;
+	posicao.y += _body.getPosition().y;
 
 	_botaoRetomar.setPosition(posicao);
 
@@ -121,6 +121,7 @@ void Menus::MenuPause::criarBotoes()
 	posicao.x = ((float)tamImagemPause.width / 2.f) - ((float)tamTexto.width / 2.f);
 	posicao.x += _body.getPosition().x;
 	posicao.y = (float)tamImagemPause.height / 10.f * 6.5f;
+	posicao.y += _body.getPosition().y;
 
 	_botaoSalvarSair.setPosition(posicao);
 }
@@ -182,37 +183,47 @@ void Menus::MenuPause::reposicionarTexto(sf::Text& texto)
 	posicao.x = ((float)tamImagemPause.width / 2.f) - ((float)tamTexto.width / 2.f);
 	posicao.x += _body.getPosition().x;
 	posicao.y = texto.getPosition().y;
+	posicao.y += _body.getPosition().y;
 
 	texto.setPosition(posicao);
 }
 
 void Menus::MenuPause::padronizar(sf::Text& texto)
 {
-	char c = *(texto.getString().begin());
-	if (c == '>') {
-		std::string fraseTexto = texto.getString();
-		std::string fraseNova = fraseTexto.substr(2, fraseTexto.size() - 4);
+	std::string nomeAtual = texto.getString();
+	std::string nomePadronizado;
 
-		texto.setCharacterSize(Constantes::TAMANHO_BOTOES - 10);
-		texto.setString(fraseNova);
-		texto.setStyle(sf::Text::Style::Regular);
+	if (nomeAtual[0] != '>') return;
 
-		// Reposiciona no meio da janela
-		reposicionarTexto(texto);
+	nomePadronizado = nomeAtual.substr(2, nomeAtual.size() - 4);
+
+	texto.setCharacterSize(Constantes::TAMANHO_BOTOES);
+	texto.setString(nomePadronizado);
+	texto.setStyle(sf::Text::Style::Regular);
+
+	reposicionarTexto(texto);
+}
+
+void Menus::MenuPause::atualizarClock()
+{
+	if (_segundos > 3.f) {
+		_segundos = 3.f;
+	}
+	else {
+		_segundos += _clock.restart().asSeconds();
 	}
 }
 
 void Menus::MenuPause::executarRetomar()
 {
-	// Volta a fase
+	_voltaFase = true;
 	_mudouEstado = true;
 }
 
 void Menus::MenuPause::executarSalvarSair()
 {
-	// Volta ao menu e salva a pontuacao
+	_voltaFase = false;
 	_mudouEstado = true;
-	_voltaAoMenu = true;
 }
 
 void Menus::MenuPause::desenharMenu()
@@ -228,14 +239,14 @@ void Menus::MenuPause::executar()
 {
 	while (!_mudouEstado) {
 		sf::Event event;
-
-		while (_pGraf->getWindow()->pollEvent(event) && _segundos > 0.5f) {
-			_segundos = 1.f;
+		while (_pGraf->getWindow()->pollEvent(event)) {
 
 			// Volta a fase
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && _segundos > 0.25f) 
+			{
 				executarRetomar();
 			}
+			
 		}
 
 		_pGraf->clear();
@@ -244,7 +255,7 @@ void Menus::MenuPause::executar()
 
 		verificarMouse();
 
-		_segundos += _clock.restart().asSeconds();
+		atualizarClock();
 
 		_pGraf->display();
 	}

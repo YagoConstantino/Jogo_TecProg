@@ -303,9 +303,8 @@ void Fases::Castelo::executar()
 	while (!_mudouEstado) {
 		sf::Event event;
 		while (_GG->getWindow()->pollEvent(event)) {
-
-			// Cria o menu pause
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+			{
 				pause();
 			}
 		}
