@@ -5,7 +5,7 @@
 #include "Plataforma.h"
 #include "Cavaleiro.h"
 #include "Hud.h"
-
+#include "MenuPause.h"
 
 namespace Fases
 {
@@ -18,7 +18,9 @@ namespace Fases
 		Listas::ListaEntidades* _Lista;
 		Gerenciadores::Gerenciador_Grafico* _GG;
 
-		Entidades::Jogador * _jog1;
+		Menus::MenuPause* _menuPause;
+
+		Entidades::Jogador* _jog1;
 		Entidades::Jogador* _jog2;
 		Hud* _hudJog1;
 		Hud* _hudJog2;
@@ -31,13 +33,16 @@ namespace Fases
 
 		void gerenciarColisoes();
 		
-		virtual void criarCavaleiros();  // Pois cada fase determina onde será gerado
+		virtual void criarCavaleiros() = 0;  // Pois cada fase determina onde será gerado
 		virtual void criarPlataformas();
 		virtual void criarCenario();
 
 		virtual void executar() = 0;
 		virtual void criarInimigos() = 0;
 		virtual void criarObstaculos() = 0;
+
+		void pause();
+		void verificarSaidaPause();
 
 		void verificarJogadores();
 	};

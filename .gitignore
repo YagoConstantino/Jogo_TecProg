@@ -50,3 +50,6 @@ Thumbs.db
 *.pdb
 *.exe
 *.obj
+*.lastbuildstate
+*.iobj
+*.ipdb

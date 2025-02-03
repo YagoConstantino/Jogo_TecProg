@@ -1,5 +1,7 @@
 #include "Projetil.h"
 #include "Constantes.h"
+#include <cmath>
+
 // ------------------------------- PUBLIC ----------------------------------------------------
 
 Entidades::Projetil::Projetil(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pGraf)
@@ -73,26 +75,16 @@ void Entidades::Projetil::resetar() {
 double Entidades::Projetil::calcularForcaY(double distancia, double gravidade, double forcaX)
 {
 	/*
-	double tempo = distancia / forcaX;          // Tempo para alcan�ar a dist�ncia no eixo X
-	double forcaY = (tempo * gravidade) / 2.0f;    // For�a em Y
-	return forcaY;
-	
-	Formula do tempo T = (2*Vy)/g
-
-	logo (T*g)/2 = Vy
-	*/
-
-	/*
 		Usando a formula de lancamento obliquo:
 
-		dS = V� * sin(2 * theta) / g
-		theta = 45�
-		dS = V� * 1 / g
-		dS = ( Vx� + Vy� ) / g
-		dS * g = ( Vx� + Vy� )
-		dS * g - Vx� = Vy�
-		
-		Vy = sqrt( dS * g - Vx� )
+		dS = V? * sin(2 * theta) / g
+		theta = 45?
+		dS = V? * 1 / g
+		dS = ( Vx? + Vy? ) / g
+		dS * g = ( Vx? + Vy? )
+		dS * g - Vx? = Vy?
+
+		Vy = sqrt( dS * g - Vx? )
 	*/
 
 	//double forcaY = std::sqrt(distancia * gravidade - forcaX * forcaX);

@@ -44,6 +44,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuFases.h" />
     <ClInclude Include="MenuJogadores.h" />
+    <ClInclude Include="MenuPause.h" />
     <ClInclude Include="MenuRanking.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Espinho.h" />
@@ -78,6 +79,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuFases.cpp" />
     <ClCompile Include="MenuJogadores.cpp" />
+    <ClCompile Include="MenuPause.cpp" />
     <ClCompile Include="MenuRanking.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Espinho.cpp" />

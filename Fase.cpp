@@ -19,7 +19,7 @@ limitar ao ch�o, pois � at� o momento a unica parte que certamente vai ser
 
 Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1,Entidades::Jogador*j2)
 	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(Constantes::MAX_CAVALEIROS),
-	maxPlataformas(Constantes::MAX_PLATAFORMA), _mudouEstado(false),_hudJog1(nullptr),_hudJog2(nullptr)
+	maxPlataformas(Constantes::MAX_PLATAFORMA), _mudouEstado(false),_hudJog1(nullptr),_hudJog2(nullptr), _menuPause(nullptr)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
@@ -59,6 +59,11 @@ Fases::Fase::~Fase()
 		delete _hudJog2;
 		_hudJog2 = nullptr;
 	}
+	if (_menuPause)
+	{
+		delete _menuPause;
+		_menuPause = nullptr;
+	}
 		
 
 	//Seto como nulo os ponteiros para o Gerenciador gr�fico e jogador
@@ -73,44 +78,10 @@ void Fases::Fase::gerenciarColisoes()
 	_GC->executar();
 }
 
-void Fases::Fase::criarCavaleiros()
-{
-	//Possibilidade de aleatorizar o y entre 700 e 150 rand()%(700-150)+150
-
-
-	int n = (rand() % 5) + 4; // Quantidade varia de 3 a 7
-
-
-
-	float x = 150.f;           //Posicao inicial
-	float anteriorX = x;
-
-	int larguraJanela = _GG->getWindow()->getSize().x; // Largura da janela para testar se nao saiu depois
-
-	for (int i = 0; i < n; i++)
-	{
-		Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700.0f, _GG, _jog1,_jog2); // Novo cav na posicao x
-		_Lista->insert_back(static_cast<Entidades::Entidade*>(cav)); // inserir na lista
-		_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav)); // inserir no Gerenciador de colisoes
-		float larguraCavaleiro = cav->getBody().getGlobalBounds().width; // tamanho do cavaleiro
-
-		x =(float) (rand() % (_GG->getWindow()->getSize().x) + 150.0f);
-		if (x == anteriorX)
-		{
-			x =(float) ((rand() % _GG->getWindow()->getSize().x) + 150.0f);
-		}
-		if (x + 115 + larguraCavaleiro > larguraJanela) // testo se o tamanho do cavaleiro + 115 nao sai da janela
-			x = (float)((rand() % _GG->getWindow()->getSize().x) + 150.0f);
-
-		anteriorX = x;
-	}
-
-}
-
 void Fases::Fase::criarPlataformas()
 {
 
-	int n = (rand() % 5) +4 ;        // Quantidade de plataformas: entre 3 e 8
+	int n = (rand() % 6) + 3;        // Quantidade de plataformas: entre 3 e 8
 	int i;
 
 	std::vector<std::pair<float, float>> posicoes =
@@ -141,6 +112,32 @@ void Fases::Fase::criarPlataformas()
 void Fases::Fase::criarCenario()
 {
 	//Implementar depois 
+}
+
+void Fases::Fase::pause()
+{
+	if (_menuPause != nullptr) return;
+
+	// Executo o pause
+	_menuPause = new Menus::MenuPause(_GG, &_body);
+	_menuPause->executar();
+
+	// verifico se volto para a fase ou para o menu principal
+	verificarSaidaPause();
+
+	delete _menuPause;
+	_menuPause = nullptr;
+
+	// Conserto as cores do background
+	_body.setColor(sf::Color(255, 255, 255));
+}
+
+void Fases::Fase::verificarSaidaPause()
+{
+	if (!_menuPause->getVoltaFase()) {
+		Jogo::mudarStateNum(Constantes::STATE_MENU);
+		_mudouEstado = true;
+	}
 }
 
 void Fases::Fase::verificarJogadores()

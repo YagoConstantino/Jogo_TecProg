@@ -16,10 +16,11 @@ BarraMagica assets/BarreiraEletrica.png
 Espinho assets/PlataformaEspinho.png
 Plat assets/TerrenoComFundo.png
 Fundo_Castelo assets/Fasecastelo/background.jpg
-Fundo_Floresta assets/FundoFlorest.png
+Fundo_Floresta assets/FundoFloresta.jpg
 Heart_Full assets/HeartFULL.png
 Heart_Empty assets/HeartEMPTY.png
 FundoMedieval assets/menu/FundoMedieval.png
 Pergaminho assets/menu/pergaminho.jpg
+Pause assets/menu/menuPause.jpg
 Floresta_Icone assets/menu/floresta.png
 Castelo_Icone assets/menu/castelo.jpg
