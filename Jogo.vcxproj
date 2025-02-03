@@ -25,6 +25,7 @@
     <ClInclude Include="Elemento.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="Fase.h" />
     <ClInclude Include="Floresta.h" />
     <ClInclude Include="Gerenciador_Colisoes.h" />
@@ -60,6 +61,7 @@
     <ClCompile Include="BruxaThread.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="Floresta.cpp" />
     <ClCompile Include="Gerenciador_colisoes.cpp" />

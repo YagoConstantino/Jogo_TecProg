@@ -44,6 +44,7 @@ namespace Entidades
 		std::string getNome()const;
 
 		void setParalisado(const bool para, float duracao);
+		bool getParalisado()const;
 
 		void SetPontos(int pont);
 		int getPontos()const;

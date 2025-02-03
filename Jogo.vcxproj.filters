@@ -152,8 +152,13 @@
     <ClCompile Include="TelaFimDeJogo.cpp">
       <Filter>Entidades</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="MenuPause.cpp">
       <Filter>Menus</Filter>
+=======
+    <ClCompile Include="Factory.cpp">
+      <Filter>Entidades</Filter>
+>>>>>>> Yago
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +334,9 @@
       <Filter>Menus</Filter>
     </ClInclude>
     <ClInclude Include="Constantes.h" />
+    <ClInclude Include="Factory.h">
+      <Filter>Entidades</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Entidades">

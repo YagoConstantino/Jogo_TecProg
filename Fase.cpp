@@ -101,7 +101,7 @@ void Fases::Fase::criarPlataformas()
 		float x = posicoes[i].first;
 		float y = posicoes[i].second;
 
-		Entidades::Plataforma* plat = new Entidades::Plataforma(x, y, _GG, 0);
+		Entidades::Plataforma* plat = new Entidades::Plataforma(x, y, _GG);
 		_GC->incluirObstaculo(static_cast<Entidades::Obstaculo*>(plat));
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(plat));
 
