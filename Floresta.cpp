@@ -14,9 +14,9 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
 {
     _inimigos.clear();
 
-    //_Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
-    //_GC->setJogador1(jog);
     criarCenario();
+    criarInimigos();
+    criarObstaculos();
 }
 
 Fases::Floresta::~Floresta()
@@ -45,7 +45,7 @@ void Fases::Floresta::criaBarrasMagicas()
 {
     // Determinar o número de barras mágicas a serem criadas: entre 1 e 3
 
-    int n = rand() % 4 + 1;
+    int n = (rand() % 3) + 1;
 
     // Posições centrais das plataformas 2, 4 e 6 (caso a plataforma 6 exista)
     std::vector<std::pair<float, float>> posBarras =
@@ -74,11 +74,12 @@ void Fases::Floresta::criarCavaleiros()
     //Possibilidade de aleatorizar o y entre 700 e 150 rand()%(700-150)+150
 
 
-    int n = (rand() % 5) + 4; // Quantidade varia de 3 a 7
+    // (rand() % (max - min + 1)) + min
+    int n = (rand() % 5) + 3; // Quantidade varia de 3 a 7
 
 
 
-    float x = 200.f;           //Posicao inicial
+    float x = 310.f;           //Posicao inicial
     float anteriorX = x;
 
     int larguraJanela = _GG->getWindow()->getSize().x; // Largura da janela para testar se nao saiu depois
@@ -91,13 +92,13 @@ void Fases::Floresta::criarCavaleiros()
 
         float larguraCavaleiro = cav->getBody().getGlobalBounds().width; // tamanho do cavaleiro
 
-        x = (float)((rand() % _GG->getWindow()->getSize().x) + 200.0f);
+        x = (float)((rand() % _GG->getWindow()->getSize().x) + 310.0f);
         while (x == anteriorX)
         {
-            x = (float)((rand() % _GG->getWindow()->getSize().x) + 200.0f);
+            x = (float)((rand() % _GG->getWindow()->getSize().x) + 310.0f);
         }
         while (x + 115 + larguraCavaleiro > larguraJanela) // testo se o tamanho do cavaleiro + 115 nao sai da janela
-            x = (float)((rand() % _GG->getWindow()->getSize().x) + 200.0f);
+            x = (float)((rand() % _GG->getWindow()->getSize().x) + 310.0f);
 
         anteriorX = x;
 
@@ -109,7 +110,7 @@ void Fases::Floresta::criarCavaleiros()
 void Fases::Floresta::criaBruxas()
 {
 
-    int n = rand() % 5 + 1;
+    int n = (rand() % 5) + 1;
     int i;
     
     std::vector<std::pair<float, float>> posicaoBruxa =

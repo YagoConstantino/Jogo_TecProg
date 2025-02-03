@@ -393,10 +393,10 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 	// Para cada inimigo
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end() && (*itInimigo)->getVivo(); itInimigo++) {
 		// Lado esquerdo
-		if ((*itInimigo)->getPosition().x <= 0.f) 
+		if ((*itInimigo)->getPosition().x < 0.f) 
 		{
 			(*itInimigo)->setSpeed((*itInimigo)->getSpeedX() * -1.f, (*itInimigo)->getSpeedY());
-			//(*itInimigo)->setPosition(10.f, (*itInimigo)->getPosition().y);
+			//(*itInimigo)->setPosition(50.f, (*itInimigo)->getPosition().y);
 		}
 
 		// Lado direito

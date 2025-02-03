@@ -326,9 +326,6 @@ void Jogo::criaFloresta()
 
 		// Cria o estado atual
 		_florest = new Fases::Floresta(_GerenciadorGrafico, _jogador1,_jogador2);
-
-		_florest->criarInimigos();
-		_florest->criarObstaculos();
 	}
 }
 
