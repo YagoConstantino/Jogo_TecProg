@@ -372,7 +372,8 @@ void Fases::Castelo::verificarMagos()
 		vivos += (int)_magos[i]->getVivo();
 
 	// Finaliza o jogo
-	if (!vivos) {
-
+	if (!vivos && tam) {
+		Jogo::mudarStateNum(Constantes::STATE_FIM_JOGO);
+		_mudouEstado = true;
 	}
 }

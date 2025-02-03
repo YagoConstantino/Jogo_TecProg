@@ -78,40 +78,6 @@ void Fases::Fase::gerenciarColisoes()
 	_GC->executar();
 }
 
-void Fases::Fase::criarCavaleiros()
-{
-	//Possibilidade de aleatorizar o y entre 700 e 150 rand()%(700-150)+150
-
-
-	int n = (rand() % 5) + 4; // Quantidade varia de 3 a 7
-
-
-
-	float x = 150.f;           //Posicao inicial
-	float anteriorX = x;
-
-	int larguraJanela = _GG->getWindow()->getSize().x; // Largura da janela para testar se nao saiu depois
-
-	for (int i = 0; i < n; i++)
-	{
-		Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700.0f, _GG, _jog1,_jog2); // Novo cav na posicao x
-		_Lista->insert_back(static_cast<Entidades::Entidade*>(cav)); // inserir na lista
-		_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav)); // inserir no Gerenciador de colisoes
-		float larguraCavaleiro = cav->getBody().getGlobalBounds().width; // tamanho do cavaleiro
-
-		x =(float) (rand() % (_GG->getWindow()->getSize().x) + 150.0f);
-		if (x == anteriorX)
-		{
-			x =(float) ((rand() % _GG->getWindow()->getSize().x) + 150.0f);
-		}
-		if (x + 115 + larguraCavaleiro > larguraJanela) // testo se o tamanho do cavaleiro + 115 nao sai da janela
-			x = (float)((rand() % _GG->getWindow()->getSize().x) + 150.0f);
-
-		anteriorX = x;
-	}
-
-}
-
 void Fases::Fase::criarPlataformas()
 {
 

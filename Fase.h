@@ -33,7 +33,7 @@ namespace Fases
 
 		void gerenciarColisoes();
 		
-		virtual void criarCavaleiros();  // Pois cada fase determina onde será gerado
+		virtual void criarCavaleiros() = 0;  // Pois cada fase determina onde será gerado
 		virtual void criarPlataformas();
 		virtual void criarCenario();
 

@@ -148,7 +148,9 @@ void Entidades::Mago::atirar() {
 		{
 			_projetil->lancar
 			(
-				0.30f * _direcao, (float)_projetil->calcularForcaY(getDistanciaJogador1(), Constantes::GRAVIDADE, 0.30f) * -1, getMaldade()
+				0.30f * _direcao, 
+				(float)_projetil->calcularForcaY(getDistanciaJogador1(), Constantes::GRAVIDADE, 0.30f) * -1,
+				getMaldade()
 			);
 		}
 		else

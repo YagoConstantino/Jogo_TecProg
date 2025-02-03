@@ -12,11 +12,10 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
     :Fase(pgra,jog1,jog2),maxBruxas(Constantes::MAX_BRUXAS),maxBarraMagicas(Constantes::MAX_BARRAS_MAGICAS)
 
 {
+    _inimigos.clear();
 
     //_Lista->insert_back(static_cast<Entidades::Entidade*>(_jog));
     //_GC->setJogador1(jog);
-    criarCenario();
-   
     criarCenario();
 }
 
@@ -38,6 +37,8 @@ Fases::Floresta::~Floresta()
     }
     _jog1 = nullptr;
     _jog2 = nullptr;
+
+    _inimigos.clear();
 }
 
 void Fases::Floresta::criaBarrasMagicas()
@@ -68,6 +69,42 @@ void Fases::Floresta::criaBarrasMagicas()
     }
 }
 
+void Fases::Floresta::criarCavaleiros()
+{
+    //Possibilidade de aleatorizar o y entre 700 e 150 rand()%(700-150)+150
+
+
+    int n = (rand() % 5) + 4; // Quantidade varia de 3 a 7
+
+
+
+    float x = 200.f;           //Posicao inicial
+    float anteriorX = x;
+
+    int larguraJanela = _GG->getWindow()->getSize().x; // Largura da janela para testar se nao saiu depois
+
+    for (int i = 0; i < n; i++)
+    {
+        Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(x, 700.0f, _GG, _jog1, _jog2); // Novo cav na posicao x
+        _Lista->insert_back(static_cast<Entidades::Entidade*>(cav)); // inserir na lista
+        _GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav)); // inserir no Gerenciador de colisoes
+
+        float larguraCavaleiro = cav->getBody().getGlobalBounds().width; // tamanho do cavaleiro
+
+        x = (float)((rand() % _GG->getWindow()->getSize().x) + 200.0f);
+        while (x == anteriorX)
+        {
+            x = (float)((rand() % _GG->getWindow()->getSize().x) + 200.0f);
+        }
+        while (x + 115 + larguraCavaleiro > larguraJanela) // testo se o tamanho do cavaleiro + 115 nao sai da janela
+            x = (float)((rand() % _GG->getWindow()->getSize().x) + 200.0f);
+
+        anteriorX = x;
+
+        _inimigos.push_back(static_cast<Entidades::Inimigo*>(cav));
+    }
+
+}
 
 void Fases::Floresta::criaBruxas()
 {
@@ -94,12 +131,16 @@ void Fases::Floresta::criaBruxas()
             Entidades::BruxaThread* bru = new Entidades::BruxaThread(x, y, _GG, _jog1, _jog2);
             _GC->incluirInimigo(static_cast<Entidades::Inimigo*>(bru));
             _Lista->insert_back(static_cast<Entidades::Entidade*>(bru));
+
+            _inimigos.push_back(static_cast<Entidades::Inimigo*>(bru));
         }
         else
         {
             Entidades::Bruxa* bru = new Entidades::Bruxa(x, y, _GG, _jog1, _jog2);
             _GC->incluirInimigo(static_cast<Entidades::Inimigo*>(bru));
             _Lista->insert_back(static_cast<Entidades::Entidade*>(bru));
+
+            _inimigos.push_back(static_cast<Entidades::Inimigo*>(bru));
         }
             
     }
@@ -150,6 +191,7 @@ void Fases::Floresta::executar()
         _Lista->executar();
 
         verificarJogadores();
+        verificarInimigos();
 
         //std::cout << _jog1->getPontos() << std::endl;
         _GG->display();
@@ -196,5 +238,20 @@ void Fases::Floresta::criarCenario()
     );
 
     _body.setPosition(0.f, 0.f);
+}
+
+void Fases::Floresta::verificarInimigos()
+{
+    int vivos = 0;
+
+    size_t tam = _inimigos.size();
+    for (int i = 0; i < tam; i++)
+        vivos += (int)_inimigos[i]->getVivo();
+
+    // Muda para a fase Castelo
+    if (!vivos) {
+        Jogo::mudarStateNum(Constantes::STATE_FIM_JOGO);
+        _mudouEstado = true;
+    }
 }
 

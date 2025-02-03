@@ -30,6 +30,9 @@ namespace Entidades
 
 		double getDistanciaJogador1();
 		double getDistanciaJogador2();
+		sf::Vector2f getDistanciaJog1Vector();
+		sf::Vector2f getDistanciaJog2Vector();
+
 		double getDistanciaoInicio();
 		sf::Vector2f getDistanciaInicioVector();
 

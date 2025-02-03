@@ -73,6 +73,26 @@ double Entidades::Inimigo::getDistanciaJogador2()
 	return sqrt(pow(getPositionX() - _pJog2->getPositionX(), 2) + pow(getPositionY() - _pJog2->getPositionY(), 2));
 }
 
+sf::Vector2f Entidades::Inimigo::getDistanciaJog1Vector()
+{
+	sf::Vector2f distancia;
+
+	distancia.x = abs(getPositionX() - _pJog1->getPositionX());
+	distancia.y = abs(getPositionY() - _pJog1->getPositionY());
+
+	return distancia;
+}
+
+sf::Vector2f Entidades::Inimigo::getDistanciaJog2Vector()
+{
+	sf::Vector2f distancia;
+
+	distancia.x = abs(getPositionX() - _pJog2->getPositionX());
+	distancia.y = abs(getPositionY() - _pJog2->getPositionY());
+
+	return distancia;
+}
+
 double Entidades::Inimigo::getDistanciaoInicio()
 {
 	return sqrt(pow(getPositionX() - posInicialX, 2) + pow(getPositionY() - posInicialY, 2));

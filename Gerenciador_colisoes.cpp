@@ -392,19 +392,21 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 	// Para cada inimigo
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end() && (*itInimigo)->getVivo(); itInimigo++) {
 		// Lado esquerdo
-		if ((*itInimigo)->getPositionX() <= 0.f) 
+		if ((*itInimigo)->getPosition().x <= 0.f) 
 		{
 			(*itInimigo)->setSpeed((*itInimigo)->getSpeedX() * -1.f, (*itInimigo)->getSpeedY());
+			//(*itInimigo)->setPosition(10.f, (*itInimigo)->getPosition().y);
 		}
 
 		// Lado direito
 		else if
 			(
-				(*itInimigo)->getPositionX() + (*itInimigo)->getBody().getGlobalBounds().width
+				(*itInimigo)->getPosition().x + (*itInimigo)->getBody().getGlobalBounds().width
 				>= (*itInimigo)->getGrafico()->getWindow()->getSize().x
 				)
 		{
 			(*itInimigo)->setSpeed((*itInimigo)->getSpeedX() * -1.f, (*itInimigo)->getSpeedY());
+			//(*itInimigo)->setPosition(10.f, (*itInimigo)->getPosition().y);
 		}
 	}
 
@@ -455,10 +457,12 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 	// Para cada inimigo
 	for (itInimigo = _listaInimigos.begin(); itInimigo != _listaInimigos.end() && (*itInimigo)->getVivo(); itInimigo++) 
 	{
-		if((*itInimigo)->getPositionY() + (*itInimigo)->getBody().getGlobalBounds().height >=
+		if ((*itInimigo)->getPositionY() + (*itInimigo)->getBody().getGlobalBounds().height >=
 			(*itInimigo)->getGrafico()->getWindow()->getSize().y)
-
+		{
 			(*itInimigo)->setVivo(false);
+			(*itInimigo)->setVidas(-1);
+		}
 	}
 
 	// Para cada jogador

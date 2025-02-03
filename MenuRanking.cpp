@@ -34,12 +34,22 @@ void MenuRanking::criarBotao()
 	// --------- >> Botao voltar
 
 	// Caracteristicas do conteudo
-	_textosBotao = "Voltar ";
+	_textosBotao = "Voltar";
 	_botaoVoltarMenuPrincipal.setFont(_fonte);
-	_botaoVoltarMenuPrincipal.setString("Jogar");
+	_botaoVoltarMenuPrincipal.setString(_textosBotao);
 	_botaoVoltarMenuPrincipal.setCharacterSize(Constantes::RANKING_TAMANHO_BOTOES);
 	_botaoVoltarMenuPrincipal.setStyle(sf::Text::Style::Regular);
 	_botaoVoltarMenuPrincipal.setFillColor(sf::Color::White);
+
+	// Posicao
+	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();
+	sf::FloatRect tamTexto = _botaoVoltarMenuPrincipal.getGlobalBounds();
+
+	sf::Vector2f posicao;
+	posicao.x = ((float)tamJanela.x / 2.f) - (tamTexto.width / 2.f);
+	posicao.y = (float)tamJanela.y / 10.f * 9.f;
+
+	_botaoVoltarMenuPrincipal.setPosition(posicao);
 }
 
 void MenuRanking::criarTitulo()
