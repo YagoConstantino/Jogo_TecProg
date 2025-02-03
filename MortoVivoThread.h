@@ -1,18 +1,18 @@
 #pragma once
-#include "Bruxa.h"
+#include "MortoVivo.h"
 #include "Thread.h"
 
 namespace Entidades
 {
-	class BruxaThread :public Bruxa, public ThreadCPP
+	class MortoVivoThread :public MortoVivo, public ThreadCPP
 	{
 	private:
 		bool _rodar;
 	public:
-		BruxaThread(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
+		MortoVivoThread(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr,
 			Entidades::Jogador* pJog1 = nullptr, Entidades::Jogador* pJog2 = nullptr, int vidas = 5);
 
-		~BruxaThread();
+		~MortoVivoThread();
 		void setRodar(bool rod);
 
 		void run();

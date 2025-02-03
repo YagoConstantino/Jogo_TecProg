@@ -1,13 +1,13 @@
-#include "Bruxa.h"
+#include "MortoVivo.h"
 #include "Constantes.h"
-Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
+Entidades::MortoVivo::MortoVivo(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1, Entidades::Jogador* pJog2, int vidas)
 	:Inimigo(inicialX,inicialY,pgra,pJog1,pJog2,vidas)
 
 {
-	setTipo(Constantes::TIPO_BRUXA);
-	setMaldade(Constantes::MALDADE_BRUXA);
-	_speed.x = Constantes::VEL_BRUXA;
+	setTipo(Constantes::TIPO_MORTOVIVO);
+	setMaldade(Constantes::MALDADE_MORTOVIVO);
+	_speed.x = Constantes::VEL_MORTOVIVO;
 
 	sf::Texture* textura = _pGraf->getTextura("MortoVivo");
 
@@ -22,13 +22,13 @@ Entidades::Bruxa::Bruxa(float inicialX, float inicialY, Gerenciadores::Gerenciad
 	_body.setScale(1.f, 1.f);
 }
 
-Entidades::Bruxa::~Bruxa()
+Entidades::MortoVivo::~MortoVivo()
 {
 	_pJog1 = nullptr;
 	_pJog2 = nullptr;
 }
 
-void Entidades::Bruxa::executar()
+void Entidades::MortoVivo::executar()
 {
 	double distanciaJog1 = -1;
 	double distanciaJog2 = -1;
@@ -37,8 +37,8 @@ void Entidades::Bruxa::executar()
 	if(_pJog2) distanciaJog2 = getDistanciaJogador2();
 
 	if (
-		(distanciaJog1 > 0 && distanciaJog1 <= Constantes::DISTANCIA_ATIVACAO_BRUXA) 
-		|| (distanciaJog2 > 0 && distanciaJog2 <= Constantes::DISTANCIA_ATIVACAO_BRUXA)
+		(distanciaJog1 > 0 && distanciaJog1 <= Constantes::DISTANCIA_ATIVACAO_MORTOVIVO)
+		|| (distanciaJog2 > 0 && distanciaJog2 <= Constantes::DISTANCIA_ATIVACAO_MORTOVIVO)
 		)
 	{
 		atacar = true;
@@ -72,7 +72,7 @@ void Entidades::Bruxa::executar()
 
 
 
-void Entidades::Bruxa::mover()
+void Entidades::MortoVivo::mover()
 {
 	Entidades::Jogador* jogadorMaisProximo = getJogadorMaisProximo();
 
@@ -103,7 +103,7 @@ void Entidades::Bruxa::mover()
 	}
 }
 
-void Entidades::Bruxa::danificar(Entidades::Jogador* pJog)
+void Entidades::MortoVivo::danificar(Entidades::Jogador* pJog)
 {
 	pJog->operator--(2);
 	

@@ -1,9 +1,10 @@
-#include "BruxaThread.h"
+#include "MortoVivoThread.h"
 
-Entidades::BruxaThread::BruxaThread(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
+Entidades::MortoVivoThread::MortoVivoThread(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1, Entidades::Jogador* pJog2, int vidas)
-	:Bruxa(inicialX, inicialY, pgra, pJog1, pJog2, vidas), ThreadCPP(),_rodar(false)
+	:MortoVivo(inicialX, inicialY, pgra, pJog1, pJog2, vidas), ThreadCPP(),_rodar(false)
 {
+	setTipo(Constantes::TIPO_MORTOVIVO_THREAD);
 	setEhThread(true);
 	sf::Texture* textura = _pGraf->getTextura("MortoVivoThread");
 
@@ -19,16 +20,16 @@ Entidades::BruxaThread::BruxaThread(float inicialX, float inicialY, Gerenciadore
 	_body.setScale(1.f, 1.f);
 }
 
-Entidades::BruxaThread::~BruxaThread()
+Entidades::MortoVivoThread::~MortoVivoThread()
 {
 }
 
-void Entidades::BruxaThread::setRodar(bool rod)
+void Entidades::MortoVivoThread::setRodar(bool rod)
 {
 	_rodar = rod;
 }
 
-void Entidades::BruxaThread::run()
+void Entidades::MortoVivoThread::run()
 {
 	while (getVivo())
 	{
@@ -74,7 +75,7 @@ void Entidades::BruxaThread::run()
 	}
 }
 
-void Entidades::BruxaThread::executar()
+void Entidades::MortoVivoThread::executar()
 {
 	desenhar();
 }

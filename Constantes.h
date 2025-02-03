@@ -23,12 +23,12 @@ namespace Constantes
 	constexpr int TIPO_CAVALEIRO = 4;
 
 	//Bruxa
-	constexpr int VIDAS_BRUXA = 5;
-	constexpr float VEL_BRUXA = 0.04f;
-	constexpr double DISTANCIA_ATIVACAO_BRUXA = 700.0f;
-	constexpr int MALDADE_BRUXA = 2;
-	constexpr int TIPO_BRUXA = 5;
-	constexpr int TIPO_BRUXA_THREAD = 7;
+	constexpr int VIDAS_MORTOVIVO = 5;
+	constexpr float VEL_MORTOVIVO = 0.04f;
+	constexpr double DISTANCIA_ATIVACAO_MORTOVIVO = 700.0f;
+	constexpr int MALDADE_MORTOVIVO = 2;
+	constexpr int TIPO_MORTOVIVO = 5;
+	constexpr int TIPO_MORTOVIVO_THREAD = 7;
 
 	//Mago
 	constexpr int VIDAS_MAGO = 10;
@@ -63,7 +63,7 @@ namespace Constantes
 	constexpr int MAX_PLATAFORMA = 7;
 
 	//Floresta
-	constexpr int MAX_BRUXAS = 5;
+	constexpr int MAX_MORTOVIVO = 5;
 	constexpr int MAX_BARRAS_MAGICAS = 4;
 
 	//Menu

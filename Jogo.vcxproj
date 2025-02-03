@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Castelo.h" />
-    <ClInclude Include="BruxaThread.h" />
+    <ClInclude Include="MortoVivoThread.h" />
     <ClInclude Include="Constantes.h" />
     <ClInclude Include="Elemento.h" />
     <ClInclude Include="Ente.h" />
@@ -36,7 +36,7 @@
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Mago.h" />
     <ClInclude Include="Cavaleiro.h" />
-    <ClInclude Include="Bruxa.h" />
+    <ClInclude Include="MortoVivo.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Castelo.cpp" />
-    <ClCompile Include="BruxaThread.cpp" />
+    <ClCompile Include="MortoVivoThread.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Factory.cpp" />
@@ -71,7 +71,7 @@
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="Mago.cpp" />
     <ClCompile Include="Cavaleiro.cpp" />
-    <ClCompile Include="Bruxa.cpp" />
+    <ClCompile Include="MortoVivo.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="Main.cpp" />

@@ -72,7 +72,7 @@ void Entidades::Mago::verificarVida() {
 	if (_vidasPerdidas > _num_vidas / 2) {
 		_speed.x = Constantes::VEL_MAGO_BUFF;
 		//Maldade mudada para 2
-		setMaldade(Constantes::MALDADE_BRUXA);
+		setMaldade(Constantes::MALDADE_MORTOVIVO);
 	}
 }
 

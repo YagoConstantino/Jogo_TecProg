@@ -99,7 +99,11 @@ namespace Entidades
 				break;
 
 				//Bruxa
-			case Constantes::TIPO_BRUXA:
+			case Constantes::TIPO_MORTOVIVO:
+				setPositionX((getPositionX() - 40.0f));
+				break;
+
+			case Constantes::TIPO_MORTOVIVO_THREAD:
 				setPositionX((getPositionX() - 40.0f));
 				break;
 
@@ -128,7 +132,11 @@ namespace Entidades
 				break;
 
 				//Bruxa
-			case Constantes::TIPO_BRUXA:
+			case Constantes::TIPO_MORTOVIVO:
+				setPositionX((getPositionX() + 40.0f));
+				break;
+
+			case Constantes::TIPO_MORTOVIVO_THREAD:
 				setPositionX((getPositionX() + 40.0f));
 				break;
 

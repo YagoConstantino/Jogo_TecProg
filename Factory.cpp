@@ -1,9 +1,9 @@
 #include "Factory.h"
 #include "Jogador.h"
 #include "Cavaleiro.h"
-#include "Bruxa.h"
+#include "MortoVivo.h"
 #include "Mago.h"
-#include "BruxaThread.h"
+#include "MortoVivoThread.h"
 #include "Plataforma.h"
 #include "BarraMagica.h"
 #include "Espinho.h"
@@ -37,14 +37,14 @@ namespace Entidades {
         case Constantes::TIPO_CAVALEIRO:
             return new Entidades::Cavaleiro(inicialX, inicialY, pgra, pJog1, pJog2);
 
-        case Constantes::TIPO_BRUXA:
-            return new Entidades::Bruxa(inicialX, inicialY, pgra, pJog1, pJog2);
+        case Constantes::TIPO_MORTOVIVO:
+            return new Entidades::MortoVivo(inicialX, inicialY, pgra, pJog1, pJog2);
 
         case Constantes::TIPO_MAGO:
             return new Entidades::Mago(inicialX, inicialY, pgra, pJog1, pJog2);
 
-        case Constantes::TIPO_BRUXA_THREAD : // BruxaThread
-            return new Entidades::BruxaThread(inicialX, inicialY, pgra, pJog1, pJog2);
+        case Constantes::TIPO_MORTOVIVO_THREAD : // BruxaThread
+            return new Entidades::MortoVivoThread(inicialX, inicialY, pgra, pJog1, pJog2);
 
         default:
             return nullptr; // Tipo de inimigo não reconhecido.

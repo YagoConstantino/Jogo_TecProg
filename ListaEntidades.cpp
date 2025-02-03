@@ -1,6 +1,6 @@
 #include "ListaEntidades.h"
 #include "Personagem.h"
-#include "BruxaThread.h"
+#include "MortoVivoThread.h"
 #include "Thread.h"
 Listas::ListaEntidades::ListaEntidades() : List() {}
 
@@ -99,8 +99,8 @@ void Listas::ListaEntidades::startThread()
         Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
         if (ente->getEhThread())
         {
-            Entidades::BruxaThread* bruxaTH = static_cast<Entidades::BruxaThread*>(ente);
-            bruxaTH->start();
+            Entidades::MortoVivoThread* mortoTH = static_cast<Entidades::MortoVivoThread*>(ente);
+            mortoTH->start();
         }
 
     }
@@ -115,12 +115,12 @@ void Listas::ListaEntidades::joinThread()
         Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
         if (ente->getEhThread())
         {
-            Entidades::BruxaThread* bruxaTH = static_cast<Entidades::BruxaThread*>(ente);
-            bruxaTH->lockMutex();
-            bruxaTH->setRodar(false);
-            bruxaTH->setVivo(false);
-            bruxaTH->join();
-            bruxaTH->unlockMutex();
+            Entidades::MortoVivoThread* mortoTH = static_cast<Entidades::MortoVivoThread*>(ente);
+            mortoTH->lockMutex();
+            mortoTH->setRodar(false);
+            mortoTH->setVivo(false);
+            mortoTH->join();
+            mortoTH->unlockMutex();
         }
     }
     delete it;
@@ -137,10 +137,10 @@ void Listas::ListaEntidades::executar()
             ente->executar(); 
             if(ente->getEhThread())
             {
-                Entidades::BruxaThread* bru = static_cast<Entidades::BruxaThread*>(ente);
-                bru->lockMutex();
-                bru->setRodar(true);
-                bru->unlockMutex();
+                Entidades::MortoVivoThread* morto = static_cast<Entidades::MortoVivoThread*>(ente);
+                morto->lockMutex();
+                morto->setRodar(true);
+                morto->unlockMutex();
             }
         }
         

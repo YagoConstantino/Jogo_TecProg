@@ -8,10 +8,10 @@
     <ClCompile Include="BarraMagica.cpp">
       <Filter>Entidades\Obstaculos</Filter>
     </ClCompile>
-    <ClCompile Include="Bruxa.cpp">
+    <ClCompile Include="MortoVivo.cpp">
       <Filter>Entidades\Personagens</Filter>
     </ClCompile>
-    <ClCompile Include="BruxaThread.cpp">
+    <ClCompile Include="MortoVivoThread.cpp">
       <Filter>Entidades\Personagens</Filter>
     </ClCompile>
     <ClCompile Include="Castelo.cpp">
@@ -161,10 +161,10 @@
     <ClInclude Include="BarraMagica.h">
       <Filter>Entidades\Obstaculos</Filter>
     </ClInclude>
-    <ClInclude Include="Bruxa.h">
+    <ClInclude Include="MortoVivo.h">
       <Filter>Entidades\Personagens</Filter>
     </ClInclude>
-    <ClInclude Include="BruxaThread.h">
+    <ClInclude Include="MortoVivoThread.h">
       <Filter>Entidades\Personagens</Filter>
     </ClInclude>
     <ClInclude Include="Castelo.h">
