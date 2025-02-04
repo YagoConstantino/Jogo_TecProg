@@ -18,7 +18,7 @@ namespace Entidades
 		float _segundos;
 		bool _vivo;
 		bool _ehThread;
-		std::ostream buffer;
+		//std::ostream buffer;
 
 	public:
 		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
@@ -56,7 +56,7 @@ namespace Entidades
 		void setEhThread(bool th);
 		bool getEhThread()const;
 
-		//void SalvarDataBuffer(ofstream& arquivo);
+		//virtual void SalvarDataBuffer(std::ofstream& arquivo) = 0;
 		//void registrarDados();
 
 
