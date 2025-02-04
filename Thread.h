@@ -1,5 +1,9 @@
 #pragma once
-
+/*
+Codigo inspirado na aula apresentada por Jean Simão durante a disciplina de Técnicas de Programação
+na UTFPR no semestre 2024/2
+Link para a aula : https://pessoal.dainf.ct.utfpr.edu.br/jeansimao/Fundamentos2/ThreadsPosix/Fundamentos1-2-SlidesC++18C.htm
+*/
 #include <iostream>
 #include <string>
 #include <thread>
