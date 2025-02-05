@@ -48,7 +48,7 @@ namespace Constantes
 	constexpr float DURACAO_PARALISIA = 8000.f;
 
 	//Projetil
-	constexpr float TEMPO_MAX_VOO = 15.f;
+	constexpr float TEMPO_MAX_VOO = 20.f;
 
 	//TelaFimDeJogo
 	constexpr int TAMANHO_TITULO = 125;
