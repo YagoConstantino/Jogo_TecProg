@@ -23,6 +23,7 @@ namespace Entidades
 
 	public:
 		Ente(Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
+		Ente(Gerenciadores::Gerenciador_Grafico* pgra,sf::Texture* text,sf::Sprite bod);
 		virtual  ~Ente() { };
 
 		virtual void executar() = 0;
