@@ -102,6 +102,7 @@ void Entidades::MortoVivo::mover()
 		_body.setPosition(Position);
 	}
 
+	srand(time(NULL));
 	int aleatorio = rand() % 7;
 	if (aleatorio == _energetico)
 	{

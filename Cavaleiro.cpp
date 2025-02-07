@@ -70,6 +70,7 @@ void Entidades::Cavaleiro::danificar(Entidades::Jogador* pJog)
 	if (_segundos > 0.75f) 
 	{
 		_segundos = 0.f;
+		srand(time(NULL));
 		int aleatorio = rand() % 7;
 
 		if(aleatorio==_loucura)
