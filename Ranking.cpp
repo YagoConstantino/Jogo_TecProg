@@ -101,7 +101,7 @@ void Ranking::salvarDados()
 
 void Ranking::atualizaLeaderboard(Entidades::Jogador* pJog)
 {
-    if (!pJog)
+    if (pJog == nullptr)
     {
         cerr << "Ponteiro de Jogador Nulo\n" << endl;
         return;

@@ -1,6 +1,7 @@
 #include "Castelo.h"
 #include "Jogo.h"
 #include "Constantes.h"
+
 Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1, Entidades::Jogador* j2)
 	: Fase(pgra, j1,j2), _maxMagos(Constantes::MAX_MAGOS), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
 	_platsBases(), _cavaleiros(), _magos(),_magosNaoCriados(true)

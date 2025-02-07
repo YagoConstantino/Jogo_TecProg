@@ -21,7 +21,7 @@ public:
     Elemento<TIPO>* GetPrev() const { return prev; }
     TIPO* getInfo() const { return pInfo; }
 
-    void setNext(Elemento<TIPO>* pNext) { next = pNext; }
-    void setPrev(Elemento<TIPO>* pPrev) { prev = pPrev; }
-    void setInfo(TIPO* pInf) { pInfo = pInf; }
+    void setNext(Elemento<TIPO>* pNext) { if(pNext) next = pNext; }
+    void setPrev(Elemento<TIPO>* pPrev) { if(pPrev) prev = pPrev; }
+    void setInfo(TIPO* pInf) { if(pInf) pInfo = pInf; }
 };

@@ -87,6 +87,7 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 
 Entidades::Jogador::~Jogador()
 {
+	contador--;
 
 	if (_pTexture)
 	{

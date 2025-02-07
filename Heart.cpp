@@ -27,12 +27,12 @@ Fases::Heart::Heart(Gerenciadores::Gerenciador_Grafico* pGraf):
 
 Fases::Heart::~Heart()
 {
-	if (fullHeart)
+	if (fullHeart != nullptr)
 	{
 		delete fullHeart;
 		fullHeart = nullptr;
 	}
-	if (emptyHeart)
+	if (emptyHeart != nullptr)
 	{
 		delete emptyHeart;
 		emptyHeart = nullptr;

@@ -40,10 +40,11 @@ Fases::Hud::~Hud()
 {
 	_pGraf = nullptr;
 	_pJogador = nullptr;
-	int i;
+
+	size_t i;
 	for (i = 0; i < _hearts.size(); i++)
 	{
-		if (_hearts[i]!= nullptr)
+		if (_hearts[i] != nullptr)
 		{
 			delete _hearts[i];
 			_hearts[i] = nullptr;
