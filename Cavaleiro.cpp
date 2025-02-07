@@ -5,7 +5,7 @@
 #include "Constantes.h"
 Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1,Entidades::Jogador*pJog2, int vidas)
-	:Inimigo(inicialX, inicialY, pgra, pJog1,pJog2, vidas)
+	:Inimigo(inicialX, inicialY, pgra, pJog1,pJog2, vidas),_loucura(rand()%7)
 {
 	setTipo(Constantes::TIPO_CAVALEIRO);
 	setMaldade(Constantes::MALDADE_CAVALEIRO);
@@ -67,10 +67,15 @@ void Entidades::Cavaleiro::mover()
 
 void Entidades::Cavaleiro::danificar(Entidades::Jogador* pJog)
 {
-	if (_segundos > 0.75f) {
+	if (_segundos > 0.75f) 
+	{
 		_segundos = 0.f;
+		int aleatorio = rand() % 7;
 
-		pJog->operator--(1);
+		if(aleatorio==_loucura)
+			pJog->operator--(getMaldade());
+
+		pJog->operator--(getMaldade());
 		pJog->knockBack(this);
 	}
 }

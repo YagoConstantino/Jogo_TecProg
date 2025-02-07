@@ -2,7 +2,7 @@
 #include "Constantes.h"
 Entidades::MortoVivo::MortoVivo(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1, Entidades::Jogador* pJog2, int vidas)
-	:Inimigo(inicialX,inicialY,pgra,pJog1,pJog2,vidas)
+	:Inimigo(inicialX,inicialY,pgra,pJog1,pJog2,vidas),_energetico(rand()%7)
 
 {
 	setTipo(Constantes::TIPO_MORTOVIVO);
@@ -100,6 +100,12 @@ void Entidades::MortoVivo::mover()
 		velocidadeAtual.x *= _direcao;
 		Position += velocidadeAtual;
 		_body.setPosition(Position);
+	}
+
+	int aleatorio = rand() % 7;
+	if (aleatorio == _energetico)
+	{
+		pular();
 	}
 }
 

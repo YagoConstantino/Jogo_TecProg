@@ -51,7 +51,7 @@ namespace Constantes
 	constexpr float TEMPO_MAX_VOO = 20.f;
 
 	//TelaFimDeJogo
-	constexpr int TAMANHO_TITULO = 125;
+	constexpr int TAMANHO_TITULO = 90;
 	constexpr int TAMANHO_SUBTITULO = 85;
 	constexpr int TAMANHO_BOTOES = 50;
 

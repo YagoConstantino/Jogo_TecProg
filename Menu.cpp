@@ -112,7 +112,7 @@ void Menu::criarTitulo()
 {
 	// Caracteristicas do conteudo
 	_titulo.setFont(_fonte);
-	_titulo.setString("JOGO");
+	_titulo.setString("Medieval++");
 	_titulo.setCharacterSize(Constantes::MENU_TAMANHO_TITULO);
 	_titulo.setStyle(sf::Text::Style::Regular);
 	_titulo.setFillColor(sf::Color::White);

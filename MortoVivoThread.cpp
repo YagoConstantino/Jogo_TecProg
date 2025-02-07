@@ -68,6 +68,12 @@ void Entidades::MortoVivoThread::run()
 			{
 				setVivo(false);
 			}
+
+			int aleatorio = rand() % 7;
+			if (aleatorio == _energetico)
+			{
+				pular();
+			}
 			unlockMutex();
 			setRodar(false);
 			//yield();
