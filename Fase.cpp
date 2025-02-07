@@ -71,6 +71,7 @@ Fases::Fase::~Fase()
 	_jog1 = nullptr;
 	_jog2 = nullptr;
 
+	_GC->resetar();
 }
 
 void Fases::Fase::gerenciarColisoes()

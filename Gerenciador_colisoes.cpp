@@ -39,6 +39,10 @@ Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes()
 {
 	_jogador1 = nullptr;
 	_jogador2 = nullptr;
+
+	_listaInimigos.clear();
+	_listaObstaculos.clear();
+	_listaProjetil.clear();
 }
 
 
@@ -550,4 +554,14 @@ void Gerenciadores::Gerenciador_Colisoes::executar()
 	tratarColisoesProjObstacs();
 	tratarColisoesTela();
 	aplicarGravidade();
+}
+
+void Gerenciadores::Gerenciador_Colisoes::resetar()
+{
+	_listaInimigos.clear();
+	_listaObstaculos.clear();
+	_listaProjetil.clear();
+
+	_jogador1 = nullptr;
+	_jogador2 = nullptr;
 }

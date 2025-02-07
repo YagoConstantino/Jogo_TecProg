@@ -182,6 +182,7 @@ namespace Listas {
         {
             Elemento* prox = atual->GetNext();
             delete atual;
+            atual = nullptr;
             atual = prox;
         }
         head = tail = nullptr;

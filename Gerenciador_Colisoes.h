@@ -57,5 +57,7 @@ namespace Gerenciadores {
 		void aplicarGravidade();
 
 		void executar();
+
+		void resetar();
 	};
 }

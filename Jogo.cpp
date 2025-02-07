@@ -157,37 +157,37 @@ void Jogo::executar()
 
 void Jogo::destroiEstadosAnteriores()
 {
-	if (_menu)
+	if (_menu != nullptr)
 	{
 		delete _menu;
 		_menu = nullptr;
 	}
-	else if (_menuJogadores) 
+	if (_menuJogadores != nullptr)
 	{
 		delete _menuJogadores;
 		_menuJogadores = nullptr;
 	}
-	else if (_menuFases)
+	if (_menuFases != nullptr)
 	{
 		delete _menuFases;
 		_menuFases = nullptr;
 	}
-	else if (_menuRanking)
+	if (_menuRanking != nullptr)
 	{
 		delete _menuRanking;
 		_menuRanking = nullptr;
 	}
-	else if (_florest)
+	if (_florest != nullptr)
 	{
 		delete _florest;
 		_florest = nullptr;
 	}
-	else if (_castelo)
+	if (_castelo != nullptr)
 	{
 		delete _castelo;
 		_castelo = nullptr;
 	}
-	else if (_telaFimDeJogo)
+	if (_telaFimDeJogo != nullptr)
 	{
 		delete _telaFimDeJogo;
 		_telaFimDeJogo = nullptr;
@@ -231,6 +231,7 @@ void Jogo::atualizaRanking()
 	if (rank)
 	{
 		cout << "Atualizando leaderboard..." << endl;
+
 		rank->atualizaLeaderboard(_jogador1);
 		rank->atualizaLeaderboard(_jogador2);
 
@@ -238,7 +239,7 @@ void Jogo::atualizaRanking()
 	}
 	else
 	{
-		cerr << "Erro: rank n?o inicializado!" << endl;
+		cerr << "Erro: rank nao inicializado!" << endl;
 	}
 }
 
@@ -260,6 +261,8 @@ void Jogo::criaMenu()
 		destroiEstadosAnteriores();
 
 		_menu = new Menus::Menu(_GerenciadorGrafico);
+
+		
 	}
 }
 
