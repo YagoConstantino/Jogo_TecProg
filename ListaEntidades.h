@@ -25,6 +25,8 @@ namespace Listas
 		void percorrer();
 		void startThread();
 		void joinThread();
+		void registrarDados();
+		void salvar(std::ofstream& arquivo);
 		void executar();
 
 	};

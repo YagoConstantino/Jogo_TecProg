@@ -146,5 +146,15 @@ Entidades::Jogador* Entidades::Inimigo::getJogadorMaisProximo()
 	return nullptr;
 }
 
+void Entidades::Inimigo::registraDados()
+{
+	/*
+	float posInicialX;
+		float posInicialY;
+	*/
+	Entidades::Personagem::registraDados();
+	buffer << posInicialX << " " << posInicialY << " ";
+}
+
 
 

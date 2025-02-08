@@ -39,8 +39,10 @@ namespace Entidades
 		Entidades::Jogador* getJogadorMaisProximo();
 
 		virtual void executar() = 0;
-		//void SalvarDataBuffer();
+		
 		virtual void mover() = 0;
 		virtual void danificar(Entidades::Jogador* pJog) = 0;
+		virtual void SalvarDataBuffer(std::ofstream& arquivo) = 0;
+		virtual void registraDados();
 	};
 }

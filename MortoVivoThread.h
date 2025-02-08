@@ -2,6 +2,7 @@
 #include "MortoVivo.h"
 #include "Thread.h"
 
+
 namespace Entidades
 {
 	class MortoVivoThread :public MortoVivo, public ThreadCPP
@@ -17,5 +18,7 @@ namespace Entidades
 
 		void run();
 		void executar();
+		void SalvarDataBuffer(std::ofstream& arquivo);
+		void registraDados();
 	};
 }

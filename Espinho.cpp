@@ -79,4 +79,34 @@ void Entidades::Espinho::obstacular(Entidades::Jogador* pJog)
 	}
 }
 
+void Entidades::Espinho::SalvarDataBuffer(std::ofstream& arquivo)
+{
+	try
+	{
+		arquivo.open("Salvamento.txt", std::ios::app);
+
+		if (!arquivo.is_open())
+		{
+			throw std::runtime_error("Erro ao abrir o arquivo para escrita.");
+		}
+
+		arquivo << buffer.str();
+
+		arquivo.close();
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Exceção em salvarDados: " << e.what() << std::endl;
+	}
+}
+
+void Entidades::Espinho::registraDados()
+{
+	/*
+	int _dano;
+	*/
+	Entidades::Obstaculo::registraDados();
+	buffer << _dano << "\n";
+}
+
 

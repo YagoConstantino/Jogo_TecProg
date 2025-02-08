@@ -199,7 +199,7 @@ void MenuRanking::mostrarRanking(Ranking* rank)
 	sf::Text texto;
 	texto.setFont(_fonte);
 	texto.setCharacterSize(Constantes::RANKING_TAMANHO_BOTOES);
-	texto.setFillColor(sf::Color::White);
+	texto.setFillColor(sf::Color::Black);
 
 	// Posição inicial para desenhar os textos
 	sf::Vector2u tamJanela = _pGraf->getWindow()->getSize();

@@ -65,7 +65,8 @@ namespace Entidades
 		bool getEhJogador1()const;
 
 		void executar();
-		//void SalvarDataBuffer();
+		void SalvarDataBuffer(std::ofstream& arquivo);
+		void registraDados();
 
 	};
 

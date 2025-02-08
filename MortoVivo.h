@@ -14,8 +14,9 @@ namespace Entidades
 
 		virtual void executar();
 	
-		//void SalvarDataBuffer();
 		virtual void mover();
 		virtual void danificar(Entidades::Jogador* pJog);
+		void SalvarDataBuffer(std::ofstream& arquivo);
+		virtual void registraDados();
 	};
 }

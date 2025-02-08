@@ -17,9 +17,10 @@ todas as plataformas e depois verifico quais foram geradas e posso colocara inim
 limitar ao ch�o, pois � at� o momento a unica parte que certamente vai ser gerada
 */
 
-Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1,Entidades::Jogador*j2)
-	:Ente(pgra), _GG(pgra), _jog1(j1),_jog2(j2), maxCavaleiros(Constantes::MAX_CAVALEIROS),
-	maxPlataformas(Constantes::MAX_PLATAFORMA), _mudouEstado(false),_hudJog1(nullptr),_hudJog2(nullptr), _menuPause(nullptr)
+Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1, Entidades::Jogador* j2)
+	:Ente(pgra), _GG(pgra), _jog1(j1), _jog2(j2), maxCavaleiros(Constantes::MAX_CAVALEIROS),
+	maxPlataformas(Constantes::MAX_PLATAFORMA), _mudouEstado(false), _hudJog1(nullptr), _hudJog2(nullptr), _menuPause(nullptr),
+	_arquivoFase(), _terminada(false), _TipoFase(0)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
@@ -121,6 +122,7 @@ void Fases::Fase::pause()
 
 	// Executo o pause
 	_menuPause = new Menus::MenuPause(_GG, &_body);
+	_menuPause->setFase(this);
 	_menuPause->executar();
 
 	// verifico se volto para a fase ou para o menu principal
@@ -141,32 +143,97 @@ void Fases::Fase::verificarSaidaPause()
 	}
 }
 
+void Fases::Fase::SalvarEntidades()
+{
+		_arquivoFase.open("Salvamento.txt", std::ios::app);
+		_arquivoFase << _terminada<<" "<< _TipoFase << "\n";
+		_arquivoFase.close();
+		
+		if (_jog1) 
+		{
+			_jog1->registraDados();
+			_jog1->SalvarDataBuffer(_arquivoFase);
+		}
+		if (_jog2) 
+		{
+			_jog2->registraDados();
+			_jog2->SalvarDataBuffer(_arquivoFase);
+		}
+		_Lista->registrarDados();
+		_Lista->salvar(_arquivoFase);
+
+
+}
+
+void Fases::Fase::LimpaArquivo()
+{
+	try
+	{
+		_arquivoFase.open("Salvamento.txt", std::ios::trunc);
+
+		if (!_arquivoFase.is_open())
+		{
+			throw std::runtime_error("Erro ao abrir o arquivo para limpeza.");
+		}
+
+		_arquivoFase << 0;
+		_arquivoFase.close();
+		std::cout << "Arquivo limpo com sucesso!\n";
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Exceção em LimpaArquivo: " << e.what() << std::endl;
+	}
+}
+
 void Fases::Fase::verificarJogadores()
 {
 	// ------ >> verifica se o(s) jogador(es) estao morto(s)
 
 	// Caso 1: os dois jogadores foram criados
-	if (_jog1 != nullptr && _jog2 != nullptr) {
-		if (!_jog1->getVivo() && !_jog2->getVivo()) {
+	if (_jog1 != nullptr && _jog2 != nullptr) 
+	{
+		if (!_jog1->getVivo() && !_jog2->getVivo()) 
+		{
 			// Finaliza o jogo
 			Jogo::mudarStateNum(30);
 			_mudouEstado = true;
 		}
 	}
 	// Caso 2: apenas o jogador 1 foi criado
-	else if (_jog1 != nullptr) {
-		if (!_jog1->getVivo()) {
+	else if (_jog1 != nullptr) 
+	{
+		if (!_jog1->getVivo()) 
+		{
 			// Finaliza o jogo
 			Jogo::mudarStateNum(30);
 			_mudouEstado = true;
 		}
 	}
 	// Caso 3: apenas o jogador 2 foi criado
-	else if (_jog2 != nullptr) {
-		if (!_jog2->getVivo()) {
+	else if (_jog2 != nullptr) 
+	{
+		if (!_jog2->getVivo()) 
+		{
 			// Finaliza o jogo
 			Jogo::mudarStateNum(30);
 			_mudouEstado = true;
 		}
 	}
+}
+
+void Fases::Fase::verificaInimigosVivos()
+{
+	_terminada = _GC->verificaInimigos();
+	if (!_terminada) 
+	{
+		LimpaArquivo();
+		Jogo::mudarStateNum(Constantes::STATE_FIM_JOGO);
+		_mudouEstado = true;
+	}
+}
+
+void Fases::Fase::setTipoFase(int i)
+{
+	_TipoFase = i;
 }

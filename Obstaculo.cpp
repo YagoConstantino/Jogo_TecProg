@@ -20,3 +20,12 @@ bool Entidades::Obstaculo::getDanoso()const
 {
 	return _danoso;
 }
+
+void Entidades::Obstaculo::registraDados()
+{
+	/*
+	bool _danoso;
+	*/
+	Entidades::Entidade::registraDados();
+	buffer << _danoso << " ";
+}

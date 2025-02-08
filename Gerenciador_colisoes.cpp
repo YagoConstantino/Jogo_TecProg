@@ -1,6 +1,7 @@
 #include "Gerenciador_Colisoes.h"
 #include "Inimigo.h"
 #include "Constantes.h"
+#include "MortoVivoThread.h"
 
 /*
 Os cálculos vetoriais utilizados na função calculaColisao foram desenvolvidos por Mateus Burda.
@@ -564,4 +565,22 @@ void Gerenciadores::Gerenciador_Colisoes::resetar()
 
 	_jogador1 = nullptr;
 	_jogador2 = nullptr;
+}
+
+bool Gerenciadores::Gerenciador_Colisoes::verificaInimigos()
+{
+	int i;
+	int soma = 0;
+
+	for (i=0 ; i < _listaInimigos.size(); i++)
+	{
+		soma += _listaInimigos[i]->getVivo();
+		/*if (_listaInimigos[i]->getEhThread())
+		{
+			Entidades::MortoVivoThread* mort = static_cast<Entidades::MortoVivoThread*>(_listaInimigos[i]);
+			soma += mort->getVivo();
+			printf("%d ", mort->getVivo());
+		}*/
+	}
+	return soma;
 }

@@ -15,8 +15,9 @@ namespace Entidades
 
 
 		void executar();
-		//void SalvarDataBuffer();
 		void mover();
 		void danificar(Entidades::Jogador* pJog);
+		void SalvarDataBuffer(std::ofstream& arquivo);
+		void registraDados();
 	};
 }

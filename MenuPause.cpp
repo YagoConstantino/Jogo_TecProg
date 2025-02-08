@@ -1,5 +1,6 @@
 #include "MenuPause.h"
 #include "Constantes.h"
+#include "Fase.h"
 
 Menus::MenuPause::MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf, sf::Sprite* imgFase) : Entidades::Ente(_pGraf), _imagemFase(imgFase), _houveClique(false), _mudouEstado(false), _voltaFase(false), _segundos(0.f)
 {
@@ -222,6 +223,7 @@ void Menus::MenuPause::executarRetomar()
 
 void Menus::MenuPause::executarSalvarSair()
 {
+	_Fase->SalvarEntidades();
 	_voltaFase = false;
 	_mudouEstado = true;
 }
@@ -259,4 +261,9 @@ void Menus::MenuPause::executar()
 
 		_pGraf->display();
 	}
+}
+
+void Menus::MenuPause::setFase(Fases::Fase* fas)
+{
+	_Fase = fas;
 }

@@ -6,6 +6,7 @@
 #include "Cavaleiro.h"
 #include "Hud.h"
 #include "MenuPause.h"
+#include <fstream>
 
 namespace Fases
 {
@@ -26,6 +27,9 @@ namespace Fases
 		Hud* _hudJog2;
 		int maxCavaleiros;
 		int maxPlataformas; // Pois cada fase tem um numero diferente
+		std::ofstream _arquivoFase;
+		bool _terminada;
+		int _TipoFase;
 
 	public:
 		Fase(Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador* j1 = nullptr, Entidades::Jogador* j2 = nullptr);
@@ -43,7 +47,10 @@ namespace Fases
 
 		void pause();
 		void verificarSaidaPause();
-
+		void SalvarEntidades();
+		void LimpaArquivo();
 		void verificarJogadores();
+		void verificaInimigosVivos();
+		void setTipoFase(int i);
 	};
 }

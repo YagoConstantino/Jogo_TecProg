@@ -3,6 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include "Ente.h"
 #include "Gerenciador_Grafico.h"
+namespace Fases
+{
+	class Fase;
+}
+
 
 namespace Menus {
 	class MenuPause : public Entidades::Ente {
@@ -23,6 +28,7 @@ namespace Menus {
 		sf::Text _titulo;
 		sf::Text _botaoRetomar;
 		sf::Text _botaoSalvarSair;
+		Fases::Fase* _Fase;
 
 	public:
 		MenuPause(Gerenciadores::Gerenciador_Grafico* _pGraf = nullptr, sf::Sprite* imgFase = nullptr);
@@ -52,5 +58,6 @@ namespace Menus {
 		void desenharMenu();
 
 		void executar();
+		void setFase(Fases::Fase* fas);
 	};
 }

@@ -1,5 +1,6 @@
 #include "Projetil.h"
 #include "Constantes.h"
+#include <exception>
 #include <cmath>
 
 // ------------------------------- PUBLIC ----------------------------------------------------
@@ -103,6 +104,37 @@ void Entidades::Projetil::inverteLado() {
 	else {
 		_body.setRotation(0.f);
 	}
+}
+
+void Entidades::Projetil::SalvarDataBuffer(std::ofstream& arquivo)
+{
+	try
+	{
+		arquivo.open("Salvamento.txt", std::ios::app);
+
+		if (!arquivo.is_open())
+		{
+			throw std::runtime_error("Erro ao abrir o arquivo para escrita.");
+		}
+
+		arquivo << buffer.str();
+
+		arquivo.close();
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Exceção em salvarDados: " << e.what() << std::endl;
+	}
+}
+
+void Entidades::Projetil::registraDados()
+{
+	/*
+	int _dano;
+		bool _lancar;
+	*/
+	Entidades::Entidade::registraDados();
+	buffer << _dano << " " << _lancar <<"\n";
 }
 
 void Entidades::Projetil::setDano(int dano) {

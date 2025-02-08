@@ -190,3 +190,44 @@ void Entidades::Mago::bater()
 	}
 }
 
+void Entidades::Mago::setVidasPerdidas(int vidas)
+{
+	_vidasPerdidas = vidas;
+}
+
+void Entidades::Mago::setSegIntervalo(float seg)
+{
+	_segundosIntervaloPro = seg;
+}
+
+void Entidades::Mago::SalvarDataBuffer(std::ofstream& arquivo)
+{
+	try
+	{
+		arquivo.open("Salvamento.txt", std::ios::app);
+
+		if (!arquivo.is_open())
+		{
+			throw std::runtime_error("Erro ao abrir o arquivo para escrita.");
+		}
+
+		arquivo << buffer.str();
+
+		arquivo.close();
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Exceção em salvarDados: " << e.what() << std::endl;
+	}
+}
+
+void Entidades::Mago::registraDados()
+{
+	/*
+	float _segundosIntervaloPro;
+	int _vidasPerdidas;
+	*/
+	Entidades::Inimigo::registraDados();
+	buffer << _segundosIntervaloPro << " " << _vidasPerdidas << "\n";
+}
+

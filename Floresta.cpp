@@ -12,11 +12,13 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
     :Fase(pgra,jog1,jog2),maxMortovivo(Constantes::MAX_MORTOVIVO),maxBarraMagicas(Constantes::MAX_BARRAS_MAGICAS)
 
 {
+    setTipoFase(1);
     _inimigos.clear();
 
     criarCenario();
     criarInimigos();
     criarObstaculos();
+ 
 }
 
 Fases::Floresta::~Floresta()
@@ -111,7 +113,7 @@ void Fases::Floresta::criarCavaleiros()
 void Fases::Floresta::criaBruxas()
 {
 
-    int n = (rand() % 5) + 1;
+    int n = (rand() % 4) + 3;
     int i;
     
     std::vector<std::pair<float, float>> posicaoBruxa =
@@ -121,6 +123,7 @@ void Fases::Floresta::criaBruxas()
         {450.f,400.f},
         {0.f, 700.f},									
         {468.f, 700.f},
+        {234.f,700.f}
 
     };
 
@@ -191,12 +194,14 @@ void Fases::Floresta::executar()
         _Lista->executar();
 
         verificarJogadores();
-        verificarInimigos();
+        verificaInimigosVivos();
 
         //std::cout << _jog1->getPontos() << std::endl;
         _GG->display();
     }
+    
     _Lista->joinThread();
+    
     
 }
 

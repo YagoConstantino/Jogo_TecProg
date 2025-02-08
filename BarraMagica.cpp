@@ -77,5 +77,34 @@ void Entidades::BarraMagica::obstacular(Entidades::Jogador* pJog)
 	//pJog->setParalisado(true, _duracaoParalisia);
 }
 
+void Entidades::BarraMagica::SalvarDataBuffer(std::ofstream& arquivo)
+{
+	try
+	{
+		arquivo.open("Salvamento.txt",std::ios::app);
+		if (!arquivo.is_open())
+		{
+			throw std::runtime_error("Erro ao abrir o arquivo para escrita.");
+		}
+
+		arquivo << buffer.str();
+
+		arquivo.close();
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Exceção em salvarDados: " << e.what() << std::endl;
+	}
+}
+
+void Entidades::BarraMagica::registraDados()
+{
+	/*
+	float _duracaoParalisia;
+	*/
+	Entidades::Obstaculo::registraDados();
+	buffer << _duracaoParalisia << "\n";
+}
+
 
 

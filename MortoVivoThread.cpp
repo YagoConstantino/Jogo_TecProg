@@ -2,8 +2,9 @@
 
 Entidades::MortoVivoThread::MortoVivoThread(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1, Entidades::Jogador* pJog2, int vidas)
-	:MortoVivo(inicialX, inicialY, pgra, pJog1, pJog2, vidas), ThreadCPP(),_rodar(false)
+	:MortoVivo(inicialX, inicialY, pgra, pJog1, pJog2), ThreadCPP(),_rodar(false)
 {
+	setVidas(5);
 	setTipo(Constantes::TIPO_MORTOVIVO_THREAD);
 	setEhThread(true);
 	sf::Texture* textura = _pGraf->getTextura("MortoVivoThread");
@@ -74,6 +75,7 @@ void Entidades::MortoVivoThread::run()
 			{
 				pular();
 			}
+			
 			unlockMutex();
 			setRodar(false);
 			//yield();
@@ -84,4 +86,14 @@ void Entidades::MortoVivoThread::run()
 void Entidades::MortoVivoThread::executar()
 {
 	desenhar();
+}
+
+void Entidades::MortoVivoThread::SalvarDataBuffer(std::ofstream& arquivo)
+{
+	MortoVivo::SalvarDataBuffer(arquivo);
+}
+
+void Entidades::MortoVivoThread::registraDados()
+{
+	MortoVivo::registraDados();
 }

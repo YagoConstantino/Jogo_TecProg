@@ -59,5 +59,6 @@ namespace Gerenciadores {
 		void executar();
 
 		void resetar();
+		bool verificaInimigos();
 	};
 }

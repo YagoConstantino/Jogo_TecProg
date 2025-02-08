@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <ostream>
+#include <sstream>
 #include "Ente.h"
 #include <fstream>
 
@@ -18,7 +18,7 @@ namespace Entidades
 		float _segundos;
 		bool _vivo;
 		bool _ehThread;
-		//std::ostream buffer;
+		std::ostringstream buffer;
 
 	public:
 		Entidade(float inicialX = 0, float inicialY = 0, Gerenciadores::Gerenciador_Grafico* pgra = nullptr);
@@ -56,8 +56,8 @@ namespace Entidades
 		void setEhThread(bool th);
 		bool getEhThread()const;
 
-		//virtual void SalvarDataBuffer(std::ofstream& arquivo) = 0;
-		//void registrarDados();
+		virtual void SalvarDataBuffer(std::ofstream& arquivo) = 0;
+		virtual void registraDados();
 
 
 	};

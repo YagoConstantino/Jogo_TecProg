@@ -29,6 +29,7 @@ namespace Entidades
 		virtual void executar() = 0;
 		
 		virtual void mover() = 0;
-		//void SalvarDataBuffer();		
+		virtual void SalvarDataBuffer(std::ofstream& arquivo) = 0;
+		virtual void registraDados();
 	};
 }

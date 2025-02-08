@@ -59,3 +59,13 @@ void Entidades::Personagem::setDirecao(int dir)
 
 	_direcao = dir;
 }
+
+void Entidades::Personagem::registraDados()
+{
+	/*
+	int _num_vidas;
+	int _direcao;
+	*/
+	Entidades::Entidade::registraDados();
+	buffer << _num_vidas << " " << _direcao<<" ";
+}

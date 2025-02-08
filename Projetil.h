@@ -31,5 +31,8 @@ namespace Entidades {
 		void resetar();
 		double calcularForcaY(double distancia, double gravidade, double forcaX);
 		void inverteLado();
+
+		void SalvarDataBuffer(std::ofstream& arquivo);
+		void registraDados();
 	};
 }

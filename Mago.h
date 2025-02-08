@@ -38,8 +38,11 @@ namespace Entidades {
 		
 		void atirar();
 		void bater();
+		void setVidasPerdidas(int vidas);
+		void setSegIntervalo(float seg);
 
-		//void SalvarDataBuffer();
+		void SalvarDataBuffer(std::ofstream& arquivo);
+		void registraDados();
 		
 	};
 }

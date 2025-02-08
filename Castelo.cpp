@@ -6,6 +6,7 @@ Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jog
 	: Fase(pgra, j1,j2), _maxMagos(Constantes::MAX_MAGOS), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
 	_platsBases(), _cavaleiros(), _magos(),_magosNaoCriados(true)
 {
+	setTipoFase(2);
 	_platsBases.clear();
 	_platsCavaleiros.clear();
 	_platsBosses.clear();
@@ -340,8 +341,9 @@ void Fases::Castelo::executar()
 		_Lista->executar();
 
 		verificarCavaleiros();
-		verificarMagos();
+		//verificarMagos();
 		verificarJogadores();
+		verificaInimigosVivos();
 
 		_GG->display();
 	}
@@ -367,7 +369,7 @@ void Fases::Castelo::verificarMagos()
 {
 	int vivos = 0;
 
-	// Contabiliza quantos cavaleiros estao vivos
+	/*// Contabiliza quantos cavaleiros estao vivos
 	size_t tam = _magos.size();
 	for (size_t i = 0; i < tam; i++)
 		vivos += (int)_magos[i]->getVivo();
@@ -376,5 +378,5 @@ void Fases::Castelo::verificarMagos()
 	if (!vivos && tam) {
 		Jogo::mudarStateNum(Constantes::STATE_FIM_JOGO);
 		_mudouEstado = true;
-	}
+	}*/
 }

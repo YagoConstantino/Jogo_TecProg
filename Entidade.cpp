@@ -10,7 +10,7 @@ namespace Entidades
 
 	Entidades::Entidade::Entidade(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra):
 		Ente(pgra), Position(inicialX, inicialY),_clock(),_segundos(0.0f),
-		_speed(0,0),_Tipo(0),_onGround(false),_vivo(true),_ehThread(false)
+		_speed(0,0),_Tipo(0),_onGround(false),_vivo(true),_ehThread(false),buffer()
 	{
 		_body.setPosition(Position);
 	}
@@ -201,5 +201,19 @@ namespace Entidades
 	{
 		return _ehThread;
 	}
+
+	void Entidade::registraDados()
+	{
+		/*
+		bool _onGround;
+		int _Tipo;
+		sf::Vector2f Position;
+		sf::Vector2f _speed;
+		bool _ehThread;
+		*/
+		buffer << _Tipo << " " <<_ehThread<<" "<< _onGround << " " << Position.x <<
+			" " << Position.y << " " << _speed.x << " " << _speed.y << " ";
+	}
+	
 	
 }

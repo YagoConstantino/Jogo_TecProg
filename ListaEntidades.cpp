@@ -126,6 +126,36 @@ void Listas::ListaEntidades::joinThread()
     delete it;
 }
 
+void Listas::ListaEntidades::registrarDados()
+{
+    Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
+    while (it->hasPNext())
+    {
+        Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
+        if (ente != nullptr && ente->getVivo())
+        {
+            ente->registraDados();
+        }
+
+    }
+    delete it;
+}
+
+void Listas::ListaEntidades::salvar(std::ofstream& arquivo)
+{
+    Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();
+    while (it->hasPNext())
+    {
+        Entidades::Entidade* ente = it->Atual(); // Obter o ponteiro para Entidade
+        if (ente != nullptr && ente->getVivo())
+        {
+            ente->SalvarDataBuffer(arquivo);
+        }
+
+    }
+    delete it;
+}
+
 void Listas::ListaEntidades::executar() 
 {
     Listas::ListaElementar<Entidades::Entidade>::Iterator* it = List.getIterator();

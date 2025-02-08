@@ -1,5 +1,7 @@
-Yago 193
+Yago 576
 Gabriel 29
+Joao 22
+yago 9
 Gabriela 8
 Thomas 3
 Y@go 0
