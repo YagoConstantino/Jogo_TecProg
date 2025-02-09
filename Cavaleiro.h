@@ -20,5 +20,6 @@ namespace Entidades
 		void SalvarDataBuffer(std::ofstream& arquivo);
 		void registraDados();
 		void setLoucura(int loc);
+		
 	};
 }

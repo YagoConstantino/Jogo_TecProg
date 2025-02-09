@@ -25,7 +25,8 @@ Entidades::Projetil::Projetil(float inicialX, float inicialY, Gerenciadores::Ger
 	_clock.restart();
 }
 
-Entidades::Projetil::~Projetil() {
+Entidades::Projetil::~Projetil() 
+{
 	_pGraf = nullptr;
 	_dano = 0;
 
@@ -133,7 +134,7 @@ void Entidades::Projetil::registraDados()
 {
 	/*
 	int _dano;
-		bool _lancar;
+	bool _lancar;
 	*/
 	Entidades::Entidade::registraDados();
 	buffer << _dano << " " << _lancar <<"\n";

@@ -436,7 +436,7 @@ void Entidades::Jogador::registraDados()
 	std::string nome
 	*/
 	Entidades::Personagem::registraDados();
-	buffer << nome <<" "<< _ehJogador1 << "\n";
+	buffer << nome <<"\n";
 }
 
 

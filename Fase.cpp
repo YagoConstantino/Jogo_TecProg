@@ -90,7 +90,7 @@ void Fases::Fase::gerenciarColisoes()
 void Fases::Fase::criarPlataformas()
 {
 
-	int n = (rand() % 4) + 5;        // Quantidade de plataformas: entre 3 e 8
+	int n = (rand() % 4) + 5;        // Quantidade de plataformas: entre 5 e 8
 	int i;
 
 	std::vector<std::pair<float, float>> posicoes =
@@ -153,18 +153,21 @@ void Fases::Fase::verificarSaidaPause()
 
 void Fases::Fase::SalvarEntidades()
 {
-	try {
+	try 
+	{
 		// Apaga tudo no arquivo
 		_arquivoFase.open("Salvamento.txt", std::ios::trunc);
 		_arquivoFase.close();
 	}
-	catch (const std::ios_base::failure& e) {
+	catch (const std::ios_base::failure& e) 
+	{
 		std::cerr << "Erro ao limpar o arquivo de salvamento: " << e.what() << std::endl;
 		// Aqui você pode retornar ou tratar o erro conforme a necessidade
 		return;
 	}
 
-	try {
+	try 
+	{
 		// Abre o arquivo para salvar (append)
 		_arquivoFase.open("Salvamento.txt", std::ios::app);
 		_arquivoFase << _terminada << " " << _TipoFase << "\n";
@@ -301,9 +304,9 @@ void Fases::Fase::recuperarFase()
 		{
 			int vidas, direcao;
 			std::string nome = " ";
-			bool ehJog1;
+			//bool ehJog1;
 
-			if (!(arquivoFase >> vidas >> direcao >> nome >> ehJog1)) 
+			if (!(arquivoFase >> vidas >> direcao >> nome)) 
 			{
 				std::cerr << "Erro ao ler dados do Jogador." << std::endl;
 				continue;
@@ -454,6 +457,7 @@ void Fases::Fase::recuperarFase()
 				continue;
 			}
 			Entidades::Espinho* esp = new Entidades::Espinho(dano,posX, posY, _GG);
+			esp->setDanoso(danoso);
 			_Lista->insert_back(static_cast<Entidades::Entidade*>(esp));
 			_GC->incluirObstaculo(static_cast<Entidades::Obstaculo*>(esp));
 		
@@ -468,11 +472,7 @@ void Fases::Fase::recuperarFase()
 				std::cerr << "Erro ao ler dados de Projetil" << std::endl;
 				continue;
 			}
-			Entidades::Projetil* proj = new Entidades::Projetil(posX,posY,_GG);
-			_Lista->insert_back(static_cast<Entidades::Entidade*>(proj));
-			_GC->incluirProjetil(static_cast<Entidades::Projetil*>(proj));
-			//proj->setDano(dano);
-			//proj->setLancar(lancar);
+			Entidades::Projetil* proj = new Entidades::Projetil(posX, posY, _GG);
 			if (ma >= magos.size())
 			{
 				std::cerr << "Erro: Índice 'ma' fora dos limites do vetor magos." << std::endl;
@@ -485,6 +485,11 @@ void Fases::Fase::recuperarFase()
 				magos[ma]->setProjetil(proj);
 				ma++;
 			}
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(proj));
+			_GC->incluirProjetil(static_cast<Entidades::Projetil*>(proj));
+			proj->setDano(dano);
+			proj->setLancar(lancar);
+			
 
 			
 		}

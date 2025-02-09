@@ -225,12 +225,13 @@ void Menu::executarJogar()
 		int fase;
 		Arquivo >> fase;
 		Arquivo.close();
+		printf("recuperar :%d fase: %d \n\n", recuperar, fase);
 		if (fase == 1)
 		{
 			Jogo::mudarStateNum(Constantes::STATE_FLORESTA);
 			_mudouEstado = true;
 		}
-		else if (fase == 2)
+		if (fase == 2)
 		{
 			Jogo::mudarStateNum(Constantes::STATE_CASTELO);
 			_mudouEstado = true;
