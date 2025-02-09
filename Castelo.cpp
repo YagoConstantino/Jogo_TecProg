@@ -548,8 +548,8 @@ void Fases::Castelo::recuperarFase()
 		}
 		else if (_Tipo == Constantes::TIPO_MAGO)
 		{
-			int vidas, direcao, inX, inY, vidasPerdidas;
-			float secs;
+			int vidas, direcao, vidasPerdidas;
+			float secs ,inX, inY;
 			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> secs >> vidasPerdidas))
 			{
 				std::cerr << "Erro ao ler dados do Mago" << std::endl;
@@ -559,12 +559,15 @@ void Fases::Castelo::recuperarFase()
 			mag->setDirecao(direcao);
 			mag->setGround(_onGround);
 			mag->setSpeed(speedX, speedY);
+			mag->setPosInicial(inX, inY);
 			mag->setVidasPerdidas(vidasPerdidas);
 			mag->setSegIntervalo(secs);
 
 			_Lista->insert_back(static_cast<Entidades::Entidade*>(mag));
 			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mag));
 			magos.push_back(mag);
+			_magos.push_back(mag);
+			_magosNaoCriados = false;
 		}
 		else if (_Tipo == Constantes::TIPO_PLATAFORMA)
 		{
@@ -633,6 +636,7 @@ void Fases::Castelo::recuperarFase()
 			_GC->incluirProjetil(static_cast<Entidades::Projetil*>(proj));
 			proj->setDano(dano);
 			proj->setLancar(lancar);
+			proj->setSpeed(speedX, speedY);
 
 
 
