@@ -23,6 +23,22 @@ Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jog
 	{
 		criarCenario();
 		recuperarFase();
+		if (_jog1)
+		{
+			_jog1->setPosition
+			(
+				_pGraf->getWindow()->getSize().x / 10.f,
+				_platsBases[0]->getPosition().y - _jog1->getBody().getGlobalBounds().height
+			);
+		}
+		if (_jog2)
+		{
+			_jog2->setPosition
+			(
+				_pGraf->getWindow()->getSize().x / 9.f,
+				_platsBases[0]->getPosition().y - _jog2->getBody().getGlobalBounds().height
+			);
+		}
 	}
 	else
 	{

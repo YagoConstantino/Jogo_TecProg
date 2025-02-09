@@ -3,10 +3,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Constantes.h"
+
 Entidades::Cavaleiro::Cavaleiro(float inicialX, float inicialY, Gerenciadores::Gerenciador_Grafico* pgra,
 	Entidades::Jogador* pJog1,Entidades::Jogador*pJog2, int vidas)
-	:Inimigo(inicialX, inicialY, pgra, pJog1,pJog2, vidas),_loucura(rand()%7)
+	:Inimigo(inicialX, inicialY, pgra, pJog1,pJog2, vidas),_loucura()
 {
+	srand((unsigned int )time(NULL));
+	_loucura = rand() % 7;
 	setTipo(Constantes::TIPO_CAVALEIRO);
 	setMaldade(Constantes::MALDADE_CAVALEIRO);
 	_speed.x = Constantes::VEL_CAVALEIRO;

@@ -53,6 +53,7 @@ Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
 
 Jogo::~Jogo()
 {
+
 	if (_jogador1)
 	{
 		delete _jogador1;
@@ -81,7 +82,8 @@ Jogo::~Jogo()
 	{
 		delete _menuJogadores;
 	}
-	if (_menuFases) {
+	if (_menuFases) 
+	{
 		delete _menuFases;
 	}
 	if (rank)

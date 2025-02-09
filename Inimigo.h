@@ -39,6 +39,7 @@ namespace Entidades
 		Entidades::Jogador* getJogadorMaisProximo();
 
 		virtual void executar() = 0;
+		void setPosInicial(float x, float y);
 		
 		virtual void mover() = 0;
 		virtual void danificar(Entidades::Jogador* pJog) = 0;

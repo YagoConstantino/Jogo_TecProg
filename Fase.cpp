@@ -67,6 +67,11 @@ Fases::Fase::~Fase()
 		delete _menuPause;
 		_menuPause = nullptr;
 	}
+	if (_jogo)
+	{
+		_jogo->deletarJogadores();
+		_jogo = nullptr;
+	}
 		
 
 	//Seto como nulo os ponteiros para o Gerenciador gr�fico e jogador
@@ -184,7 +189,7 @@ void Fases::Fase::LimpaArquivo()
 			throw std::runtime_error("Erro ao abrir o arquivo para limpeza.");
 		}
 
-		_arquivoFase << 0;
+		_arquivoFase << 0 << "\n";
 		_arquivoFase.close();
 		std::cout << "Arquivo limpo com sucesso!\n";
 	}
@@ -320,7 +325,8 @@ void Fases::Fase::recuperarFase()
 		}
 		else if (_Tipo == Constantes::TIPO_CAVALEIRO)
 		{
-			int vidas, direcao, inX, inY, louc;
+			int vidas, direcao, louc;
+			float inX, inY;
 
 			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> louc)) 
 			{
@@ -333,13 +339,15 @@ void Fases::Fase::recuperarFase()
 			cav->setGround(_onGround);
 			cav->setSpeed(speedX, speedY);
 			cav->setLoucura(louc);
+			cav->setPosInicial(inX, inY);
 
 			_Lista->insert_back(static_cast<Entidades::Entidade*>(cav));
 			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav));
 		}
 		else if (_Tipo == Constantes::TIPO_MORTOVIVO)
 		{
-			int vidas, direcao, inX, inY, energ;
+			int vidas, direcao, energ;
+			float inX, inY;
 			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> energ))
 			{
 				std::cerr << "Erro ao ler dados do MortoVivo" << std::endl;
@@ -351,6 +359,7 @@ void Fases::Fase::recuperarFase()
 			mort->setGround(_onGround);
 			mort->setSpeed(speedX, speedY);
 			mort->setEnergetico(energ);
+			mort->setPosInicial(inX, inY);
 
 			_Lista->insert_back(static_cast<Entidades::Entidade*>(mort));
 			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mort));
@@ -359,7 +368,9 @@ void Fases::Fase::recuperarFase()
 		}
 		else if (_Tipo == Constantes::TIPO_MORTOVIVO_THREAD)
 		{
-			int vidas, direcao, inX, inY, energ;
+			int vidas, direcao, energ;
+			int vidas, direcao, energ;
+			float inX, inY;
 			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> energ))
 			{
 				std::cerr << "Erro ao ler dados do MortoVivoThread" << std::endl;
@@ -371,16 +382,18 @@ void Fases::Fase::recuperarFase()
 			mort->setGround(_onGround);
 			mort->setSpeed(speedX, speedY);
 			mort->setEnergetico(energ);
+			mort->setPosInicial(inX, inY);
 
-			_Lista->insert_back(static_cast<Entidades::Entidade*>(mort));
 			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mort));
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(mort));
+			
 			
 		}
 		else if (_Tipo == Constantes::TIPO_MAGO)
 		{
 			int vidas, direcao, inX, inY, vidasPerdidas;
 			float secs;
-			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> secs>>vidasPerdidas))
+			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> secs >> vidasPerdidas))
 			{
 				std::cerr << "Erro ao ler dados do Mago" << std::endl;
 				continue;
@@ -391,6 +404,7 @@ void Fases::Fase::recuperarFase()
 			mag->setSpeed(speedX, speedY);
 			mag->setVidasPerdidas(vidasPerdidas);
 			mag->setSegIntervalo(secs);
+
 			_Lista->insert_back(static_cast<Entidades::Entidade*>(mag));
 			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mag));
 			magos.push_back(mag);
@@ -447,18 +461,22 @@ void Fases::Fase::recuperarFase()
 			Entidades::Projetil* proj = new Entidades::Projetil(posX,posY,_GG);
 			_Lista->insert_back(static_cast<Entidades::Entidade*>(proj));
 			_GC->incluirProjetil(static_cast<Entidades::Projetil*>(proj));
-			proj->setDano(dano);
-			proj->setLancar(lancar);
+			//proj->setDano(dano);
+			//proj->setLancar(lancar);
 			if (ma >= magos.size())
 			{
 				std::cerr << "Erro: Índice 'ma' fora dos limites do vetor magos." << std::endl;
-				delete proj; // Evita vazamento de memória
+				//delete proj; // Evita vazamento de memória
 				break;
 			}
+			else
+			{
+				// Define o projetil para o mago correspondente
+				magos[ma]->setProjetil(proj);
+				ma++;
+			}
 
-			// Define o projetil para o mago correspondente
-			magos[ma]->setProjetil(proj);
-			ma++;
+			
 		}
 		else
 		{
@@ -468,7 +486,17 @@ void Fases::Fase::recuperarFase()
 	}
 
 	arquivoFase.close();
-	Entidades::Jogador::setContador(0);
+	
+	//Entidades::Jogador::setContador(0);
+	/*
+	if (_jog1)
+		delete _jog1;
+	if(_jog2)
+		delete _jog2;
+	_jogo->setJogador1(nullptr);
+	_jogo->setJogador2(nullptr);
+	*/
+	
 	LimpaArquivo();
 }
 void Fases::Fase::setJogo(Jogo* jo)

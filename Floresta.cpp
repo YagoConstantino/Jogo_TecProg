@@ -21,6 +21,7 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
     Arquivo.open("Salvamento.txt", std::ios::in);
     Arquivo >> recuperar;
     Arquivo.close();
+
     if (recuperar)
     {
         criarCenario();
@@ -32,8 +33,6 @@ Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::J
         criarInimigos();
         criarObstaculos();
     }
-
- 
  
 }
 
