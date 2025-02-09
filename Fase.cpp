@@ -153,29 +153,39 @@ void Fases::Fase::verificarSaidaPause()
 
 void Fases::Fase::SalvarEntidades()
 {
-	//Apaga tudo no Arquivo
-	_arquivoFase.open("Salvamento.txt", std::ios::trunc);
-	_arquivoFase.close();
+	try {
+		// Apaga tudo no arquivo
+		_arquivoFase.open("Salvamento.txt", std::ios::trunc);
+		_arquivoFase.close();
+	}
+	catch (const std::ios_base::failure& e) {
+		std::cerr << "Erro ao limpar o arquivo de salvamento: " << e.what() << std::endl;
+		// Aqui você pode retornar ou tratar o erro conforme a necessidade
+		return;
+	}
 
-	//Salva
-	_arquivoFase.open("Salvamento.txt", std::ios::app);
-	_arquivoFase << _terminada<<" "<< _TipoFase << "\n";
-	_arquivoFase.close();
-		
-	if (_jog1) 
-	{
+	try {
+		// Abre o arquivo para salvar (append)
+		_arquivoFase.open("Salvamento.txt", std::ios::app);
+		_arquivoFase << _terminada << " " << _TipoFase << "\n";
+		_arquivoFase.close();
+	}
+	catch (const std::ios_base::failure& e) {
+		std::cerr << "Erro ao salvar no arquivo de salvamento: " << e.what() << std::endl;
+		return;
+	}
+
+	// Continua com a gravação dos dados das entidades:
+	if (_jog1) {
 		_jog1->registraDados();
 		_jog1->SalvarDataBuffer(_arquivoFase);
 	}
-	if (_jog2) 
-	{
+	if (_jog2) {
 		_jog2->registraDados();
 		_jog2->SalvarDataBuffer(_arquivoFase);
 	}
 	_Lista->registrarDados();
 	_Lista->salvar(_arquivoFase);
-
-
 }
 
 void Fases::Fase::LimpaArquivo()
@@ -273,17 +283,18 @@ void Fases::Fase::recuperarFase()
 		return;
 	}
 	
-
-	while (!arquivoFase.eof()) 
+	int _Tipo;
+	bool _ehThread, _onGround;
+	float posX, posY, speedX, speedY;
+	while (arquivoFase >> _Tipo >> _ehThread >> _onGround >> posX >> posY >> speedX >> speedY)
 	{
-		int _Tipo;
-		bool _ehThread, _onGround;
-		float posX, posY, speedX, speedY;
-
+		
+		/*
 		if (!(arquivoFase >> _Tipo >> _ehThread >> _onGround >> posX >> posY >> speedX >> speedY)) 
 		{
 			break;
 		}
+		*/
 
 		
 		if (_Tipo == Constantes::TIPO_JOGADOR)
@@ -368,7 +379,6 @@ void Fases::Fase::recuperarFase()
 		}
 		else if (_Tipo == Constantes::TIPO_MORTOVIVO_THREAD)
 		{
-			int vidas, direcao, energ;
 			int vidas, direcao, energ;
 			float inX, inY;
 			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> energ))
