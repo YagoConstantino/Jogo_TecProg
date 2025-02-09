@@ -110,3 +110,8 @@ void Entidades::Cavaleiro::registraDados()
 	Entidades::Inimigo::registraDados();
 	buffer << _loucura << "\n";
 }
+
+void Entidades::Cavaleiro::setLoucura(int loc)
+{
+	_loucura = loc;
+}

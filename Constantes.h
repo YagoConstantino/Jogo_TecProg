@@ -49,6 +49,7 @@ namespace Constantes
 
 	//Projetil
 	constexpr float TEMPO_MAX_VOO = 22.f;
+	constexpr int TIPO_PROJETIL = 33;
 
 	//TelaFimDeJogo
 	constexpr int TAMANHO_TITULO = 90;

@@ -215,9 +215,36 @@ void Menu::padronizar(sf::Text& texto, int id)
 
 void Menu::executarJogar()
 {
-	//ENTRAR NO MENU JOGADORES
-	Jogo::mudarStateNum(Constantes::STATE_MENU_JOGADORES);
-	_mudouEstado = true;
+	int recuperar;
+	std::ifstream Arquivo;
+	Arquivo.open("Salvamento.txt", std::ios::in);
+	Arquivo >> recuperar;
+
+	if (recuperar)
+	{
+		int fase;
+		Arquivo >> fase;
+		Arquivo.close();
+		if (fase == 1)
+		{
+			Jogo::mudarStateNum(Constantes::STATE_FLORESTA);
+			_mudouEstado = true;
+		}
+		else if (fase == 2)
+		{
+			Jogo::mudarStateNum(Constantes::STATE_CASTELO);
+			_mudouEstado = true;
+		}
+	}
+	else
+	{
+		Arquivo.close();
+		//ENTRAR NO MENU JOGADORES
+		Jogo::mudarStateNum(Constantes::STATE_MENU_JOGADORES);
+		_mudouEstado = true;
+	}
+	
+	
 }
 
 void Menu::executarRanking()

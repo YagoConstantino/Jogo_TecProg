@@ -8,6 +8,7 @@
 #include "MenuPause.h"
 #include <fstream>
 
+class Jogo;
 namespace Fases
 {
 	class Fase :public Entidades::Ente
@@ -30,9 +31,11 @@ namespace Fases
 		std::ofstream _arquivoFase;
 		bool _terminada;
 		int _TipoFase;
+		Jogo* _jogo;
+		
 
 	public:
-		Fase(Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador* j1 = nullptr, Entidades::Jogador* j2 = nullptr);
+		Fase(Gerenciadores::Gerenciador_Grafico* pgra = nullptr,Entidades::Jogador* j1 = nullptr, Entidades::Jogador* j2 = nullptr,Jogo* jog = nullptr);
 		virtual ~Fase();
 
 		void gerenciarColisoes();
@@ -52,5 +55,7 @@ namespace Fases
 		void verificarJogadores();
 		void verificaInimigosVivos();
 		void setTipoFase(int i);
+		void recuperarFase();
+		void setJogo(Jogo* jo);
 	};
 }

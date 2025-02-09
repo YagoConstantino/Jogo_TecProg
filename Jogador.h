@@ -67,6 +67,7 @@ namespace Entidades
 		void executar();
 		void SalvarDataBuffer(std::ofstream& arquivo);
 		void registraDados();
+		static void setContador(int i);
 
 	};
 

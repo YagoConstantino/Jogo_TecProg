@@ -3,6 +3,11 @@
 #include "Inimigo.h"
 #include "Constantes.h"
 int Entidades::Jogador::contador(0);
+void Entidades::Jogador::setContador(int i)
+{
+	Jogador::contador = i;
+	std::cout << "Contador foi redefinido para: " << Jogador::contador << std::endl;
+}
 
 Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Grafico* pgra, std::string name)
 	:Personagem(inlX, inY, pgra,Constantes::VIDAS_JOGADOR), _pontos(0), nome(name), tempoPulo(Constantes::TEMPO_PULO)
@@ -87,7 +92,8 @@ Entidades::Jogador::Jogador(float inlX, float inY, Gerenciadores::Gerenciador_Gr
 
 Entidades::Jogador::~Jogador()
 {
-	contador--;
+	if(contador>0)
+		contador--;
 
 	if (_pTexture)
 	{
@@ -430,5 +436,7 @@ void Entidades::Jogador::registraDados()
 	std::string nome
 	*/
 	Entidades::Personagem::registraDados();
-	buffer << nome << "\n";
+	buffer << nome <<" "<< _ehJogador1 << "\n";
 }
+
+

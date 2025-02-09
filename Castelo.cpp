@@ -2,8 +2,8 @@
 #include "Jogo.h"
 #include "Constantes.h"
 
-Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1, Entidades::Jogador* j2)
-	: Fase(pgra, j1,j2), _maxMagos(Constantes::MAX_MAGOS), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
+Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1, Entidades::Jogador* j2,Jogo* jog)
+	: Fase(pgra, j1,j2,jog), _maxMagos(Constantes::MAX_MAGOS), _maxEspinhos(0), _platsCavaleiros(), _platsBosses(), 
 	_platsBases(), _cavaleiros(), _magos(),_magosNaoCriados(true)
 {
 	setTipoFase(2);
@@ -14,26 +14,39 @@ Fases::Castelo::Castelo(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jog
 	_magos.clear();
 
 	//_GC->setJogador1(j);
-
-	criarCenario();
-	criarObstaculos();
-	criarInimigos();
-
-	if (_jog1)
+	int recuperar;
+	std::ifstream Arquivo;
+	Arquivo.open("Salvamento.txt", std::ios::in);
+	Arquivo >> recuperar;
+	Arquivo.close();
+	if (recuperar)
 	{
-		_jog1->setPosition
-		(
-			_pGraf->getWindow()->getSize().x / 10.f,
-			_platsBases[0]->getPosition().y - _jog1->getBody().getGlobalBounds().height
-		);
+		criarCenario();
+		recuperarFase();
 	}
-	if (_jog2)
+	else
 	{
-		_jog2->setPosition
-		(
-			_pGraf->getWindow()->getSize().x / 9.f,
-			_platsBases[0]->getPosition().y - _jog2->getBody().getGlobalBounds().height
-		);
+		criarCenario();
+		criarObstaculos();
+		criarInimigos();
+
+		if (_jog1)
+		{
+			_jog1->setPosition
+			(
+				_pGraf->getWindow()->getSize().x / 10.f,
+				_platsBases[0]->getPosition().y - _jog1->getBody().getGlobalBounds().height
+			);
+		}
+		if (_jog2)
+		{
+			_jog2->setPosition
+			(
+				_pGraf->getWindow()->getSize().x / 9.f,
+				_platsBases[0]->getPosition().y - _jog2->getBody().getGlobalBounds().height
+			);
+		}
+
 	}
 	
 }

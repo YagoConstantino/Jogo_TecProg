@@ -5,6 +5,8 @@
 #include <vector>
 #include <utility>
 #include "Constantes.h"
+#include "Jogo.h"
+#include"MortoVivoThread.h"
 /*Implementar posteriormente:
 Posso fazer um vector de pair<pair<float,float>,bool>(Esses vectores para plataforma e cavaleiro ficariam no .h)
 uso o pair de float para as coordenadas e o booleano para saber
@@ -17,10 +19,10 @@ todas as plataformas e depois verifico quais foram geradas e posso colocara inim
 limitar ao ch�o, pois � at� o momento a unica parte que certamente vai ser gerada
 */
 
-Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1, Entidades::Jogador* j2)
+Fases::Fase::Fase(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* j1, Entidades::Jogador* j2, Jogo* jog)
 	:Ente(pgra), _GG(pgra), _jog1(j1), _jog2(j2), maxCavaleiros(Constantes::MAX_CAVALEIROS),
 	maxPlataformas(Constantes::MAX_PLATAFORMA), _mudouEstado(false), _hudJog1(nullptr), _hudJog2(nullptr), _menuPause(nullptr),
-	_arquivoFase(), _terminada(false), _TipoFase(0)
+	_arquivoFase(), _terminada(false), _TipoFase(0),_jogo(jog)
 {
 	_GC = Gerenciadores::Gerenciador_Colisoes::getInstancia();
 	_Lista = new Listas::ListaEntidades();
@@ -137,7 +139,8 @@ void Fases::Fase::pause()
 
 void Fases::Fase::verificarSaidaPause()
 {
-	if (!_menuPause->getVoltaFase()) {
+	if (!_menuPause->getVoltaFase()) 
+	{
 		Jogo::mudarStateNum(Constantes::STATE_MENU);
 		_mudouEstado = true;
 	}
@@ -145,22 +148,27 @@ void Fases::Fase::verificarSaidaPause()
 
 void Fases::Fase::SalvarEntidades()
 {
-		_arquivoFase.open("Salvamento.txt", std::ios::app);
-		_arquivoFase << _terminada<<" "<< _TipoFase << "\n";
-		_arquivoFase.close();
+	//Apaga tudo no Arquivo
+	_arquivoFase.open("Salvamento.txt", std::ios::trunc);
+	_arquivoFase.close();
+
+	//Salva
+	_arquivoFase.open("Salvamento.txt", std::ios::app);
+	_arquivoFase << _terminada<<" "<< _TipoFase << "\n";
+	_arquivoFase.close();
 		
-		if (_jog1) 
-		{
-			_jog1->registraDados();
-			_jog1->SalvarDataBuffer(_arquivoFase);
-		}
-		if (_jog2) 
-		{
-			_jog2->registraDados();
-			_jog2->SalvarDataBuffer(_arquivoFase);
-		}
-		_Lista->registrarDados();
-		_Lista->salvar(_arquivoFase);
+	if (_jog1) 
+	{
+		_jog1->registraDados();
+		_jog1->SalvarDataBuffer(_arquivoFase);
+	}
+	if (_jog2) 
+	{
+		_jog2->registraDados();
+		_jog2->SalvarDataBuffer(_arquivoFase);
+	}
+	_Lista->registrarDados();
+	_Lista->salvar(_arquivoFase);
 
 
 }
@@ -236,4 +244,234 @@ void Fases::Fase::verificaInimigosVivos()
 void Fases::Fase::setTipoFase(int i)
 {
 	_TipoFase = i;
+}
+
+void Fases::Fase::recuperarFase() 
+{
+	int flagJogador1 = 1;
+	std::ifstream arquivoFase("Salvamento.txt", std::ios::in);
+	std::vector<Entidades::Mago*> magos;
+	int ma = 0;
+
+	if (!arquivoFase) 
+	{
+		std::cerr << "Erro: Não foi possível abrir o arquivo de salvamento." << std::endl;
+		return;
+	}
+
+	
+	int recupera, terminado;
+
+	if (!(arquivoFase >> recupera >> terminado)) 
+	{
+		std::cerr << "Erro: Arquivo de salvamento corrompido ou vazio." << std::endl;
+		return;
+	}
+	
+
+	while (!arquivoFase.eof()) 
+	{
+		int _Tipo;
+		bool _ehThread, _onGround;
+		float posX, posY, speedX, speedY;
+
+		if (!(arquivoFase >> _Tipo >> _ehThread >> _onGround >> posX >> posY >> speedX >> speedY)) 
+		{
+			break;
+		}
+
+		
+		if (_Tipo == Constantes::TIPO_JOGADOR)
+		{
+			int vidas, direcao;
+			std::string nome = " ";
+			bool ehJog1;
+
+			if (!(arquivoFase >> vidas >> direcao >> nome >> ehJog1)) 
+			{
+				std::cerr << "Erro ao ler dados do Jogador." << std::endl;
+				continue;
+			}
+
+			Entidades::Jogador* jog = new Entidades::Jogador(posX, posY, _GG, nome);
+			jog->setDirecao(direcao);
+			jog->setVidas(vidas);
+			jog->setGround(_onGround);
+
+			if (flagJogador1) 
+			{
+				_jog1 = jog;
+				_GC->setJogador1(jog);
+				_jogo->setJogador1(_jog1);
+				Ranking* rank = _jogo->getRanking();
+				rank->verificaPontos(jog);
+				_hudJog1 = new Hud(_jog1);
+				flagJogador1 = 0;
+			}
+			else 
+			{
+				_jog2 = jog;
+				_GC->setJogador2(_jog2);
+				_jogo->setJogador2(jog);
+				Ranking* rank = _jogo->getRanking();
+				rank->verificaPontos(jog);
+				_hudJog2 = new Hud(jog);
+			}
+		}
+		else if (_Tipo == Constantes::TIPO_CAVALEIRO)
+		{
+			int vidas, direcao, inX, inY, louc;
+
+			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> louc)) 
+			{
+				std::cerr << "Erro ao ler dados do Cavaleiro." << std::endl;
+				continue;
+			}
+
+			Entidades::Cavaleiro* cav = new Entidades::Cavaleiro(posX, posY, _GG, _jog1, _jog2, vidas);
+			cav->setDirecao(direcao);
+			cav->setGround(_onGround);
+			cav->setSpeed(speedX, speedY);
+			cav->setLoucura(louc);
+
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(cav));
+			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(cav));
+		}
+		else if (_Tipo == Constantes::TIPO_MORTOVIVO)
+		{
+			int vidas, direcao, inX, inY, energ;
+			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> energ))
+			{
+				std::cerr << "Erro ao ler dados do MortoVivo" << std::endl;
+				continue;
+			}
+
+			Entidades::MortoVivo* mort = new Entidades::MortoVivo(posX, posY, _GG, _jog1, _jog2, vidas);
+			mort->setDirecao(direcao);
+			mort->setGround(_onGround);
+			mort->setSpeed(speedX, speedY);
+			mort->setEnergetico(energ);
+
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(mort));
+			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mort));
+			
+			
+		}
+		else if (_Tipo == Constantes::TIPO_MORTOVIVO_THREAD)
+		{
+			int vidas, direcao, inX, inY, energ;
+			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> energ))
+			{
+				std::cerr << "Erro ao ler dados do MortoVivoThread" << std::endl;
+				continue;
+			}
+
+			Entidades::MortoVivoThread* mort = new Entidades::MortoVivoThread(posX, posY, _GG, _jog1, _jog2, vidas);
+			mort->setDirecao(direcao);
+			mort->setGround(_onGround);
+			mort->setSpeed(speedX, speedY);
+			mort->setEnergetico(energ);
+
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(mort));
+			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mort));
+			
+		}
+		else if (_Tipo == Constantes::TIPO_MAGO)
+		{
+			int vidas, direcao, inX, inY, vidasPerdidas;
+			float secs;
+			if (!(arquivoFase >> vidas >> direcao >> inX >> inY >> secs>>vidasPerdidas))
+			{
+				std::cerr << "Erro ao ler dados do Mago" << std::endl;
+				continue;
+			}
+			Entidades::Mago* mag = new Entidades::Mago(posX, posY, _GG, _jog1, _jog2, vidas);
+			mag->setDirecao(direcao);
+			mag->setGround(_onGround);
+			mag->setSpeed(speedX, speedY);
+			mag->setVidasPerdidas(vidasPerdidas);
+			mag->setSegIntervalo(secs);
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(mag));
+			_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mag));
+			magos.push_back(mag);
+		}
+		else if (_Tipo == Constantes::TIPO_PLATAFORMA)
+		{
+			bool danoso;
+			if (!(arquivoFase >> danoso))
+			{
+				std::cerr << "Erro ao ler dados de Plataforma" << std::endl;
+				continue;
+			}
+			Entidades::Plataforma* plat = new Entidades::Plataforma(posX, posY, _GG);
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(plat));
+			_GC->incluirObstaculo(static_cast<Entidades::Obstaculo*>(plat));
+		}
+		else if (_Tipo == Constantes::TIPO_BARRA_MAGICA)
+		{
+			float duracaoParalisia;
+			bool danoso;
+			if (!(arquivoFase >> danoso >> duracaoParalisia))
+			{
+				std::cerr << "Erro ao ler dados de BarraMagica" << std::endl;
+				continue;
+			}
+			Entidades::BarraMagica* bar = new Entidades::BarraMagica(posX, posY, _GG);
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(bar));
+			_GC->incluirObstaculo(static_cast<Entidades::Obstaculo*>(bar));
+		}
+		else if (_Tipo == Constantes::TIPO_ESPINHO)
+		{
+			int dano;
+			bool danoso;
+			if (!(arquivoFase >> danoso >> dano))
+			{
+				std::cerr << "Erro ao ler dados de Espinho" << std::endl;
+				continue;
+			}
+			Entidades::Espinho* esp = new Entidades::Espinho(dano,posX, posY, _GG);
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(esp));
+			_GC->incluirObstaculo(static_cast<Entidades::Obstaculo*>(esp));
+		
+		}
+		else if (_Tipo == Constantes::TIPO_PROJETIL)
+		{
+			int dano;
+			bool lancar;
+			
+			if (!(arquivoFase >> dano>>lancar))
+			{
+				std::cerr << "Erro ao ler dados de Projetil" << std::endl;
+				continue;
+			}
+			Entidades::Projetil* proj = new Entidades::Projetil(posX,posY,_GG);
+			_Lista->insert_back(static_cast<Entidades::Entidade*>(proj));
+			_GC->incluirProjetil(static_cast<Entidades::Projetil*>(proj));
+			proj->setDano(dano);
+			proj->setLancar(lancar);
+			if (ma >= magos.size())
+			{
+				std::cerr << "Erro: Índice 'ma' fora dos limites do vetor magos." << std::endl;
+				delete proj; // Evita vazamento de memória
+				break;
+			}
+
+			// Define o projetil para o mago correspondente
+			magos[ma]->setProjetil(proj);
+			ma++;
+		}
+		else
+		{
+			std::cerr << "Erro: Tipo de entidade desconhecido (" << _Tipo << ")." << std::endl;
+			continue;
+		}
+	}
+
+	arquivoFase.close();
+	Entidades::Jogador::setContador(0);
+	LimpaArquivo();
+}
+void Fases::Fase::setJogo(Jogo* jo)
+{
+	_jogo = jo;
 }

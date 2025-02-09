@@ -13,6 +13,7 @@ namespace Entidades
 		virtual ~MortoVivo();
 
 		virtual void executar();
+		void setEnergetico(int ener);
 	
 		virtual void mover();
 		virtual void danificar(Entidades::Jogador* pJog);

@@ -70,6 +70,11 @@ void Entidades::MortoVivo::executar()
 	
 }
 
+void Entidades::MortoVivo::setEnergetico(int ener)
+{
+	_energetico = ener;
+}
+
 
 
 void Entidades::MortoVivo::mover()

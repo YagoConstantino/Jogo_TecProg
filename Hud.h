@@ -33,6 +33,7 @@ namespace Fases
 		void atualizaPontos();
 		void atualizaHearts();
 		void setContador(int vidas);
+		void setJogador(Entidades::Jogador* jog);
 
 		void executar();
 	};

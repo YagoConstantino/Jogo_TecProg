@@ -25,6 +25,16 @@ int Jogo::stateNum = Constantes::STATE_MENU;
 
 void Jogo::mudarStateNum(int state) { stateNum = state; }
 
+void Jogo::setJogador1(Entidades::Jogador* jog)
+{
+	_jogador1 = jog;
+}
+
+void Jogo::setJogador2(Entidades::Jogador* jog)
+{
+	_jogador2 = jog;
+}
+
 // DEMAIS
 
 Jogo::Jogo():_jogador1(nullptr),_jogador2(nullptr)
@@ -226,6 +236,11 @@ bool Jogo::criarJogador2(string nome)
 	return false;
 }
 
+Ranking* Jogo::getRanking() const
+{
+	return rank;
+}
+
 void Jogo::atualizaRanking()
 {
 	if (rank)
@@ -317,7 +332,8 @@ void Jogo::criaCastelo()
 		destroiEstadosAnteriores();
 
 		// Cria o estado atual
-		_castelo = new Fases::Castelo(_GerenciadorGrafico, _jogador1,_jogador2);
+		_castelo = new Fases::Castelo(_GerenciadorGrafico, _jogador1,_jogador2,this);
+		//_castelo->setJogo(this);
 	}
 }
 
@@ -328,7 +344,8 @@ void Jogo::criaFloresta()
 		destroiEstadosAnteriores();
 
 		// Cria o estado atual
-		_florest = new Fases::Floresta(_GerenciadorGrafico, _jogador1,_jogador2);
+		_florest = new Fases::Floresta(_GerenciadorGrafico, _jogador1,_jogador2,this);
+		//_florest->setJogo(this);
 	}
 }
 
@@ -359,11 +376,13 @@ void Jogo::JogarMenuRanking()
 
 void Jogo::deletarJogadores()
 {
-	if (_jogador1 != nullptr) {
+	if (_jogador1 != nullptr) 
+	{
 		delete _jogador1;
 		_jogador1 = nullptr;
 	}
-	if (_jogador2 != nullptr) {
+	if (_jogador2 != nullptr) 
+	{
 		delete _jogador2;
 		_jogador2 = nullptr;
 	}

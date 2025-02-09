@@ -19,7 +19,7 @@ namespace Fases
 		std::vector<Entidades::Inimigo*> _inimigos;
 
 	public:
-		Floresta(Gerenciadores::Gerenciador_Grafico* pgra = nullptr, Entidades::Jogador* jog1 = nullptr,Entidades::Jogador* jog2 = nullptr);
+		Floresta(Gerenciadores::Gerenciador_Grafico* pgra = nullptr, Entidades::Jogador* jog1 = nullptr, Entidades::Jogador* jog2 = nullptr,Jogo* jog = nullptr);
 		~Floresta();
 
 		void criaBarrasMagicas();

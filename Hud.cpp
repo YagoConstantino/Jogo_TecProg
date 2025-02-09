@@ -140,6 +140,12 @@ void Fases::Hud::setContador(int vidas)
 	_contadorVidas = vidas;
 }
 
+void Fases::Hud::setJogador(Entidades::Jogador* jog)
+{
+	if(jog)
+	_pJogador = jog;
+}
+
 void Fases::Hud::executar()
 {
 	_pGraf->desenhar(&_pontos);

@@ -55,7 +55,11 @@ public:
 	void executar();
 
 	static void mudarStateNum(int state);
+	
+	void setJogador1(Entidades::Jogador* jog);
+	void setJogador2(Entidades::Jogador* jog);
 
 	bool criarJogador1(string nome);
 	bool criarJogador2(string nome);
+	Ranking* getRanking()const;
 };

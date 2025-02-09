@@ -19,5 +19,6 @@ namespace Entidades
 		void danificar(Entidades::Jogador* pJog);
 		void SalvarDataBuffer(std::ofstream& arquivo);
 		void registraDados();
+		void setLoucura(int loc);
 	};
 }

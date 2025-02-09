@@ -7,17 +7,33 @@
 #include "Constantes.h"
 
 
-Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog1, Entidades::Jogador* jog2)
+Fases::Floresta::Floresta(Gerenciadores::Gerenciador_Grafico* pgra, Entidades::Jogador* jog1, Entidades::Jogador* jog2,Jogo*jog)
 
-    :Fase(pgra,jog1,jog2),maxMortovivo(Constantes::MAX_MORTOVIVO),maxBarraMagicas(Constantes::MAX_BARRAS_MAGICAS)
+    :Fase(pgra,jog1,jog2,jog),maxMortovivo(Constantes::MAX_MORTOVIVO),maxBarraMagicas(Constantes::MAX_BARRAS_MAGICAS)
 
 {
+
     setTipoFase(1);
     _inimigos.clear();
 
-    criarCenario();
-    criarInimigos();
-    criarObstaculos();
+    int recuperar;
+    std::ifstream Arquivo;
+    Arquivo.open("Salvamento.txt", std::ios::in);
+    Arquivo >> recuperar;
+    Arquivo.close();
+    if (recuperar)
+    {
+        criarCenario();
+        recuperarFase();
+    }
+    else
+    {
+        criarCenario();
+        criarInimigos();
+        criarObstaculos();
+    }
+
+ 
  
 }
 
