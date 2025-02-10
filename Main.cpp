@@ -2,7 +2,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <ctime>
-#include "ListaTemplate.h"
 #include "Lista.h"
 #include "Gerenciador_Grafico.h"
 #include "Jogador.h"
