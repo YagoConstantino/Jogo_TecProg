@@ -274,12 +274,14 @@ void Fases::Castelo::criarMagos()
 	
 	Entidades::Mago* mago          = nullptr;
 	Entidades::Projetil* projetil  = nullptr;
-	int n = (rand() % 2) + 3;
+	int n = (rand() % 3) + 3;
 	float x, y;
 	x = _pGraf->getWindow()->getSize().x - 40.f;
 	y = _pGraf->getWindow()->getSize().y - 768.f - 57.f;
 
-	for (int i = 0; i < n; i++) 
+	// Gerados nas plataformas laterais
+
+	for (int i = 0; i < n - 1; i++) 
 	{
 		mago = new Entidades::Mago(x, y, _pGraf, _jog1,_jog2);
 		projetil = new Entidades::Projetil(0.f, 0.f, _pGraf);
@@ -297,6 +299,23 @@ void Fases::Castelo::criarMagos()
 		x -= 10.f;
 	}
 
+	// Gerado na plataforma da base 
+
+	x = _pGraf->getWindow()->getSize().x - (_pGraf->getWindow()->getSize().x / 10.f * 2.f);
+	y = _pGraf->getWindow()->getSize().y - 192.f - 57.f;
+
+	mago = new Entidades::Mago(x, y, _pGraf, _jog1, _jog2);
+	projetil = new Entidades::Projetil(0.f, 0.f, _pGraf);
+
+	mago->setProjetil(projetil);
+
+	_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mago));
+	_Lista->insert_back(static_cast<Entidades::Entidade*>(mago));
+
+	_GC->incluirProjetil(projetil);
+	_Lista->insert_back(static_cast<Entidades::Entidade*>(projetil));
+
+	_magos.push_back(mago);
 }
 
 void Fases::Castelo::executar()
