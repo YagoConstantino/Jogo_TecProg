@@ -502,16 +502,6 @@ void Fases::Fase::recuperarFase()
 
 	arquivoFase.close();
 	
-	//Entidades::Jogador::setContador(0);
-	/*
-	if (_jog1)
-		delete _jog1;
-	if(_jog2)
-		delete _jog2;
-	_jogo->setJogador1(nullptr);
-	_jogo->setJogador2(nullptr);
-	*/
-	
 	LimpaArquivo();
 }
 void Fases::Fase::setJogo(Jogo* jo)

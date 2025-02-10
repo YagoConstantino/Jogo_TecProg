@@ -1,2 +1,6 @@
-Yago 702
-Gabriel 192
+Yago 740
+Gabriel 195
+Augusto 19
+Leticia 18
+Namie 16
+yago 15
