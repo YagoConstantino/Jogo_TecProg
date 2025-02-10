@@ -158,7 +158,7 @@ void Fases::Castelo::criarPlataformas()
 	// ------ >> Cria as plataformas dos cavaleiros
 
 	y = (float)_pGraf->getWindow()->getSize().y - (float)platDi.y - (float)platDi.y * 3.f;
-	x = 100.f - (float)platDi.x; // 100 seria o tamanho visivel da plataforma
+	x = 120.f - (float)platDi.x; // 100 seria o tamanho visivel da plataforma
 
 	for (int i = 0; i < 3 + adicionalPlat; i++) {
 		plat = new Entidades::Plataforma(x, y, _pGraf, 0.f);
@@ -250,7 +250,7 @@ void Fases::Castelo::criarCavaleiros()
 	// ------ >> Cria os cavaleiros nas plataformas
 
 	float
-		x = _platsCavaleiros[0]->getPosition().x + _platsCavaleiros[0]->getBody().getGlobalBounds().width - dimCavaleiro.x,
+		x = _platsCavaleiros[0]->getPosition().x + _platsCavaleiros[0]->getBody().getGlobalBounds().width - dimCavaleiro.x - 20.f,
 		y = 0.f;
 
 	Entidades::Cavaleiro* cavaleiro = nullptr;
@@ -264,6 +264,8 @@ void Fases::Castelo::criarCavaleiros()
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(cavaleiro));
 
 		_cavaleiros.push_back(cavaleiro);
+
+		x += 10.f;
 	}
 }
 
@@ -272,10 +274,11 @@ void Fases::Castelo::criarMagos()
 	
 	Entidades::Mago* mago          = nullptr;
 	Entidades::Projetil* projetil  = nullptr;
-	int n = (rand() % 3) + 3;
+	int n = (rand() % 2) + 3;
 	float x, y;
 	x = _pGraf->getWindow()->getSize().x - 40.f;
-	y = 630.f;
+	y = _pGraf->getWindow()->getSize().y - 768.f - 57.f;
+
 	for (int i = 0; i < n; i++) 
 	{
 		mago = new Entidades::Mago(x, y, _pGraf, _jog1,_jog2);
@@ -290,7 +293,7 @@ void Fases::Castelo::criarMagos()
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(projetil));
 
 		_magos.push_back(mago);
-		y -= 175.f;
+		y += 192.f;
 		x -= 10.f;
 	}
 

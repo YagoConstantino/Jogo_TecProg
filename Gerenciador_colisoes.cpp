@@ -480,8 +480,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 				>= _jogador1->getGrafico()->getWindow()->getSize().y
 				)
 		{
+			_jogador1->setVidas(0);
 			_jogador1->setVivo(false);
-			_jogador1->setVidas(-1);
 		}
 	}
 	if (_jogador2 != nullptr) 
@@ -492,8 +492,8 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesTela() {
 				>= _jogador2->getGrafico()->getWindow()->getSize().y
 				)
 		{
+			_jogador2->setVidas(0);
 			_jogador2->setVivo(false);
-			_jogador2->setVidas(-1);
 		}
 	}
 
