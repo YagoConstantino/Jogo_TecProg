@@ -269,24 +269,15 @@ void Fases::Castelo::criarCavaleiros()
 
 void Fases::Castelo::criarMagos()
 {
-	int minMagos = 3;
-
-	int adicionalMagos = rand() % (_maxMagos - minMagos + 1);
-
-	sf::Vector2f dimMago(35.f, 57.f);
-
-	// ------ >> Cria os bosses nas plataformas
-
-	float
-		x = _platsBosses[0]->getPosition().x,
-		y = 0.f;
-
+	
 	Entidades::Mago* mago          = nullptr;
 	Entidades::Projetil* projetil  = nullptr;
-
-	for (int i = 0; i < minMagos; i++) {
-		y = _platsCavaleiros[i]->getPosition().y - dimMago.y;
-
+	int n = (rand() % 3) + 3;
+	float x, y;
+	x = _pGraf->getWindow()->getSize().x - 40.f;
+	y = 630.f;
+	for (int i = 0; i < n; i++) 
+	{
 		mago = new Entidades::Mago(x, y, _pGraf, _jog1,_jog2);
 		projetil = new Entidades::Projetil(0.f, 0.f, _pGraf);
 
@@ -299,27 +290,10 @@ void Fases::Castelo::criarMagos()
 		_Lista->insert_back(static_cast<Entidades::Entidade*>(projetil));
 
 		_magos.push_back(mago);
+		y -= 175.f;
+		x -= 10.f;
 	}
 
-	// ------ >> Cria o boss extra na plataforma da base
-
-	if (!adicionalMagos) return;
-
-	x = (_pGraf->getWindow()->getSize().x * 9.f) / 10.f;
-	y = _platsBases[0]->getPosition().y - dimMago.y;
-
-	mago = new Entidades::Mago(x, y, _pGraf, _jog1);
-	projetil = new Entidades::Projetil(0.f, 0.f, _pGraf);
-
-	mago->setProjetil(projetil);
-
-	_GC->incluirInimigo(static_cast<Entidades::Inimigo*>(mago));
-	_Lista->insert_back(static_cast<Entidades::Entidade*>(mago));
-
-	_GC->incluirProjetil(projetil);
-	_Lista->insert_back(static_cast<Entidades::Entidade*>(projetil));
-
-	_magos.push_back(mago);
 }
 
 void Fases::Castelo::executar()
